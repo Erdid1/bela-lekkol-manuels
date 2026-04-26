@@ -1,0 +1,2774 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mes Lectures CE1 — Période 3 — Bela Lekkol Montessori</title>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --c1: #1A5C9E;
+  --c2: #3A8FD1;
+  --cl: #D3E8F9;
+  --text: #1a1a1a;
+  --gray: #555;
+  --lgray: #f5f5f5;
+  --line: #ddd;
+  --font: 'Segoe UI', Arial, sans-serif;
+}
+body { font-family: var(--font); font-size: 10pt; color: var(--text); background: #e8e8e8; }
+
+/* ---- PAGE ---- */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: 8mm auto;
+  padding: 12mm 14mm 10mm 14mm;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+}
+@media print {
+  body { background: white; }
+  .page {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 10mm 13mm 8mm 13mm;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+  .no-print { display: none !important; }
+}
+@page { size: A4; margin: 0; }
+
+/* ---- BANDE LATÉRALE ---- */
+.page::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5mm;
+  background: var(--c1);
+}
+
+/* ---- EN-TÊTE DE PAGE ---- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--c1);
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+.page-header .week-title {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--c1);
+}
+.page-header .page-meta {
+  font-size: 8pt;
+  color: var(--gray);
+  text-align: right;
+}
+.page-num-badge {
+  display: inline-block;
+  background: var(--c1);
+  color: white;
+  font-size: 8pt;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+/* ---- BOÎTES SECTION ---- */
+.section-box {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin-bottom: 3mm;
+  overflow: hidden;
+}
+.section-box .sh {
+  background: var(--c1);
+  color: white;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.section-box .sh.light {
+  background: var(--cl);
+  color: var(--c1);
+}
+.section-box .sb {
+  padding: 3mm 4mm;
+}
+
+/* ---- PROGRAMME ---- */
+.prog-line {
+  font-size: 8.5pt;
+  color: var(--gray);
+  border-left: 3px solid var(--c2);
+  padding-left: 4px;
+  margin-bottom: 2px;
+}
+
+/* ---- ATELIERS ---- */
+.ateliers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2mm;
+}
+.atelier-cell {
+  background: var(--cl);
+  border: 1px solid var(--c2);
+  border-radius: 3px;
+  padding: 2mm 3mm;
+  font-size: 8pt;
+}
+.atelier-cell .atelier-label {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--c1);
+  margin-bottom: 1mm;
+  text-transform: uppercase;
+}
+
+/* ---- TEXTE + ILLUSTRATION ---- */
+.text-illus-row {
+  display: flex;
+  gap: 4mm;
+  margin-bottom: 3mm;
+}
+.illus-box {
+  width: 42mm;
+  min-height: 42mm;
+  flex-shrink: 0;
+  border: 1px dashed var(--c2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.illus-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.texte-col { flex: 1; }
+
+/* ---- TEXTE DE LECTURE (prose fluide) ---- */
+.texte-prose {
+  font-size: 9.5pt;
+  line-height: 1.75;
+}
+.texte-line {
+  display: flex;
+  gap: 2.5mm;
+  margin-bottom: 0.8mm;
+}
+.texte-line .ln {
+  min-width: 13px;
+  font-size: 6.5pt;
+  color: #bbb;
+  padding-top: 3px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.texte-line .txt {
+  flex: 1;
+}
+
+/* ---- MHF MINI-FICHIERS ---- */
+.mhf-box {
+  background: var(--cl);
+  border: 1.5px solid var(--c1);
+  border-radius: 4px;
+  padding: 2mm 4mm;
+  margin-bottom: 2mm;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 3mm;
+}
+.mhf-header {
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--c1);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.mhf-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.mhf-label {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.mhf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+}
+.mhf-tag {
+  background: var(--c1);
+  color: white;
+  font-size: 7.5pt;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+/* ---- COMPRÉHENSION ---- */
+.comp-item {
+  font-size: 9pt;
+  margin-bottom: 1.5mm;
+  padding-left: 4mm;
+}
+.comp-item::before { content: '❓ '; }
+.answer-line {
+  display: block;
+  border-bottom: 1px solid var(--line);
+  min-height: 5mm;
+  margin: 1mm 0 2mm 5mm;
+}
+
+/* ---- MOT À RETENIR ---- */
+.mot-retenir {
+  background: var(--cl);
+  border-left: 4px solid var(--c1);
+  padding: 2mm 4mm;
+  font-size: 9pt;
+  margin-bottom: 2mm;
+  font-style: italic;
+  border-radius: 0 3px 3px 0;
+}
+
+/* ---- EXERCICE BLOCK ---- */
+.exo-block {
+  margin-bottom: 3mm;
+}
+.exo-header {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+  margin-bottom: 1.5mm;
+}
+.exo-num {
+  background: var(--c1);
+  color: white;
+  font-size: 8pt;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.exo-ref {
+  font-size: 7.5pt;
+  color: var(--c2);
+  font-weight: 600;
+}
+.exo-consigne {
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+/* tableau 2 colonnes exercice */
+.exo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+.exo-table td {
+  padding: 1.5mm 2mm;
+  border: 1px solid var(--line);
+  vertical-align: top;
+}
+.exo-table td:first-child {
+  width: 58%;
+  background: var(--lgray);
+}
+.exo-table td:last-child {
+  width: 42%;
+}
+.blank { color: #bbb; font-style: italic; }
+
+/* ---- RETIENS ---- */
+.retiens-box {
+  background: var(--cl);
+  border: 1.5px solid var(--c1);
+  border-radius: 4px;
+  padding: 2mm 4mm;
+  margin-bottom: 3mm;
+  font-size: 8.5pt;
+}
+.retiens-box strong { color: var(--c1); }
+
+/* ---- COPIER / DICTÉE / PROD ---- */
+.write-lines {
+  margin-top: 1mm;
+}
+.write-line {
+  border-bottom: 1px solid var(--line);
+  min-height: 7mm;
+  margin-bottom: 1mm;
+}
+.model-text {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  color: #333;
+  background: #fafafa;
+  border: 1px dashed var(--line);
+  padding: 2mm 3mm;
+  border-radius: 3px;
+  margin-bottom: 1.5mm;
+}
+
+/* ---- POÈME ---- */
+.poeme-block {
+  background: var(--cl);
+  border-radius: 4px;
+  padding: 3mm 5mm;
+  font-size: 9.5pt;
+  line-height: 1.8;
+  font-style: italic;
+  border-left: 4px solid var(--c1);
+}
+.poeme-vers { display: block; }
+
+/* ---- JEU ORAL ---- */
+.jeu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5mm;
+}
+.jeu-item {
+  border: 1px solid var(--c2);
+  border-radius: 3px;
+  padding: 1.5mm 2mm;
+  font-size: 8pt;
+  background: var(--lgray);
+}
+.jeu-item::before { content: '🎯 '; }
+
+/* ---- DIFFÉRENCIATION ---- */
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+}
+.diff-n1 {
+  background: #fff8e1;
+  border: 1px solid #f9a825;
+  border-radius: 4px;
+  padding: 2mm 3mm;
+}
+.diff-n2 {
+  background: #e8f5e9;
+  border: 1px solid var(--c2);
+  border-radius: 4px;
+  padding: 2mm 3mm;
+}
+.diff-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.5mm;
+}
+.diff-n1 .diff-label { color: #f57f17; }
+.diff-n2 .diff-label { color: var(--c1); }
+.diff-item { font-size: 8.5pt; margin-bottom: 1mm; }
+
+/* ---- DESSIN ---- */
+.dessin-box {
+  border: 1px dashed var(--c2);
+  border-radius: 4px;
+  min-height: 25mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c2);
+  font-size: 8pt;
+  font-style: italic;
+  background: #fafafa;
+  margin-top: 2mm;
+}
+
+/* ---- COUVERTURE ---- */
+.cover-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 257mm;
+}
+.cover-header {
+  width: 100%;
+  background: var(--c1);
+  color: white;
+  text-align: center;
+  padding: 8mm 10mm;
+  border-radius: 4px;
+  margin-bottom: 6mm;
+}
+.cover-header h1 { font-size: 22pt; margin-bottom: 2mm; }
+.cover-header h2 { font-size: 14pt; font-weight: 400; }
+.cover-sub {
+  font-size: 11pt;
+  color: var(--c1);
+  font-weight: 600;
+  margin-top: 2mm;
+}
+.cover-months {
+  font-size: 10pt;
+  color: var(--gray);
+  margin: 2mm 0 6mm 0;
+}
+.sommaire-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--c1);
+  border-bottom: 2px solid var(--c1);
+  padding-bottom: 2mm;
+  margin-bottom: 4mm;
+  width: 100%;
+}
+.sommaire-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+.sommaire-table th {
+  background: var(--c1);
+  color: white;
+  padding: 2mm 4mm;
+  text-align: left;
+  font-size: 9pt;
+}
+.sommaire-table td {
+  padding: 2.5mm 4mm;
+  border-bottom: 1px solid var(--line);
+}
+.sommaire-table tr:nth-child(even) td { background: var(--cl); }
+.cover-footer {
+  width: 100%;
+  text-align: center;
+  font-size: 8pt;
+  color: var(--gray);
+  border-top: 1px solid var(--line);
+  padding-top: 3mm;
+  margin-top: auto;
+}
+
+/* ---- CORRIGÉS ---- */
+.corrige-block {
+  background: #fff3e0;
+  border: 1px solid #ff9800;
+  border-radius: 4px;
+  padding: 2mm 3mm;
+  font-size: 8pt;
+  margin-bottom: 2mm;
+}
+.corrige-block .cor-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #e65100;
+  text-transform: uppercase;
+  margin-bottom: 1mm;
+}
+
+/* ---- MOTS DE LA DICTÉE ---- */
+.dict-mots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-bottom: 2mm;
+}
+.dict-mot {
+  background: var(--c1);
+  color: white;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+.pt-copie {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  color: var(--c1);
+  background: var(--cl);
+  padding: 2mm 4mm;
+  border-radius: 3px;
+  margin-bottom: 2mm;
+  border-left: 3px solid var(--c1);
+}
+
+/* ════ ILLUSTRATION BANDEAU ════ */
+.illus-bandeau {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 3mm;
+  border: 0.5px solid #ccc;
+  page-break-inside: avoid;
+  background: #faf9f5;
+}
+.illus-bandeau img {
+  width: 100%;
+  height: auto;          /* ratio 4:3 naturel, aucune déformation */
+  max-height: 72mm;      /* plafond pour les petites pages */
+  display: block;
+  object-fit: cover;
+  object-position: center 18%;  /* montre la partie haute : personnages */
+}
+/* ════ LANGAGE ORAL ════ */
+.oral-section {
+  background: #FFF8E7;
+  border-left: 3.5px solid #F9A825;
+  padding: 2.5mm 4mm;
+  margin-bottom: 3mm;
+  border-radius: 0 4px 4px 0;
+  page-break-inside: avoid;
+}
+.oral-title {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: #E65100;
+  margin-bottom: 1.5mm;
+  letter-spacing: 0.3px;
+}
+.oral-questions {
+  margin: 0;
+  padding-left: 5mm;
+}
+.oral-questions li {
+  font-size: 8.5pt;
+  color: #4E342E;
+  margin-bottom: 1mm;
+  line-height: 1.45;
+}
+
+
+/* ════ QR CODES CANOPÉ ════ */
+.canope-qr {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5mm;
+  background: #EBF3FB;
+  border: 1px solid #2E75B6;
+  border-radius: 5px;
+  padding: 1.5mm 3mm;
+  margin: 1.5mm 0 2mm 0;
+  page-break-inside: avoid;
+  float: right;
+  margin-left: 4mm;
+}
+.canope-qr img {
+  width: 18mm;
+  height: 18mm;
+  display: block;
+  flex-shrink: 0;
+}
+.canope-qr-label {
+  font-size: 6.5pt;
+  color: #1a4a8a;
+  line-height: 1.5;
+  font-weight: 600;
+  max-width: 30mm;
+}
+.canope-qr-label .qr-url {
+  font-size: 5.5pt;
+  color: #555;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+</style>
+</head>
+<body>
+
+<div class="no-print" style="position:fixed;top:10px;right:10px;z-index:999">
+  <button onclick="window.print()" style="background:#1A5C9E;color:white;border:none;padding:8px 16px;border-radius:6px;font-size:11pt;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3)">
+    🖨️ Imprimer / Enregistrer en PDF
+  </button>
+</div>
+
+<div class="page">
+  <div class="cover-page">
+    <div class="cover-header">
+      <h1>📚 Mes Lectures CE1</h1>
+      <h2>Période 3 — Janvier — Mars</h2>
+    </div>
+    <div style="text-align:center;margin-bottom:4mm">
+      <div style="font-size:11pt;color:#1A5C9E;font-weight:600">École Bela Lekkol Montessori — Guinée</div>
+      <div style="font-size:9pt;color:#666;margin-top:1mm">Méthode Heuristique du Français (MHF) — Contexte guinéen</div>
+      <div style="width:40mm;height:3px;background:#1A5C9E;margin:3mm auto"></div>
+    </div>
+
+    <div style="width:100%">
+      <div class="sommaire-title">📋 Sommaire de la période</div>
+      <table class="sommaire-table">
+        <thead>
+          <tr>
+            <th style="width:30px">N°</th>
+            <th>Titre de la semaine</th>
+            <th>Notions clés</th>
+            <th style="text-align:right">Pages</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">1</td>
+  <td><strong>La rentrée de janvier</strong></td>
+  <td style="font-size:8pt;color:#555">G7 : Complément circonstanciel de temps </td>
+  <td style="font-size:8pt;text-align:right">2–6</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">2</td>
+  <td><strong>L'harmattan souffle sur la Guinée</strong></td>
+  <td style="font-size:8pt;color:#555">G8 : Complément circonstanciel de lieu </td>
+  <td style="font-size:8pt;text-align:right">7–11</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">3</td>
+  <td><strong>Le grand marché de Conakry</strong></td>
+  <td style="font-size:8pt;color:#555">G9 : Le COD </td>
+  <td style="font-size:8pt;text-align:right">12–16</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">4</td>
+  <td><strong>Les animaux de la forêt guinéenne</strong></td>
+  <td style="font-size:8pt;color:#555">G10 : Le COI </td>
+  <td style="font-size:8pt;text-align:right">17–21</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">5</td>
+  <td><strong>La lettre d'Aminata</strong></td>
+  <td style="font-size:8pt;color:#555">G11 : La phrase complexe avec &quot;parce que&quot;, &quot;quand&quot;, &quot;si&quot; </td>
+  <td style="font-size:8pt;text-align:right">22–26</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">6</td>
+  <td><strong>La récolte du café</strong></td>
+  <td style="font-size:8pt;color:#555">G12 : Révision COD/COI + CC lieu/temps </td>
+  <td style="font-size:8pt;text-align:right">27–31</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">7</td>
+  <td><strong>Le berger du Fouta Djallon</strong></td>
+  <td style="font-size:8pt;color:#555">Bilan P3 </td>
+  <td style="font-size:8pt;text-align:right">32–36</td>
+</tr></tbody>
+      </table>
+    </div>
+
+    <div style="width:100%;background:#D3E8F9;border:1px solid #3A8FD1;border-radius:4px;padding:3mm 5mm;margin-top:4mm">
+      <div style="font-size:9pt;font-weight:700;color:#1A5C9E;margin-bottom:1.5mm">Structure de chaque semaine (5 pages)</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;font-size:8pt">
+        <div style="background:white;border:1px solid #3A8FD1;border-radius:3px;padding:2mm;text-align:center"><strong>P.1</strong><br>Texte &amp; Compréhension</div>
+        <div style="background:white;border:1px solid #3A8FD1;border-radius:3px;padding:2mm;text-align:center"><strong>P.2</strong><br>Grammaire &amp; Conjugaison</div>
+        <div style="background:white;border:1px solid #3A8FD1;border-radius:3px;padding:2mm;text-align:center"><strong>P.3</strong><br>Vocabulaire &amp; Corrigés</div>
+        <div style="background:white;border:1px solid #3A8FD1;border-radius:3px;padding:2mm;text-align:center"><strong>P.4</strong><br>Copier / Dictée / Prod.</div>
+        <div style="background:white;border:1px solid #3A8FD1;border-radius:3px;padding:2mm;text-align:center"><strong>P.5</strong><br>Poème / Jeu / Diff.</div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      Bela Lekkol Montessori — Manuel CE1 "Mes Lectures" — Méthode MHF — Contexte guinéen
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de janvier</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G7 : Complément circonstanciel de temps | C5 : Présent des verbes -ER (révision) | V7 : Les préfixes (re-, dé-, in-) | O12 : Accord du participe passé avec être</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G7 : Complément circonstanciel de temps | C5 : Présent des verbes -ER (révision) | V7 : Les préfixes (re-, dé-, in-) | O12 : Accord du participe passé avec être</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Le lundi matin, les élèves de Faranah retournent à l'école avec leurs nouveaux cahiers.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G7</span><span class="mhf-tag">G7</span><span class="mhf-tag">G7</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C5 présent -ER</span><span class="mhf-tag">C5</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V7</span><span class="mhf-tag">V7</span><span class="mhf-tag">V7</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Identifier les CC de temps dans le texte</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Conjuguer 5 verbes -ER au présent</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Former des mots avec les préfixes re-, dé-, in-</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Écrire une phrase avec 3 CC de temps</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">ce</span><span class="dict-mot">se</span><span class="dict-mot">ceux</span><span class="dict-mot">seux</span><span class="dict-mot">c'est</span><span class="dict-mot">s'est</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La rentrée de janvier</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p3s1_rentree_jan.jpg" alt="La rentrée de janvier">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Quelle saison vois-tu dans ce paysage ?</li>
+    <li>Décris les uniformes et les accessoires des élèves.</li>
+    <li>En quoi cette rentrée de janvier ressemble-t-elle à celle de septembre ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Le lundi 6 janvier, la cloche de l'école sonne à huit heures.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Les élèves arrivent joyeusement après les grandes vacances.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Aujourd'hui, ils portent leurs nouveaux cahiers et livres.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Le matin, les élèves s'alignent dans la cour pour l'appel.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">La maîtresse Madeleine appelle les noms un à un.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">&quot;Présent !&quot; répondent les élèves à tour de rôle.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Après l'appel, les classes rentrent dans les salles.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Cette année, Sory est dans la classe de CE1B.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Il retrouve ses amis Moussa, Koumba et Aminata.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">&quot;Vous avez passé de bonnes vacances ?&quot; demande-t-il.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">&quot;Oui !&quot; répondent-ils tous ensemble.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">La maîtresse distribue les nouveaux livres de français.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Dans l'après-midi, elle explique le programme du trimestre.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">&quot;Nous allons apprendre beaucoup de choses intéressantes !&quot;</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Les élèves écoutent avec attention et curiosité.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">À la fin de la journée, ils reçoivent leurs premiers devoirs.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Sory travaille le soir à la maison sous la lampe.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Il veut être premier de la classe cette année.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">La rentrée de janvier est toujours pleine d'espoir en Guinée.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">À quelle heure et quel jour se fait la rentrée de janvier ?<span class="answer-line"></span></div><div class="comp-item">Que distribue la maîtresse dans l'après-midi ?<span class="answer-line"></span></div><div class="comp-item">Quel est le souhait de Sory pour cette nouvelle année ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de janvier</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G7 : Complément circonstanciel de temps | C5 : Présent des verbes -ER (révision) | V7 : Les préfixes (re-, dé-, in-) | O12 : Accord du participe passé avec être</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G7</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2dy20dMQwA4yBdpKTUkypST0pKHS93HWjT/KyMmbn6rVbeAQFCH/Lt9Xp9Ewzfn56ArKJvFvpmoW8W+mahbxb6ZqFvFvpm8SP+889ff3bm8e/v709P43j2+HHjyPGzlRc1Ek/D+Gahbxb6ZqFvFu/kawdxLpAizl8aE7TKUPHIla+x9iUPjG8W+mahbxb6ZpHL1w5SmUJjdlNZq6osxh1U1uZSQ1VGPjC+Weibhb5Z6JtFKV9bo7LzGP+4kr41ZpFrGN8s9M1C3yz0zeLSfC2VCs2tkTW+6BKMbxb6ZqFvFvpmUcrX1hKWyoG11CQrS2aXHGeLMb5Z6JuFvlnom0UuX1vb8ptbyarkeo3LfE9tnhrfLPTNQt8s9M3i7c56uY03Ciojf8Udzxjjm4W+Weibhb5Z5Oqvra1zxVTuGzRmc411RCrTSH0645uFvlnom4W+WZTW1xrTisbaGPHIlVyvMXutVIWLfxxjfLPQNwt9s9A3i3fytbV9ycYeBXPF2mLmUs5GjG8W+mahbxb6ZvHOfmhlUWytnGzjXupTrOV6xjcLfbPQNwt9syj1D51bQVvLquY6k679v6lZGd8s9M1C3yz0zSJ3fm3u1NUlm4mNpXfnSrlVvpXxzULfLPTNQt8sOtfX1i5Xzt1abex01fii1LMxxjcLfbPQNwt9syidX5t7NjXy3KZt6r2pZ1PTaMxejW8W+mahbxb6ZpG7H7rW4fypvlBzjeUr0zhwfU0+ir5Z6JuFvlmU6nncmVXNnRRrLDqSmlXjf2R8s9A3C32z0DeLUr/3Sja3Vpl2rhlChcrHOUhlc8Y3C32z0DcLfbMo7YemfnxnC/eneOo+rPHNQt8s9M1C3yxK62sHayVwGy8JpN4bT2MO90Plk+ibhb5Z6JtFqX/oHGuF3hq3GuP3xtjfQEbQNwt9s9A3i8H+oSnmKtPO7S025olrVzWMbxb6ZqFvFvpmkdsPXStZkfpx41AHT7WOb8xeD4xvFvpmoW8W+mYxeD/0YO2u5cFcSZKYylCNlXgPjG8W+mahbxb6ZtF532CNylpV5aTYU21MG0+3Gd8s9M1C3yz0zeJL5muVdb2nrh9cgvHNQt8s9M1C3yxK+draelPjjYJKL865Y2XxsweVr2F8s9A3C32z0DeLS++H3tnqqXFk74fKBvpmoW8W+mZxaf01GcL4ZqFvFvpmoW8W+mahbxb6ZqFvFvpm8R/DYipAZ6F1MAAAAABJRU5ErkJggg==" alt="QR Code Les compléments"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les compléments</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L12</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G7</span>
+    <span class="exo-consigne">Souligne les CC de temps dans chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le lundi matin, les élèves arrivent.</td><td>Le lundi matin</td></tr><tr><td>Après l'appel, les classes rentrent.</td><td>Après l'appel</td></tr><tr><td>Cette année, Sory est en CE1B.</td><td>Cette année</td></tr><tr><td>À huit heures, la cloche sonne.</td><td>À huit heures</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G7</span>
+    <span class="exo-consigne">Ajoute un CC de temps à chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les élèves arrivent ___.</td><td>réponses libres (le matin, après les vacances, le soir...)</td></tr><tr><td>La maîtresse distribue les livres ___.</td><td><span class="blank">_______________</span></td></tr><tr><td>Sory travaille ___.</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G7</span>
+    <span class="exo-consigne">Classe les CC de temps : moment précis / durée / fréquence.</span>
+  </div>
+  <table class="exo-table"><tr><td>à huit heures / chaque lundi / pendant les vacances / aujourd'hui / souvent / le 6 janvier</td><td>moment: à 8h, aujourd'hui, le 6 jan. | durée: pendant... | fréquence: chaque lundi, souvent</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C5 présent -ER</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjElEQVR4nO3dUa4TMQxGYS5iFyyJ9bAK1sOSWEd5RIp03Ro7TqpzvtdOO9X8smQlk+Tj8Xh8EcbX039Ao8ybxbxZzJvFvFnMm8W8WcybxbxZvsUff//xa+Z//Pn98/X7Lhcvlu/GF8fin0rd6NSTXFjfLObNYt4s5s3ypF9bVHqfRaojSzU7jQ1a5bvx3xh7kgvrm8W8WcybxbxZcv3aYqyNahzYqnSC+8bIxp6k9c1i3izmzWLeLKV+bZ9986GNPVfjGNkY65vFvFnMm8W8WS7t11LiFqwy8Rp/2vii3Bjrm8W8WcybxbxZSv3aWIdS6apiYz8VG3uS1jeLebOYN4t5s+T6tbFFjo0qvd5YnzjG+mYxbxbzZjFvlif92p1zfGOvpDUuA7jkSVrfLObNYt4s5s3yEZ9vUJnjaxyN2jfOlbpvbN+QWeN+c9Y3i3mzmDeLebOUxtca99WIL07ZN5LVuGq18b4p1jeLebOYN4t5s3S+v9bYkZ06SaByzMJbjOtZ3yzmzWLeLObN0rk+tNLN7TtYoLJFR0Vj69f4rKxvFvNmMW8W82bpPD+00r6lNG58NjaJ2XhAauVi65vFvFnMm8W8WXLrDVIqc5qxUysZUn8jvngf1xvoH/NmMW8W82Z50q8tGve32LcPWsW+c7BSN4pVnob1zWLeLObNYt4suX4tNrbZbOySrmrR2HJWmkrrm8W8WcybxbxZOsfXTu2w9hbrNPcNAvr+mj5l3izmzWLeLKX318YmMRvnYVMaX2c7tcvIwvpmMW8W82Yxb5bO+dCUU6NRsTvfuWv8ZeubxbxZzJvFvFmO9WuLd5w8bdwQOMXxNb3KvFnMm8W8WY7t5xFfnPob+7Y2S/H8UF3HvFnMm8W8WW4ZX1vs26xtcWrvtsXYd61vFvNmMW8W82bpPN+gYt/c4iUDavsOV02xvlnMm8W8WcybJXd+6J0708afpkbB9r371njElPt56FXmzWLeLObNUjrvfV/D0jiuV2nuUj9VuTj+ru+v6T+ZN4t5s5g3S6lf22dsFWflu6cWNlRuZH2zmDeLebOYN8ul/doibt/G9vM4tYSg8UbWN4t5s5g3i3mzlPq1sSGk+L5x+9aocd/axoWoKdY3i3mzmDeLebPk+rWx5aKnJkD32Xf6gfOh+pR5s5g3i3mzXLr/mjaxvlnMm8W8WcybxbxZzJvFvFnMm8W8Wf4CX2kl2Kbnbu0AAAAASUVORK5CYII=" alt="QR Code Présent verbes en –er"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent verbes en –er</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L18</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C5 présent -ER</span>
+    <span class="exo-consigne">Conjugue au présent.</span>
+  </div>
+  <table class="exo-table"><tr><td>arriver : je ___ / ils ___</td><td>arrive/arrivent</td></tr><tr><td>porter : tu ___ / nous ___</td><td>portes/portons</td></tr><tr><td>écouter : elle ___ / vous ___</td><td>écoute/écoutez</td></tr><tr><td>travailler : il ___ / elles ___</td><td>travaille/travaillent</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C5</span>
+    <span class="exo-consigne">Mets au présent.</span>
+  </div>
+  <table class="exo-table"><tr><td>La cloche sonnait à huit heures.</td><td>sonne</td></tr><tr><td>Les élèves écoutaient la maîtresse.</td><td>écoutent</td></tr><tr><td>Sory travaillait le soir.</td><td>travaille</td></tr><tr><td>Nous arrivions à l'école.</td><td>arrivons</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de janvier</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G7 : Complément circonstanciel de temps | C5 : Présent des verbes -ER (révision) | V7 : Les préfixes (re-, dé-, in-) | O12 : Accord du participe passé avec être</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Préfixes re-, dé-, in- — V7</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADg0lEQVR4nO3d3U0DMRBFYYLogpKohyqoh5KoIzwiWYqTYWZsR+d8r/nZ1V6NNLK99uV6vb4I43X3DWgp82YxbxbzZjFvFvNmMW8W82Yxb5a3+cfvH19r7uPn+/Px2wh9OXOh0G/nDnmS1jeLebOYN4t5s9zp1waZhmUw718yDVqmIxsMf1XYzS17kgPrm8W8WcybxbxZYv3aINP7hL58ZkdWOGTW9yQH1jeLebOYN4t5s6T6tV0Ku6p5J7hsEnMZ65vFvFnMm8W8WQ7t10JtVOGng8xvz2R9s5g3i3mzmDdLql/ra1gy41x9Tdayf+5jfbOYN4t5s5g3S6xfWzY/mJmm3DU217fIrpD1zWLeLObNYt4sl2fcL7dw/VrhgrWnmB61vlnMm8W8Wcyb5U6/duZoVN/AVqjn6vurwv1LBtY3i3mzmDeLebPcmQ89c7XXMpl7DnVzoWeVebDWN4t5s5g3i3mzpMbXQl8uPHagb+iqT1/rN7Bf0x/zZjFvFvNmia1f6+vI5hfK6Osx+64753yoHmXeLObNYt4sjecbFHZzfe9aHnJkwfy3ha2f9c1i3izmzWLeLOv2Xys8jyrz20NOMOhbGDhnfbOYN4t5s5g3S+P5BrvmNAsbtL53WjMyD9b6ZjFvFvNmMW+WWL9WuLXZslYoc5Ohzii0i+/8NkJcv6abzJvFvFnMm6VyfK1vd7a5zO4Xy17bHPQNt7l+TX/Mm8W8WcybpbJfKzwmau6QichlJ04VPjrrm8W8WcybxbxZ7vRroQ7lzG3Rzty7rXA3uhDrm8W8WcybxbxZYucb9O1R0Td0tWspXOjTzF25fk03mTeLebOYN0vj+QYhhxxPtWvGc9D3NKxvFvNmMW8W82aJnW+wTOFE5K4zGQp/63lU+ifzZjFvFvNmia1f6zN/qXMu835oRuFLrKEvu35NjzJvFvNmMW+W1P5rGbuOaxpkdvvoG6rrY32zmDeLebOYN0vj+aGDXUNmfTviHrKaz/cNdJN5s5g3i3mzNJ5HldH3nmbouoU7yvVtCBxifbOYN4t5s5g3y6H92iGvAWT0vSOR+bL1zWLeLObNYt4sqX6tr/fpmzzNyCx2O+QAB+ubxbxZzJvFvFli+6/16ZtMDF13sGwNWmYJXui61jeLebOYN4t5sxy6/5qaWN8s5s1i3izmzWLeLObNYt4s5s1i3iy/yeU5vDQomMAAAAAASUVORK5CYII=" alt="QR Code Familles de mots"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Familles de mots</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L23</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>re- = encore, dé- = contraire, in- = sans/contraire.</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V7</span>
+    <span class="exo-consigne">Forme un mot avec le préfixe re-.</span>
+  </div>
+  <table class="exo-table"><tr><td>venir -&gt;</td><td>revenir</td></tr><tr><td>lire -&gt;</td><td>relire</td></tr><tr><td>faire -&gt;</td><td>refaire</td></tr><tr><td>écrire -&gt;</td><td>réécrire</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V7</span>
+    <span class="exo-consigne">Forme un mot avec le préfixe dé- ou in-.</span>
+  </div>
+  <table class="exo-table"><tr><td>faire -&gt; dé___</td><td>défaire</td></tr><tr><td>utile -&gt; in___</td><td>inutile</td></tr><tr><td>ranger -&gt; dé___</td><td>déranger</td></tr><tr><td>capable -&gt; in___</td><td>incapable</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V7</span>
+    <span class="exo-consigne">Utilise 3 mots avec préfixes dans une phrase chacun.</span>
+  </div>
+  <table class="exo-table"><tr><td>revenir : ___________</td><td>réponses libres</td></tr><tr><td>incapable : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>défaire : ___________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : Le lundi matin / Après l'appel / Cette année / À huit heures</div><div style="font-size:8pt">Ex.2 : réponses libres avec CC temps corrects</div><div style="font-size:8pt">Ex.3 : moment:à 8h,aujourd'hui,le 6 jan / durée:pendant les vacances / fréquence:chaque lundi,souvent</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : arrive/arrivent / portes/portons / écoute/écoutez / travaille/travaillent</div><div style="font-size:8pt">Ex.2 : sonne / écoutent / travaille / arrivons</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : revenir / relire / refaire / réécrire</div><div style="font-size:8pt">Ex.2 : défaire / inutile / déranger / incapable</div><div style="font-size:8pt">Ex.3 : réponses libres acceptées</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Le lundi 6 janvier à huit heures.  2. Les nouveaux livres de français.  3. Être premier de la classe.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de janvier</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G7 : Complément circonstanciel de temps | C5 : Présent des verbes -ER (révision) | V7 : Les préfixes (re-, dé-, in-) | O12 : Accord du participe passé avec être</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Le lundi matin, les élèves retournent à l'école avec leurs nouveaux cahiers et livres.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Après les grandes vacances, la rentrée de janvier est pleine d'espoir pour tous.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">ce</span> <span class="dict-mot">se</span> <span class="dict-mot">ceux</span> <span class="dict-mot">c'est</span> <span class="dict-mot">s'est</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Ce cahier se trouve là. Ceux qui travaillent bien s'en sortent toujours.</div><div class="model-text">C'est lui qui s'est levé tôt. Ce matin, il se prépare pour l'école.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris ton premier jour de classe après les vacances en 6-8 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>matin — cloche — cahiers — maîtresse — amis — programme — devoirs — espoir</em></div><div class="model-text" style="color:var(--c1)">Le premier jour de la rentrée, je...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de janvier</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G7 : Complément circonstanciel de temps | C5 : Présent des verbes -ER (révision) | V7 : Les préfixes (re-, dé-, in-) | O12 : Accord du participe passé avec être</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">donne un CC de temps pour &quot;manger&quot;</div><div class="jeu-item">forme un mot avec le préfixe re- à partir de &quot;lire&quot;</div><div class="jeu-item">conjugue &quot;arriver&quot; présent à &quot;nous&quot;</div><div class="jeu-item">cité 3 CC de temps différents</div><div class="jeu-item">donne un mot avec le préfixe in- qui veut dire &quot;pas capable&quot;</div><div class="jeu-item">quelle est la différence entre &quot;ce&quot; et &quot;se&quot; ?</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète avec &quot;ce/se&quot;, &quot;ceux/c'est&quot; :</div>
+        <div class="diff-item">___ livre est à moi. Il ___ trouve sur la table.<span class="answer-line"></span></div><div class="diff-item">___ qui travaillent bien réussissent. ___ vrai.<span class="answer-line"></span></div><div class="diff-item">Il ___ levé tôt. ___ matin est beau.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris la rentrée de janvier en 8 phrases avec CC de temps et présent des verbes -ER.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : 3 CC de temps différents, 4 verbes -ER présent, 2 mots avec préfixes.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 1 / Période 3</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — L'harmattan souffle sur la Guinée</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G8 : Complément circonstanciel de lieu | C6 : Présent de &quot;aller&quot;, &quot;venir&quot;, &quot;faire&quot;, &quot;dire&quot; | V8 : Les homonymes | O13 : Accord adj. épithète et attribut</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G8 : Complément circonstanciel de lieu | C6 : Présent de &quot;aller&quot;, &quot;venir&quot;, &quot;faire&quot;, &quot;dire&quot; | V8 : Les homonymes | O13 : Accord adj. épithète et attribut</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>En janvier, le vent d'harmattan vient du Sahara et souffle fort sur toute la Guinée.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G8</span><span class="mhf-tag">G8</span><span class="mhf-tag">G8</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C6 aller/venir</span><span class="mhf-tag">C6</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V8</span><span class="mhf-tag">V8</span><span class="mhf-tag">V8</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Identifier les CC de lieu dans le texte</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Conjuguer aller/venir/faire/dire au présent</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Distinguer les homonymes par le contexte</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Écrire une phrase avec CC de lieu et CC de temps</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">ver</span><span class="dict-mot">vert</span><span class="dict-mot">verre</span><span class="dict-mot">vers</span><span class="dict-mot">air</span><span class="dict-mot">aire</span><span class="dict-mot">ère</span><span class="dict-mot">are</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — L'harmattan souffle sur la Guinée</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p3s2_harmattan.jpg" alt="Le vent d'harmattan">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Quel effet le vent a-t-il sur les enfants et les feuilles ?</li>
+    <li>Décris le ciel et les couleurs de cette scène.</li>
+    <li>As-tu déjà ressenti le vent d'harmattan ? Décris ta sensation.</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">En janvier, l'harmattan arrive du nord, du Sahara.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Ce vent sec et chaud souffle sur toute la Guinée.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">À Faranah, les enfants sentent l'air poussiéreux le matin.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">La peau et les lèvres deviennent sèches à cause de l'harmattan.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Les mères frottent du beurre de karité sur les peaux de leurs enfants.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Ibrahima va à l'école avec son cache-nez ce matin-là.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">&quot;L'harmattan vient du désert&quot;, dit son père.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">&quot;Il passe sur le Fouta Djallon et descend vers la côte.&quot;</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Les feuilles des arbres tombent dans la cour de l'école.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Les enfants font des tas de feuilles dorées pour jouer.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">La maîtresse dit : &quot;Aujourd'hui, nous allons étudier l'harmattan.&quot;</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Elle dessine une carte de l'Afrique de l'Ouest au tableau.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Elle montre les directions du vent avec sa règle.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">&quot;Le vent vient du Sahara et va vers l'Atlantique.&quot;</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Les élèves font des exercices sur les vents et les saisons.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Ibrahima dit : &quot;J'aime étudier la géographie de la Guinée !&quot;</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Le soir, à la maison, il fait ses devoirs sous le vent d'harmattan.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Il boit un grand verre d'eau fraîche pour ne pas être déshydraté.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">L'harmattan est difficile mais il prépare l'arrivée de la saison des pluies.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">D'où vient l'harmattan et dans quelle direction va-t-il ?<span class="answer-line"></span></div><div class="comp-item">Comment les mères protègent-elles leurs enfants de l'harmattan ?<span class="answer-line"></span></div><div class="comp-item">Qu'est-ce qu'Ibrahima aime étudier à l'école ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — L'harmattan souffle sur la Guinée</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G8 : Complément circonstanciel de lieu | C6 : Présent de &quot;aller&quot;, &quot;venir&quot;, &quot;faire&quot;, &quot;dire&quot; | V8 : Les homonymes | O13 : Accord adj. épithète et attribut</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G8</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2dy20dMQwA4yBdpKTUkypST0pKHS93HWjT/KyMmbn6rVbeAQFCH/Lt9Xp9Ewzfn56ArKJvFvpmoW8W+mahbxb6ZqFvFvpm8SP+889ff3bm8e/v709P43j2+HHjyPGzlRc1Ek/D+Gahbxb6ZqFvFu/kawdxLpAizl8aE7TKUPHIla+x9iUPjG8W+mahbxb6ZpHL1w5SmUJjdlNZq6osxh1U1uZSQ1VGPjC+Weibhb5Z6JtFKV9bo7LzGP+4kr41ZpFrGN8s9M1C3yz0zeLSfC2VCs2tkTW+6BKMbxb6ZqFvFvpmUcrX1hKWyoG11CQrS2aXHGeLMb5Z6JuFvlnom0UuX1vb8ptbyarkeo3LfE9tnhrfLPTNQt8s9M3i7c56uY03Ciojf8Udzxjjm4W+Weibhb5Z5Oqvra1zxVTuGzRmc411RCrTSH0645uFvlnom4W+WZTW1xrTisbaGPHIlVyvMXutVIWLfxxjfLPQNwt9s9A3i3fytbV9ycYeBXPF2mLmUs5GjG8W+mahbxb6ZvHOfmhlUWytnGzjXupTrOV6xjcLfbPQNwt9syj1D51bQVvLquY6k679v6lZGd8s9M1C3yz0zSJ3fm3u1NUlm4mNpXfnSrlVvpXxzULfLPTNQt8sOtfX1i5Xzt1abex01fii1LMxxjcLfbPQNwt9syidX5t7NjXy3KZt6r2pZ1PTaMxejW8W+mahbxb6ZpG7H7rW4fypvlBzjeUr0zhwfU0+ir5Z6JuFvlmU6nncmVXNnRRrLDqSmlXjf2R8s9A3C32z0DeLUr/3Sja3Vpl2rhlChcrHOUhlc8Y3C32z0DcLfbMo7YemfnxnC/eneOo+rPHNQt8s9M1C3yxK62sHayVwGy8JpN4bT2MO90Plk+ibhb5Z6JtFqX/oHGuF3hq3GuP3xtjfQEbQNwt9s9A3i8H+oSnmKtPO7S025olrVzWMbxb6ZqFvFvpmkdsPXStZkfpx41AHT7WOb8xeD4xvFvpmoW8W+mYxeD/0YO2u5cFcSZKYylCNlXgPjG8W+mahbxb6ZtF532CNylpV5aTYU21MG0+3Gd8s9M1C3yz0zeJL5muVdb2nrh9cgvHNQt8s9M1C3yxK+draelPjjYJKL865Y2XxsweVr2F8s9A3C32z0DeLS++H3tnqqXFk74fKBvpmoW8W+mZxaf01GcL4ZqFvFvpmoW8W+mahbxb6ZqFvFvpm8R/DYipAZ6F1MAAAAABJRU5ErkJggg==" alt="QR Code Les compléments"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les compléments</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L12</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G8</span>
+    <span class="exo-consigne">Souligne les CC de lieu dans chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>L'harmattan arrive du Sahara.</td><td>du Sahara</td></tr><tr><td>Les feuilles tombent dans la cour.</td><td>dans la cour</td></tr><tr><td>Ibrahima va à l'école.</td><td>à l'école</td></tr><tr><td>Il fait ses devoirs à la maison.</td><td>à la maison</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G8</span>
+    <span class="exo-consigne">Ajoute un CC de lieu à chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les enfants jouent ___.</td><td>réponses libres (dans la cour, au tableau, sur la Guinée...)</td></tr><tr><td>La maîtresse dessine une carte ___.</td><td><span class="blank">_______________</span></td></tr><tr><td>Le vent souffle ___.</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G8</span>
+    <span class="exo-consigne">Classe CC de lieu : où est-ce ? / d'où ? / vers où ?</span>
+  </div>
+  <table class="exo-table"><tr><td>du Sahara / à l'école / vers la côte / dans la cour / de Faranah / vers le sud</td><td>où:à l'école,dans la cour / d'où:du Sahara,de Faranah / vers où:vers la côte,vers le sud</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C6 aller/venir</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d3W0bMRBF4ThIFykp9aQK15OSUof8GICARhjPz65zzvdqSbveiwEG5JJ8ezwe34Tx/eob0CrzZjFvFvNmMW8W82YxbxbzZjFvlh/xn3/+et+5j79/fgfXTf21UeNtXPUkD9Y3i3mzmDeLebO86NcOjZ1R3L/cpEGrfDe+ybUnebC+WcybxbxZzJsl168dUp3CXJN1qHSClV+uWHuS1jeLebOYN4t5s5T6tTmVici1ecm1DrSR9c1i3izmzWLeLDft1w5xk5Vq7g6V9+bWZmkbWd8s5s1i3izmzVLq127SoVRuo9LrpX4qtvYkrW8W82YxbxbzZsn1a2uLHA+pNqoyl9r419hVT9L6ZjFvFvNmMW+WF/3aTUbQDpVGae6X1xaEVljfLObNYt4s5s3yFp9vUJnjaxyNOswNe8UXis0NmaVWULj/mv4xbxbzZjFvlr39PCq7y1YGp67aMy713cp1U6xvFvNmMW8W82bJja8d5lZipm6jUeN/1HgbMcfX9JR5s5g3i3mzlN5fq4w3XdWgpbbomLtQ6sONjaH1zWLeLObNYt4sneeHzjUdc2Nza5OYlfYtlvqw9c1i3izmzWLeLKX1BnNjRmsLGxo7wXtO6R6sbxbzZjFvFvNmKb2/dph7nyu+0KGx9Zu77try2IP1zWLeLObNYt4sufWha3v2z+09mzp7tPJ2W6qNWts4xPpmMW8W82Yxb5bO80PvueFa6jCE+Lqxxs11U3x/TU+ZN4t5s5g3S+d+HpXvzi1OqGh8nW2uXY0/fLC+WcybxbxZzJulcz+PuUUCayd1pqZH13bxbXwa1jeLebOYN4t5s+zNh1a+u7Yt2too2FW/bH2zmDeLebOYN8vgfGjlp+bWpc6du/4l1sNa3yzmzWLeLObNUpoPTZmbPawsP5h7UW7uTKkK65vFvFnMm8W8WTrPN6iY625uMqC2diZDzPpmMW8W82Yxb5bB/ddic2ePpq5bWWAwt2p1bpmH9c1i3izmzWLeLKX1BnMNS+PhVan91xoPJZg7e7TyYeubxbxZzJvFvFk614c2atxIY+29ucbrpji+pqfMm8W8Wcyb5ab92mHtaKvG25g7xrRyIeubxbxZzJvFvFlK/draENLc/GDqumuztAf3X9MnmTeLebOYN0uuX1tbLjq3v8XaxryV685N+FrfLObNYt4s5s3yYr9c/WesbxbzZjFvFvNmMW8W82YxbxbzZjFvlg8WnCZ34uDEXgAAAABJRU5ErkJggg==" alt="QR Code Présent verbes irréguliers"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent verbes irréguliers</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L16</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C6 aller/venir</span>
+    <span class="exo-consigne">Conjugue au présent.</span>
+  </div>
+  <table class="exo-table"><tr><td>aller : je ___ / ils ___</td><td>vais/vont</td></tr><tr><td>venir : tu ___ / nous ___</td><td>viens/venons</td></tr><tr><td>faire : elle ___ / vous ___</td><td>fait/faites</td></tr><tr><td>dire : il ___ / elles ___</td><td>dit/disent</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C6</span>
+    <span class="exo-consigne">Mets au présent.</span>
+  </div>
+  <table class="exo-table"><tr><td>Ibrahima allait à l'école.</td><td>va</td></tr><tr><td>Le vent venait du nord.</td><td>vient</td></tr><tr><td>Les enfants faisaient des tas.</td><td>font</td></tr><tr><td>La maîtresse disait la leçon.</td><td>dit</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — L'harmattan souffle sur la Guinée</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G8 : Complément circonstanciel de lieu | C6 : Présent de &quot;aller&quot;, &quot;venir&quot;, &quot;faire&quot;, &quot;dire&quot; | V8 : Les homonymes | O13 : Accord adj. épithète et attribut</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Homonymes — V8</div>
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Des homonymes se prononcent pareil mais s'écrivent différemment selon le sens.</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V8</span>
+    <span class="exo-consigne">Choisis le bon homonyme selon le sens.</span>
+  </div>
+  <table class="exo-table"><tr><td>Il boit un grand ___ d'eau. (verre/vert/vers/ver)</td><td>verre</td></tr><tr><td>Le ___ souffle fort. (vent/vend/van)</td><td>vent</td></tr><tr><td>Il fait chaud sous le ___ brûlant. (sot/sol/seau)</td><td>sol</td></tr><tr><td>Elle coud ___ la fenêtre. (ver/verre/vers/vert)</td><td>vers</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V8</span>
+    <span class="exo-consigne">Explique la différence entre ces homonymes.</span>
+  </div>
+  <table class="exo-table"><tr><td>ver / vert / verre / vers</td><td>ver=animal/vert=couleur/verre=récipient/vers=direction</td></tr><tr><td>pain / pin / peint</td><td>pain=aliment/pin=arbre/peint=participe passé</td></tr><tr><td>mer / mère / maire</td><td>mer=océan/mère=parent/maire=dirigeant</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V8</span>
+    <span class="exo-consigne">Écris une phrase pour chaque homonyme.</span>
+  </div>
+  <table class="exo-table"><tr><td>la mer : ___________</td><td>réponses libres</td></tr><tr><td>la mère : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>le maire : ___________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : du Sahara / dans la cour / à l'école / à la maison</div><div style="font-size:8pt">Ex.2 : réponses libres (CC lieu corrects)</div><div style="font-size:8pt">Ex.3 : où:à l'école,dans la cour / d'où:du Sahara,de Faranah / vers où:vers la côte</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : vais/vont / viens/venons / fait/faites / dit/disent</div><div style="font-size:8pt">Ex.2 : va / vient / font / dit</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : verre / vent / sol / vers</div><div style="font-size:8pt">Ex.2 : voir retiens ci-dessus</div><div style="font-size:8pt">Ex.3 : réponses libres acceptées</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Il vient du Sahara et va vers l'Atlantique.  2. Elles frottent du beurre de karité sur leurs peaux.  3. La géographie de la Guinée.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — L'harmattan souffle sur la Guinée</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G8 : Complément circonstanciel de lieu | C6 : Présent de &quot;aller&quot;, &quot;venir&quot;, &quot;faire&quot;, &quot;dire&quot; | V8 : Les homonymes | O13 : Accord adj. épithète et attribut</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">L'harmattan arrive du Sahara et souffle fort sur toute la Guinée en janvier.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Les mères protègent leurs enfants du vent sec avec du beurre de karité.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">ver</span> <span class="dict-mot">vert</span> <span class="dict-mot">verre</span> <span class="dict-mot">vers</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Il boit un verre d'eau vers le soir. Le ver rampe vers la feuille verte.</div><div class="model-text">Un vert pré pousse vers la forêt. Elle tend le verre vers son ami.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris l'harmattan ou un phénomène climatique que tu connais en Guinée en 6-8 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>vent — sec — poussière — peau — karité — arbres — feuilles — Sahara</em></div><div class="model-text" style="color:var(--c1)">En janvier, l'harmattan souffle sur notre village...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — L'harmattan souffle sur la Guinée</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G8 : Complément circonstanciel de lieu | C6 : Présent de &quot;aller&quot;, &quot;venir&quot;, &quot;faire&quot;, &quot;dire&quot; | V8 : Les homonymes | O13 : Accord adj. épithète et attribut</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">nomme 3 effets de l'harmattan sur le corps</div><div class="jeu-item">conjugue &quot;aller&quot; au présent à &quot;nous&quot;</div><div class="jeu-item">donne la différence entre &quot;ver&quot;, &quot;vert&quot; et &quot;verre&quot;</div><div class="jeu-item">donne un CC de lieu pour &quot;les enfants jouent&quot;</div><div class="jeu-item">d'où vient l'harmattan ?</div><div class="jeu-item">forme un mot avec le préfixe dé- à partir de &quot;faire&quot;</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Choisis le bon homonyme :</div>
+        <div class="diff-item">Il boit un ___ d'eau. (verre/ver/vers/vert)<span class="answer-line"></span></div><div class="diff-item">Le ___ d'harmattan souffle. (vent/van/vend)<span class="answer-line"></span></div><div class="diff-item">Il marché ___ la forêt. (ver/vert/vers/verre)<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris l'harmattan en 8 phrases : CC de temps et de lieu, présent de aller/venir/faire/dire.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : 2 CC de temps, 2 CC de lieu, les 4 verbes conjugués au présent.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 2 / Période 3</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Le grand marché de Conakry</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G9 : Le COD | C7 : Présent de &quot;être&quot; et &quot;avoir&quot; (révision+approfond.) | V9 : Champ lexical du commerce | O14 : Accord du verbe avec son sujet (cas difficiles)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G9 : Le COD | C7 : Présent de &quot;être&quot; et &quot;avoir&quot; (révision+approfond.) | V9 : Champ lexical du commerce | O14 : Accord du verbe avec son sujet (cas difficiles)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Au grand marché de Conakry, les marchandes vendent des légumes, des épices et des pagnes.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G9</span><span class="mhf-tag">G9</span><span class="mhf-tag">G9</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C7 être/avoir</span><span class="mhf-tag">C7</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V9</span><span class="mhf-tag">V9</span><span class="mhf-tag">V9</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Identifier les COD dans le texte</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Transformer : phrase active ↔ avec COD inversé</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Conjuguer être/avoir au présent dans des contextes variés</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Construire le champ lexical du marché</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">tout</span><span class="dict-mot">tous</span><span class="dict-mot">toute</span><span class="dict-mot">toutes</span><span class="dict-mot">même</span><span class="dict-mot">mêmes</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Le grand marché de Conakry</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p3s3_marche.jpg" alt="Le grand marché">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que vendent les marchandes sur leurs étals ?</li>
+    <li>Décris les couleurs des tenues et des marchandises.</li>
+    <li>Quel étal t'attirerait le plus et pourquoi ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Chaque samedi matin, Mariama accompagne sa mère au grand marché.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Le marché de Madina à Conakry est immense et coloré.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Des centaines de marchandes vendent des légumes, des fruits et des épices.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Fatou, la mère de Mariama, achète des tomates, des oignons et du gombo.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Elle a un grand panier en osier qu'elle porte sur la tête.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Les marchandes ont les voix fortes et appellent les clients.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">&quot;Venez voir mes tomates fraîches ! Trois pour mille francs !&quot;</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Mariama aime regarder les pagnes colorés suspendus aux étals.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Elle voit des pagnes wax, des boubous et des foulards.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Sa mère achète un pagne pour la fête du trimestre.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">&quot;Ce pagne est magnifique !&quot; dit Mariama. &quot;Il a de belles couleurs !&quot;</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">La mère est fière de son choix et négocie le prix.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Les marchands sont bons négociateurs en Guinée.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">Fatou est satisfaite : elle a trouvé tout ce qu'elle cherchait.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Mariama mange une banane frite achetée à une vendeuse.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Elle est délicieuse et chaude.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Avant de partir, elles rendent visite à la cousine Hawa.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Hawa tient un petit étal de jus naturels de bissap et de gingembre.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Le marché de Conakry est le cœur vivant de la ville.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Qu'est-ce que Fatou achète au marché ? Quel moyen utilise-t-elle pour porter ses courses ?<span class="answer-line"></span></div><div class="comp-item">Pourquoi Mariama aime-t-elle regarder les étals de pagnes ?<span class="answer-line"></span></div><div class="comp-item">Que vend la cousine Hawa au marché ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Le grand marché de Conakry</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G9 : Le COD | C7 : Présent de &quot;être&quot; et &quot;avoir&quot; (révision+approfond.) | V9 : Champ lexical du commerce | O14 : Accord du verbe avec son sujet (cas difficiles)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G9</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2dy20dMQwA4yBdpKTUkypST0pKHS93HWjT/KyMmbn6rVbeAQFCH/Lt9Xp9Ewzfn56ArKJvFvpmoW8W+mahbxb6ZqFvFvpm8SP+889ff3bm8e/v709P43j2+HHjyPGzlRc1Ek/D+Gahbxb6ZqFvFu/kawdxLpAizl8aE7TKUPHIla+x9iUPjG8W+mahbxb6ZpHL1w5SmUJjdlNZq6osxh1U1uZSQ1VGPjC+Weibhb5Z6JtFKV9bo7LzGP+4kr41ZpFrGN8s9M1C3yz0zeLSfC2VCs2tkTW+6BKMbxb6ZqFvFvpmUcrX1hKWyoG11CQrS2aXHGeLMb5Z6JuFvlnom0UuX1vb8ptbyarkeo3LfE9tnhrfLPTNQt8s9M3i7c56uY03Ciojf8Udzxjjm4W+Weibhb5Z5Oqvra1zxVTuGzRmc411RCrTSH0645uFvlnom4W+WZTW1xrTisbaGPHIlVyvMXutVIWLfxxjfLPQNwt9s9A3i3fytbV9ycYeBXPF2mLmUs5GjG8W+mahbxb6ZvHOfmhlUWytnGzjXupTrOV6xjcLfbPQNwt9syj1D51bQVvLquY6k679v6lZGd8s9M1C3yz0zSJ3fm3u1NUlm4mNpXfnSrlVvpXxzULfLPTNQt8sOtfX1i5Xzt1abex01fii1LMxxjcLfbPQNwt9syidX5t7NjXy3KZt6r2pZ1PTaMxejW8W+mahbxb6ZpG7H7rW4fypvlBzjeUr0zhwfU0+ir5Z6JuFvlmU6nncmVXNnRRrLDqSmlXjf2R8s9A3C32z0DeLUr/3Sja3Vpl2rhlChcrHOUhlc8Y3C32z0DcLfbMo7YemfnxnC/eneOo+rPHNQt8s9M1C3yxK62sHayVwGy8JpN4bT2MO90Plk+ibhb5Z6JtFqX/oHGuF3hq3GuP3xtjfQEbQNwt9s9A3i8H+oSnmKtPO7S025olrVzWMbxb6ZqFvFvpmkdsPXStZkfpx41AHT7WOb8xeD4xvFvpmoW8W+mYxeD/0YO2u5cFcSZKYylCNlXgPjG8W+mahbxb6ZtF532CNylpV5aTYU21MG0+3Gd8s9M1C3yz0zeJL5muVdb2nrh9cgvHNQt8s9M1C3yxK+draelPjjYJKL865Y2XxsweVr2F8s9A3C32z0DeLS++H3tnqqXFk74fKBvpmoW8W+mZxaf01GcL4ZqFvFvpmoW8W+mahbxb6ZqFvFvpm8R/DYipAZ6F1MAAAAABJRU5ErkJggg==" alt="QR Code Les compléments"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les compléments</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L12</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G9</span>
+    <span class="exo-consigne">Souligne le COD dans chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Mariama accompagne sa mère.</td><td>sa mère</td></tr><tr><td>Fatou achète des tomates.</td><td>des tomates</td></tr><tr><td>Elle porte un grand panier.</td><td>un grand panier</td></tr><tr><td>Les marchandes appellent les clients.</td><td>les clients</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G9</span>
+    <span class="exo-consigne">Ajoute un COD à chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les marchandes vendent ___.</td><td>réponses libres (des légumes, les pagnes, un pagne...)</td></tr><tr><td>Mariama regarde ___.</td><td><span class="blank">_______________</span></td></tr><tr><td>Sa mère achète ___.</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G9</span>
+    <span class="exo-consigne">Pose la question &quot;quoi ? / qui ?&quot; pour trouver le COD.</span>
+  </div>
+  <table class="exo-table"><tr><td>Elle mange une banane. (Elle mange quoi?)</td><td>une banane</td></tr><tr><td>Hawa accueille ses clientes. (Hawa accueille qui?)</td><td>ses clientes</td></tr><tr><td>Il négocie le prix. (quoi?)</td><td>le prix</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C7 être/avoir</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADhUlEQVR4nO3d3c0TQQxGYT5EF5REPVRBPZREHeEy0kg4mLE9E855bpPNz76yZM3uej4ej8cnYXw+/QM0yrxZzJvFvFnMm8W8WcybxbxZzJvlS/zy128/Zn7Hr5/fq37G8lHLsTtfFB8bu+RMWt8s5s1i3izmzfKiX1vsNCyLuH+Jm6y+YxepY1MnZ+xMLqxvFvNmMW8W82bJ9WuLnd4n9ebUGtki1WQVvjml70wurG8W82YxbxbzZtnq18YUtm+LwsW4t2B9s5g3i3mzmDfLpf3a2KJY3Ov19YmnWN8s5s1i3izmzbLVr/U1LHGj1Neg7fyqwk/uY32zmDeLebOYN0uuXxu7Ppi6TPkWry5OXWm1vlnMm8W8Wcyb5eMt5uVe8rxB7C0uj1rfLObNYt4s5s3yol+7ZDUqdmrCWt9Hpf5C6ousbxbzZjFvFvNmya2vnZpbW9j7FN771rcY13eurG8W82YxbxbzZtlaX4vfvLjkTrFTVy37Luku7Nf0ZN4s5s1i3iyN83JPDcMo7OYKV9AuGStifbOYN4t5s5g3y4t+re/64CWjaC/ZsiA+1uuh+kfmzWLeLObNktvvvXAfz/jNqVdjd+5g0DcGLmZ9s5g3i3mzmDfL1vy1VAt25935qe+95L65nTNpfbOYN4t5s5g3S65fG3uos9DOTXaFV3gLh3/sHGt9s5g3i3mzmDdL5f1rY4PPUlId2ViP2bfc5v1rejJvFvNmMW+WY/u9j93of6ozGvtH3r+mPzJvFvNmMW+WuflrsUsG1S7uXH3bWam0vlnMm8W8WcybpXF/g9j/N3+tcEpa31Ze1jeLebOYN4t5szSur41thrDzM3aO7XtGoq+Ztb5ZzJvFvFnMmyW3vjamcAemwu1EY6f2PF14PVRP5s1i3izmzZKbl9uncPemsQG5O9M+Tv0F65vFvFnMm8W8WSrnr6XcuYKWmvbRt1TXx/pmMW8W82Yxb5bG/d4XhQ9Xpj6qbyLu2NOyhW+2vlnMm8W8Wcyb5dj8tdhOk7VzH1nhBqmF1zQLJ8pZ3yzmzWLeLObNcmm/1vcYQOqj+u77j/U9D2t9s5g3i3mzmDfLVr82tolUrG+XrJSxZzydv6a/Zd4s5s1i3iy5fm3scdHCQbWpY3d+RuEXub6mGubNYt4s5s1y6fw1NbG+WcybxbxZzJvFvFnMm8W8WcybxbxZfgNhqULzFSXqPAAAAABJRU5ErkJggg==" alt="QR Code Présent être et avoir"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent être et avoir</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L15</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C7 être/avoir</span>
+    <span class="exo-consigne">Conjugue au présent.</span>
+  </div>
+  <table class="exo-table"><tr><td>être : je ___ / vous ___</td><td>suis/êtes</td></tr><tr><td>avoir : tu ___ / ils ___</td><td>as/ont</td></tr><tr><td>être : elle ___ / nous ___</td><td>est/sommes</td></tr><tr><td>avoir : il ___ / elles ___</td><td>a/ont</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C7</span>
+    <span class="exo-consigne">Choisis être ou avoir et conjugue au présent.</span>
+  </div>
+  <table class="exo-table"><tr><td>Mariama ___ contente du marché.</td><td>est</td></tr><tr><td>Les marchandes ___ de beaux pagnes.</td><td>ont</td></tr><tr><td>Nous ___ au marché ce matin.</td><td>sommes</td></tr><tr><td>Tu ___ une bonne vendeuse.</td><td>es</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Le grand marché de Conakry</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G9 : Le COD | C7 : Présent de &quot;être&quot; et &quot;avoir&quot; (révision+approfond.) | V9 : Champ lexical du commerce | O14 : Accord du verbe avec son sujet (cas difficiles)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Champ lexical du commerce — V9</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Le commerce a son propre vocabulaire : acheter/vendre, client/marchand, prix/négoce...</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V9</span>
+    <span class="exo-consigne">Classe ces mots : Personnes / Objets / Actions.</span>
+  </div>
+  <table class="exo-table"><tr><td>marchande, panier, acheter, client, négocer, étal, vendre, pagne, payer, vendeuse</td><td>Personnes: marchande,client,vendeuse / Objets: panier,étal,pagne / Actions: acheter,négocer,vendre,payer</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V9</span>
+    <span class="exo-consigne">Explique ces mots du commerce.</span>
+  </div>
+  <table class="exo-table"><tr><td>négocer : ___</td><td>discuter le prix</td></tr><tr><td>un étal : ___</td><td>table ou comptoir de vente</td></tr><tr><td>le franc guinéen : ___</td><td>monnaie de Guinée</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V9</span>
+    <span class="exo-consigne">Utilise 3 mots du commerce dans une phrase chacun.</span>
+  </div>
+  <table class="exo-table"><tr><td>marchande : ___________</td><td>réponses libres</td></tr><tr><td>négocer : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>étal : ___________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : sa mère / des tomates / un grand panier / les clients</div><div style="font-size:8pt">Ex.2 : réponses libres (COD corrects)</div><div style="font-size:8pt">Ex.3 : une banane / ses clientes / le prix</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : suis/êtes / as/ont / est/sommes / a/ont</div><div style="font-size:8pt">Ex.2 : est / ont / sommes / es</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : Personnes:marchande,client,vendeuse / Objets:panier,étal,pagne / Actions:acheter,négocer,vendre,payer</div><div style="font-size:8pt">Ex.2 : voir définitions</div><div style="font-size:8pt">Ex.3 : réponses libres acceptées</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Des tomates, oignons, gombo et un pagne ; elle porte dans un panier sur la tête.  2. Elle aime les couleurs et les pagnes.  3. Des jus naturels de bissap et de gingembre.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Le grand marché de Conakry</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G9 : Le COD | C7 : Présent de &quot;être&quot; et &quot;avoir&quot; (révision+approfond.) | V9 : Champ lexical du commerce | O14 : Accord du verbe avec son sujet (cas difficiles)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Au grand marché de Conakry, les marchandes vendent des légumes, des épices et des pagnes.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">La mère de Mariama achète tout ce dont elle a besoin pour la semaine.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">tout</span> <span class="dict-mot">tous</span> <span class="dict-mot">toute</span> <span class="dict-mot">toutes</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Toutes les marchandes vendent tout ce qu'elles ont. Tous les clients sont là.</div><div class="model-text">Elle a acheté tout le pagne et toutes les épices du marché.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris une visite au marché dans ta ville ou ton village en Guinée en 6-8 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>marché — marchandes — légumes — pagnes — odeurs — couleurs — acheter — prix</em></div><div class="model-text" style="color:var(--c1)">Chaque samedi, avec ma mère, nous allons au marché...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Le grand marché de Conakry</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G9 : Le COD | C7 : Présent de &quot;être&quot; et &quot;avoir&quot; (révision+approfond.) | V9 : Champ lexical du commerce | O14 : Accord du verbe avec son sujet (cas difficiles)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité 3 mots du champ lexical du commerce</div><div class="jeu-item">conjugue &quot;avoir&quot; présent à &quot;ils&quot;</div><div class="jeu-item">souligne le COD dans &quot;Mariama achète un pagne&quot;</div><div class="jeu-item">nomme 2 produits vendus au marché guinéen</div><div class="jeu-item">donne le présent de &quot;être&quot; à &quot;nous&quot;</div><div class="jeu-item">que signifie &quot;négocer&quot; ?</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète avec &quot;tout/tous/toute/toutes&quot; :</div>
+        <div class="diff-item">___ les marchandes vendent ___ leurs produits.<span class="answer-line"></span></div><div class="diff-item">Elle a acheté ___ le pagne et ___ les épices.<span class="answer-line"></span></div><div class="diff-item">Il est parti ___ seul au marché.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris ta visite au marché en 8 phrases : COD, présent être/avoir, champ lexical commerce.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : 3 COD, être et avoir au présent, 4 mots du champ lexical du commerce.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 3 / Période 3</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Les animaux de la forêt guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G10 : Le COI | C8 : Présent des verbes &quot;pouvoir&quot;, &quot;vouloir&quot;, &quot;savoir&quot; | V10 : Niveaux de langue (familier/courant/soutenu) | O15 : Pluriel des noms (cas particuliers)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G10 : Le COI | C8 : Présent des verbes &quot;pouvoir&quot;, &quot;vouloir&quot;, &quot;savoir&quot; | V10 : Niveaux de langue (familier/courant/soutenu) | O15 : Pluriel des noms (cas particuliers)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Dans la forêt guinéenne, les chimpanzés savent grimper aux arbres et peuvent parcourir de longues distances.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G10</span><span class="mhf-tag">G10</span><span class="mhf-tag">G9+G10</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C8</span><span class="mhf-tag">C8</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V10</span><span class="mhf-tag">V10</span><span class="mhf-tag">V10+O15</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Identifier les COI dans le texte</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Distinguer COD et COI</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Conjuguer pouvoir/vouloir/savoir au présent</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Classer des mots selon le niveau de langue</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">plutôt</span><span class="dict-mot">plus tôt</span><span class="dict-mot">bientôt</span><span class="dict-mot">sitôt</span><span class="dict-mot">aussitôt</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Les animaux de la forêt guinéenne</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p3s4_animaux_foret.jpg" alt="Les animaux de la forêt">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Quels animaux surprennent les trois enfants ?</li>
+    <li>Décris les expressions de surprise sur leurs visages.</li>
+    <li>Que ferais-tu si tu rencontrais un singe rouge en forêt ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">La forêt guinéenne est l'une des plus riches d'Afrique de l'Ouest.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Elle abrite de nombreux animaux extraordinaires.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Les chimpanzés vivent en groupe et savent utiliser des outils.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Ils peuvent casser des noix avec des pierres.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Le chimpanzé ressemble à l'homme par beaucoup d'aspects.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Kadiatou parle à son père de ce qu'elle a vu à la forêt.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Son père répond à ses questions avec patience.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">&quot;Le chimpanzé obéit à son groupe&quot;, explique-t-il.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">&quot;Il pense à ses petits et à sa famille.&quot;</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Les hippopotames vivent près des fleuves et des marigots.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Ils peuvent peser jusqu'à trois tonnes !</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Les éléphants de Guinée veulent toujours de grands espaces.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Un éléphant mange beaucoup et a besoin de grandes forêts.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">Les lamantins nagent dans les fleuves côtiers de Guinée.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Ces animaux parlent à nos cœurs d'Africains.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Kadiatou veut devenir vétérinaire pour soigner ces animaux.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">&quot;Je saurai prendre soin d'eux quand je serai grande&quot;, dit-elle.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Son père sourit : &quot;Tu peux réaliser ton rêve si tu travailles.&quot;</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">La forêt guinéenne appartient à tout le peuple de Guinée.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Que savent faire les chimpanzés d'après le texte ?<span class="answer-line"></span></div><div class="comp-item">Quel est le rêve de Kadiatou pour le futur ?<span class="answer-line"></span></div><div class="comp-item">Quel conseil le père donne-t-il à Kadiatou ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Les animaux de la forêt guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G10 : Le COI | C8 : Présent des verbes &quot;pouvoir&quot;, &quot;vouloir&quot;, &quot;savoir&quot; | V10 : Niveaux de langue (familier/courant/soutenu) | O15 : Pluriel des noms (cas particuliers)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G10</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2dy20dMQwA4yBdpKTUkypST0pKHS93HWjT/KyMmbn6rVbeAQFCH/Lt9Xp9Ewzfn56ArKJvFvpmoW8W+mahbxb6ZqFvFvpm8SP+889ff3bm8e/v709P43j2+HHjyPGzlRc1Ek/D+Gahbxb6ZqFvFu/kawdxLpAizl8aE7TKUPHIla+x9iUPjG8W+mahbxb6ZpHL1w5SmUJjdlNZq6osxh1U1uZSQ1VGPjC+Weibhb5Z6JtFKV9bo7LzGP+4kr41ZpFrGN8s9M1C3yz0zeLSfC2VCs2tkTW+6BKMbxb6ZqFvFvpmUcrX1hKWyoG11CQrS2aXHGeLMb5Z6JuFvlnom0UuX1vb8ptbyarkeo3LfE9tnhrfLPTNQt8s9M3i7c56uY03Ciojf8Udzxjjm4W+Weibhb5Z5Oqvra1zxVTuGzRmc411RCrTSH0645uFvlnom4W+WZTW1xrTisbaGPHIlVyvMXutVIWLfxxjfLPQNwt9s9A3i3fytbV9ycYeBXPF2mLmUs5GjG8W+mahbxb6ZvHOfmhlUWytnGzjXupTrOV6xjcLfbPQNwt9syj1D51bQVvLquY6k679v6lZGd8s9M1C3yz0zSJ3fm3u1NUlm4mNpXfnSrlVvpXxzULfLPTNQt8sOtfX1i5Xzt1abex01fii1LMxxjcLfbPQNwt9syidX5t7NjXy3KZt6r2pZ1PTaMxejW8W+mahbxb6ZpG7H7rW4fypvlBzjeUr0zhwfU0+ir5Z6JuFvlmU6nncmVXNnRRrLDqSmlXjf2R8s9A3C32z0DeLUr/3Sja3Vpl2rhlChcrHOUhlc8Y3C32z0DcLfbMo7YemfnxnC/eneOo+rPHNQt8s9M1C3yxK62sHayVwGy8JpN4bT2MO90Plk+ibhb5Z6JtFqX/oHGuF3hq3GuP3xtjfQEbQNwt9s9A3i8H+oSnmKtPO7S025olrVzWMbxb6ZqFvFvpmkdsPXStZkfpx41AHT7WOb8xeD4xvFvpmoW8W+mYxeD/0YO2u5cFcSZKYylCNlXgPjG8W+mahbxb6ZtF532CNylpV5aTYU21MG0+3Gd8s9M1C3yz0zeJL5muVdb2nrh9cgvHNQt8s9M1C3yxK+draelPjjYJKL865Y2XxsweVr2F8s9A3C32z0DeLS++H3tnqqXFk74fKBvpmoW8W+mZxaf01GcL4ZqFvFvpmoW8W+mahbxb6ZqFvFvpm8R/DYipAZ6F1MAAAAABJRU5ErkJggg==" alt="QR Code Les compléments"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les compléments</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L12</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G10</span>
+    <span class="exo-consigne">Souligne le COI (répond à &quot;à qui ? de quoi ? à quoi ?&quot; après le verbe).</span>
+  </div>
+  <table class="exo-table"><tr><td>Kadiatou parle à son père.</td><td>à son père</td></tr><tr><td>Il répond à ses questions.</td><td>à ses questions</td></tr><tr><td>Le chimpanzé pense à ses petits.</td><td>à ses petits</td></tr><tr><td>Elle rêve de devenir vétérinaire.</td><td>de devenir vétérinaire</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G10</span>
+    <span class="exo-consigne">Distingue COD et COI.</span>
+  </div>
+  <table class="exo-table"><tr><td>Il voit un éléphant. (COD ou COI?)</td><td>COD</td></tr><tr><td>Il parle à Kadiatou. (COD ou COI?)</td><td>COI</td></tr><tr><td>Elle aime les animaux. (COD ou COI?)</td><td>COD</td></tr><tr><td>Il pense à la forêt. (COD ou COI?)</td><td>COI</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G9+G10</span>
+    <span class="exo-consigne">Ajoute un COD et un COI à chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le chimpanzé donne ___ à ___.</td><td>réponses libres (des noix à son ami / un livre à sa mère...)</td></tr><tr><td>Kadiatou montre ___ à ___.</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C8</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d3W0bMRBF4ThIFykp9aQK15OSUof8GICARhjPz65zzvdqSbveiwEG5JJ8ezwe34Tx/eob0CrzZjFvFvNmMW8W82YxbxbzZjFvlh/xn3/+et+5j79/fgfXTf21UeNtXPUkD9Y3i3mzmDeLebO86NcOjZ1R3L/cpEGrfDe+ybUnebC+WcybxbxZzJsl168dUp3CXJN1qHSClV+uWHuS1jeLebOYN4t5s5T6tTmVici1ecm1DrSR9c1i3izmzWLeLDft1w5xk5Vq7g6V9+bWZmkbWd8s5s1i3izmzVLq127SoVRuo9LrpX4qtvYkrW8W82YxbxbzZsn1a2uLHA+pNqoyl9r419hVT9L6ZjFvFvNmMW+WF/3aTUbQDpVGae6X1xaEVljfLObNYt4s5s3yFp9vUJnjaxyNOswNe8UXis0NmaVWULj/mv4xbxbzZjFvlr39PCq7y1YGp67aMy713cp1U6xvFvNmMW8W82bJja8d5lZipm6jUeN/1HgbMcfX9JR5s5g3i3mzlN5fq4w3XdWgpbbomLtQ6sONjaH1zWLeLObNYt4sneeHzjUdc2Nza5OYlfYtlvqw9c1i3izmzWLeLKX1BnNjRmsLGxo7wXtO6R6sbxbzZjFvFvNmKb2/dph7nyu+0KGx9Zu77try2IP1zWLeLObNYt4sufWha3v2z+09mzp7tPJ2W6qNWts4xPpmMW8W82Yxb5bO80PvueFa6jCE+Lqxxs11U3x/TU+ZN4t5s5g3S+d+HpXvzi1OqGh8nW2uXY0/fLC+WcybxbxZzJulcz+PuUUCayd1pqZH13bxbXwa1jeLebOYN4t5s+zNh1a+u7Yt2too2FW/bH2zmDeLebOYN8vgfGjlp+bWpc6du/4l1sNa3yzmzWLeLObNUpoPTZmbPawsP5h7UW7uTKkK65vFvFnMm8W8WTrPN6iY625uMqC2diZDzPpmMW8W82Yxb5bB/ddic2ePpq5bWWAwt2p1bpmH9c1i3izmzWLeLKX1BnMNS+PhVan91xoPJZg7e7TyYeubxbxZzJvFvFk614c2atxIY+29ucbrpji+pqfMm8W8Wcyb5ab92mHtaKvG25g7xrRyIeubxbxZzJvFvFlK/draENLc/GDqumuztAf3X9MnmTeLebOYN0uuX1tbLjq3v8XaxryV685N+FrfLObNYt4s5s3yYr9c/WesbxbzZjFvFvNmMW8W82YxbxbzZjFvlg8WnCZ34uDEXgAAAABJRU5ErkJggg==" alt="QR Code Présent verbes irréguliers"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent verbes irréguliers</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L16</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C8</span>
+    <span class="exo-consigne">Conjugue au présent.</span>
+  </div>
+  <table class="exo-table"><tr><td>pouvoir : je ___ / ils ___</td><td>peux/peuvent</td></tr><tr><td>vouloir : tu ___ / nous ___</td><td>veux/voulons</td></tr><tr><td>savoir : elle ___ / vous ___</td><td>sait/savez</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C8</span>
+    <span class="exo-consigne">Choisis et conjugue le bon verbe.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les chimpanzés ___ utiliser des outils. (savoir/pouvoir)</td><td>savent/peuvent (deux réponses possibles)</td></tr><tr><td>Kadiatou ___ devenir vétérinaire. (vouloir/savoir)</td><td>veut</td></tr><tr><td>Tu ___ réaliser ton rêve. (pouvoir/vouloir)</td><td>peux</td></tr><tr><td>Nous ___ que les éléphants sont grands. (savoir/vouloir)</td><td>savons</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Les animaux de la forêt guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G10 : Le COI | C8 : Présent des verbes &quot;pouvoir&quot;, &quot;vouloir&quot;, &quot;savoir&quot; | V10 : Niveaux de langue (familier/courant/soutenu) | O15 : Pluriel des noms (cas particuliers)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Niveaux de langue — V10</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Familier (amis, informal), courant (école, quotidien), soutenu (littéraire, formel).</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V10</span>
+    <span class="exo-consigne">Classe ces expressions : familier (F) / courant (C) / soutenu (S).</span>
+  </div>
+  <table class="exo-table"><tr><td>&quot;C'est trop bien !&quot; (F/C/S)</td><td>F</td></tr><tr><td>&quot;C'est intéressant.&quot; (F/C/S)</td><td>C</td></tr><tr><td>&quot;Cela est fort remarquable.&quot; (F/C/S)</td><td>S</td></tr><tr><td>&quot;Il est chiant.&quot; (F/C/S)</td><td>F</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V10</span>
+    <span class="exo-consigne">Réécris en niveau courant.</span>
+  </div>
+  <table class="exo-table"><tr><td>&quot;C'est trop cool ce film !&quot;</td><td>Ce film est très bien ! / J'aime beaucoup ce film.</td></tr><tr><td>Cette bestiole est méchante !</td><td>Cet animal est dangereux !</td></tr><tr><td>J'aime grave cette forêt.</td><td>J'aime beaucoup cette forêt.</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V10+O15</span>
+    <span class="exo-consigne">Mets au pluriel ces noms à pluriel particulier.</span>
+  </div>
+  <table class="exo-table"><tr><td>le cheval -&gt;</td><td>les chevaux</td></tr><tr><td>le festival -&gt;</td><td>les festivals</td></tr><tr><td>l'animal -&gt;</td><td>les animaux</td></tr><tr><td>le travail -&gt;</td><td>les travaux</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : à son père / à ses questions / à ses petits / de devenir vétérinaire</div><div style="font-size:8pt">Ex.2 : COD / COI / COD / COI</div><div style="font-size:8pt">Ex.3 : réponses libres acceptées</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : peux/peuvent / veux/voulons / sait/savez</div><div style="font-size:8pt">Ex.2 : savent ou peuvent / veut / peux / savons</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : F / C / S / F</div><div style="font-size:8pt">Ex.2 : réponses libres (niveau courant)</div><div style="font-size:8pt">Ex.3 : chevaux / festivals / animaux / travaux</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Utiliser des outils et casser des noix.  2. Devenir vétérinaire pour soigner les animaux.  3. Travailler pour réaliser son rêve.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Les animaux de la forêt guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G10 : Le COI | C8 : Présent des verbes &quot;pouvoir&quot;, &quot;vouloir&quot;, &quot;savoir&quot; | V10 : Niveaux de langue (familier/courant/soutenu) | O15 : Pluriel des noms (cas particuliers)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Les chimpanzés de la forêt guinéenne savent utiliser des outils comme des pierres.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Kadiatou veut devenir vétérinaire pour soigner les animaux de Guinée.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">plutôt</span> <span class="dict-mot">plus tôt</span> <span class="dict-mot">bientôt</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Il vaut mieux partir bientôt plutôt que plus tôt le matin.</div><div class="model-text">Les animaux se lèvent plus tôt que nous. Ils arrivent bientôt.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris ton animal préféré de Guinée en 6-8 phrases : où il vit, ce qu'il mange, ce qu'il sait faire.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>forêt — fleuve — manger — savoir — pouvoir — vouloir — protéger — Guinée</em></div><div class="model-text" style="color:var(--c1)">Mon animal préféré de Guinée est le/la...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Les animaux de la forêt guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G10 : Le COI | C8 : Présent des verbes &quot;pouvoir&quot;, &quot;vouloir&quot;, &quot;savoir&quot; | V10 : Niveaux de langue (familier/courant/soutenu) | O15 : Pluriel des noms (cas particuliers)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité 3 animaux de la forêt guinéenne</div><div class="jeu-item">conjugue &quot;savoir&quot; présent à &quot;ils&quot;</div><div class="jeu-item">distingue COD et COI dans &quot;Il parle à Kadiatou des animaux&quot;</div><div class="jeu-item">quel est le pluriel de &quot;animal&quot; ?</div><div class="jeu-item">donne un exemple de phrase au niveau soutenu</div><div class="jeu-item">nomme 2 fleuves de Guinée où vivent des hippopotames</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Distingue COD et COI :</div>
+        <div class="diff-item">Il voit les chimpanzés. (COD/COI?)<span class="answer-line"></span></div><div class="diff-item">Elle pense à la forêt. (COD/COI?)<span class="answer-line"></span></div><div class="diff-item">Il donne de la nourriture aux animaux. (les deux?)<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris un animal de Guinée en 8 phrases : COD+COI, pouvoir/vouloir/savoir présent, pluriels particuliers.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : 2 COD, 2 COI, les 3 verbes au présent, 2 pluriels irréguliers.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 4 / Période 3</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — La lettre d'Aminata</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G11 : La phrase complexe avec &quot;parce que&quot;, &quot;quand&quot;, &quot;si&quot; | C9 : Futur proche (aller + infinitif) | V11 : Registre épistolaire / formules de lettre | O16 : Ponctuation de dialogue</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G11 : La phrase complexe avec &quot;parce que&quot;, &quot;quand&quot;, &quot;si&quot; | C9 : Futur proche (aller + infinitif) | V11 : Registre épistolaire / formules de lettre | O16 : Ponctuation de dialogue</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Chère Koumba, je t'écris parce que tu me manques beaucoup depuis que tu es partie à Labé.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G11</span><span class="mhf-tag">G11</span><span class="mhf-tag">G11</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C9 futur proche</span><span class="mhf-tag">C9</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V11</span><span class="mhf-tag">V11</span><span class="mhf-tag">V11</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Lire et analyser la structure d'une lettre</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Identifier les conjonctions de subordination</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Former des phrases avec parce que / quand / si</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Écrire une courte lettre à un ami</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">quand</span><span class="dict-mot">si</span><span class="dict-mot">parce que</span><span class="dict-mot">pour que</span><span class="dict-mot">afin que</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La lettre d'Aminata</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p3s5_lettre.jpg" alt="La lettre d'Aminata">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que tient Aminata dans sa main ? Où est-elle ?</li>
+    <li>Décris la lumière et le jardin visible par la fenêtre.</li>
+    <li>À qui Aminata écrit-elle cette lettre selon toi ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Labé, le 15 février</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Chère Koumba,</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Je t'écris parce que tu me manques beaucoup.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Quand j'étais à Faranah, nous jouions ensemble tous les jours.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Si tu viens me rendre visite à Labé, je serai très contente.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Je vais te raconter ma nouvelle vie au Fouta Djallon.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Labé est une belle ville de montagne.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Il fait plus frais ici qu'à Faranah parce que nous sommes en altitude.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Quand il pleut, les montagnes sont couvertes de nuages.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Ma nouvelle école est grande et j'ai de nouveaux amis.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Si tu voyages jusqu'ici, tu vas aimer les montagnes du Fouta.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Je vais aussi te parler de la fête du Tabaski ici.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Toutes les familles vont sacrifier un mouton.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">Ma mère va préparer un délicieux riz au mouton.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Parce que c'est une grande fête, nous allons porter de beaux habits.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Ma grande sœur va m'habiller en grand boubou blanc.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Je vais penser à toi pendant la fête.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Si tu peux, envoie-moi une lettre pour me donner tes nouvelles.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Ton amie qui t'aime,</span></div><div class="texte-line"><span class="ln">20</span><span class="txt">Aminata</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Pourquoi Aminata écrit-elle à Koumba ?<span class="answer-line"></span></div><div class="comp-item">Comment est la ville de Labé par rapport à Faranah ?<span class="answer-line"></span></div><div class="comp-item">Qu'est-ce qu'Aminata va faire pendant la fête du Tabaski ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — La lettre d'Aminata</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G11 : La phrase complexe avec &quot;parce que&quot;, &quot;quand&quot;, &quot;si&quot; | C9 : Futur proche (aller + infinitif) | V11 : Registre épistolaire / formules de lettre | O16 : Ponctuation de dialogue</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G11</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2dy20dMQwA4yBdpKTUkypST0pKHS93HWjT/KyMmbn6rVbeAQFCH/Lt9Xp9Ewzfn56ArKJvFvpmoW8W+mahbxb6ZqFvFvpm8SP+889ff3bm8e/v709P43j2+HHjyPGzlRc1Ek/D+Gahbxb6ZqFvFu/kawdxLpAizl8aE7TKUPHIla+x9iUPjG8W+mahbxb6ZpHL1w5SmUJjdlNZq6osxh1U1uZSQ1VGPjC+Weibhb5Z6JtFKV9bo7LzGP+4kr41ZpFrGN8s9M1C3yz0zeLSfC2VCs2tkTW+6BKMbxb6ZqFvFvpmUcrX1hKWyoG11CQrS2aXHGeLMb5Z6JuFvlnom0UuX1vb8ptbyarkeo3LfE9tnhrfLPTNQt8s9M3i7c56uY03Ciojf8Udzxjjm4W+Weibhb5Z5Oqvra1zxVTuGzRmc411RCrTSH0645uFvlnom4W+WZTW1xrTisbaGPHIlVyvMXutVIWLfxxjfLPQNwt9s9A3i3fytbV9ycYeBXPF2mLmUs5GjG8W+mahbxb6ZvHOfmhlUWytnGzjXupTrOV6xjcLfbPQNwt9syj1D51bQVvLquY6k679v6lZGd8s9M1C3yz0zSJ3fm3u1NUlm4mNpXfnSrlVvpXxzULfLPTNQt8sOtfX1i5Xzt1abex01fii1LMxxjcLfbPQNwt9syidX5t7NjXy3KZt6r2pZ1PTaMxejW8W+mahbxb6ZpG7H7rW4fypvlBzjeUr0zhwfU0+ir5Z6JuFvlmU6nncmVXNnRRrLDqSmlXjf2R8s9A3C32z0DeLUr/3Sja3Vpl2rhlChcrHOUhlc8Y3C32z0DcLfbMo7YemfnxnC/eneOo+rPHNQt8s9M1C3yxK62sHayVwGy8JpN4bT2MO90Plk+ibhb5Z6JtFqX/oHGuF3hq3GuP3xtjfQEbQNwt9s9A3i8H+oSnmKtPO7S025olrVzWMbxb6ZqFvFvpmkdsPXStZkfpx41AHT7WOb8xeD4xvFvpmoW8W+mYxeD/0YO2u5cFcSZKYylCNlXgPjG8W+mahbxb6ZtF532CNylpV5aTYU21MG0+3Gd8s9M1C3yz0zeJL5muVdb2nrh9cgvHNQt8s9M1C3yxK+draelPjjYJKL865Y2XxsweVr2F8s9A3C32z0DeLS++H3tnqqXFk74fKBvpmoW8W+mZxaf01GcL4ZqFvFvpmoW8W+mahbxb6ZqFvFvpm8R/DYipAZ6F1MAAAAABJRU5ErkJggg==" alt="QR Code Les compléments"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les compléments</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L12</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G11</span>
+    <span class="exo-consigne">Souligne la conjonction de subordination et précise la relation.</span>
+  </div>
+  <table class="exo-table"><tr><td>Je t'écris parce que tu me manques.</td><td>parce que=cause / Quand=temps / Si=condition / parce que=cause</td></tr><tr><td>Quand il pleut, les montagnes sont couvertes.</td><td><span class="blank">_______________</span></td></tr><tr><td>Si tu viens, je serai contente.</td><td><span class="blank">_______________</span></td></tr><tr><td>Il fait frais parce que nous sommes en altitude.</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G11</span>
+    <span class="exo-consigne">Complète avec &quot;parce que&quot;, &quot;quand&quot; ou &quot;si&quot;.</span>
+  </div>
+  <table class="exo-table"><tr><td>___ tu travailles bien, tu réussiras.</td><td>Si</td></tr><tr><td>Il fait froid ___ l'harmattan souffle.</td><td>quand</td></tr><tr><td>Aminata écrit ___ Koumba lui manque.</td><td>parce que</td></tr><tr><td>___ tu viens, on jouera ensemble.</td><td>Si/Quand</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G11</span>
+    <span class="exo-consigne">Relie les deux phrases avec la bonne conjonction.</span>
+  </div>
+  <table class="exo-table"><tr><td>Il fait froid. Nous sommes en altitude.</td><td>parce que</td></tr><tr><td>Elle écrit une lettre. Son amie lui manque.</td><td>parce que</td></tr><tr><td>Tu viens. Nous serons heureux.</td><td>Si/Quand</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C9 futur proche</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADl0lEQVR4nO3d240TQRBGYRaRBSERD1EQDyERh3lEasllF3WZWZ3zvdre6Z1fLZX6+vF4PL4I4+vVDdAq82YxbxbzZjFvFvNmMW8W82Yxb5Zv8cfff/zaacef3z/ff+7x5TlHM+JGxq266k0e7N8s5s1i3izmzfKiXjs0Fkqpiiz+cqpuqrQq9du4GWtv8mD/ZjFvFvNmMW+WXL12SFUKlQqlUvukxshic2Nka2/S/s1i3izmzWLeLKV6bU6lyDq+XCnQYmvTso3s3yzmzWLeLObNctN6rVFl4jX+tHEedo39m8W8WcybxbxZSvXaPdf9V6Y4G2dLUy9n7U3av1nMm8W8WcybJVevrW1yPFRGwa76NHbVm7R/s5g3i3mzmDfLxz3Py62UM5XtB6lmfIoJ0IP9m8W8WcybxbxZXtRrlTm+xtGouT0DqefG5lrVWIHav1nMm8W8WcybpXO/QeWUtE+x+Ksy3NZ4sluF/ZvFvFnMm8W8WQbPX2vcXLm2NKxycMhVJ4V4Xq6eMm8W82Yxb5bc+rV7nmCxtkng0PiguT91sH+zmDeLebOYN0vu/tC5pfxX3c+0Nok5d0Fq6sv2bxbzZjFvFvNmKe0PvWr75NzM41p9OsfxNf1j3izmzWLeLJ3jaylrw08VcSNTtd7aPGzM/s1i3izmzWLeLIPr126yYitu1dqgWON+WNev6V3mzWLeLObNkjt/LXZV+TZXc62VUSmVWs/+zWLeLObNYt4se/eHri1niyciG/9ybG4C9OB5uXrKvFnMm8W8WV7Ua1etoY+fuzag1jiJGT8o1ngkif2bxbxZzJvFvFkG7w9tnACN/3Lly2vDXqnfxly/pneZN4t5s5g3y+D6tca1b7G1BzU2I8X5UP0n82YxbxbzZinNh879dm7h2Nwt9KlPD2sXR9i/WcybxbxZzJsld/7anLnLEG4yoDZ3FEqK/ZvFvFnMm8W8WXL7Q9dujWocUGs81XZtwneuerV/s5g3i3mzmDdL6TyPuYJl7fj/uaPc5u4erXzZ/s1i3izmzWLeLKV6bU7jQRpzS/BucmmW42t6yrxZzJvFvFluWq8dbnLj1NoWgrmVcfZvFvNmMW8W82bZu9+gUeVCg8qpcFfdktV4Zpz9m8W8WcybxbxZcvXa2nbRxoosderG3D/YWOsdnA/VU+bNYt4s5s0yeL+Bbsj+zWLeLObNYt4s5s1i3izmzWLeLObN8hdBeSTjAYtE6wAAAABJRU5ErkJggg==" alt="QR Code Le futur proche"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le futur proche</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L14</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C9 futur proche</span>
+    <span class="exo-consigne">Forme le futur proche (aller + infinitif).</span>
+  </div>
+  <table class="exo-table"><tr><td>Je ___ te raconter ma vie. (aller+raconter)</td><td>vais te raconter</td></tr><tr><td>Tu ___ lire ma lettre. (aller+lire)</td><td>vas lire</td></tr><tr><td>Elle ___ préparer le riz. (aller+préparer)</td><td>va préparer</td></tr><tr><td>Nous ___ fêter le Tabaski. (aller+fêter)</td><td>allons fêter</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C9</span>
+    <span class="exo-consigne">Transforme en futur proche.</span>
+  </div>
+  <table class="exo-table"><tr><td>Aminata écrit une lettre.</td><td>va écrire</td></tr><tr><td>Les familles fêtent le Tabaski.</td><td>vont fêter</td></tr><tr><td>Ma sœur m'habille.</td><td>va m'habiller</td></tr><tr><td>Vous venez à Labé.</td><td>allez venir</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — La lettre d'Aminata</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G11 : La phrase complexe avec &quot;parce que&quot;, &quot;quand&quot;, &quot;si&quot; | C9 : Futur proche (aller + infinitif) | V11 : Registre épistolaire / formules de lettre | O16 : Ponctuation de dialogue</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Registre épistolaire — V11</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Une lettre a des formules spéciales : salutation, corps, formule de politesse, signature.</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V11</span>
+    <span class="exo-consigne">Classe ces éléments dans l'ordre d'une lettre.</span>
+  </div>
+  <table class="exo-table"><tr><td>Ton amie qui t'aime / Labé le 15 février / Chère Koumba / Je t'écris parce que... / Si tu viens...</td><td>1.Date+lieu / 2.Salutation / 3.Corps / 4.Corps (suite) / 5.Formule de politesse+signature</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V11</span>
+    <span class="exo-consigne">Trouve d'autres formules de politesse pour une lettre.</span>
+  </div>
+  <table class="exo-table"><tr><td>Salutation amicale : ___________</td><td>Cher/Chère ... / Salut / Bonjour</td></tr><tr><td>Formule de fin (amical) : ___________</td><td>Amicalement / Avec toute mon affection</td></tr><tr><td>Formule de fin (formel) : ___________</td><td>Veuillez agréer... / Cordialement</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V11</span>
+    <span class="exo-consigne">Réécris la salutation et la formule de fin de la lettre d'Aminata de façon plus formelle.</span>
+  </div>
+  <table class="exo-table"><tr><td>Chère Koumba, -&gt; ___________</td><td>Chère Mademoiselle Koumba / Madame...</td></tr><tr><td>Ton amie qui t'aime -&gt; ___________</td><td>Veuillez recevoir mes amicales salutations / Cordialement...</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : parce que=cause / Quand=temps / Si=condition / parce que=cause</div><div style="font-size:8pt">Ex.2 : Si / quand / parce que / Si ou Quand</div><div style="font-size:8pt">Ex.3 : parce que / parce que / Si ou Quand</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : vais te raconter / vas lire / va préparer / allons fêter</div><div style="font-size:8pt">Ex.2 : va écrire / vont fêter / va m'habiller / allez venir</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : 1.Labé le 15 fév. / 2.Chère Koumba / 3-4.Corps / 5.Ton amie+Aminata</div><div style="font-size:8pt">Ex.2 : réponses libres acceptables</div><div style="font-size:8pt">Ex.3 : réponses libres (niveau plus formel)</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Parce que Koumba lui manque.  2. Labé est plus fraîche car en altitude, avec des montagnes.  3. Porter un beau boubou, manger du riz au mouton et penser à Koumba.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — La lettre d'Aminata</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G11 : La phrase complexe avec &quot;parce que&quot;, &quot;quand&quot;, &quot;si&quot; | C9 : Futur proche (aller + infinitif) | V11 : Registre épistolaire / formules de lettre | O16 : Ponctuation de dialogue</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Chère Koumba, je t'écris parce que tu me manques beaucoup depuis ton départ.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Quand tu viendras à Labé, tu vas aimer les montagnes du Fouta Djallon.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">quand</span> <span class="dict-mot">si</span> <span class="dict-mot">parce que</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Si tu viens, parce que c'est la fête, quand tu arrives, nous serons là.</div><div class="model-text">Quand l'harmattan souffle, si on sort, on est malade parce qu'il fait sec.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Écris une lettre à un ami qui habite dans une autre ville de Guinée (6-8 phrases).</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>date — lieu — salutation — actualité — question — formule de politesse — signature</em></div><div class="model-text" style="color:var(--c1)">[Nom de ta ville], le [date]
+Cher/Chère [prénom],
+Je t'écris parce que...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — La lettre d'Aminata</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G11 : La phrase complexe avec &quot;parce que&quot;, &quot;quand&quot;, &quot;si&quot; | C9 : Futur proche (aller + infinitif) | V11 : Registre épistolaire / formules de lettre | O16 : Ponctuation de dialogue</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité les 4 parties d'une lettre</div><div class="jeu-item">conjugue &quot;aller+lire&quot; futur proche à &quot;elle&quot;</div><div class="jeu-item">complète : &quot;Il fait froid ___ l'harmattan souffle.&quot; (quand/si/parce que)</div><div class="jeu-item">nomme 2 villes du Fouta Djallon</div><div class="jeu-item">relie : &quot;Elle écrit&quot; + &quot;son amie lui manque&quot; → avec &quot;parce que&quot;</div><div class="jeu-item">donne une formule de politesse pour terminer une lettre</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète avec &quot;parce que&quot;, &quot;quand&quot; ou &quot;si&quot; :</div>
+        <div class="diff-item">___ tu travailles, tu réussiras.<span class="answer-line"></span></div><div class="diff-item">Aminata écrit ___ Koumba lui manque.<span class="answer-line"></span></div><div class="diff-item">___ il pleut, les montagnes sont belles.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Écris une lettre à un ami en 8 phrases : conjonctions parce que/quand/si, futur proche, formules épistolaires.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : les 3 conjonctions, 3 futurs proches, formule de salutation et de fin.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 5 / Période 3</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La récolte du café</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G12 : Révision COD/COI + CC lieu/temps | C10 : Révision présent (tous verbes) | V12 : Champ lexical de l'agriculture | O17 : Accord du verbe avec des sujets multiples</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G12 : Révision COD/COI + CC lieu/temps | C10 : Révision présent (tous verbes) | V12 : Champ lexical de l'agriculture | O17 : Accord du verbe avec des sujets multiples</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>En mars, les paysans de la forêt guinéenne récoltent le café et le cacao avec soin.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G7+G8+G9+G10</span><span class="mhf-tag">G11</span><span class="mhf-tag">G9+G10</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C5-C8 révision</span><span class="mhf-tag">C5-C8</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V12</span><span class="mhf-tag">V12</span><span class="mhf-tag">O17</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Analyser des phrases complexes (COD/COI/CC)</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Révision du présent de tous les verbes étudiés</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Construire le champ lexical de l'agriculture</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Rédiger un court texte documentaire</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">ni</span><span class="dict-mot">n'i</span><span class="dict-mot">ny</span><span class="dict-mot">nid</span><span class="dict-mot">ni...ni</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La récolte du café</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p3s6_cafe.jpg" alt="La récolte du café">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que font les membres de la famille dans la plantation ?</li>
+    <li>Décris les collines du Fouta Djalon en arrière-plan.</li>
+    <li>Pourquoi est-il important que toute la famille travaille ensemble ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">En Guinée forestière, la région de N'Zérékoré est célèbre pour son café.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">En mars, les familles paysannes partent récolter le café mûr.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Ils cueillent les grains rouges un à un sur les arbustes.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Le père explique à ses enfants comment reconnaître un grain mûr.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">&quot;Tu regardes la couleur et tu testes la dureté&quot;, dit-il.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Les enfants portent de petits paniers tressés.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Ils déposent les grains dans de grands sacs.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">La récolte dure plusieurs jours car les plantations sont grandes.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Après la cueillette, on sèche les grains au soleil.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Ensuite, on les dépulpe pour enlever l'enveloppe.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Les grains secs sont ensuite torréfiés pour faire le café.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">La famille vend une partie du café au marché de N'Zérékoré.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">L'argent sert à payer l'école et les habits des enfants.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">La Guinée exporte aussi du café vers d'autres pays.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">&quot;Nous sommes fiers de notre café&quot;, dit le père.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">&quot;Il est connu dans le monde entier.&quot;</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">La Guinée forestière produit aussi du cacao et de l'huile de palme.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Ces cultures font vivre des millions de familles guinéennes.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">La récolte du café est un moment important pour toute la communauté.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Où se passe la récolte du café en Guinée ? À quelle période ?<span class="answer-line"></span></div><div class="comp-item">Quelles étapes suit-on après la cueillette du café ?<span class="answer-line"></span></div><div class="comp-item">À quoi sert l'argent gagné par la vente du café ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La récolte du café</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G12 : Révision COD/COI + CC lieu/temps | C10 : Révision présent (tous verbes) | V12 : Champ lexical de l'agriculture | O17 : Accord du verbe avec des sujets multiples</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G7+G8+G9+G10</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmUlEQVR4nO3d3W0bMRBF4ThIFykp9aSK1JOSUofzGICARhjPj+ic871a2pX3gsBguCTf3t/fvwjj66t/gFaZN4t5s5g3i3mzmDeLebOYN4t5s3yL//z9x6+d3/Hn988P3zf+7vHXlPhSqRu96kkeHN8s5s1i3izmzfKkXjtUap9DXL+kyre5Aq3y3fhnrD3Jg+ObxbxZzJvFvFly9dqh0gWriKu5xkrwMNcjW3uSjm8W82YxbxbzZinVa3NSE5GHtXnJxgp0jeObxbxZzJvFvFkurddilf5a6lKpG32K8s3xzWLeLObNYt4spXptrUKZa6hVGnmpS8XWnqTjm8W8WcybxbxZcvXa2iLHQ+Pyg7W/xl71JB3fLObNYt4s5s3ydud+uZVyJtVuq/TmPsUE6MHxzWLeLObNYt4sT+q1yhxfYzcqtnbl2FzLrLECdXyzmDeLebOYN8tgf62xOXVJn+uSdakx6zX9Y94s5s1i3iy58w0qldHam2KNc6lzW7mlfkbM/XL1kHmzmDeLebM8qdfmNj5bK8EOjXuBVG6U+nBjYej4ZjFvFvNmMW+W0nlUc/ODa/XL3CTm3Ja/lQ87vlnMm8W8WcybpbTeoLHmSplb41m5su+v6TrmzWLeLObNkqvXDpesGbjkR66Vb5Ua0/HNYt4s5s1i3ix7570f5vprld10G99uS5VRaxuHOL5ZzJvFvFnMm6W03uBTHL5ZWckwV0Y1/r++v6aHzJvFvFnMm2Vwv9yUV202G2t8ne1Vu4wcHN8s5s1i3izmzZLrr8Uuef++Uiilpkcbd6OLNVaCjm8W82YxbxbzZim9v3aY27LiMNerWuuCverKjm8W82YxbxbzZsmdbxBLvVJ/ybnrjTO8ldUIsVTXL+b4ZjFvFvNmMW+WzvnQ1Hfv3DRtrj6Nrb0n6PhmMW8W82Yxb5bO/lrFXG/ukjUSl/QTHd8s5s1i3izmzVI6j6pibiONSn9t7hysxiOmKs04xzeLebOYN4t5s+ztl/uqwxAq2+emLlX5cPzdxvLN8c1i3izmzWLeLJ3rQxvNNZjm+lyVG1XYX9ND5s1i3izmzXJpvXaYO3Y+9eG1JQRzb8Y5vlnMm8W8WcybpVSvXdJCalwQWpk8nZtadf81fZB5s5g3i3mz5Oq1teWic6sp506NijXWegfnQ/WQebOYN4t5szw5P1T/Gcc3i3mzmDeLebOYN4t5s5g3i3mzmDfLX6B4KFmrqli4AAAAAElFTkSuQmCC" alt="QR Code Le sujet du verbe"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le sujet du verbe</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L11</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G7+G8+G9+G10</span>
+    <span class="exo-consigne">Analyse chaque complément souligné (CC temps / CC lieu / COD / COI).</span>
+  </div>
+  <table class="exo-table"><tr><td>En mars, les paysans récoltent. (En mars = ?)</td><td>CC temps</td></tr><tr><td>Ils cueillent les grains rouges. (grains = ?)</td><td>COD</td></tr><tr><td>Le père explique à ses enfants. (enfants = ?)</td><td>COI</td></tr><tr><td>Ils partent à N'Zérékoré. (N'Zérékoré = ?)</td><td>CC lieu</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G11</span>
+    <span class="exo-consigne">Identifie la relation dans chaque phrase complexe.</span>
+  </div>
+  <table class="exo-table"><tr><td>La récolte dure car les plantations sont grandes.</td><td>cause</td></tr><tr><td>Quand les grains sont mûrs, on les cueille.</td><td>temps</td></tr><tr><td>Si tu regardes bien, tu vois la couleur.</td><td>condition</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G9+G10</span>
+    <span class="exo-consigne">Ajoute COD et COI.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le père explique ___ à ___.</td><td>réponses libres (la récolte à ses enfants / les grains dans les paniers)</td></tr><tr><td>Les enfants portent ___ dans ___.</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C5-C8 révision</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADhUlEQVR4nO3d3c0TQQxGYT5EF5REPVRBPZREHeEy0kg4mLE9E855bpPNz76yZM3uej4ej8cnYXw+/QM0yrxZzJvFvFnMm8W8WcybxbxZzJvlS/zy128/Zn7Hr5/fq37G8lHLsTtfFB8bu+RMWt8s5s1i3izmzfKiX1vsNCyLuH+Jm6y+YxepY1MnZ+xMLqxvFvNmMW8W82bJ9WuLnd4n9ebUGtki1WQVvjml70wurG8W82YxbxbzZtnq18YUtm+LwsW4t2B9s5g3i3mzmDfLpf3a2KJY3Ov19YmnWN8s5s1i3izmzbLVr/U1LHGj1Neg7fyqwk/uY32zmDeLebOYN0uuXxu7Ppi6TPkWry5OXWm1vlnMm8W8Wcyb5eMt5uVe8rxB7C0uj1rfLObNYt4s5s3yol+7ZDUqdmrCWt9Hpf5C6ousbxbzZjFvFvNmya2vnZpbW9j7FN771rcY13eurG8W82YxbxbzZtlaX4vfvLjkTrFTVy37Luku7Nf0ZN4s5s1i3iyN83JPDcMo7OYKV9AuGStifbOYN4t5s5g3y4t+re/64CWjaC/ZsiA+1uuh+kfmzWLeLObNktvvvXAfz/jNqVdjd+5g0DcGLmZ9s5g3i3mzmDfL1vy1VAt25935qe+95L65nTNpfbOYN4t5s5g3S65fG3uos9DOTXaFV3gLh3/sHGt9s5g3i3mzmDdL5f1rY4PPUlId2ViP2bfc5v1rejJvFvNmMW+WY/u9j93of6ozGvtH3r+mPzJvFvNmMW+WuflrsUsG1S7uXH3bWam0vlnMm8W8WcybpXF/g9j/N3+tcEpa31Ze1jeLebOYN4t5szSur41thrDzM3aO7XtGoq+Ztb5ZzJvFvFnMmyW3vjamcAemwu1EY6f2PF14PVRP5s1i3izmzZKbl9uncPemsQG5O9M+Tv0F65vFvFnMm8W8WSrnr6XcuYKWmvbRt1TXx/pmMW8W82Yxb5bG/d4XhQ9Xpj6qbyLu2NOyhW+2vlnMm8W8Wcyb5dj8tdhOk7VzH1nhBqmF1zQLJ8pZ3yzmzWLeLObNcmm/1vcYQOqj+u77j/U9D2t9s5g3i3mzmDfLVr82tolUrG+XrJSxZzydv6a/Zd4s5s1i3iy5fm3scdHCQbWpY3d+RuEXub6mGubNYt4s5s1y6fw1NbG+WcybxbxZzJvFvFnMm8W8WcybxbxZfgNhqULzFSXqPAAAAABJRU5ErkJggg==" alt="QR Code Présent être et avoir"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent être et avoir</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L15</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C5-C8 révision</span>
+    <span class="exo-consigne">Conjugue au présent (révision complète).</span>
+  </div>
+  <table class="exo-table"><tr><td>aller : nous ___</td><td>allons</td></tr><tr><td>avoir : ils ___</td><td>ont</td></tr><tr><td>pouvoir : tu ___</td><td>peux</td></tr><tr><td>faire : elle ___</td><td>fait</td></tr><tr><td>savoir : je ___</td><td>sais</td></tr><tr><td>venir : vous ___</td><td>venez</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C5-C8</span>
+    <span class="exo-consigne">Choisis et conjugue.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les paysans ___ le café. (récolter)</td><td>récoltent</td></tr><tr><td>Le père ___ à N'Zérékoré. (aller)</td><td>va</td></tr><tr><td>Tu ___ reconnaître un grain mûr. (savoir)</td><td>sais</td></tr><tr><td>Nous ___ du café à l'étranger. (vendre)</td><td>vendons</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La récolte du café</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G12 : Révision COD/COI + CC lieu/temps | C10 : Révision présent (tous verbes) | V12 : Champ lexical de l'agriculture | O17 : Accord du verbe avec des sujets multiples</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Champ lexical de l'agriculture — V12</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADg0lEQVR4nO3d3U0DMRBFYYLogpKohyqoh5KoIzwiWYqTYWZsR+d8r/nZ1V6NNLK99uV6vb4I43X3DWgp82YxbxbzZjFvFvNmMW8W82Yxb5a3+cfvH19r7uPn+/Px2wh9OXOh0G/nDnmS1jeLebOYN4t5s9zp1waZhmUw718yDVqmIxsMf1XYzS17kgPrm8W8WcybxbxZYv3aINP7hL58ZkdWOGTW9yQH1jeLebOYN4t5s6T6tV0Ku6p5J7hsEnMZ65vFvFnMm8W8WQ7t10JtVOGng8xvz2R9s5g3i3mzmDdLql/ra1gy41x9Tdayf+5jfbOYN4t5s5g3S6xfWzY/mJmm3DU217fIrpD1zWLeLObNYt4sl2fcL7dw/VrhgrWnmB61vlnMm8W8Wcyb5U6/duZoVN/AVqjn6vurwv1LBtY3i3mzmDeLebPcmQ89c7XXMpl7DnVzoWeVebDWN4t5s5g3i3mzpMbXQl8uPHagb+iqT1/rN7Bf0x/zZjFvFvNmia1f6+vI5hfK6Osx+64753yoHmXeLObNYt4sjecbFHZzfe9aHnJkwfy3ha2f9c1i3izmzWLeLOv2Xys8jyrz20NOMOhbGDhnfbOYN4t5s5g3S+P5BrvmNAsbtL53WjMyD9b6ZjFvFvNmMW+WWL9WuLXZslYoc5Ohzii0i+/8NkJcv6abzJvFvFnMm6VyfK1vd7a5zO4Xy17bHPQNt7l+TX/Mm8W8WcybpbJfKzwmau6QichlJ04VPjrrm8W8WcybxbxZ7vRroQ7lzG3Rzty7rXA3uhDrm8W8WcybxbxZYucb9O1R0Td0tWspXOjTzF25fk03mTeLebOYN0vj+QYhhxxPtWvGc9D3NKxvFvNmMW8W82aJnW+wTOFE5K4zGQp/63lU+ifzZjFvFvNmia1f6zN/qXMu835oRuFLrKEvu35NjzJvFvNmMW+W1P5rGbuOaxpkdvvoG6rrY32zmDeLebOYN0vj+aGDXUNmfTviHrKaz/cNdJN5s5g3i3mzNJ5HldH3nmbouoU7yvVtCBxifbOYN4t5s5g3y6H92iGvAWT0vSOR+bL1zWLeLObNYt4sqX6tr/fpmzzNyCx2O+QAB+ubxbxZzJvFvFli+6/16ZtMDF13sGwNWmYJXui61jeLebOYN4t5sxy6/5qaWN8s5s1i3izmzWLeLObNYt4s5s1i3iy/yeU5vDQomMAAAAAASUVORK5CYII=" alt="QR Code Familles de mots"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Familles de mots</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L23</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>L'agriculture guinéenne a son propre vocabulaire : récolter, planter, semer, cultiver...</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V12</span>
+    <span class="exo-consigne">Classe ces mots : Activités / Outils / Produits.</span>
+  </div>
+  <table class="exo-table"><tr><td>récolter, houe, café, semer, cacao, machette, planter, riz, daba, cueillette, maïs, arrosoir</td><td>Activités: récolter,semer,planter,cueillette / Outils: houe,machette,daba,arrosoir / Produits: café,cacao,riz,maïs</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V12</span>
+    <span class="exo-consigne">Explique les étapes de la récolte du café dans le bon ordre.</span>
+  </div>
+  <table class="exo-table"><tr><td>1.___ 2.___ 3.___ 4.___</td><td>1.cueillette des grains / 2.séchage / 3.dépulpage / 4.torréfaction</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">O17</span>
+    <span class="exo-consigne">Accorde correctement le verbe avec le sujet multiple.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le père et les enfants ___ le café. (récolter)</td><td>récoltent</td></tr><tr><td>Le riz et le café ___ exportés. (être)</td><td>sont</td></tr><tr><td>Ni le café ni le cacao ___ prêt. (être)</td><td>n'est (ni...ni → singulier)</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : CC temps / COD / COI / CC lieu</div><div style="font-size:8pt">Ex.2 : cause / temps / condition</div><div style="font-size:8pt">Ex.3 : réponses libres acceptées</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : allons/ont/peux/fait/sais/venez</div><div style="font-size:8pt">Ex.2 : récoltent / va / sais / vendons</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : Activités:récolter,semer,planter,cueillette / Outils:houe,machette,daba,arrosoir / Produits:café,cacao,riz,maïs</div><div style="font-size:8pt">Ex.2 : cueillette→séchage→dépulpage→torréfaction</div><div style="font-size:8pt">Ex.3 : récoltent / sont / n'est</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. En Guinée forestière (N'Zérékoré) en mars.  2. Séchage, dépulpage, torréfaction.  3. Payer l'école et les habits des enfants.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La récolte du café</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G12 : Révision COD/COI + CC lieu/temps | C10 : Révision présent (tous verbes) | V12 : Champ lexical de l'agriculture | O17 : Accord du verbe avec des sujets multiples</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">En mars, les familles paysannes de Guinée forestière récoltent le café avec soin.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">L'argent du café sert à payer l'école et les vêtements des enfants.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">ni...ni</span> <span class="dict-mot">n'i (il n'y a pas)</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Il n'y a ni café ni cacao dans ce sac. Ni le père ni la mère n'est au marché.</div><div class="model-text">Il n'y a pas de grains mûrs. Ni tôt ni tard, il ne peut récolter.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris un métier de la campagne guinéenne (paysan, berger, pêcheur...) en 6-8 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>champ — outil — récolte — vendre — famille — tradition — travail — saison</em></div><div class="model-text" style="color:var(--c1)">Dans ma région, les paysans...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La récolte du café</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G12 : Révision COD/COI + CC lieu/temps | C10 : Révision présent (tous verbes) | V12 : Champ lexical de l'agriculture | O17 : Accord du verbe avec des sujets multiples</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité les 4 étapes de la récolte du café</div><div class="jeu-item">conjugue &quot;vendre&quot; présent à &quot;nous&quot;</div><div class="jeu-item">analyse le complément dans &quot;il va à N'Zérékoré&quot;</div><div class="jeu-item">nomme 2 autres cultures de Guinée forestière</div><div class="jeu-item">accorde : &quot;Le père et les enfants ___ (récolter)&quot;</div><div class="jeu-item">donne 2 outils agricoles guinéens</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Analyse les compléments (COD/COI/CC temps/CC lieu) :</div>
+        <div class="diff-item">En mars, les paysans récoltent le café à N'Zérékoré.<span class="answer-line"></span></div><div class="diff-item">Le père explique à ses enfants comment récolter.<span class="answer-line"></span></div><div class="diff-item">Les enfants déposent les grains dans les sacs.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris la récolte du café en 8 phrases : tous compléments, présent de tous les verbes étudiés.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : 1 COD, 1 COI, 1 CC temps, 1 CC lieu, 4 verbes au présent.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 6 / Période 3</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le berger du Fouta Djallon</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">Bilan P3 | G7-G12 complets | Présent complet | Vocabulaire bilan | Orthographe P3</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">Bilan P3 | G7-G12 complets | Présent complet | Vocabulaire bilan | Orthographe P3</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Sur les hauts plateaux du Fouta Djallon, les bergers peuls gardent leurs troupeaux de bœufs.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Bilan G7-G12</span><span class="mhf-tag">Bilan G11</span><span class="mhf-tag">Bilan G5+G9+G10</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Bilan présent</span><span class="mhf-tag">Bilan futur proche</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Bilan V7</span><span class="mhf-tag">Bilan V8-V10</span><span class="mhf-tag">Bilan V12</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Bilan écrit de toutes les notions de P3</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Test de lecture d'un texte nouveau</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Projet : écrire une courte lettre documentaire</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Révision des accords difficiles</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">révision P3 : quand/si/parce que, tout/tous/toute/toutes, plutôt/plus tôt</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Le berger du Fouta Djallon</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p3s7_berger.jpg" alt="Le berger du Fouta">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que garde ce jeune berger sur les collines ?</li>
+    <li>Décris le paysage : les couleurs, les formes, la lumière.</li>
+    <li>Quel est le quotidien d'un berger ? Raconte une de ses journées.</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Le Fouta Djallon est un massif montagneux au centre de la Guinée.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Les Peuls y vivent depuis des siècles et gardent leurs grands troupeaux.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Mamadou, jeune berger de quinze ans, se lève avant l'aube.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Il part avec son troupeau de bœufs vers les pâturages.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Les hauts plateaux sont couverts d'herbe verte et fraîche.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Mamadou sait diriger son troupeau avec un long bâton.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Il connaît les meilleurs pâturages et les sources d'eau.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Quand il fait trop chaud, il guide les bœufs vers l'ombre des arbres.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Parce qu'il veut leur bien, il s'occupe de chaque animal.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Si un bœuf est malade, il appelle le vétérinaire du village.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Le soir, Mamadou rentre les bœufs dans l'enclos.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Il les compte un à un pour s'assurer qu'aucun ne manque.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Sa mère l'attend avec du lait frais et du foufou de maïs.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">Le lait des bœufs peuls est fameux dans toute la Guinée.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">&quot;Un bon berger connaît chaque bête par son nom&quot;, dit le père.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Mamadou peut nommer tous ses bœufs : Rougeaud, Balafon, Fleuve...</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Le Fouta Djallon est aussi la source de trois grands fleuves guinéens.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">&quot;Cette terre nous appartient à tous&quot;, dit Mamadou fièrement.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Le berger du Fouta est le gardien de la nature et des traditions.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Où se passe cette histoire et qui est Mamadou ?<span class="answer-line"></span></div><div class="comp-item">Quels soins Mamadou donne-t-il à ses bœufs ?<span class="answer-line"></span></div><div class="comp-item">Quelle phrase du père montre ce que doit savoir un bon berger ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le berger du Fouta Djallon</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">Bilan P3 | G7-G12 complets | Présent complet | Vocabulaire bilan | Orthographe P3</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Bilan G7-G12</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmUlEQVR4nO3d3W0bMRBF4ThIFykp9aSK1JOSUofzGICARhjPj+ic871a2pX3gsBguCTf3t/fvwjj66t/gFaZN4t5s5g3i3mzmDeLebOYN4t5s3yL//z9x6+d3/Hn988P3zf+7vHXlPhSqRu96kkeHN8s5s1i3izmzfKkXjtUap9DXL+kyre5Aq3y3fhnrD3Jg+ObxbxZzJvFvFly9dqh0gWriKu5xkrwMNcjW3uSjm8W82YxbxbzZinVa3NSE5GHtXnJxgp0jeObxbxZzJvFvFkurddilf5a6lKpG32K8s3xzWLeLObNYt4spXptrUKZa6hVGnmpS8XWnqTjm8W8WcybxbxZcvXa2iLHQ+Pyg7W/xl71JB3fLObNYt4s5s3ydud+uZVyJtVuq/TmPsUE6MHxzWLeLObNYt4sT+q1yhxfYzcqtnbl2FzLrLECdXyzmDeLebOYN8tgf62xOXVJn+uSdakx6zX9Y94s5s1i3iy58w0qldHam2KNc6lzW7mlfkbM/XL1kHmzmDeLebM8qdfmNj5bK8EOjXuBVG6U+nBjYej4ZjFvFvNmMW+W0nlUc/ODa/XL3CTm3Ja/lQ87vlnMm8W8WcybpbTeoLHmSplb41m5su+v6TrmzWLeLObNkqvXDpesGbjkR66Vb5Ua0/HNYt4s5s1i3ix7570f5vprld10G99uS5VRaxuHOL5ZzJvFvFnMm6W03uBTHL5ZWckwV0Y1/r++v6aHzJvFvFnMm2Vwv9yUV202G2t8ne1Vu4wcHN8s5s1i3izmzZLrr8Uuef++Uiilpkcbd6OLNVaCjm8W82YxbxbzZim9v3aY27LiMNerWuuCverKjm8W82YxbxbzZsmdbxBLvVJ/ybnrjTO8ldUIsVTXL+b4ZjFvFvNmMW+WzvnQ1Hfv3DRtrj6Nrb0n6PhmMW8W82Yxb5bO/lrFXG/ukjUSl/QTHd8s5s1i3izmzVI6j6pibiONSn9t7hysxiOmKs04xzeLebOYN4t5s+ztl/uqwxAq2+emLlX5cPzdxvLN8c1i3izmzWLeLJ3rQxvNNZjm+lyVG1XYX9ND5s1i3izmzXJpvXaYO3Y+9eG1JQRzb8Y5vlnMm8W8WcybpVSvXdJCalwQWpk8nZtadf81fZB5s5g3i3mz5Oq1teWic6sp506NijXWegfnQ/WQebOYN4t5szw5P1T/Gcc3i3mzmDeLebOYN4t5s5g3i3mzmDfLX6B4KFmrqli4AAAAAElFTkSuQmCC" alt="QR Code Le sujet du verbe"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le sujet du verbe</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L11</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Bilan G7-G12</span>
+    <span class="exo-consigne">Analyse chaque groupe souligné (CC temps / CC lieu / COD / COI / Pronom sujet).</span>
+  </div>
+  <table class="exo-table"><tr><td>Avant l'aube, Mamadou se lève.</td><td>CC temps</td></tr><tr><td>Il connaît les meilleurs pâturages.</td><td>COD</td></tr><tr><td>Il parle à chaque bœuf.</td><td>COI</td></tr><tr><td>Il rentre vers le soir.</td><td>CC lieu+temps</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Bilan G11</span>
+    <span class="exo-consigne">Identifie la relation (cause / temps / condition).</span>
+  </div>
+  <table class="exo-table"><tr><td>Quand il fait chaud, il va à l'ombre.</td><td>temps</td></tr><tr><td>Parce qu'il veut leur bien, il s'occupe des bœufs.</td><td>cause</td></tr><tr><td>Si un bœuf est malade, il appelle le vétérinaire.</td><td>condition</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Bilan G5+G9+G10</span>
+    <span class="exo-consigne">Dans cette phrase, indique : pronom sujet + COD + COI.</span>
+  </div>
+  <table class="exo-table"><tr><td>Mamadou donne du lait à sa mère.</td><td>Il / du lait / à sa mère</td></tr><tr><td>Il montre les pâturages à son fils.</td><td>Il / les pâturages / à son fils</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Bilan présent</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjElEQVR4nO3dUa4TMQxGYS5iFyyJ9bAK1sOSWEd5RIp03Ro7TqpzvtdOO9X8smQlk+Tj8Xh8EcbX039Ao8ybxbxZzJvFvFnMm8W8WcybxbxZvsUff//xa+Z//Pn98/X7Lhcvlu/GF8fin0rd6NSTXFjfLObNYt4s5s3ypF9bVHqfRaojSzU7jQ1a5bvx3xh7kgvrm8W8WcybxbxZcv3aYqyNahzYqnSC+8bIxp6k9c1i3izmzWLeLKV+bZ9986GNPVfjGNkY65vFvFnMm8W8WS7t11LiFqwy8Rp/2vii3Bjrm8W8WcybxbxZSv3aWIdS6apiYz8VG3uS1jeLebOYN4t5s+T6tbFFjo0qvd5YnzjG+mYxbxbzZjFvlif92p1zfGOvpDUuA7jkSVrfLObNYt4s5s3yEZ9vUJnjaxyN2jfOlbpvbN+QWeN+c9Y3i3mzmDeLebOUxtca99WIL07ZN5LVuGq18b4p1jeLebOYN4t5s3S+v9bYkZ06SaByzMJbjOtZ3yzmzWLeLObN0rk+tNLN7TtYoLJFR0Vj69f4rKxvFvNmMW8W82bpPD+00r6lNG58NjaJ2XhAauVi65vFvFnMm8W8WXLrDVIqc5qxUysZUn8jvngf1xvoH/NmMW8W82Z50q8tGve32LcPWsW+c7BSN4pVnob1zWLeLObNYt4suX4tNrbZbOySrmrR2HJWmkrrm8W8WcybxbxZOsfXTu2w9hbrNPcNAvr+mj5l3izmzWLeLKX318YmMRvnYVMaX2c7tcvIwvpmMW8W82Yxb5bO+dCUU6NRsTvfuWv8ZeubxbxZzJvFvFmO9WuLd5w8bdwQOMXxNb3KvFnMm8W8WY7t5xFfnPob+7Y2S/H8UF3HvFnMm8W8WW4ZX1vs26xtcWrvtsXYd61vFvNmMW8W82bpPN+gYt/c4iUDavsOV02xvlnMm8W8WcybJXd+6J0708afpkbB9r371njElPt56FXmzWLeLObNUjrvfV/D0jiuV2nuUj9VuTj+ru+v6T+ZN4t5s5g3S6lf22dsFWflu6cWNlRuZH2zmDeLebOYN8ul/doibt/G9vM4tYSg8UbWN4t5s5g3i3mzlPq1sSGk+L5x+9aocd/axoWoKdY3i3mzmDeLebPk+rWx5aKnJkD32Xf6gfOh+pR5s5g3i3mzXLr/mjaxvlnMm8W8WcybxbxZzJvFvFnMm8W8Wf4CX2kl2Kbnbu0AAAAASUVORK5CYII=" alt="QR Code Présent verbes en –er"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent verbes en –er</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L18</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Bilan présent</span>
+    <span class="exo-consigne">Conjugue au présent (bilan complet).</span>
+  </div>
+  <table class="exo-table"><tr><td>aller : il ___</td><td>va</td></tr><tr><td>avoir : nous ___</td><td>avons</td></tr><tr><td>savoir : elles ___</td><td>savent</td></tr><tr><td>vouloir : tu ___</td><td>veux</td></tr><tr><td>faire : vous ___</td><td>faites</td></tr><tr><td>pouvoir : je ___</td><td>peux</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Bilan futur proche</span>
+    <span class="exo-consigne">Mets au futur proche.</span>
+  </div>
+  <table class="exo-table"><tr><td>Mamadou part au pâturage.</td><td>va partir</td></tr><tr><td>Nous buvons du lait frais.</td><td>allons boire</td></tr><tr><td>Les bœufs mangent l'herbe.</td><td>vont manger</td></tr><tr><td>Tu comptes les animaux.</td><td>vas compter</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le berger du Fouta Djallon</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">Bilan P3 | G7-G12 complets | Présent complet | Vocabulaire bilan | Orthographe P3</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Bilan Vocabulaire P3</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjklEQVR4nO3d0W0cMQxFUdtIFynJ9biK1JOSUsfmM4AAc01QpOTce37XOzPeBwKEpJFeH4/HizDeTj+ARpk3i3mzmDeLebOYN4t5s5g3i3mz/Ig//vn+a+Y5/vz+aLry8i/EN4r/38pDXvJLWt8s5s1i3izmzfKkX1ts7Kri/iVuslItWPzdWOq7qR9n7JdcWN8s5s1i3izmzZLr1xaV3if1xxvHyFI3qvxxSt8vubC+WcybxbxZzJul1K+dErdvqa4qNZD3H7C+WcybxbxZzJvl0n6tb+Zx41xq35q7PtY3i3mzmDeLebOU+rW+hiVulCrTo5Vn7mvfxlo/65vFvFnMm8W8WXL92tj8YGWasvKuQt+n8UOOsb5ZzJvFvFnMm+X1W+yX27fKrO9Sd7K+WcybxbxZzJvlSb/2LUajKveNLxXru1TfDK/1zWLeLObNYt4sO9ev9TVofT1XrNIZpR4y9VtVfljrm8W8WcybxbxZcuNri77+pa+5OzVr2df6LezX9I95s5g3i3mzzK1fO7UGrW8gL/VUqfvGnA/VV5k3i3mzmDfLzvVrFaeO9UzdqM/YEjzrm8W8WcybxbxZnqxfG5tbrGxjW7nyJQ1a5bueH6pPmTeLebOYN8vO80PvHCPrO+99bJ/e+Mop1jeLebOYN4t5szSebzC2f+zG2cP4IIXUY6Q+HTsbwfpmMW8W82Yxb5Yn/VrlJIHKlTe2URuPtlpcsrmu+3noU+bNYt4s5s1SWr+22HiUeuqpxpw6cWrjDK/1zWLeLObNYt4sufG1VIdyain/qWMHUioP6fo1fZV5s5g3i3mzzL0femrB/dgiu7F3WitXtr5ZzJvFvFnMm6Vx/7VThxKMfbdvALFvwtf6ZjFvFvNmMW+WufMNUsbmNC+ZPO3bg2RhfbOYN4t5s5g3S+n90I3iI81jldPRKyq7fZw6Jcv6ZjFvFvNmMW+W3P5rl2z6uvFGld0++obq+ljfLObNYt4s5s2y83yD2NjWZqnBqbExspS+FzmsbxbzZjFvFvNmKfVrfSrnn/cdQLUYe6qN24pY3yzmzWLeLObNcmm/dsn7oRWVrqrvoFLrm8W8WcybxbxZGs8P3XjlO1+9TC12O7Vn3ML6ZjFvFvNmMW+W3P5rfS6ZAF2MrUGrvBSRuq/1zWLeLObNYt4sl+6/pibWN4t5s5g3i3mzmDeLebOYN4t5s5g3y1+WUkNNy9y1GgAAAABJRU5ErkJggg==" alt="QR Code Les synonymes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les synonymes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L24</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Bilan P3 : préfixes, homonymes, niveaux de langue, champs lexicaux (forêt, commerce, agriculture).</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Bilan V7</span>
+    <span class="exo-consigne">Forme des mots avec les préfixes re-, dé-, in-.</span>
+  </div>
+  <table class="exo-table"><tr><td>faire -&gt;re___ -&gt;dé___</td><td>refaire/défaire</td></tr><tr><td>utile -&gt;in___</td><td>inutile</td></tr><tr><td>venir -&gt;re___</td><td>revenir</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Bilan V8-V10</span>
+    <span class="exo-consigne">Homonymes + niveaux de langue.</span>
+  </div>
+  <table class="exo-table"><tr><td>Choisis : Il boit un ___ d'eau. (verre/vert/ver)</td><td>verre</td></tr><tr><td>Réécris en courant : &quot;C'est trop bien cette fête !&quot;</td><td>C'est une belle fête !</td></tr><tr><td>Antonyme de &quot;courageux&quot; : ___</td><td>lâche/peureux</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Bilan V12</span>
+    <span class="exo-consigne">Champ lexical de l'agriculture (5 mots) + de la pêche (3 mots) + du commerce (3 mots).</span>
+  </div>
+  <table class="exo-table"><tr><td>Agriculture : ___________</td><td>récolter,semer,houe,daba,plantation / filet,pirogue,rive / marchande,étal,payer</td></tr><tr><td>Pêche : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>Commerce : ___________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : CC temps / COD / COI / CC lieu+temps</div><div style="font-size:8pt">Ex.2 : temps / cause / condition</div><div style="font-size:8pt">Ex.3 : Il/du lait/à sa mère | Il/les pâturages/à son fils</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : va/avons/savent/veux/faites/peux</div><div style="font-size:8pt">Ex.2 : va partir / allons boire / vont manger / vas compter</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : refaire/défaire / inutile / revenir</div><div style="font-size:8pt">Ex.2 : verre / C'est une belle fête ! / lâche</div><div style="font-size:8pt">Ex.3 : réponses libres selon mots vus en P3</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Dans le Fouta Djallon; Mamadou est un jeune berger peul de 15 ans.  2. Il dirige le troupeau, trouve l'ombre et l'eau, et appelle le vétérinaire.  3. &quot;Un bon berger connaît chaque bête par son nom.&quot;</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le berger du Fouta Djallon</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">Bilan P3 | G7-G12 complets | Présent complet | Vocabulaire bilan | Orthographe P3</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Sur les hauts plateaux du Fouta Djallon, Mamadou garde son troupeau avec soin.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Le berger peul connaît chaque bœuf par son nom et s'occupe de chacun.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">révision : quand/si/parce que — tout/tous/toute/toutes</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Quand tous les bœufs sont là, si parce que tout va bien, le berger rentre.</div><div class="model-text">Toutes les bêtes mangent tout le soir parce que les pâturages sont bons.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris la journée d'un berger ou d'un paysan du Fouta Djallon en 6-8 phrases. Utilise le présent et le futur proche.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>berger — troupeau — pâturages — bœufs — lait — Fouta — matin — soir</em></div><div class="model-text" style="color:var(--c1)">Chaque matin, le berger peul se lève avant l'aube et...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le berger du Fouta Djallon</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">Bilan P3 | G7-G12 complets | Présent complet | Vocabulaire bilan | Orthographe P3</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P3</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">nomme 3 cultures du Fouta Djallon</div><div class="jeu-item">conjugue &quot;savoir&quot; présent à &quot;elles&quot;</div><div class="jeu-item">analyse : &quot;Mamadou donne du lait à sa mère&quot; (COD et COI)</div><div class="jeu-item">cité 2 fleuves qui naissent dans le Fouta</div><div class="jeu-item">donne le futur proche de &quot;partir&quot; à &quot;il&quot;</div><div class="jeu-item">relie : &quot;Il s'occupe des bœufs&quot; + &quot;il veut leur bien&quot; → avec &quot;parce que&quot;</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Bilan P3 — Analyse ces phrases complètement :</div>
+        <div class="diff-item">Avant l'aube, Mamadou part au Fouta avec son troupeau.<span class="answer-line"></span></div><div class="diff-item">Parce qu'il veut réussir, il s'occupe bien de ses bœufs.<span class="answer-line"></span></div><div class="diff-item">Si tu viens, tu vas voir les magnifiques pâturages verts.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris la journée du berger en 8 phrases : bilan complet P3.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : CC temps+lieu, COD+COI, parce que/quand/si, présent+futur proche, 1 préfixe, 1 homonyme.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 7 / Période 3</span>
+  <span>© 2026</span>
+</div>
+</div>
+</body>
+</html>

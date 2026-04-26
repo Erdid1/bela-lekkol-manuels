@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Génération Images CE1 — Bela Lekkol</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+  h1 { color: #4fc3f7; margin-bottom: 5px; font-size: 22px; }
+  .subtitle { color: #aaa; margin-bottom: 20px; font-size: 14px; }
+  .controls { background: #16213e; border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  .btn { padding: 12px 28px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s; }
+  .btn-start { background: #4fc3f7; color: #000; }
+  .btn-start:hover { background: #81d4fa; }
+  .btn-start:disabled { background: #555; color: #888; cursor: not-allowed; }
+  #progress-bar-wrap { background: #0a0a1a; border-radius: 5px; height: 20px; margin: 15px 0 8px; overflow: hidden; }
+  #progress-bar { height: 100%; background: linear-gradient(90deg, #4fc3f7, #81d4fa); border-radius: 5px; transition: width 0.5s; width: 0%; }
+  #status { font-size: 14px; color: #ffd54f; min-height: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 20px; }
+  .card { background: #16213e; border-radius: 8px; overflow: hidden; border: 2px solid #333; transition: border-color 0.3s; }
+  .card.loading { border-color: #ffd54f; }
+  .card.done { border-color: #66bb6a; }
+  .card.error { border-color: #ef5350; }
+  .card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #0a0a1a; }
+  .card .label { font-size: 10px; padding: 4px 6px; color: #aaa; text-align: center; background: #0d1117; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card .icon { font-size: 11px; text-align: center; padding: 3px; }
+  .waiting { color: #555; }
+  .msg-allow { background: #1a3a1a; border: 1px solid #66bb6a; border-radius: 8px; padding: 12px 16px; margin: 10px 0; font-size: 13px; color: #a5d6a7; display: none; }
+  .step { display: inline-block; background: #2a4a2a; border-radius: 4px; padding: 2px 8px; margin: 3px; color: #c8e6c9; font-size: 12px; }
+  #dl-link { margin-top: 15px; }
+  .btn-move { background: #66bb6a; color: #000; margin-left: 10px; }
+  .btn-move:hover { background: #81c784; }
+  .count-info { font-size: 13px; color: #aaa; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<h1>🎨 Génération des 35 illustrations — Manuel CE1 Bela Lekkol</h1>
+<p class="subtitle">Source : Pollinations.ai (gratuit, sans compte) · Style aquarelle guinéenne · Format 1024×768</p>
+
+<div class="controls">
+  <button class="btn btn-start" id="btnStart" onclick="startDownload()">▶ Générer &amp; Télécharger les 35 images</button>
+  <span id="count-done" class="count-info"></span>
+
+  <div id="progress-bar-wrap" style="display:none">
+    <div id="progress-bar"></div>
+  </div>
+  <div id="status"></div>
+
+  <div class="msg-allow" id="msgAllow">
+    <strong>⚠ Chrome va demander l'autorisation pour télécharger plusieurs fichiers.</strong><br>
+    Cliquez sur <span class="step">Autoriser</span> dans la barre d'adresse pour permettre les 35 téléchargements.
+    Les fichiers seront enregistrés dans votre dossier <strong>Téléchargements</strong>.
+  </div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const STYLE = "Illustration de livre de lecture pour enfants de 7 ans, style aquarelle numerique douce, traits arrondis et expressifs, couleurs chaudes et lumineuses, personnages enfants africains souriants, uniforme scolaire bleu et blanc ou tenues locales guineennes, decor Afrique de l Ouest Guinee, lumiere doree de soleil tropical, format paysage 4 sur 3, sans texte ni lettres dans l image, fond legerement texture.";
+
+const IMAGES = [
+  {f:"p1s1_rentree",      t:"P1S1 — La rentrée",        p:"Fillette africaine en uniforme scolaire bleu et blanc marche joyeusement vers son ecole avec son cartable rouge sur le dos accompagnee d un garcon souriant grands manguiers en arriere-plan matin ensoleille de Guinee Conakry cour d ecole visible au fond"},
+  {f:"p1s2_cartable",     t:"P1S2 — Mon cartable",       p:"Garcon africain souriant ouvre fierement son cartable bleu sur un bureau d ecole sort une trousse rouge stylos et cahiers neufs salle de classe lumineuse decoree de cartes colorees tableau noir au fond fenetres ensoleillees"},
+  {f:"p1s3_recreation",   t:"P1S3 — La récréation",      p:"Cour d ecole guineenne animee pendant la recreation filles africaines jouent a la corde a sauter garcons jouent au football pres d un grand manguier enfants qui rient soleil tropical maitresse qui surveille"},
+  {f:"p1s4_marche_matin", t:"P1S4 — Au marché",          p:"Femme africaine en tenue traditionnelle coloree et son jeune fils parcourent un grand marche anime de Guinee etals debordants de mangues dorees tomates rouges et legumes verts marchandes souriantes atmosphere matinale lumineuse paniers en rotin"},
+  {f:"p1s5_famille_table",t:"P1S5 — Repas en famille",   p:"Famille guineenne reunie le soir dans une grande cour assis en cercle autour d un grand plat de riz fumant et sauce arachide grand-pere age bienveillant enfants souriants lumiere chaude coucher de soleil ambiance chaleureuse"},
+  {f:"p1s6_bibliotheque", t:"P1S6 — La bibliothèque",    p:"Interieur d une bibliotheque scolaire africaine lumineuse rayons remplis de livres colores garcon africain assis sur un coussin lisant un album illustre avec fascination autres enfants qui choisissent des livres ambiance calme"},
+  {f:"p1s7_village",      t:"P1S7 — Village de Faranah", p:"Vue panoramique de Faranah en Guinee au bord du fleuve Niger cases en banco aux toits de tole baobabs majestueux vieux griot en boubou assis sous un arbre entoure d enfants en cercle qui ecoutent feu de camp ciel etoile"},
+  {f:"p2s1_arc_en_ciel",  t:"P2S1 — Arc-en-ciel",        p:"Fillette africaine en robe coloree debout devant sa case bras leves vers un magnifique arc-en-ciel aux couleurs vives au-dessus d un village guineen apres la pluie feuilles de manguiers mouillees sol rouge humide joie"},
+  {f:"p2s2_conte_nuit",   t:"P2S2 — Soir du conte",      p:"Enfants africains assis en cercle serre autour d un vieux griot en boubou blanc nuit etoilee de Guinee feu de bois au centre projetant une lumiere chaude orange expressions d emerveillement sur les visages des enfants"},
+  {f:"p2s3_foret",        t:"P2S3 — La forêt",            p:"Deux enfants africains marchent sur un sentier d une foret guineenne dense et luxuriante singes rouges dans les branches papillons colores calao au grand bec en vol lumiere doree filtree a travers le feuillage tropical"},
+  {f:"p2s4_fete_annee",   t:"P2S4 — Fête de Noël",       p:"Salle de classe africaine decoree pour une fete de fin d annee enfants en tenues colorees et uniformes sapin decore avec ornements locaux fruits fleurs tropicales parents souriants et applaudissant maitresse au tableau ambiance festive"},
+  {f:"p2s5_pecheur",      t:"P2S5 — Pêcheur de crevettes",p:"Vieux pecheur africain debout dans une pirogue en bois sur le fleuve guineen a l aube filets argentes dans l eau translucide crevettes brillantes herons blancs sur les rives reflets dores du soleil levant brume matinale"},
+  {f:"p2s6_ceremonie",    t:"P2S6 — Cérémonie scolaire", p:"Ceremonie scolaire africaine en plein air sous un grand fromager eleve africaine en uniforme recite fierement devant un micro parents et enseignants applaudissent directrice tenant des bulletins estrade decoree de fleurs et drapeaux guineen"},
+  {f:"p2s7_vacances_dec", t:"P2S7 — Vacances de Noël",   p:"Groupe d enfants africains joyeux sur une route de savane guineenne petites valises colorees et sacs a dos un vieux car bleu et jaune en arriere-plan paysage de savane verdoyante joie et liberte des vacances"},
+  {f:"p3s1_rentree_jan",  t:"P3S1 — Rentrée de janvier", p:"File d eleves africains en uniforme qui marchent en rang vers leur ecole en janvier arbres aux feuilles seches de la saison seche legere poussiere ocre de l harmattan dans l air nouveaux cahiers sous les bras sourires"},
+  {f:"p3s2_harmattan",    t:"P3S2 — Vent d'harmattan",   p:"Enfants africains dans une rue de village guineen luttant contre un fort vent d harmattan poussiere orange soulevee feuilles seches qui tournoient garcon retenant son chapeau fillette tenant sa jupe ciel voile de sable"},
+  {f:"p3s3_marche",       t:"P3S3 — Grand marché",        p:"Vue d ensemble plongeante sur un grand marche guineen tres anime rangees de femmes en tenues wax colorees derriere leurs etals pyramides de mangues tomates ignames et epices foule dense et coloree toit de marche lumiere tropicale"},
+  {f:"p3s4_animaux_foret",t:"P3S4 — Animaux de la forêt", p:"Trois enfants africains s arretent sur un sentier forestier guineen bouche ouverte d emerveillement un singe rouge dans les branches une antilope gracieuse entre les arbres un chimpanze au loin foret dense verte lumiere tamisee"},
+  {f:"p3s5_lettre",       t:"P3S5 — La lettre d'Aminata", p:"Fillette africaine concentree ecrit une lettre a son bureau en bois dans une case guineenne enveloppe blanche et timbre poses a cote fenetre ouverte donnant sur un jardin tropical verdoyant lumiere douce de l apres-midi stylo en main"},
+  {f:"p3s6_cafe",         t:"P3S6 — Récolte du café",    p:"Famille guineenne dans une plantation de cafe en montagne hommes et femmes et enfants cueillant des baies de cafe rouges sur des arbustes verts grands paniers en rotin collines verdoyantes du Fouta Djalon atmosphere de travail joyeux"},
+  {f:"p3s7_berger",       t:"P3S7 — Berger du Fouta",    p:"Jeune berger africain de 12 ans surveille son troupeau de moutons blancs sur les collines rouges du Fouta Djalon baton de berger paysage majestueux de savane et falaises ocre lumiere doree de fin de journee ciel orange et bleu"},
+  {f:"p4s1_journee_femme",t:"P4S1 — Journée de la Femme",p:"Ceremonie de la Journee de la Femme en Guinee femmes africaines magnifiques en tenues traditionnelles colorees defilent eleves en uniforme leur offrent des fleurs drapeau guineen rouge-jaune-vert place publique decoree foule festive"},
+  {f:"p4s2_premieres_pluies",t:"P4S2 — Premières pluies",p:"Enfants africains dans la cour de leur ecole surprise et joie devant les premieres grosses gouttes de pluie tropicale ciel dramatique gris-violet sol rouge qui commence a fumer un enfant leve les mains vers la pluie un autre court s abriter"},
+  {f:"p4s3_fete_ecole",   t:"P4S3 — Fête de l'école",    p:"Grande fete scolaire en plein air dans une ecole guineenne podium colore avec des eleves en costumes traditionnels africains parents spectateurs assis sous le grand fromager banderoles colorees ambiance joyeuse et festive soleil eclatant"},
+  {f:"p4s4_jardin",       t:"P4S4 — Jardin potager",      p:"Groupe d enfants africains en uniforme scolaire arrosent et entretiennent un grand jardin potager scolaire rangees bien ordonnees de tomates rouges aubergines violettes et salades vertes arrosoirs colores soleil matin fierte visible"},
+  {f:"p4s5_pecheurs_fleuve",t:"P4S5 — Pêcheurs du fleuve",p:"Trois pecheurs africains adultes dans des pirogues en bois sur un grand fleuve guineen au matin filets tendus dans l eau verte herons blancs perches sur des pieux mangroves sur les rives reflets dores et brume legere ambiance paisible"},
+  {f:"p4s6_case",         t:"P4S6 — La case familiale",   p:"Scene d interieur chaleureuse d une grande case familiale guineenne en banco femmes qui cuisinent autour d un foyer enfants qui jouent sur des nattes colorees tapis africains aux motifs geometriques poutres en bois lumiere tamisee et doree"},
+  {f:"p4s7_vacances_paques",t:"P4S7 — Vacances de Pâques",p:"Enfants africains font joyeusement leurs valises pour les vacances de Paques dans une maison coloree de Guinee mere qui prepare des provisions cocotiers et bougainvillees dans le jardin voiture chargee devant la maison excitation palpable"},
+  {f:"p5s1_fete_travail", t:"P5S1 — Fête du Travail",    p:"Defile festif du 1er mai dans une rue principale de Conakry travailleurs guineen avec banderoles colorees rouge et jaune eleves en uniforme brandissant des petits drapeaux guineen immeubles colores ambiance joyeuse et civique"},
+  {f:"p5s2_mangues",      t:"P5S2 — Saison des mangues", p:"Groupe d enfants africains souriants cueillent des mangues dorees et orangees dans un grand manguier charge de fruits sous un ciel bleu certains dans l arbre d autres en bas avec des paniers en rotin jus de mangue qui coule joie de la recolte"},
+  {f:"p5s3_dispensaire",  t:"P5S3 — Au dispensaire",     p:"Salle de consultation propre d un dispensaire de village guineen infirmiere africaine en blouse blanche rassurante examine doucement un enfant assis mere souriante et attentive a cote affiches de sante colorees aux murs lumiere naturelle claire"},
+  {f:"p5s4_grande_famille",t:"P5S4 — La grande famille", p:"Grande reunion de famille africaine dans une vaste cour ombragee trois generations reunies grand-parents parents enfants et bebes tables chargees de plats guineen colores rires et embrassades tenues traditionnelles atmosphere de bonheur"},
+  {f:"p5s5_football",     t:"P5S5 — Match de football",  p:"Match de football passionne sur un terrain de terre rouge en Guinee enfants africains en maillots colores rouge contre bleu gardien qui plonge pour arreter un tir supporters enthousiastes sur les bords poussiere de terre rouge soleil"},
+  {f:"p5s6_remise_prix",  t:"P5S6 — Remise des prix",    p:"Ceremonie solennelle de remise des prix scolaires jeune eleve africaine en uniforme monte les marches d une estrade fleurie pour recevoir son diplome des mains de la directrice parents et camarades qui applaudissent chaleureusement drapeaux et fleurs"},
+  {f:"p5s7_grandes_vacances",t:"P5S7 — Grandes vacances!",p:"Explosion de joie des grandes vacances groupe d enfants africains en shorts et robes colorees courent vers un grand fleuve guineen scintillant cartables et livres abandonnes sur l herbe verte bras leves vers le ciel bleu sourires radieux"}
+];
+
+// Afficher la grille
+const grid = document.getElementById('grid');
+IMAGES.forEach((img, i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.id = 'card_' + i;
+  card.innerHTML = `
+    <img src="" id="img_${i}" alt="${img.t}">
+    <div class="label">${img.t}</div>
+    <div class="icon waiting" id="icon_${i}">⏳</div>
+  `;
+  grid.appendChild(card);
+});
+
+let done = 0;
+let errors = 0;
+
+function buildUrl(img) {
+  const fullPrompt = STYLE + ' ' + img.p;
+  return 'https://image.pollinations.ai/prompt/' + encodeURIComponent(fullPrompt) + '?width=1024&height=768&nologo=true&seed=' + Math.floor(Math.random()*99999);
+}
+
+async function downloadImage(img, index) {
+  const card = document.getElementById('card_' + index);
+  const icon = document.getElementById('icon_' + index);
+  const imgEl = document.getElementById('img_' + index);
+
+  card.className = 'card loading';
+  icon.textContent = '⏳';
+  icon.className = 'icon';
+
+  const url = buildUrl(img);
+
+  try {
+    // Show preview in grid
+    imgEl.src = url;
+
+    // Fetch as blob for download
+    const resp = await fetch(url, {mode: 'cors'});
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+
+    const blob = await resp.blob();
+    const blobUrl = URL.createObjectURL(blob);
+
+    // Trigger download
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = img.f + '.jpg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+
+    card.className = 'card done';
+    icon.textContent = '✅';
+    done++;
+
+  } catch(e) {
+    card.className = 'card error';
+    icon.textContent = '❌';
+    icon.title = e.message;
+    errors++;
+    console.error('Error for ' + img.f + ':', e);
+  }
+}
+
+async function startDownload() {
+  const btn = document.getElementById('btnStart');
+  btn.disabled = true;
+  btn.textContent = '⏳ Génération en cours...';
+  document.getElementById('progress-bar-wrap').style.display = 'block';
+  document.getElementById('msgAllow').style.display = 'block';
+  done = 0; errors = 0;
+
+  for (let i = 0; i < IMAGES.length; i++) {
+    const pct = Math.round((i / IMAGES.length) * 100);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('status').textContent = `⏳ Image ${i+1}/35 : ${IMAGES[i].t}...`;
+    document.getElementById('count-done').textContent = `${done} téléchargée(s) — ${errors} erreur(s)`;
+
+    await downloadImage(IMAGES[i], i);
+
+    // Pause entre téléchargements pour ne pas surcharger
+    await new Promise(r => setTimeout(r, 3500));
+  }
+
+  document.getElementById('progress-bar').style.width = '100%';
+  document.getElementById('status').textContent = `✅ Terminé ! ${done}/35 images téléchargées dans votre dossier Téléchargements.`;
+  document.getElementById('count-done').textContent = `${done} téléchargée(s) — ${errors} erreur(s)`;
+  btn.textContent = '✅ Terminé';
+  btn.style.background = '#66bb6a';
+}
+
+// ─── AUTO-DÉMARRAGE en mode incognito (pas de cookies Pollinations) ───────────
+let countdown = 4;
+function autoStart() {
+  const btn = document.getElementById('btnStart');
+  const status = document.getElementById('status');
+  if (countdown > 0) {
+    status.textContent = `⏳ Démarrage automatique dans ${countdown}s... (rechargement incognito détecté)`;
+    countdown--;
+    setTimeout(autoStart, 1000);
+  } else {
+    startDownload();
+  }
+}
+// Détecte le mode incognito : quota storage limité
+if (typeof navigator.storage !== 'undefined') {
+  navigator.storage.estimate().then(({quota}) => {
+    // En incognito, quota < 120 Mo sur Chrome ; en normal > 1 Go
+    if (quota < 120 * 1024 * 1024) {
+      document.getElementById('status').textContent = '🔒 Mode incognito détecté — démarrage automatique...';
+      setTimeout(autoStart, 500);
+    }
+  });
+}
+</script>
+</body>
+</html>

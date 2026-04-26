@@ -1,0 +1,258 @@
+==========================================================
+  MANUEL CE1 "MES LECTURES" — BELA LEKKOL MONTESSORI
+  35 PROMPTS POUR GÉNÉRATION D'IMAGES IA
+==========================================================
+
+OUTIL RECOMMANDÉ : Leonardo.ai (gratuit, 150 crédits/jour)
+  → https://app.leonardo.ai/image-generation
+  → Modèle : Leonardo Diffusion XL ou Phoenix
+  → Dimensions : 1024x768 (paysage 4:3)
+
+STYLE FIXE À COLLER AVANT CHAQUE PROMPT :
+------------------------------------------
+Illustration de livre de lecture pour enfants de 7 ans,
+style aquarelle numérique douce, traits arrondis et expressifs,
+couleurs chaudes et lumineuses, personnages enfants africains
+souriants, uniforme scolaire bleu et blanc ou tenues locales
+guinéennes, décor Afrique de l'Ouest / Guinée,
+lumière dorée de soleil tropical, format paysage 4:3,
+sans texte ni lettres dans l'image, fond légèrement texturé.
+
+NOMMAGE DES FICHIERS (dans CE1/imgs/) :
+  p1s1_rentree.jpg, p1s2_cartable.jpg, p1s3_recreation.jpg ...
+
+==========================================================
+PÉRIODE 1 — LA RENTRÉE (Septembre–Octobre)
+==========================================================
+
+[p1s1_rentree.jpg]
+Fillette africaine en uniforme scolaire bleu et blanc marche
+joyeusement vers son école avec son cartable rouge sur le dos,
+accompagnée d'un garçon souriant, grands manguiers en arrière-plan,
+matin ensoleillé de Guinée Conakry, cour d'école visible au fond.
+
+[p1s2_cartable.jpg]
+Garçon africain souriant ouvre fièrement son cartable bleu sur
+un bureau d'école, sort une trousse rouge, stylos et cahiers neufs,
+salle de classe lumineuse décorée de cartes colorées et dessins,
+tableau noir au fond, fenêtres ensoleillées.
+
+[p1s3_recreation.jpg]
+Cour d'école guinéenne animée pendant la récréation : filles
+africaines jouent à la corde à sauter, garçons jouent au football
+près d'un grand manguier, enfants qui rient, soleil tropical,
+maîtresse qui surveille depuis le couloir.
+
+[p1s4_marche_matin.jpg]
+Femme africaine en tenue traditionnelle colorée et son jeune fils
+parcourent un grand marché animé de Guinée, étals débordants de
+mangues dorées, tomates rouges et légumes verts, marchandes souriantes,
+atmosphère matinale lumineuse, paniers en rotin.
+
+[p1s5_famille_table.jpg]
+Famille guinéenne réunie le soir dans une grande cour, assis en
+cercle autour d'un grand plat de riz fumant et sauce arachide,
+grand-père âgé bienveillant en tête du cercle, enfants souriants,
+lumière chaude du coucher de soleil, ambiance chaleureuse.
+
+[p1s6_bibliotheque.jpg]
+Intérieur d'une bibliothèque scolaire africaine lumineuse, rayons
+remplis de livres colorés, garçon africain assis sur un coussin
+lisant un album illustré avec fascination, autres enfants qui
+choisissent des livres, ambiance calme et studieuse.
+
+[p1s7_village.jpg]
+Vue panoramique de Faranah en Guinée au bord du fleuve Niger,
+cases en banco aux toits de tôle, baobabs majestueux, vieux griot
+en boubou traditionnel assis sous un arbre entouré d'enfants en
+cercle qui écoutent, feu de camp, ciel étoilé du soir.
+
+==========================================================
+PÉRIODE 2 — CONTES ET SAISON SÈCHE (Novembre–Décembre)
+==========================================================
+
+[p2s1_arc_en_ciel.jpg]
+Fillette africaine en robe colorée debout devant sa case, bras
+levés vers un magnifique arc-en-ciel aux couleurs vives au-dessus
+d'un village guinéen après la pluie, feuilles de manguiers
+mouillées brillantes, sol rouge humide, joie sur son visage.
+
+[p2s2_conte_nuit.jpg]
+Enfants africains assis en cercle serré autour d'un vieux griot
+en boubou blanc, nuit étoilée de Guinée, feu de bois au centre
+projetant une lumière chaude orange, expressions d'émerveillement
+et d'écoute intense sur les visages des enfants.
+
+[p2s3_foret.jpg]
+Deux enfants africains marchent sur un sentier d'une forêt
+guinéenne dense et luxuriante, singes rouges dans les branches
+au-dessus, papillons colorés, calao au grand bec en vol,
+lumière dorée filtrée à travers le feuillage tropical.
+
+[p2s4_fete_annee.jpg]
+Salle de classe africaine décorée pour une fête de fin d'année,
+enfants en tenues colorées et uniformes, petit sapin décoré avec
+des ornements locaux (fruits, fleurs tropicales), parents souriants
+et applaudissant, maîtresse au tableau, ambiance festive.
+
+[p2s5_pecheur.jpg]
+Vieux pêcheur africain debout dans une pirogue en bois sur le
+fleuve guinéen à l'aube, filets argentés dans l'eau translucide,
+crevettes brillantes, hérons blancs sur les rives, reflets dorés
+du soleil levant sur l'eau calme, brume matinale légère.
+
+[p2s6_ceremonie.jpg]
+Cérémonie scolaire africaine en plein air sous un grand fromager,
+élève africaine en uniforme récite fièrement devant un micro,
+parents et enseignants applaudissent, directrice tenant des
+bulletins, estrade décorée de fleurs et de drapeaux guinéens.
+
+[p2s7_vacances_dec.jpg]
+Groupe d'enfants africains joyeux sur une route de savane
+guinéenne, petites valises colorées et sacs à dos, un vieux car
+bleu et jaune en arrière-plan, paysage de savane verdoyante,
+joie et liberté des vacances de décembre.
+
+==========================================================
+PÉRIODE 3 — HARMATTAN ET NATURE (Janvier–Mars)
+==========================================================
+
+[p3s1_rentree_janvier.jpg]
+File d'élèves africains en uniforme qui marchent en rang vers
+leur école en janvier, arbres aux feuilles sèches de la saison
+sèche, légère poussière ocre de l'harmattan dans l'air,
+nouveaux cahiers sous les bras, sourires malgré la chaleur.
+
+[p3s2_harmattan.jpg]
+Enfants africains dans une rue de village guinéen luttant
+contre un fort vent d'harmattan, poussière orange soulevée,
+feuilles sèches qui tournoient, garçon retenant son chapeau,
+fillette tenant sa jupe, ciel voilé de sable, ambiance dramatique.
+
+[p3s3_marche.jpg]
+Vue d'ensemble plongeante sur un grand marché guinéen très animé,
+rangées de femmes en tenues wax colorées derrière leurs étals,
+pyramides de mangues, tomates, ignames et épices, foule dense
+et colorée, toit de marché en métal, lumière tropicale.
+
+[p3s4_animaux_foret.jpg]
+Trois enfants africains s'arrêtent sur un sentier forestier
+guinéen, bouche ouverte d'émerveillement : un singe rouge dans
+les branches, une antilope gracieuse entre les arbres, un
+chimpanzé au loin, forêt dense et verte, lumière tamisée.
+
+[p3s5_lettre.jpg]
+Fillette africaine concentrée écrit une lettre à son bureau en
+bois dans une case guinéenne, enveloppe blanche et timbre posés
+à côté, fenêtre ouverte donnant sur un jardin tropical verdoyant,
+lumière douce de l'après-midi, stylo en main, expression sérieuse.
+
+[p3s6_cafe.jpg]
+Famille guinéenne dans une plantation de café en montagne,
+hommes et femmes et enfants cueillant des baies de café rouges
+sur des arbustes verts, grands paniers en rotin, collines
+verdoyantes du Fouta Djalon en arrière-plan, atmosphère de travail joyeux.
+
+[p3s7_berger.jpg]
+Jeune berger africain de 12 ans surveille son troupeau de
+moutons blancs sur les collines rouges du Fouta Djalon, bâton
+de berger, paysage majestueux de savane et falaises ocre,
+lumière dorée de fin de journée, ciel orange et bleu.
+
+==========================================================
+PÉRIODE 4 — PREMIÈRES PLUIES (Avril–Juin)
+==========================================================
+
+[p4s1_journee_femme.jpg]
+Cérémonie de la Journée de la Femme en Guinée, femmes africaines
+magnifiques en tenues traditionnelles colorées défilent, élèves
+en uniforme leur offrent des fleurs, drapeau guinéen rouge-jaune-vert,
+place publique décorée, foule festive et souriante.
+
+[p4s2_premieres_pluies.jpg]
+Enfants africains dans la cour de leur école, surprise et joie
+devant les premières grosses gouttes de pluie tropicale, ciel
+dramatique gris-violet, sol rouge qui commence à fumer, un enfant
+lève les mains vers la pluie, un autre court s'abriter.
+
+[p4s3_fete_ecole.jpg]
+Grande fête scolaire en plein air dans une école guinéenne,
+podium coloré avec des élèves en costumes traditionnels africains,
+parents spectateurs assis sous le grand fromager, banderoles
+colorées, ambiance joyeuse et festive, soleil éclatant.
+
+[p4s4_jardin.jpg]
+Groupe d'enfants africains en uniforme scolaire arrosent et
+entretiennent un grand jardin potager scolaire, rangées bien
+ordonnées de tomates rouges, aubergines violettes et salades
+vertes, arrosoirs colorés, soleil de milieu de matinée, fierté visible.
+
+[p4s5_pecheurs_fleuve.jpg]
+Trois pêcheurs africains adultes dans des pirogues en bois sur un
+grand fleuve guinéen au matin, filets tendus dans l'eau verte,
+hérons blancs perchés sur des pieux, mangroves sur les rives,
+reflets dorés et brume légère, ambiance paisible.
+
+[p4s6_case.jpg]
+Scène d'intérieur chaleureuse d'une grande case familiale guinéenne
+en banco, femmes qui cuisinent autour d'un foyer, enfants qui
+jouent sur des nattes colorées, tapis africains aux motifs
+géométriques, poutres en bois au plafond, lumière tamisée et dorée.
+
+[p4s7_vacances_paques.jpg]
+Enfants africains font joyeusement leurs valises pour les vacances
+de Pâques dans une maison colorée de Guinée, mère qui prépare
+des provisions alimentaires, cocotiers et bougainvillées dans
+le jardin, voiture chargée devant la maison, excitation palpable.
+
+==========================================================
+PÉRIODE 5 — GRANDE SAISON DES PLUIES (Mai–Juillet)
+==========================================================
+
+[p5s1_fete_travail.jpg]
+Défilé festif du 1er mai dans une rue principale de Conakry,
+travailleurs guinéens avec banderoles colorées rouge et jaune,
+élèves en uniforme brandissant des petits drapeaux guinéens,
+immeubles colorés en arrière-plan, ambiance joyeuse et civique.
+
+[p5s2_mangues.jpg]
+Groupe d'enfants africains souriants cueillent des mangues dorées
+et orangées dans un grand manguier chargé de fruits sous un ciel
+bleu, certains dans l'arbre, d'autres en bas avec des paniers
+en rotin, jus de mangue qui coule, joie de la récolte.
+
+[p5s3_dispensaire.jpg]
+Salle de consultation propre d'un dispensaire de village guinéen,
+infirmière africaine en blouse blanche rassurante examine
+doucement un enfant assis, mère souriante et attentive à côté,
+affiches de santé colorées aux murs, lumière naturelle claire.
+
+[p5s4_grande_famille.jpg]
+Grande réunion de famille africaine dans une vaste cour ombragée,
+trois générations réunies, grand-parents, parents, enfants et
+bébés, tables chargées de plats guinéens colorés, rires et
+embrassades, tenues traditionnelles, atmosp hère de bonheur.
+
+[p5s5_football.jpg]
+Match de football passionné sur un terrain de terre rouge en
+Guinée, enfants africains en maillots colorés (rouge vs bleu),
+gardien qui plonge pour arrêter un tir, supporters enthousiastes
+sur les bords, poussière de terre rouge, soleil de l'après-midi.
+
+[p5s6_remise_prix.jpg]
+Cérémonie solennelle de remise des prix scolaires, jeune élève
+africaine en uniforme monte les marches d'une estrade fleurie
+pour recevoir son diplôme des mains de la directrice, parents
+et camarades qui applaudissent chaleureusement, drapeaux et fleurs.
+
+[p5s7_grandes_vacances.jpg]
+Explosion de joie des grandes vacances : groupe d'enfants africains
+en shorts et robes colorées courent vers un grand fleuve guinéen
+scintillant, cartables et livres abandonnés sur l'herbe verte,
+bras levés vers le ciel bleu lumineux, sourires radieux, été.
+
+==========================================================
+FIN DES 35 PROMPTS
+NOMMAGE : p{période}s{semaine}_{slug}.jpg
+DOSSIER CIBLE : CE1\imgs\
+==========================================================

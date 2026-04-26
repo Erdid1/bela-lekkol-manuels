@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mes Lectures CE1 — Période 5 — Bela Lekkol Montessori</title>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --c1: #1E6823;
+  --c2: #4CAF50;
+  --cl: #D4EDDA;
+  --text: #1a1a1a;
+  --gray: #555;
+  --lgray: #f5f5f5;
+  --line: #ddd;
+  --font: 'Segoe UI', Arial, sans-serif;
+}
+body { font-family: var(--font); font-size: 10pt; color: var(--text); background: #e8e8e8; }
+
+/* ---- PAGE ---- */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: 8mm auto;
+  padding: 12mm 14mm 10mm 14mm;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+}
+@media print {
+  body { background: white; }
+  .page {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 10mm 13mm 8mm 13mm;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+  .no-print { display: none !important; }
+}
+@page { size: A4; margin: 0; }
+
+/* ---- BANDE LATÉRALE ---- */
+.page::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5mm;
+  background: var(--c1);
+}
+
+/* ---- EN-TÊTE DE PAGE ---- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--c1);
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+.page-header .week-title {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--c1);
+}
+.page-header .page-meta {
+  font-size: 8pt;
+  color: var(--gray);
+  text-align: right;
+}
+.page-num-badge {
+  display: inline-block;
+  background: var(--c1);
+  color: white;
+  font-size: 8pt;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+/* ---- BOÎTES SECTION ---- */
+.section-box {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin-bottom: 3mm;
+  overflow: hidden;
+}
+.section-box .sh {
+  background: var(--c1);
+  color: white;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.section-box .sh.light {
+  background: var(--cl);
+  color: var(--c1);
+}
+.section-box .sb {
+  padding: 3mm 4mm;
+}
+
+/* ---- PROGRAMME ---- */
+.prog-line {
+  font-size: 8.5pt;
+  color: var(--gray);
+  border-left: 3px solid var(--c2);
+  padding-left: 4px;
+  margin-bottom: 2px;
+}
+
+/* ---- ATELIERS ---- */
+.ateliers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2mm;
+}
+.atelier-cell {
+  background: var(--cl);
+  border: 1px solid var(--c2);
+  border-radius: 3px;
+  padding: 2mm 3mm;
+  font-size: 8pt;
+}
+.atelier-cell .atelier-label {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--c1);
+  margin-bottom: 1mm;
+  text-transform: uppercase;
+}
+
+/* ---- TEXTE + ILLUSTRATION ---- */
+.text-illus-row {
+  display: flex;
+  gap: 4mm;
+  margin-bottom: 3mm;
+}
+.illus-box {
+  width: 42mm;
+  min-height: 42mm;
+  flex-shrink: 0;
+  border: 1px dashed var(--c2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.illus-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.texte-col { flex: 1; }
+
+/* ---- TEXTE DE LECTURE (prose fluide) ---- */
+.texte-prose {
+  font-size: 9.5pt;
+  line-height: 1.75;
+}
+.texte-line {
+  display: flex;
+  gap: 2.5mm;
+  margin-bottom: 0.8mm;
+}
+.texte-line .ln {
+  min-width: 13px;
+  font-size: 6.5pt;
+  color: #bbb;
+  padding-top: 3px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.texte-line .txt {
+  flex: 1;
+}
+
+/* ---- MHF MINI-FICHIERS ---- */
+.mhf-box {
+  background: var(--cl);
+  border: 1.5px solid var(--c1);
+  border-radius: 4px;
+  padding: 2mm 4mm;
+  margin-bottom: 2mm;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 3mm;
+}
+.mhf-header {
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--c1);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.mhf-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.mhf-label {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.mhf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+}
+.mhf-tag {
+  background: var(--c1);
+  color: white;
+  font-size: 7.5pt;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+/* ---- COMPRÉHENSION ---- */
+.comp-item {
+  font-size: 9pt;
+  margin-bottom: 1.5mm;
+  padding-left: 4mm;
+}
+.comp-item::before { content: '❓ '; }
+.answer-line {
+  display: block;
+  border-bottom: 1px solid var(--line);
+  min-height: 5mm;
+  margin: 1mm 0 2mm 5mm;
+}
+
+/* ---- MOT À RETENIR ---- */
+.mot-retenir {
+  background: var(--cl);
+  border-left: 4px solid var(--c1);
+  padding: 2mm 4mm;
+  font-size: 9pt;
+  margin-bottom: 2mm;
+  font-style: italic;
+  border-radius: 0 3px 3px 0;
+}
+
+/* ---- EXERCICE BLOCK ---- */
+.exo-block {
+  margin-bottom: 3mm;
+}
+.exo-header {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+  margin-bottom: 1.5mm;
+}
+.exo-num {
+  background: var(--c1);
+  color: white;
+  font-size: 8pt;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.exo-ref {
+  font-size: 7.5pt;
+  color: var(--c2);
+  font-weight: 600;
+}
+.exo-consigne {
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+/* tableau 2 colonnes exercice */
+.exo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+.exo-table td {
+  padding: 1.5mm 2mm;
+  border: 1px solid var(--line);
+  vertical-align: top;
+}
+.exo-table td:first-child {
+  width: 58%;
+  background: var(--lgray);
+}
+.exo-table td:last-child {
+  width: 42%;
+}
+.blank { color: #bbb; font-style: italic; }
+
+/* ---- RETIENS ---- */
+.retiens-box {
+  background: var(--cl);
+  border: 1.5px solid var(--c1);
+  border-radius: 4px;
+  padding: 2mm 4mm;
+  margin-bottom: 3mm;
+  font-size: 8.5pt;
+}
+.retiens-box strong { color: var(--c1); }
+
+/* ---- COPIER / DICTÉE / PROD ---- */
+.write-lines {
+  margin-top: 1mm;
+}
+.write-line {
+  border-bottom: 1px solid var(--line);
+  min-height: 7mm;
+  margin-bottom: 1mm;
+}
+.model-text {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  color: #333;
+  background: #fafafa;
+  border: 1px dashed var(--line);
+  padding: 2mm 3mm;
+  border-radius: 3px;
+  margin-bottom: 1.5mm;
+}
+
+/* ---- POÈME ---- */
+.poeme-block {
+  background: var(--cl);
+  border-radius: 4px;
+  padding: 3mm 5mm;
+  font-size: 9.5pt;
+  line-height: 1.8;
+  font-style: italic;
+  border-left: 4px solid var(--c1);
+}
+.poeme-vers { display: block; }
+
+/* ---- JEU ORAL ---- */
+.jeu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5mm;
+}
+.jeu-item {
+  border: 1px solid var(--c2);
+  border-radius: 3px;
+  padding: 1.5mm 2mm;
+  font-size: 8pt;
+  background: var(--lgray);
+}
+.jeu-item::before { content: '🎯 '; }
+
+/* ---- DIFFÉRENCIATION ---- */
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+}
+.diff-n1 {
+  background: #fff8e1;
+  border: 1px solid #f9a825;
+  border-radius: 4px;
+  padding: 2mm 3mm;
+}
+.diff-n2 {
+  background: #e8f5e9;
+  border: 1px solid var(--c2);
+  border-radius: 4px;
+  padding: 2mm 3mm;
+}
+.diff-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.5mm;
+}
+.diff-n1 .diff-label { color: #f57f17; }
+.diff-n2 .diff-label { color: var(--c1); }
+.diff-item { font-size: 8.5pt; margin-bottom: 1mm; }
+
+/* ---- DESSIN ---- */
+.dessin-box {
+  border: 1px dashed var(--c2);
+  border-radius: 4px;
+  min-height: 25mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c2);
+  font-size: 8pt;
+  font-style: italic;
+  background: #fafafa;
+  margin-top: 2mm;
+}
+
+/* ---- COUVERTURE ---- */
+.cover-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 257mm;
+}
+.cover-header {
+  width: 100%;
+  background: var(--c1);
+  color: white;
+  text-align: center;
+  padding: 8mm 10mm;
+  border-radius: 4px;
+  margin-bottom: 6mm;
+}
+.cover-header h1 { font-size: 22pt; margin-bottom: 2mm; }
+.cover-header h2 { font-size: 14pt; font-weight: 400; }
+.cover-sub {
+  font-size: 11pt;
+  color: var(--c1);
+  font-weight: 600;
+  margin-top: 2mm;
+}
+.cover-months {
+  font-size: 10pt;
+  color: var(--gray);
+  margin: 2mm 0 6mm 0;
+}
+.sommaire-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--c1);
+  border-bottom: 2px solid var(--c1);
+  padding-bottom: 2mm;
+  margin-bottom: 4mm;
+  width: 100%;
+}
+.sommaire-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+.sommaire-table th {
+  background: var(--c1);
+  color: white;
+  padding: 2mm 4mm;
+  text-align: left;
+  font-size: 9pt;
+}
+.sommaire-table td {
+  padding: 2.5mm 4mm;
+  border-bottom: 1px solid var(--line);
+}
+.sommaire-table tr:nth-child(even) td { background: var(--cl); }
+.cover-footer {
+  width: 100%;
+  text-align: center;
+  font-size: 8pt;
+  color: var(--gray);
+  border-top: 1px solid var(--line);
+  padding-top: 3mm;
+  margin-top: auto;
+}
+
+/* ---- CORRIGÉS ---- */
+.corrige-block {
+  background: #fff3e0;
+  border: 1px solid #ff9800;
+  border-radius: 4px;
+  padding: 2mm 3mm;
+  font-size: 8pt;
+  margin-bottom: 2mm;
+}
+.corrige-block .cor-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #e65100;
+  text-transform: uppercase;
+  margin-bottom: 1mm;
+}
+
+/* ---- MOTS DE LA DICTÉE ---- */
+.dict-mots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-bottom: 2mm;
+}
+.dict-mot {
+  background: var(--c1);
+  color: white;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+.pt-copie {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  color: var(--c1);
+  background: var(--cl);
+  padding: 2mm 4mm;
+  border-radius: 3px;
+  margin-bottom: 2mm;
+  border-left: 3px solid var(--c1);
+}
+
+/* ════ ILLUSTRATION BANDEAU ════ */
+.illus-bandeau {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 3mm;
+  border: 0.5px solid #ccc;
+  page-break-inside: avoid;
+  background: #faf9f5;
+}
+.illus-bandeau img {
+  width: 100%;
+  height: auto;          /* ratio 4:3 naturel, aucune déformation */
+  max-height: 72mm;      /* plafond pour les petites pages */
+  display: block;
+  object-fit: cover;
+  object-position: center 18%;  /* montre la partie haute : personnages */
+}
+/* ════ LANGAGE ORAL ════ */
+.oral-section {
+  background: #FFF8E7;
+  border-left: 3.5px solid #F9A825;
+  padding: 2.5mm 4mm;
+  margin-bottom: 3mm;
+  border-radius: 0 4px 4px 0;
+  page-break-inside: avoid;
+}
+.oral-title {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: #E65100;
+  margin-bottom: 1.5mm;
+  letter-spacing: 0.3px;
+}
+.oral-questions {
+  margin: 0;
+  padding-left: 5mm;
+}
+.oral-questions li {
+  font-size: 8.5pt;
+  color: #4E342E;
+  margin-bottom: 1mm;
+  line-height: 1.45;
+}
+
+
+/* ════ QR CODES CANOPÉ ════ */
+.canope-qr {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5mm;
+  background: #EBF3FB;
+  border: 1px solid #2E75B6;
+  border-radius: 5px;
+  padding: 1.5mm 3mm;
+  margin: 1.5mm 0 2mm 0;
+  page-break-inside: avoid;
+  float: right;
+  margin-left: 4mm;
+}
+.canope-qr img {
+  width: 18mm;
+  height: 18mm;
+  display: block;
+  flex-shrink: 0;
+}
+.canope-qr-label {
+  font-size: 6.5pt;
+  color: #1a4a8a;
+  line-height: 1.5;
+  font-weight: 600;
+  max-width: 30mm;
+}
+.canope-qr-label .qr-url {
+  font-size: 5.5pt;
+  color: #555;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+</style>
+</head>
+<body>
+
+<div class="no-print" style="position:fixed;top:10px;right:10px;z-index:999">
+  <button onclick="window.print()" style="background:#1E6823;color:white;border:none;padding:8px 16px;border-radius:6px;font-size:11pt;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3)">
+    🖨️ Imprimer / Enregistrer en PDF
+  </button>
+</div>
+
+<div class="page">
+  <div class="cover-page">
+    <div class="cover-header">
+      <h1>📚 Mes Lectures CE1</h1>
+      <h2>Période 5 — Mai — Juillet</h2>
+    </div>
+    <div style="text-align:center;margin-bottom:4mm">
+      <div style="font-size:11pt;color:#1E6823;font-weight:600">École Bela Lekkol Montessori — Guinée</div>
+      <div style="font-size:9pt;color:#666;margin-top:1mm">Méthode Heuristique du Français (MHF) — Contexte guinéen</div>
+      <div style="width:40mm;height:3px;background:#1E6823;margin:3mm auto"></div>
+    </div>
+
+    <div style="width:100%">
+      <div class="sommaire-title">📋 Sommaire de la période</div>
+      <table class="sommaire-table">
+        <thead>
+          <tr>
+            <th style="width:30px">N°</th>
+            <th>Titre de la semaine</th>
+            <th>Notions clés</th>
+            <th style="text-align:right">Pages</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">1</td>
+  <td><strong>La fête du travail</strong></td>
+  <td style="font-size:8pt;color:#555">G19 : Révision phrase simple et complexe </td>
+  <td style="font-size:8pt;text-align:right">2–6</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">2</td>
+  <td><strong>La saison des mangues</strong></td>
+  <td style="font-size:8pt;color:#555">G20 : Bilan complet de la grammaire CE1 </td>
+  <td style="font-size:8pt;text-align:right">7–11</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">3</td>
+  <td><strong>Au dispensaire du village</strong></td>
+  <td style="font-size:8pt;color:#555">G21 : Révision analyse complète de la phrase </td>
+  <td style="font-size:8pt;text-align:right">12–16</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">4</td>
+  <td><strong>La grande famille guinéenne</strong></td>
+  <td style="font-size:8pt;color:#555">G22 : Révision de toute la grammaire CE1 </td>
+  <td style="font-size:8pt;text-align:right">17–21</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">5</td>
+  <td><strong>Le match de football</strong></td>
+  <td style="font-size:8pt;color:#555">G23 : Écriture et révision : le texte narratif </td>
+  <td style="font-size:8pt;text-align:right">22–26</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">6</td>
+  <td><strong>La remise des prix de fin d'année</strong></td>
+  <td style="font-size:8pt;color:#555">G24 : Révision finale CE1 </td>
+  <td style="font-size:8pt;text-align:right">27–31</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">7</td>
+  <td><strong>Les grandes vacances</strong></td>
+  <td style="font-size:8pt;color:#555">BILAN GÉNÉRAL CE1 </td>
+  <td style="font-size:8pt;text-align:right">32–36</td>
+</tr></tbody>
+      </table>
+    </div>
+
+    <div style="width:100%;background:#D4EDDA;border:1px solid #4CAF50;border-radius:4px;padding:3mm 5mm;margin-top:4mm">
+      <div style="font-size:9pt;font-weight:700;color:#1E6823;margin-bottom:1.5mm">Structure de chaque semaine (5 pages)</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;font-size:8pt">
+        <div style="background:white;border:1px solid #4CAF50;border-radius:3px;padding:2mm;text-align:center"><strong>P.1</strong><br>Texte &amp; Compréhension</div>
+        <div style="background:white;border:1px solid #4CAF50;border-radius:3px;padding:2mm;text-align:center"><strong>P.2</strong><br>Grammaire &amp; Conjugaison</div>
+        <div style="background:white;border:1px solid #4CAF50;border-radius:3px;padding:2mm;text-align:center"><strong>P.3</strong><br>Vocabulaire &amp; Corrigés</div>
+        <div style="background:white;border:1px solid #4CAF50;border-radius:3px;padding:2mm;text-align:center"><strong>P.4</strong><br>Copier / Dictée / Prod.</div>
+        <div style="background:white;border:1px solid #4CAF50;border-radius:3px;padding:2mm;text-align:center"><strong>P.5</strong><br>Poème / Jeu / Diff.</div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      Bela Lekkol Montessori — Manuel CE1 "Mes Lectures" — Méthode MHF — Contexte guinéen
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La fête du travail</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G19 : Révision phrase simple et complexe | C17 : Futur simple être/avoir/irréguliers | V19 : Révision champs lexicaux | O24 : Bilan accords GN et GV</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G19 : Révision phrase simple et complexe | C17 : Futur simple être/avoir/irréguliers | V19 : Révision champs lexicaux | O24 : Bilan accords GN et GV</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Le premier mai, toute la Guinée célèbre la fête du travail et rend hommage à tous les travailleurs.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G19 révision</span><span class="mhf-tag">Rév. G11</span><span class="mhf-tag">G13+G19</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C17 futur irréguliers</span><span class="mhf-tag">C17</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V19</span><span class="mhf-tag">O24 bilan accords</span><span class="mhf-tag">V19+V13</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Révision globale des types de phrases</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Futur simple de être/avoir/irréguliers</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Bilan des champs lexicaux vus en CE1</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Préparation orthographique au CE2</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">parmi</span><span class="dict-mot">par</span><span class="dict-mot">pour</span><span class="dict-mot">pendant</span><span class="dict-mot">puis</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La fête du travail</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p5s1_fete_travail.jpg" alt="La Fête du Travail">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que brandissent les participants de ce défilé ?</li>
+    <li>Décris les drapeaux guinéens et les banderoles colorées.</li>
+    <li>Pourquoi célèbre-t-on la Fête du Travail le 1er mai ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Le premier mai, la Guinée célèbre la fête du travail.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Ce jour-là, les travailleurs de tous les métiers sont honorés.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Les médecins, les enseignants, les paysans, les pêcheurs...</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Tous ont contribué au développement de leur pays.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">À Faranah, un grand défilé a lieu dans les rues principales.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Les syndicats marchent avec des bannières colorées.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Les élèves de l'école de Faranah participent aussi au défilé.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Ils portent des pancartes sur les métiers de demain.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Koumba porte une pancarte : &quot;Je serai médecin !&quot;</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Ibrahima a écrit : &quot;Je serai ingénieur pour construire des routes !&quot;</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Aminata dit : &quot;Je serai institutrice et j'apprendrai à tous les enfants.&quot;</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Sory rêve de devenir vétérinaire pour soigner les animaux.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Le maire de Faranah prononce un discours sous le fromager.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">&quot;Le travail, c'est la dignité&quot;, dit-il avec force.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">&quot;Travailler, c'est construire la Guinée pierre par pierre.&quot;</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Les enfants applaudissent et crient de joie.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Un groupe de musiciens joue des djembés et des balafons.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">La fête du travail est aussi une fête de la culture guinéenne.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Ce jour-là, tout le monde est fier d'être guinéen.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Qui est honoré lors de la fête du travail le 1er mai ?<span class="answer-line"></span></div><div class="comp-item">Quel métier chaque enfant veut-il exercer plus tard ?<span class="answer-line"></span></div><div class="comp-item">Que dit le maire dans son discours ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La fête du travail</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G19 : Révision phrase simple et complexe | C17 : Futur simple être/avoir/irréguliers | V19 : Révision champs lexicaux | O24 : Bilan accords GN et GV</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G19 révision</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADiklEQVR4nO3dUa4TMQxGYS5iFyyJ9bAK1sOSWEd5vFKkujW2k6Bzvte202l/RbKSSfzxeDy+COPr6RvQVubNYt4s5s1i3izmzWLeLObNYt4s3+KXv//4tec+/vz++c+fjW9yufLy5vh7U2+OXfJPOr5ZzJvFvFnMm+VFvbaoFCyLuH5JlWBzNVdc68VvTl25IlUJOr5ZzJvFvFnMmyVXry1SlcJcobSYm0Gr3FVs7p9cOL5ZzJvFvFnMm6VUr53SWL7NlWB3cnyzmDeLebOYN8ul9VrjymOlBKs8+3YnxzeLebOYN4t5s5TqtbmCpbEia5xBmyvftpV+jm8W82YxbxbzZsnVa9uWC+NSKPVqLPXZyl3Fl9rG8c1i3izmzWLeLB//xXm5cwuRc6XfnRzfLObNYt4s5s3yol5rnOdqXEw8Vb7Fb17M/aLKz3d8s5g3i3mzmDdLbn6tcRWvsZy5c/E0danFXPnm+GYxbxbzZjFvllK9NrcrIGVuv8Gpmbv4szHrNX0ybxbzZjFvltx66OKSBdC5LZ8Vc2uarofqXebNYt4s5s2yb34tdalTC6Cnjs+d+wkLxzeLebOYN4t5s3T2e6/0dopfrRyzcafGw9rsH6qnzJvFvFnMm6XU7/3U/tCUuX7vcyuescqsn+ObxbxZzJvFvFkG+xtUXm2s9Rq/KJaaBFxs643g+GYxbxbzZjFvlsH+BpWnrhrrpsrC61yPglM7Tx3fLObNYt4s5s3yol7bNgtWuXJjE6nKXcVvrmj8CY5vFvNmMW8W82bJ7TeYW1vctiA4V6ClVP4Nn1/Tu8ybxbxZzJuls7/Btj0D8fde0rJg2/Siz6/pKfNmMW8W82bp7B8aO3XI7Vx/g7nT2eYqX8c3i3mzmDeLebPk5te2aVwu3LYse0kDB/cb6JN5s5g3i3mzdJ6XW9G4P3TbQW/b9io0Tk06vlnMm8W8WcybpXRebsVc3/W5yqhSVDb+de4P1bvMm8W8WcybpXRe7iU1V+WL5hpfzZ3O5n4Dvcu8WcybxbxZSvXanEopdGo9tLFne+qLUhzfLObNYt4s5s1yab3W2KOgYu65/9hco1LHN4t5s5g3i3mzlM7zqDjV732xbavp3DkirofqKfNmMW8W82YZ7B9aMXdgbMW2R9KcX1MP82YxbxbzZrn0/DUNcXyzmDeLebOYN4t5s5g3i3mzmDeLebP8BQI1TYzuiSR8AAAAAElFTkSuQmCC" alt="QR Code Types de phrases – décl."><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Types de phrases – décl.</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L02a</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G19 révision</span>
+    <span class="exo-consigne">Identifie le type de phrase et la structure.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le premier mai, la Guinée célèbre la fête du travail. (simple/complexe?)</td><td>simple</td></tr><tr><td>Je serai médecin et j'aiderai les malades. (simple/complexe? conjonction?)</td><td>complexe/et</td></tr><tr><td>Pourquoi tout le monde est-il fier ? (type?)</td><td>interrogative</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Rév. G11</span>
+    <span class="exo-consigne">Complète avec la bonne conjonction.</span>
+  </div>
+  <table class="exo-table"><tr><td>Je travaillerai ___ je veux réussir.</td><td>parce que</td></tr><tr><td>___ tu travailles bien, tu seras médecin.</td><td>Si</td></tr><tr><td>Je suis content ___ ma maîtresse est heureuse.</td><td>parce que</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G13+G19</span>
+    <span class="exo-consigne">Analyse complète de chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le maire a prononcé un discours sous le fromager.</td><td>Sujet:le maire / PC avoir:a prononcé / COD:un discours / CC lieu:sous le fromager</td></tr><tr><td>Koumba portera une pancarte demain.</td><td>Sujet:Koumba / FS:portera / COD:une pancarte / CC temps:demain</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C17 futur irréguliers</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjElEQVR4nO3dUa4TMQxGYS5iFyyJ9bAK1sOSWEd5RIp03Ro7TqpzvtdOO9X8smQlk+Tj8Xh8EcbX039Ao8ybxbxZzJvFvFnMm8W8WcybxbxZvsUff//xa+Z//Pn98/X7Lhcvlu/GF8fin0rd6NSTXFjfLObNYt4s5s3ypF9bVHqfRaojSzU7jQ1a5bvx3xh7kgvrm8W8WcybxbxZcv3aYqyNahzYqnSC+8bIxp6k9c1i3izmzWLeLKV+bZ9986GNPVfjGNkY65vFvFnMm8W8WS7t11LiFqwy8Rp/2vii3Bjrm8W8WcybxbxZSv3aWIdS6apiYz8VG3uS1jeLebOYN4t5s+T6tbFFjo0qvd5YnzjG+mYxbxbzZjFvlif92p1zfGOvpDUuA7jkSVrfLObNYt4s5s3yEZ9vUJnjaxyN2jfOlbpvbN+QWeN+c9Y3i3mzmDeLebOUxtca99WIL07ZN5LVuGq18b4p1jeLebOYN4t5s3S+v9bYkZ06SaByzMJbjOtZ3yzmzWLeLObN0rk+tNLN7TtYoLJFR0Vj69f4rKxvFvNmMW8W82bpPD+00r6lNG58NjaJ2XhAauVi65vFvFnMm8W8WXLrDVIqc5qxUysZUn8jvngf1xvoH/NmMW8W82Z50q8tGve32LcPWsW+c7BSN4pVnob1zWLeLObNYt4suX4tNrbZbOySrmrR2HJWmkrrm8W8WcybxbxZOsfXTu2w9hbrNPcNAvr+mj5l3izmzWLeLKX318YmMRvnYVMaX2c7tcvIwvpmMW8W82Yxb5bO+dCUU6NRsTvfuWv8ZeubxbxZzJvFvFmO9WuLd5w8bdwQOMXxNb3KvFnMm8W8WY7t5xFfnPob+7Y2S/H8UF3HvFnMm8W8WW4ZX1vs26xtcWrvtsXYd61vFvNmMW8W82bpPN+gYt/c4iUDavsOV02xvlnMm8W8WcybJXd+6J0708afpkbB9r371njElPt56FXmzWLeLObNUjrvfV/D0jiuV2nuUj9VuTj+ru+v6T+ZN4t5s5g3S6lf22dsFWflu6cWNlRuZH2zmDeLebOYN8ul/doibt/G9vM4tYSg8UbWN4t5s5g3i3mzlPq1sSGk+L5x+9aocd/axoWoKdY3i3mzmDeLebPk+rWx5aKnJkD32Xf6gfOh+pR5s5g3i3mzXLr/mjaxvlnMm8W8WcybxbxZzJvFvFnMm8W8Wf4CX2kl2Kbnbu0AAAAASUVORK5CYII=" alt="QR Code Présent verbes en –er"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent verbes en –er</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L18</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C17 futur irréguliers</span>
+    <span class="exo-consigne">Conjugue au futur simple.</span>
+  </div>
+  <table class="exo-table"><tr><td>être : je ___ / nous ___</td><td>serai/serons</td></tr><tr><td>avoir : tu ___ / ils ___</td><td>auras/auront</td></tr><tr><td>aller : elle ___ / vous ___</td><td>ira/irez</td></tr><tr><td>faire : il ___ / elles ___</td><td>fera/feront</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C17</span>
+    <span class="exo-consigne">Complète au futur simple.</span>
+  </div>
+  <table class="exo-table"><tr><td>Koumba ___ médecin. (être)</td><td>sera</td></tr><tr><td>Ils ___ de la joie. (avoir)</td><td>auront</td></tr><tr><td>Nous ___ à Conakry. (aller)</td><td>irons</td></tr><tr><td>Je ___ de beaux dessins. (faire)</td><td>ferai</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La fête du travail</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G19 : Révision phrase simple et complexe | C17 : Futur simple être/avoir/irréguliers | V19 : Révision champs lexicaux | O24 : Bilan accords GN et GV</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Révision champs lexicaux — V19</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Bilan des champs lexicaux : école, nature, marché, pêche, forêt, agriculture, fête...</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V19</span>
+    <span class="exo-consigne">Pour chaque thème, donne 4 mots du champ lexical.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les métiers : ___________</td><td>médecin,ingénieur,institutrice,vétérinaire... / arbres,fleuve,forêt,oiseaux... / élève,cahier,maîtresse,tableau...</td></tr><tr><td>La nature guinéenne : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>L'école : ___________</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">O24 bilan accords</span>
+    <span class="exo-consigne">Accorde tous les éléments.</span>
+  </div>
+  <table class="exo-table"><tr><td>les (grand) (travailleur) guinéen___</td><td>les grands travailleurs guinéens</td></tr><tr><td>une (beau) (pancarte) (coloré)___</td><td>une belle pancarte colorée</td></tr><tr><td>des (vieux) (médecin) (expérimenté)___</td><td>des vieux médecins expérimentés</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V19+V13</span>
+    <span class="exo-consigne">Donne 3 mots de la famille de chaque mot.</span>
+  </div>
+  <table class="exo-table"><tr><td>travailler : ___</td><td>travail,travailleur,travaux</td></tr><tr><td>enseigner : ___</td><td>enseignant,enseignement,école</td></tr><tr><td>construire : ___</td><td>construction,constructeur,reconstruit</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : simple / complexe+et / interrogative</div><div style="font-size:8pt">Ex.2 : parce que / Si / parce que</div><div style="font-size:8pt">Ex.3 : analyses complètes selon modèle</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : serai/serons / auras/auront / ira/irez / fera/feront</div><div style="font-size:8pt">Ex.2 : sera / auront / irons / ferai</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : réponses libres selon mots vus</div><div style="font-size:8pt">Ex.2 : grands travailleurs guinéens / belle pancarte colorée / vieux médecins expérimentés</div><div style="font-size:8pt">Ex.3 : familles correctes</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Les travailleurs de tous les métiers (médecins, enseignants, paysans, pêcheurs...).  2. Koumba→médecin, Ibrahima→ingénieur, Aminata→institutrice, Sory→vétérinaire.  3. &quot;Le travail c'est la dignité / construire la Guinée.&quot;</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La fête du travail</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G19 : Révision phrase simple et complexe | C17 : Futur simple être/avoir/irréguliers | V19 : Révision champs lexicaux | O24 : Bilan accords GN et GV</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Le premier mai, toute la Guinée rend hommage à ses travailleurs de tous les métiers.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Les élèves ont défilé et ont montré leurs rêves pour l'avenir de la Guinée.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">parmi</span> <span class="dict-mot">par</span> <span class="dict-mot">pour</span> <span class="dict-mot">pendant</span> <span class="dict-mot">puis</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Parmi les élèves, beaucoup veulent travailler pour la Guinée. Puis ils défileront.</div><div class="model-text">Pendant la fête, par les rues de Faranah, ils marcheront pour le travail.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris le métier que tu voudras faire plus tard en 6-8 phrases. Utilise le futur simple.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>sera — aura — ira — fera — travailler — aider — construire — Guinée</em></div><div class="model-text" style="color:var(--c1)">Plus tard, je serai... Je travaillerai pour...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La fête du travail</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G19 : Révision phrase simple et complexe | C17 : Futur simple être/avoir/irréguliers | V19 : Révision champs lexicaux | O24 : Bilan accords GN et GV</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité 4 métiers vus dans le texte</div><div class="jeu-item">conjugue &quot;être&quot; futur simple à &quot;vous&quot;</div><div class="jeu-item">analyse : &quot;Le maire prononcera un discours sous le fromager.&quot;</div><div class="jeu-item">donne 3 mots du champ lexical des métiers</div><div class="jeu-item">accorde : &quot;les (grand) (travailleur) guinéen&quot;</div><div class="jeu-item">donne 3 mots de la famille de &quot;travailler&quot;</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Analyse complète de ces phrases :</div>
+        <div class="diff-item">Le premier mai, les travailleurs guinéens défilent dans les rues de Faranah.<span class="answer-line"></span></div><div class="diff-item">Koumba sera médecin parce qu'elle veut aider les malades de Guinée.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris la fête du travail ou un défilé en 8 phrases : futur simple de être/avoir/aller/faire, phrases complexes.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : 4 futur simple irréguliers, parce que/si/quand, COD+CC lieu+CC temps, accords GN.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 1 / Période 5</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — La saison des mangues</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G20 : Bilan complet de la grammaire CE1 | C18 : Les 3 temps ensemble (présent/PC/FS) | V20 : Les mots composés | O25 : Révision orthographe lexicale</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G20 : Bilan complet de la grammaire CE1 | C18 : Les 3 temps ensemble (présent/PC/FS) | V20 : Les mots composés | O25 : Révision orthographe lexicale</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>En juin, les manguiers de Guinée donnent leurs fruits et les enfants cueillent les mangues sous les arbres.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G20 bilan</span><span class="mhf-tag">G20</span><span class="mhf-tag">G20 révision</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C18 3 temps</span><span class="mhf-tag">C18</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V20</span><span class="mhf-tag">V20</span><span class="mhf-tag">O25</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Identifier les temps verbaux dans un texte</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Reconstituer la chronologie d'un texte</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Former des mots composés</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Écrire un texte avec les 3 temps</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">manguier</span><span class="dict-mot">fromager</span><span class="dict-mot">cocotier</span><span class="dict-mot">bananier</span><span class="dict-mot">palmier</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La saison des mangues</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p5s2_mangues.jpg" alt="La saison des mangues">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Comment les enfants cueillent-ils les mangues ?</li>
+    <li>Décris les couleurs du manguier et des fruits.</li>
+    <li>Qu'est-ce que la saison des mangues représente pour les familles guinéennes ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">En Guinée, la saison des mangues commence en mai et se termine en juillet.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Les manguiers sont partout : dans les cours, les rues, les champs.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Ibrahima adore les mangues. Il les mange depuis qu'il est tout petit.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">L'année dernière, son père a planté un nouveau manguier dans la cour.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">&quot;Dans trois ans, il portera des fruits !&quot; a dit son père.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Cette année, le vieux manguier de la grand-mère a donné beaucoup de fruits.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Ibrahima est monté sur les branches basses pour cueillir les mangues mûres.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Sa petite sœur Hawa tend son tablier pour les attraper.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">&quot;Fais attention !&quot; crie la grand-mère depuis la véranda.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">&quot;Une mangue tombée est une mangue gâtée !&quot;</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Ibrahima a cueilli vingt mangues dorées en une heure.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">La grand-mère les a lavées et a préparé un délicieux jus de mangue.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Ce jus frais est le meilleur du monde, dit Ibrahima.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">L'an prochain, ils feront de la confiture de mangue.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">&quot;Nous vendrons aussi des mangues au marché !&quot;</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Hawa dit : &quot;Je mangerai de la mangue toute ma vie !&quot;</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Le manguier est l'arbre symbole de la Guinée pour beaucoup de familles.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Il donne de l'ombre, de la fraîcheur et de délicieux fruits.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">La saison des mangues est un cadeau de la nature guinéenne.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Comment Ibrahima cueille-t-il les mangues ? Qui l'aide ?<span class="answer-line"></span></div><div class="comp-item">Que fait la grand-mère avec les mangues cueillies ?<span class="answer-line"></span></div><div class="comp-item">Que feront Ibrahima et sa famille avec les mangues l'an prochain ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — La saison des mangues</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G20 : Bilan complet de la grammaire CE1 | C18 : Les 3 temps ensemble (présent/PC/FS) | V20 : Les mots composés | O25 : Révision orthographe lexicale</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G20 bilan</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO3d240bMQxG4WyQLrak1JMqtp6UtHU4jwEEmDbBy9g453v1Zcb+IYDQSNTH7Xb7IYyfV9+AVpk3i3mzmDeLebOYN4t5s5g3i3mz/Ipf/vz9tXMf33//PH/d+M3HqxXxN6eue9U/eXB8s5g3i3mzmDfLg3rtMFcKxRdKvbmiUlWlyrer7tnxzWLeLObNYt4suXrtkKoUGiuUlNQcWeqrGq39k45vFvNmMW8W82Yp1Wtz4vqlUt001lxXVaAVjm8W82YxbxbzZnnRei2WWkfWuBTueHVu3dwcxzeLebOYN4t5s5TqtbUKpbFAO6x9VWztn3R8s5g3i3mzmDdLrl5b2+TYqFLrrdWJaxzfLObNYt4s5s3yoF57i2d8h8o9V0qwtQ2hFY5vFvNmMW8W82b5iM83qDzja5yNSmm8UOX3Nkp1drP/mv4zbxbzZjFvltLz0MaZrDlX9YxLfbZy3RTHN4t5s5g3i3mzlJ6HNjb4X5t9izXuLW28jZj9cnWXebOYN4t5swyeR/WaC/1TLToq1tqKpDi+WcybxbxZzJulc7/B3GxUZSn/izzEnDthK/VmxzeLebOYN4t5s3TuN5jbnBC/uaLxCHfPe9fLMW8W82Yxb5a98w3mZpTmToOPK7JUrTe3a9X1a7rLvFnMm8W8WR7Mrx3W2ns0vpq6jfjNFZV7PlTqU8c3i3mzmDeLebPk6rXDO5YzKWtlVErlz3F8s5g3i3mzmDdLbn9o/Iwv/uyh8fng3LnrjUeCzrXttV+u7jJvFvNmMW+WwfOoKp0zGhedpVRWqFUuFGts7+H4ZjFvFvNmMW+W0n6DxpYVa9XcXP+1tfa59l/Ts8ybxbxZzJtlsF/uYW4LwVxnt5TUdSs36fyanmXeLObNYt4se89DK9/cON02d1TC3F01cnyzmDeLebOYN8ve/FqsMoO2tjHzUJlQmzuTIeb4ZjFvFvNmMW+W3Pq1taeHc2vBGlvgzj14nTtHwvHNYt4s5s1i3iyd+w1iaz3UUlXVXPvctQ4l9vPQXebNYt4s5s2ydx5VSmOFMrcE76rnsJULOb5ZzJvFvFnMm+VF67VGlUnAtRPs4882XsjxzWLeLObNYt4spXptbQopdd3KorO14q7xQimObxbzZjFvFvNmydVra9tF19qTzS12S3228eCrmOObxbxZzJvFvFlK573r7Ti+WcybxbxZzJvFvFnMm8W8WcybxbxZ/gFRBhj7ERdmAwAAAABJRU5ErkJggg==" alt="QR Code La phrase"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>La phrase</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L01</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G20 bilan</span>
+    <span class="exo-consigne">Identifie le temps de chaque verbe souligné.</span>
+  </div>
+  <table class="exo-table"><tr><td>Il mange des mangues. (présent/PC/FS?)</td><td>présent</td></tr><tr><td>Il a cueilli des mangues. (temps?)</td><td>PC</td></tr><tr><td>Il fera de la confiture. (temps?)</td><td>futur simple</td></tr><tr><td>Il est monté sur l'arbre. (temps?)</td><td>PC avec être</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G20</span>
+    <span class="exo-consigne">Analyse la phrase complète.</span>
+  </div>
+  <table class="exo-table"><tr><td>L'année dernière, son père a planté un nouveau manguier dans la cour.</td><td>CC temps: l'année dernière / Sujet: son père / PC avoir: a planté / COD: un nouveau manguier / CC lieu: dans la cour</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G20 révision</span>
+    <span class="exo-consigne">Transforme aux 3 temps.</span>
+  </div>
+  <table class="exo-table"><tr><td>Ibrahima cueille des mangues. →</td><td>cueille / a cueilli / cueillera</td></tr><tr><td>présent : ___ / PC : ___ / futur simple : ___</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C18 3 temps</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADhUlEQVR4nO3d3c0TQQxGYT5EF5REPVRBPZREHeEy0kg4mLE9E855bpPNz76yZM3uej4ej8cnYXw+/QM0yrxZzJvFvFnMm8W8WcybxbxZzJvlS/zy128/Zn7Hr5/fq37G8lHLsTtfFB8bu+RMWt8s5s1i3izmzfKiX1vsNCyLuH+Jm6y+YxepY1MnZ+xMLqxvFvNmMW8W82bJ9WuLnd4n9ebUGtki1WQVvjml70wurG8W82YxbxbzZtnq18YUtm+LwsW4t2B9s5g3i3mzmDfLpf3a2KJY3Ov19YmnWN8s5s1i3izmzbLVr/U1LHGj1Neg7fyqwk/uY32zmDeLebOYN0uuXxu7Ppi6TPkWry5OXWm1vlnMm8W8Wcyb5eMt5uVe8rxB7C0uj1rfLObNYt4s5s3yol+7ZDUqdmrCWt9Hpf5C6ousbxbzZjFvFvNmya2vnZpbW9j7FN771rcY13eurG8W82YxbxbzZtlaX4vfvLjkTrFTVy37Luku7Nf0ZN4s5s1i3iyN83JPDcMo7OYKV9AuGStifbOYN4t5s5g3y4t+re/64CWjaC/ZsiA+1uuh+kfmzWLeLObNktvvvXAfz/jNqVdjd+5g0DcGLmZ9s5g3i3mzmDfL1vy1VAt25935qe+95L65nTNpfbOYN4t5s5g3S65fG3uos9DOTXaFV3gLh3/sHGt9s5g3i3mzmDdL5f1rY4PPUlId2ViP2bfc5v1rejJvFvNmMW+WY/u9j93of6ozGvtH3r+mPzJvFvNmMW+WuflrsUsG1S7uXH3bWam0vlnMm8W8WcybpXF/g9j/N3+tcEpa31Ze1jeLebOYN4t5szSur41thrDzM3aO7XtGoq+Ztb5ZzJvFvFnMmyW3vjamcAemwu1EY6f2PF14PVRP5s1i3izmzZKbl9uncPemsQG5O9M+Tv0F65vFvFnMm8W8WSrnr6XcuYKWmvbRt1TXx/pmMW8W82Yxb5bG/d4XhQ9Xpj6qbyLu2NOyhW+2vlnMm8W8Wcyb5dj8tdhOk7VzH1nhBqmF1zQLJ8pZ3yzmzWLeLObNcmm/1vcYQOqj+u77j/U9D2t9s5g3i3mzmDfLVr82tolUrG+XrJSxZzydv6a/Zd4s5s1i3iy5fm3scdHCQbWpY3d+RuEXub6mGubNYt4s5s1y6fw1NbG+WcybxbxZzJvFvFnMm8W8WcybxbxZfgNhqULzFSXqPAAAAABJRU5ErkJggg==" alt="QR Code Présent être et avoir"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent être et avoir</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L15</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C18 3 temps</span>
+    <span class="exo-consigne">Conjugue aux 3 temps.</span>
+  </div>
+  <table class="exo-table"><tr><td>manger : il (pr) ___ / (PC) ___ / (FS) ___</td><td>mange/a mangé/mangera</td></tr><tr><td>cueillir : nous (pr) ___ / (PC) ___ / (FS) ___</td><td>cueillons/avons cueilli/cueillerons</td></tr><tr><td>faire : tu (pr) ___ / (PC) ___ / (FS) ___</td><td>fais/as fait/feras</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C18</span>
+    <span class="exo-consigne">Mets au temps demandé.</span>
+  </div>
+  <table class="exo-table"><tr><td>Elle mange une mangue. (PC)→</td><td>a mangé</td></tr><tr><td>Ils préparent du jus. (FS)→</td><td>prépareront</td></tr><tr><td>Nous avons vendu au marché. (présent)→</td><td>vendons</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — La saison des mangues</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G20 : Bilan complet de la grammaire CE1 | C18 : Les 3 temps ensemble (présent/PC/FS) | V20 : Les mots composés | O25 : Révision orthographe lexicale</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Mots composés — V20</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADg0lEQVR4nO3d3U0DMRBFYYLogpKohyqoh5KoIzwiWYqTYWZsR+d8r/nZ1V6NNLK99uV6vb4I43X3DWgp82YxbxbzZjFvFvNmMW8W82Yxb5a3+cfvH19r7uPn+/Px2wh9OXOh0G/nDnmS1jeLebOYN4t5s9zp1waZhmUw718yDVqmIxsMf1XYzS17kgPrm8W8WcybxbxZYv3aINP7hL58ZkdWOGTW9yQH1jeLebOYN4t5s6T6tV0Ku6p5J7hsEnMZ65vFvFnMm8W8WQ7t10JtVOGng8xvz2R9s5g3i3mzmDdLql/ra1gy41x9Tdayf+5jfbOYN4t5s5g3S6xfWzY/mJmm3DU217fIrpD1zWLeLObNYt4sl2fcL7dw/VrhgrWnmB61vlnMm8W8Wcyb5U6/duZoVN/AVqjn6vurwv1LBtY3i3mzmDeLebPcmQ89c7XXMpl7DnVzoWeVebDWN4t5s5g3i3mzpMbXQl8uPHagb+iqT1/rN7Bf0x/zZjFvFvNmia1f6+vI5hfK6Osx+64753yoHmXeLObNYt4sjecbFHZzfe9aHnJkwfy3ha2f9c1i3izmzWLeLOv2Xys8jyrz20NOMOhbGDhnfbOYN4t5s5g3S+P5BrvmNAsbtL53WjMyD9b6ZjFvFvNmMW+WWL9WuLXZslYoc5Ohzii0i+/8NkJcv6abzJvFvFnMm6VyfK1vd7a5zO4Xy17bHPQNt7l+TX/Mm8W8WcybpbJfKzwmau6QichlJ04VPjrrm8W8WcybxbxZ7vRroQ7lzG3Rzty7rXA3uhDrm8W8WcybxbxZYucb9O1R0Td0tWspXOjTzF25fk03mTeLebOYN0vj+QYhhxxPtWvGc9D3NKxvFvNmMW8W82aJnW+wTOFE5K4zGQp/63lU+ifzZjFvFvNmia1f6zN/qXMu835oRuFLrKEvu35NjzJvFvNmMW+W1P5rGbuOaxpkdvvoG6rrY32zmDeLebOYN0vj+aGDXUNmfTviHrKaz/cNdJN5s5g3i3mzNJ5HldH3nmbouoU7yvVtCBxifbOYN4t5s5g3y6H92iGvAWT0vSOR+bL1zWLeLObNYt4sqX6tr/fpmzzNyCx2O+QAB+ubxbxZzJvFvFli+6/16ZtMDF13sGwNWmYJXui61jeLebOYN4t5sxy6/5qaWN8s5s1i3izmzWLeLObNYt4s5s1i3iy/yeU5vDQomMAAAAAASUVORK5CYII=" alt="QR Code Familles de mots"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Familles de mots</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L23</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Un mot composé est formé de deux mots ou plus : manguier = mangue + ier (suffixe d'arbre).</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V20</span>
+    <span class="exo-consigne">Décompose ces mots composés.</span>
+  </div>
+  <table class="exo-table"><tr><td>manguier -&gt; mangue + ___</td><td>-ier (suffixe)</td></tr><tr><td>porte-monnaie -&gt; ___ + ___</td><td>porte+monnaie</td></tr><tr><td>arc-en-ciel -&gt; ___ + ___ + ___</td><td>arc+en+ciel</td></tr><tr><td>tournesol -&gt; ___ + ___</td><td>tourne+sol</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V20</span>
+    <span class="exo-consigne">Forme un mot composé pour chaque définition.</span>
+  </div>
+  <table class="exo-table"><tr><td>une fleur qui tourne vers le soleil : ___</td><td>tournesol</td></tr><tr><td>un couteau à papier : ___</td><td>coupe-papier</td></tr><tr><td>un sac à dos : ___</td><td>sac à dos</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">O25</span>
+    <span class="exo-consigne">Orthographe lexicale : complète avec le bon suffixe d'arbre.</span>
+  </div>
+  <table class="exo-table"><tr><td>mango -&gt; mangu___</td><td>manguier</td></tr><tr><td>coco -&gt; coco___</td><td>cocotier</td></tr><tr><td>banane -&gt; banan___</td><td>bananier</td></tr><tr><td>palme -&gt; palm___</td><td>palmier</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : présent / PC / futur simple / PC avec être</div><div style="font-size:8pt">Ex.2 : analyse complète voir modèle</div><div style="font-size:8pt">Ex.3 : cueille / a cueilli / cueillera</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : mange/a mangé/mangera / cueillons/avons cueilli/cueillerons / fais/as fait/feras</div><div style="font-size:8pt">Ex.2 : a mangé / prépareront / vendons</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : -ier / porte+monnaie / arc+en+ciel / tourne+sol</div><div style="font-size:8pt">Ex.2 : tournesol / coupe-papier / sac à dos</div><div style="font-size:8pt">Ex.3 : manguier / cocotier / bananier / palmier</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Il monte sur les branches et sa sœur Hawa tend son tablier.  2. Elle les lave et fait du jus de mangue.  3. Faire de la confiture et vendre des mangues au marché.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — La saison des mangues</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G20 : Bilan complet de la grammaire CE1 | C18 : Les 3 temps ensemble (présent/PC/FS) | V20 : Les mots composés | O25 : Révision orthographe lexicale</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">En juin, les manguiers de Guinée donnent leurs fruits et les enfants cueillent les mangues.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">L'an prochain, Ibrahima et sa famille feront de la confiture de mangue à vendre.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">manguier</span> <span class="dict-mot">fromager</span> <span class="dict-mot">cocotier</span> <span class="dict-mot">bananier</span> <span class="dict-mot">palmier</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Sous le manguier et le palmier, les enfants jouent à l'ombre du fromager.</div><div class="model-text">Le bananier pousse vite et le cocotier donne ses noix en saison.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris ta saison préférée ou un fruit que tu aimes en Guinée en 6-8 phrases avec les 3 temps.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>mangue — manguier — cueillir — jus — confiture — saison — soleil — famille</em></div><div class="model-text" style="color:var(--c1)">Ma saison préférée est... Chaque année... L'an prochain...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — La saison des mangues</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G20 : Bilan complet de la grammaire CE1 | C18 : Les 3 temps ensemble (présent/PC/FS) | V20 : Les mots composés | O25 : Révision orthographe lexicale</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">nomme 3 arbres fruitiers de Guinée</div><div class="jeu-item">conjugue &quot;manger&quot; aux 3 temps à &quot;il&quot;</div><div class="jeu-item">analyse : &quot;L'année dernière, il a planté un manguier dans la cour.&quot;</div><div class="jeu-item">donne le mot composé pour &quot;une fleur qui tourne vers le soleil&quot;</div><div class="jeu-item">quel suffixe donne le nom d'un arbre fruitier ? (ex: mangu___?)</div><div class="jeu-item">cité 3 fruits guinéens courants</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Identifie les temps et analyse ces phrases :</div>
+        <div class="diff-item">Ibrahima mange des mangues chaque jour.<span class="answer-line"></span></div><div class="diff-item">L'année dernière, il a cueilli vingt mangues.<span class="answer-line"></span></div><div class="diff-item">L'an prochain, ils feront de la confiture.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Raconte la saison des mangues en 8 phrases avec les 3 temps.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : présent/PC/futur simple, CC temps pour chaque époque, COD, mots composés.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 2 / Période 5</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Au dispensaire du village</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G21 : Révision analyse complète de la phrase | C19 : Révision de tous les temps | V21 : Vocabulaire médical/santé | O26 : Orthographe grammaticale bilan</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G21 : Révision analyse complète de la phrase | C19 : Révision de tous les temps | V21 : Vocabulaire médical/santé | O26 : Orthographe grammaticale bilan</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Quand Mariama est tombée malade, sa mère l'a emmenée au dispensaire du village où le médecin l'a soignée.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G21 analyse</span><span class="mhf-tag">G11+G16</span><span class="mhf-tag">Révision complète</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C19 révision totale</span><span class="mhf-tag">C19</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V21</span><span class="mhf-tag">V21</span><span class="mhf-tag">O26 bilan</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Analyse syntaxique complète</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Révision de tous les temps vus en CE1</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Vocabulaire médical courant</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Bilan orthographe grammaticale</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">emmener</span><span class="dict-mot">amener</span><span class="dict-mot">apporter</span><span class="dict-mot">emporter</span><span class="dict-mot">donner</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Au dispensaire du village</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p5s3_dispensaire.jpg" alt="Au dispensaire">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que fait l'infirmière ? Comment est-elle habillée ?</li>
+    <li>Décris l'expression de l'enfant et celle de sa mère.</li>
+    <li>Pourquoi est-il important d'aller au dispensaire quand on est malade ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Un matin, Mariama ne se sentait pas bien du tout.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Elle avait de la fièvre et mal à la tête depuis la veille.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Sa mère l'a emmenée au dispensaire du quartier.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Le dispensaire est ouvert tous les jours de la semaine.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">La salle d'attente était remplie de patients.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Le docteur Camara a reçu Mariama dans son bureau.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">&quot;Depuis quand as-tu de la fièvre ?&quot; a-t-il demandé.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">&quot;Depuis hier soir, docteur&quot;, a répondu Mariama.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Le médecin a pris sa température : 39 degrés !</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Il a examiné sa gorge et ses oreilles.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">&quot;Tu as une angine&quot;, a-t-il dit. &quot;Je vais te donner des médicaments.&quot;</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Il a écrit une ordonnance pour l'infirmière.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">L'infirmière Kadiatou a donné les médicaments à la mère.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">&quot;Elle prendra ces comprimés trois fois par jour pendant une semaine.&quot;</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">&quot;Et elle devra se reposer et boire beaucoup d'eau.&quot;</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">La mère a remercié le médecin et l'infirmière.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Mariama a pris ses médicaments régulièrement.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Après trois jours, elle allait mieux.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">La semaine suivante, elle est retournée à l'école.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Qu'est-ce que Mariama a comme maladie ?<span class="answer-line"></span></div><div class="comp-item">Quels médicaments le médecin prescrit-il ? Comment faut-il les prendre ?<span class="answer-line"></span></div><div class="comp-item">Combien de temps Mariama a-t-elle mis pour aller mieux ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Au dispensaire du village</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G21 : Révision analyse complète de la phrase | C19 : Révision de tous les temps | V21 : Vocabulaire médical/santé | O26 : Orthographe grammaticale bilan</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G21 analyse</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmUlEQVR4nO3d3W0bMRBF4ThIFykp9aSK1JOSUofzGICARhjPj+ic871a2pX3gsBguCTf3t/fvwjj66t/gFaZN4t5s5g3i3mzmDeLebOYN4t5s3yL//z9x6+d3/Hn988P3zf+7vHXlPhSqRu96kkeHN8s5s1i3izmzfKkXjtUap9DXL+kyre5Aq3y3fhnrD3Jg+ObxbxZzJvFvFly9dqh0gWriKu5xkrwMNcjW3uSjm8W82YxbxbzZinVa3NSE5GHtXnJxgp0jeObxbxZzJvFvFkurddilf5a6lKpG32K8s3xzWLeLObNYt4spXptrUKZa6hVGnmpS8XWnqTjm8W8WcybxbxZcvXa2iLHQ+Pyg7W/xl71JB3fLObNYt4s5s3ydud+uZVyJtVuq/TmPsUE6MHxzWLeLObNYt4sT+q1yhxfYzcqtnbl2FzLrLECdXyzmDeLebOYN8tgf62xOXVJn+uSdakx6zX9Y94s5s1i3iy58w0qldHam2KNc6lzW7mlfkbM/XL1kHmzmDeLebM8qdfmNj5bK8EOjXuBVG6U+nBjYej4ZjFvFvNmMW+W0nlUc/ODa/XL3CTm3Ja/lQ87vlnMm8W8WcybpbTeoLHmSplb41m5su+v6TrmzWLeLObNkqvXDpesGbjkR66Vb5Ua0/HNYt4s5s1i3ix7570f5vprld10G99uS5VRaxuHOL5ZzJvFvFnMm6W03uBTHL5ZWckwV0Y1/r++v6aHzJvFvFnMm2Vwv9yUV202G2t8ne1Vu4wcHN8s5s1i3izmzZLrr8Uuef++Uiilpkcbd6OLNVaCjm8W82YxbxbzZim9v3aY27LiMNerWuuCverKjm8W82YxbxbzZsmdbxBLvVJ/ybnrjTO8ldUIsVTXL+b4ZjFvFvNmMW+WzvnQ1Hfv3DRtrj6Nrb0n6PhmMW8W82Yxb5bO/lrFXG/ukjUSl/QTHd8s5s1i3izmzVI6j6pibiONSn9t7hysxiOmKs04xzeLebOYN4t5s+ztl/uqwxAq2+emLlX5cPzdxvLN8c1i3izmzWLeLJ3rQxvNNZjm+lyVG1XYX9ND5s1i3izmzXJpvXaYO3Y+9eG1JQRzb8Y5vlnMm8W8WcybpVSvXdJCalwQWpk8nZtadf81fZB5s5g3i3mz5Oq1teWic6sp506NijXWegfnQ/WQebOYN4t5szw5P1T/Gcc3i3mzmDeLebOYN4t5s5g3i3mzmDfLX6B4KFmrqli4AAAAAElFTkSuQmCC" alt="QR Code Le sujet du verbe"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le sujet du verbe</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L11</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G21 analyse</span>
+    <span class="exo-consigne">Analyse syntaxique complète.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le matin, sa mère a emmené Mariama au dispensaire.</td><td>CC temps:le matin / sujet:sa mère / PC avoir:a emmené / COD:Mariama / CC lieu:au dispensaire</td></tr><tr><td>L'infirmière lui a donné les médicaments après la consultation.</td><td>Sujet:l'infirmière / COI:lui / PC avoir:a donné / COD:les médicaments / CC temps:après la consultation</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G11+G16</span>
+    <span class="exo-consigne">Transforme et identifie.</span>
+  </div>
+  <table class="exo-table"><tr><td>La mère emmène Mariama. (3 types de questions)</td><td>La mère emmène-t-elle Mariama? / Est-ce que la mère emmène... ? / Qui la mère emmène-t-elle ?</td></tr><tr><td>Il a examiné sa gorge. (forme négative ne...pas)</td><td>Il n'a pas examiné sa gorge.</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Révision complète</span>
+    <span class="exo-consigne">Dans ce texte court, identifie 2 CC temps, 1 CC lieu, 1 COD, 1 COI.</span>
+  </div>
+  <table class="exo-table"><tr><td>Depuis hier, Mariama est au dispensaire. Le médecin lui donne des médicaments.</td><td>CC temps: depuis hier / CC lieu: au dispensaire / COD: des médicaments / COI: lui</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C19 révision totale</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADhUlEQVR4nO3d3c0TQQxGYT5EF5REPVRBPZREHeEy0kg4mLE9E855bpPNz76yZM3uej4ej8cnYXw+/QM0yrxZzJvFvFnMm8W8WcybxbxZzJvlS/zy128/Zn7Hr5/fq37G8lHLsTtfFB8bu+RMWt8s5s1i3izmzfKiX1vsNCyLuH+Jm6y+YxepY1MnZ+xMLqxvFvNmMW8W82bJ9WuLnd4n9ebUGtki1WQVvjml70wurG8W82YxbxbzZtnq18YUtm+LwsW4t2B9s5g3i3mzmDfLpf3a2KJY3Ov19YmnWN8s5s1i3izmzbLVr/U1LHGj1Neg7fyqwk/uY32zmDeLebOYN0uuXxu7Ppi6TPkWry5OXWm1vlnMm8W8Wcyb5eMt5uVe8rxB7C0uj1rfLObNYt4s5s3yol+7ZDUqdmrCWt9Hpf5C6ousbxbzZjFvFvNmya2vnZpbW9j7FN771rcY13eurG8W82YxbxbzZtlaX4vfvLjkTrFTVy37Luku7Nf0ZN4s5s1i3iyN83JPDcMo7OYKV9AuGStifbOYN4t5s5g3y4t+re/64CWjaC/ZsiA+1uuh+kfmzWLeLObNktvvvXAfz/jNqVdjd+5g0DcGLmZ9s5g3i3mzmDfL1vy1VAt25935qe+95L65nTNpfbOYN4t5s5g3S65fG3uos9DOTXaFV3gLh3/sHGt9s5g3i3mzmDdL5f1rY4PPUlId2ViP2bfc5v1rejJvFvNmMW+WY/u9j93of6ozGvtH3r+mPzJvFvNmMW+WuflrsUsG1S7uXH3bWam0vlnMm8W8WcybpXF/g9j/N3+tcEpa31Ze1jeLebOYN4t5szSur41thrDzM3aO7XtGoq+Ztb5ZzJvFvFnMmyW3vjamcAemwu1EY6f2PF14PVRP5s1i3izmzZKbl9uncPemsQG5O9M+Tv0F65vFvFnMm8W8WSrnr6XcuYKWmvbRt1TXx/pmMW8W82Yxb5bG/d4XhQ9Xpj6qbyLu2NOyhW+2vlnMm8W8Wcyb5dj8tdhOk7VzH1nhBqmF1zQLJ8pZ3yzmzWLeLObNcmm/1vcYQOqj+u77j/U9D2t9s5g3i3mzmDfLVr82tolUrG+XrJSxZzydv6a/Zd4s5s1i3iy5fm3scdHCQbWpY3d+RuEXub6mGubNYt4s5s1y6fw1NbG+WcybxbxZzJvFvFnMm8W8WcybxbxZfgNhqULzFSXqPAAAAABJRU5ErkJggg==" alt="QR Code Présent être et avoir"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent être et avoir</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L15</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C19 révision totale</span>
+    <span class="exo-consigne">Conjugue aux 4 temps (présent/imparfait/PC/FS).</span>
+  </div>
+  <table class="exo-table"><tr><td>soigner : il (pr)___ / (imp)___ / (PC)___ / (FS)___</td><td>soigne/soignait/a soigné/soignera</td></tr><tr><td>prendre : tu (pr)___ / (imp)___ / (PC)___ / (FS)___</td><td>prends/prenais/as pris/prendras</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C19</span>
+    <span class="exo-consigne">Mets au temps indiqué.</span>
+  </div>
+  <table class="exo-table"><tr><td>Mariama (aller) ___ au dispensaire. (imparfait)</td><td>allait</td></tr><tr><td>Le médecin (examiner) ___ sa gorge. (PC)</td><td>a examiné</td></tr><tr><td>Elle (prendre) ___ ses médicaments. (FS)</td><td>prendra</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Au dispensaire du village</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G21 : Révision analyse complète de la phrase | C19 : Révision de tous les temps | V21 : Vocabulaire médical/santé | O26 : Orthographe grammaticale bilan</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Vocabulaire de la santé — V21</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Le vocabulaire médical : fièvre, ordonnance, médicament, comprimé, angine, dispensaire...</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V21</span>
+    <span class="exo-consigne">Associe chaque mot à sa définition.</span>
+  </div>
+  <table class="exo-table"><tr><td>dispensaire / ordonnance / angine / comprimé / infirmier(ère)</td><td>petit centre médical / papier du médecin pour acheter les médicaments / infection de la gorge / médicament solide à avaler / soignant(e) qui aide le médecin</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V21</span>
+    <span class="exo-consigne">Complète avec le bon mot médical.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le médecin écrit une ___ pour acheter les médicaments.</td><td>ordonnance</td></tr><tr><td>Mariama a 39°C de ___.</td><td>fièvre</td></tr><tr><td>L'___ donne les médicaments.</td><td>infirmière</td></tr><tr><td>Elle a une ___ car sa gorge est rouge.</td><td>angine</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">O26 bilan</span>
+    <span class="exo-consigne">Accorde correctement.</span>
+  </div>
+  <table class="exo-table"><tr><td>une ___ (fièvre) ___ (fort) ___ (persistant)</td><td>une forte fièvre persistante</td></tr><tr><td>des ___ (comprimé) ___ (blanc)</td><td>des comprimés blancs</td></tr><tr><td>les ___ (infirmier) ___ (expérimenté)</td><td>les infirmiers expérimentés</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : analyses complètes selon modèle</div><div style="font-size:8pt">Ex.2 : 3 questions correctes / Il n'a pas examiné sa gorge.</div><div style="font-size:8pt">Ex.3 : CC temps:depuis hier / CC lieu:au dispensaire / COD:des médicaments / COI:lui</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : soigne/soignait/a soigné/soignera / prends/prenais/as pris/prendras</div><div style="font-size:8pt">Ex.2 : allait / a examiné / prendra</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : associations correctes</div><div style="font-size:8pt">Ex.2 : ordonnance / fièvre / infirmière / angine</div><div style="font-size:8pt">Ex.3 : forte fièvre persistante / comprimés blancs / infirmiers expérimentés</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Elle a une angine.  2. Des comprimés, 3 fois par jour pendant une semaine.  3. Elle est allée mieux après 3 jours.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Au dispensaire du village</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G21 : Révision analyse complète de la phrase | C19 : Révision de tous les temps | V21 : Vocabulaire médical/santé | O26 : Orthographe grammaticale bilan</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Quand Mariama avait de la fièvre, sa mère l'a emmenée au dispensaire du quartier.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Le médecin lui a prescrit des comprimés à prendre trois fois par jour.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">emmener</span> <span class="dict-mot">amener</span> <span class="dict-mot">apporter</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Il emmène sa fille au dispensaire. Elle apporte l'ordonnance. Il amène aussi son fils.</div><div class="model-text">Emmener c'est partir avec quelqu'un. Apporter c'est venir avec quelque chose.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Raconte une visite chez le médecin (réelle ou imaginaire) en 6-8 phrases en utilisant différents temps.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>fièvre — dispensaire — médecin — ordonnance — médicaments — soigner — aller mieux</em></div><div class="model-text" style="color:var(--c1)">Un jour, je me sentais mal...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — Au dispensaire du village</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G21 : Révision analyse complète de la phrase | C19 : Révision de tous les temps | V21 : Vocabulaire médical/santé | O26 : Orthographe grammaticale bilan</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité 4 mots du vocabulaire médical</div><div class="jeu-item">conjugue &quot;soigner&quot; aux 4 temps à &quot;il&quot;</div><div class="jeu-item">analyse : &quot;Le médecin lui a donné des médicaments au dispensaire.&quot;</div><div class="jeu-item">donne la différence entre &quot;emmener&quot; et &quot;amener&quot;</div><div class="jeu-item">accorde : &quot;les comprimé___ blanc___&quot;</div><div class="jeu-item">nomme le document écrit par le médecin pour acheter des médicaments</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Analyse syntaxique complète :</div>
+        <div class="diff-item">Le matin, le médecin examine Mariama au dispensaire.<span class="answer-line"></span></div><div class="diff-item">L'infirmière lui donnera les médicaments demain matin.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Raconte une visite au dispensaire en 8 phrases avec les 4 temps.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : présent, imparfait, PC, futur simple, analyse complète (sujet+verbe+CC+COD+COI).</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 3 / Période 5</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — La grande famille guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G22 : Révision de toute la grammaire CE1 | C20 : Révision de tous les temps | V22 : Révision vocabulaire complet | O27 : Dictée bilan CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G22 : Révision de toute la grammaire CE1 | C20 : Révision de tous les temps | V22 : Révision vocabulaire complet | O27 : Dictée bilan CE1</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Dans la grande famille guinéenne, les anciens transmettent leur sagesse aux jeunes depuis des générations.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G22 bilan total</span><span class="mhf-tag">G22</span><span class="mhf-tag">G22</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C20 révision totale</span><span class="mhf-tag">C20</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V22 synonymes/antonymes</span><span class="mhf-tag">V22 familles</span><span class="mhf-tag">V22 champs lexicaux</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Test bilan de grammaire CE1</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Dictée bilan</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Révision vocabulaire complète</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Écriture : texte libre autobiographique</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">révision complète CE1 : tous les homophones</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La grande famille guinéenne</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p5s4_grande_famille.jpg" alt="La grande famille">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Combien de générations vois-tu sur cette image ?</li>
+    <li>Décris les plats, les tenues et l'atmosphère.</li>
+    <li>Raconte un moment de fête en famille que tu as vécu.</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">En Guinée, la famille au sens large est très importante.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">On appelle &quot;famille&quot; non seulement les parents proches,</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">mais aussi les oncles, les tantes, les cousins, les voisins du quartier.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Chacun s'occupe des enfants, même ceux du voisin.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">&quot;Il faut tout un village pour élever un enfant&quot;, dit le proverbe.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Sory a grandi avec ses grands-parents, ses parents et ses cousins.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Il les a tous aimés et ils l'ont tous aidé.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Sa grand-mère lui a appris les proverbes et les contes.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Son grand-père lui a montré comment jardiner et pêcher.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Ses parents lui ont donné l'éducation scolaire.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Ses cousins lui ont appris à jouer au football et à nager.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Tout le monde a contribué à faire de Sory ce qu'il est.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">&quot;Je suis le résultat de ma grande famille&quot;, dit-il avec fierté.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">Dans les années qui viennent, Sory portera cette tradition.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Il transmettra à ses enfants tout ce qu'il a reçu.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">&quot;La famille est la première école&quot;, dit son père.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">Et l'école continue ce que la famille a commencé.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">La famille et l'école, ensemble, font grandir les enfants guinéens.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Cette solidarité est la force de la Guinée depuis toujours.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Comment la famille est-elle définie dans ce texte ?<span class="answer-line"></span></div><div class="comp-item">Qu'est-ce que chaque membre de la famille a appris à Sory ?<span class="answer-line"></span></div><div class="comp-item">Quelle promesse Sory fait-il pour l'avenir ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — La grande famille guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G22 : Révision de toute la grammaire CE1 | C20 : Révision de tous les temps | V22 : Révision vocabulaire complet | O27 : Dictée bilan CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G22 bilan total</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO3d240bMQxG4WyQLrak1JMqtp6UtHU4jwEEmDbBy9g453v1Zcb+IYDQSNTH7Xb7IYyfV9+AVpk3i3mzmDeLebOYN4t5s5g3i3mz/Ipf/vz9tXMf33//PH/d+M3HqxXxN6eue9U/eXB8s5g3i3mzmDfLg3rtMFcKxRdKvbmiUlWlyrer7tnxzWLeLObNYt4suXrtkKoUGiuUlNQcWeqrGq39k45vFvNmMW8W82Yp1Wtz4vqlUt001lxXVaAVjm8W82YxbxbzZnnRei2WWkfWuBTueHVu3dwcxzeLebOYN4t5s5TqtbUKpbFAO6x9VWztn3R8s5g3i3mzmDdLrl5b2+TYqFLrrdWJaxzfLObNYt4s5s3yoF57i2d8h8o9V0qwtQ2hFY5vFvNmMW8W82b5iM83qDzja5yNSmm8UOX3Nkp1drP/mv4zbxbzZjFvltLz0MaZrDlX9YxLfbZy3RTHN4t5s5g3i3mzlJ6HNjb4X5t9izXuLW28jZj9cnWXebOYN4t5swyeR/WaC/1TLToq1tqKpDi+WcybxbxZzJulc7/B3GxUZSn/izzEnDthK/VmxzeLebOYN4t5s3TuN5jbnBC/uaLxCHfPe9fLMW8W82Yxb5a98w3mZpTmToOPK7JUrTe3a9X1a7rLvFnMm8W8WR7Mrx3W2ns0vpq6jfjNFZV7PlTqU8c3i3mzmDeLebPk6rXDO5YzKWtlVErlz3F8s5g3i3mzmDdLbn9o/Iwv/uyh8fng3LnrjUeCzrXttV+u7jJvFvNmMW+WwfOoKp0zGhedpVRWqFUuFGts7+H4ZjFvFvNmMW+W0n6DxpYVa9XcXP+1tfa59l/Ts8ybxbxZzJtlsF/uYW4LwVxnt5TUdSs36fyanmXeLObNYt4se89DK9/cON02d1TC3F01cnyzmDeLebOYN8ve/FqsMoO2tjHzUJlQmzuTIeb4ZjFvFvNmMW+W3Pq1taeHc2vBGlvgzj14nTtHwvHNYt4s5s1i3iyd+w1iaz3UUlXVXPvctQ4l9vPQXebNYt4s5s2ydx5VSmOFMrcE76rnsJULOb5ZzJvFvFnMm+VF67VGlUnAtRPs4882XsjxzWLeLObNYt4spXptbQopdd3KorO14q7xQimObxbzZjFvFvNmydVra9tF19qTzS12S3228eCrmOObxbxZzJvFvFlK573r7Ti+WcybxbxZzJvFvFnMm8W8WcybxbxZ/gFRBhj7ERdmAwAAAABJRU5ErkJggg==" alt="QR Code La phrase"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>La phrase</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L01</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G22 bilan total</span>
+    <span class="exo-consigne">Analyse complète de la phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Hier, sa grand-mère lui a appris les proverbes dans la grande case.</td><td>CC temps:hier / Sujet:sa grand-mère / COI:lui / PC avoir:a appris / COD:les proverbes / CC lieu:dans la grande case</td></tr><tr><td>Plus tard, Sory transmettra tout ce qu'il a reçu à ses enfants.</td><td>CC temps:plus tard / Sujet:Sory / FS:transmettra / COD:tout ce qu'il a reçu / COI:à ses enfants</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G22</span>
+    <span class="exo-consigne">Transforme à toutes les formes.</span>
+  </div>
+  <table class="exo-table"><tr><td>Sory apprend les proverbes. (PC) →</td><td>a appris</td></tr><tr><td>Il transmet la tradition. (FS) →</td><td>transmettra</td></tr><tr><td>Elle lui a appris. (négatif ne...rien) →</td><td>Elle ne lui a rien appris.</td></tr><tr><td>Les anciens enseignent. (question inversion) →</td><td>Les anciens enseignent-ils ?</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G22</span>
+    <span class="exo-consigne">Identifie : sujet / verbe / temps / tous les compléments.</span>
+  </div>
+  <table class="exo-table"><tr><td>Ce soir, les grands-parents racontent des contes aux enfants dans la cour.</td><td>CC temps:ce soir / Sujet:les grands-parents / Présent:racontent / COD:des contes / COI:aux enfants / CC lieu:dans la cour</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C20 révision totale</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjElEQVR4nO3dUa4TMQxGYS5iFyyJ9bAK1sOSWEd5RIp03Ro7TqpzvtdOO9X8smQlk+Tj8Xh8EcbX039Ao8ybxbxZzJvFvFnMm8W8WcybxbxZvsUff//xa+Z//Pn98/X7Lhcvlu/GF8fin0rd6NSTXFjfLObNYt4s5s3ypF9bVHqfRaojSzU7jQ1a5bvx3xh7kgvrm8W8WcybxbxZcv3aYqyNahzYqnSC+8bIxp6k9c1i3izmzWLeLKV+bZ9986GNPVfjGNkY65vFvFnMm8W8WS7t11LiFqwy8Rp/2vii3Bjrm8W8WcybxbxZSv3aWIdS6apiYz8VG3uS1jeLebOYN4t5s+T6tbFFjo0qvd5YnzjG+mYxbxbzZjFvlif92p1zfGOvpDUuA7jkSVrfLObNYt4s5s3yEZ9vUJnjaxyN2jfOlbpvbN+QWeN+c9Y3i3mzmDeLebOUxtca99WIL07ZN5LVuGq18b4p1jeLebOYN4t5s3S+v9bYkZ06SaByzMJbjOtZ3yzmzWLeLObN0rk+tNLN7TtYoLJFR0Vj69f4rKxvFvNmMW8W82bpPD+00r6lNG58NjaJ2XhAauVi65vFvFnMm8W8WXLrDVIqc5qxUysZUn8jvngf1xvoH/NmMW8W82Z50q8tGve32LcPWsW+c7BSN4pVnob1zWLeLObNYt4suX4tNrbZbOySrmrR2HJWmkrrm8W8WcybxbxZOsfXTu2w9hbrNPcNAvr+mj5l3izmzWLeLKX318YmMRvnYVMaX2c7tcvIwvpmMW8W82Yxb5bO+dCUU6NRsTvfuWv8ZeubxbxZzJvFvFmO9WuLd5w8bdwQOMXxNb3KvFnMm8W8WY7t5xFfnPob+7Y2S/H8UF3HvFnMm8W8WW4ZX1vs26xtcWrvtsXYd61vFvNmMW8W82bpPN+gYt/c4iUDavsOV02xvlnMm8W8WcybJXd+6J0708afpkbB9r371njElPt56FXmzWLeLObNUjrvfV/D0jiuV2nuUj9VuTj+ru+v6T+ZN4t5s5g3S6lf22dsFWflu6cWNlRuZH2zmDeLebOYN8ul/doibt/G9vM4tYSg8UbWN4t5s5g3i3mzlPq1sSGk+L5x+9aocd/axoWoKdY3i3mzmDeLebPk+rWx5aKnJkD32Xf6gfOh+pR5s5g3i3mzXLr/mjaxvlnMm8W8WcybxbxZzJvFvFnMm8W8Wf4CX2kl2Kbnbu0AAAAASUVORK5CYII=" alt="QR Code Présent verbes en –er"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent verbes en –er</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L18</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C20 révision totale</span>
+    <span class="exo-consigne">Conjugue aux 4 temps.</span>
+  </div>
+  <table class="exo-table"><tr><td>transmettre : il (pr)___ / (imp)___ / (PC)___ / (FS)___</td><td>transmet/transmettait/a transmis/transmettra</td></tr><tr><td>apprendre : nous (pr)___ / (imp)___ / (PC)___ / (FS)___</td><td>apprenons/apprenions/avons appris/apprendrons</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C20</span>
+    <span class="exo-consigne">Conjugue et justifie le temps.</span>
+  </div>
+  <table class="exo-table"><tr><td>Sory ___ dans sa grande famille. (grandir, PC)</td><td>a grandi</td></tr><tr><td>Il ___ tout ce qu'on lui a appris. (transmettre, FS)</td><td>transmettra</td></tr><tr><td>Les anciens ___ des contes. (raconter, imparfait habituel)</td><td>racontaient</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — La grande famille guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G22 : Révision de toute la grammaire CE1 | C20 : Révision de tous les temps | V22 : Révision vocabulaire complet | O27 : Dictée bilan CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Révision vocabulaire complet CE1 — V22</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjklEQVR4nO3d0W0cMQxFUdtIFynJ9biK1JOSUsfmM4AAc01QpOTce37XOzPeBwKEpJFeH4/HizDeTj+ARpk3i3mzmDeLebOYN4t5s5g3i3mz/Ig//vn+a+Y5/vz+aLry8i/EN4r/38pDXvJLWt8s5s1i3izmzfKkX1ts7Kri/iVuslItWPzdWOq7qR9n7JdcWN8s5s1i3izmzZLr1xaV3if1xxvHyFI3qvxxSt8vubC+WcybxbxZzJul1K+dErdvqa4qNZD3H7C+WcybxbxZzJvl0n6tb+Zx41xq35q7PtY3i3mzmDeLebOU+rW+hiVulCrTo5Vn7mvfxlo/65vFvFnMm8W8WXL92tj8YGWasvKuQt+n8UOOsb5ZzJvFvFnMm+X1W+yX27fKrO9Sd7K+WcybxbxZzJvlSb/2LUajKveNLxXru1TfDK/1zWLeLObNYt4sO9ev9TVofT1XrNIZpR4y9VtVfljrm8W8WcybxbxZcuNri77+pa+5OzVr2df6LezX9I95s5g3i3mzzK1fO7UGrW8gL/VUqfvGnA/VV5k3i3mzmDfLzvVrFaeO9UzdqM/YEjzrm8W8WcybxbxZnqxfG5tbrGxjW7nyJQ1a5bueH6pPmTeLebOYN8vO80PvHCPrO+99bJ/e+Mop1jeLebOYN4t5szSebzC2f+zG2cP4IIXUY6Q+HTsbwfpmMW8W82Yxb5Yn/VrlJIHKlTe2URuPtlpcsrmu+3noU+bNYt4s5s1SWr+22HiUeuqpxpw6cWrjDK/1zWLeLObNYt4sufG1VIdyain/qWMHUioP6fo1fZV5s5g3i3mzzL0femrB/dgiu7F3WitXtr5ZzJvFvFnMm6Vx/7VThxKMfbdvALFvwtf6ZjFvFvNmMW+WufMNUsbmNC+ZPO3bg2RhfbOYN4t5s5g3S+n90I3iI81jldPRKyq7fZw6Jcv6ZjFvFvNmMW+W3P5rl2z6uvFGld0++obq+ljfLObNYt4s5s2y83yD2NjWZqnBqbExspS+FzmsbxbzZjFvFvNmKfVrfSrnn/cdQLUYe6qN24pY3yzmzWLeLObNcmm/dsn7oRWVrqrvoFLrm8W8WcybxbxZGs8P3XjlO1+9TC12O7Vn3ML6ZjFvFvNmMW+W3P5rfS6ZAF2MrUGrvBSRuq/1zWLeLObNYt4sl+6/pibWN4t5s5g3i3mzmDeLebOYN4t5s5g3y1+WUkNNy9y1GgAAAABJRU5ErkJggg==" alt="QR Code Les synonymes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les synonymes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L24</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>BILAN CE1 : tous les outils de vocabulaire sont maîtrisés.</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V22 synonymes/antonymes</span>
+    <span class="exo-consigne">Pour chaque mot : synonyme + antonyme.</span>
+  </div>
+  <table class="exo-table"><tr><td>sage : syn.___ / ant.___</td><td>prudent,sensé / fou,irresponsable</td></tr><tr><td>transmettre : syn.___ / ant.___</td><td>enseigner,donner / recevoir,garder</td></tr><tr><td>solidarité : syn.___ / ant.___</td><td>entraide,cohésion / égoïsme,individualisme</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V22 familles</span>
+    <span class="exo-consigne">Donne 3 mots de chaque famille.</span>
+  </div>
+  <table class="exo-table"><tr><td>famille : ___</td><td>familial,familier,familiaux / ou : parent,oncle,cousin...</td></tr><tr><td>savoir : ___</td><td>savoir,savant,savamment,connaissance</td></tr><tr><td>enseigner : ___</td><td>enseigner,enseignant,enseignement</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V22 champs lexicaux</span>
+    <span class="exo-consigne">Regroupe par thème : école / famille / nature.</span>
+  </div>
+  <table class="exo-table"><tr><td>oncle, tableau, forêt, maîtresse, fleuve, cousin, cahier, manguier, père, classe, oiseau, grand-mère</td><td>Famille: oncle,cousin,père,grand-mère / École: tableau,maîtresse,cahier,classe / Nature: forêt,fleuve,manguier,oiseau</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : analyses complètes selon modèle</div><div style="font-size:8pt">Ex.2 : a appris / transmettra / Elle ne lui a rien appris. / Les anciens enseignent-ils ?</div><div style="font-size:8pt">Ex.3 : analyse complète voir modèle</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : transmet/transmettait/a transmis/transmettra | apprenons/apprenions/avons appris/apprendrons</div><div style="font-size:8pt">Ex.2 : a grandi / transmettra / racontaient</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : réponses correctes selon retiens</div><div style="font-size:8pt">Ex.2 : familles correctes</div><div style="font-size:8pt">Ex.3 : école/famille/nature séparés</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Les parents proches + oncles, tantes, cousins, voisins.  2. Grand-mère: proverbes; grand-père: jardiner et pêcher; parents: école; cousins: sport.  3. Transmettre à ses enfants ce qu'il a reçu.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — La grande famille guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G22 : Révision de toute la grammaire CE1 | C20 : Révision de tous les temps | V22 : Révision vocabulaire complet | O27 : Dictée bilan CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Dans la grande famille guinéenne, chacun contribue à l'éducation de tous les enfants.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Sory transmettra à ses enfants toute la sagesse que sa famille lui a transmise.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">révision complète CE1</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Sa grand-mère lui a appris les proverbes. Ces enfants ont tout reçu avec joie.</div><div class="model-text">Où sont ces anciens qui ont tout enseigné ? Ils sont là, dans leur grande case.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris ta famille et ce qu'elle t'a appris en 6-8 phrases. Utilise les 4 temps.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>famille — apprendre — transmettre — sagesse — proverbe — anciens — tradition — Guinée</em></div><div class="model-text" style="color:var(--c1)">Dans ma famille, les anciens m'ont appris...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — La grande famille guinéenne</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G22 : Révision de toute la grammaire CE1 | C20 : Révision de tous les temps | V22 : Révision vocabulaire complet | O27 : Dictée bilan CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité 4 membres de la grande famille guinéenne</div><div class="jeu-item">conjugue &quot;transmettre&quot; aux 4 temps à &quot;il&quot;</div><div class="jeu-item">analyse complète : &quot;Ce soir, la grand-mère raconte un conte aux enfants.&quot;</div><div class="jeu-item">donne un synonyme de &quot;sage&quot;</div><div class="jeu-item">cité 3 choses que la famille apprend aux enfants en Guinée</div><div class="jeu-item">regroupe : &quot;oncle, cahier, forêt, père&quot; par thème</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Analyse complète de ces phrases :</div>
+        <div class="diff-item">Hier, sa grand-mère lui a appris des proverbes dans la grande case.<span class="answer-line"></span></div><div class="diff-item">Plus tard, il transmettra cette sagesse à ses propres enfants avec amour.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris ta famille en 8 phrases bilan : 4 temps, toute la grammaire.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : présent+imparfait+PC+FS, COD+COI+CC, négation, question, accords, synonymes.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 4 / Période 5</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le match de football</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G23 : Écriture et révision : le texte narratif | C21 : Concordance des temps dans un texte | V23 : Champ lexical du sport | O28 : Révision orthographe P5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G23 : Écriture et révision : le texte narratif | C21 : Concordance des temps dans un texte | V23 : Champ lexical du sport | O28 : Révision orthographe P5</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Samedi dernier, le Horoya AC a remporté le match et toute la Guinée a célébré cette victoire.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G23 texte narratif</span><span class="mhf-tag">G23</span><span class="mhf-tag">G22+G23</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C21 concordance</span><span class="mhf-tag">C21</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V23</span><span class="mhf-tag">V23</span><span class="mhf-tag">V23</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Analyser la structure d'un texte narratif</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Produire un texte narratif cohérent</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Champ lexical du sport</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Bilan orthographe P5</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">hors</span><span class="dict-mot">or</span><span class="dict-mot">or</span><span class="dict-mot">hors</span><span class="dict-mot">score</span><span class="dict-mot">victoire</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Le match de football</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p5s5_football.jpg" alt="Le match de football">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Décris l'action de jeu : qui attaque, qui défend ?</li>
+    <li>Décris le terrain, les maillots et les supporters.</li>
+    <li>Quel sport pratiques-tu ? Explique comment on joue.</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Samedi dernier, tout Conakry était en fête.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Le Horoya AC, l'équipe de football guinéenne, jouait une grande finale.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Depuis le matin, les supporters portaient les couleurs de l'équipe.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Le stade du 28 Septembre était plein à craquer.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Le match a commencé à 15 heures sous un soleil brûlant.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Les deux équipes jouaient avec énergie et passion.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">À la 25e minute, Mamadou Traoré a marqué le premier but.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Tout le stade a explosé de joie.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">La deuxième mi-temps a été encore plus intense.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">À la 70e minute, l'adversaire a égalisé.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Le score était de 1-1 et la tension montait.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Dans les cinq dernières minutes, Sékou Keita a dribblé trois défenseurs.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Il a tiré et le ballon est entré dans le filet !</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">2-1 ! Le Horoya AC a gagné !</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Les supporters ont envahi le terrain de joie.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Les joueurs ont célébré en pleurant de bonheur.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">À la radio, le commentateur criait : &quot;Victoire pour la Guinée !&quot;</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Le lendemain, toute la presse guinéenne a salué cette victoire.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Ce match restera dans la mémoire de tous les Guinéens.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">À quel moment du match le Horoya a-t-il marqué ses buts ?<span class="answer-line"></span></div><div class="comp-item">Décris la scène du deuxième but de Sékou Keita.<span class="answer-line"></span></div><div class="comp-item">Comment les gens ont-ils réagi à la victoire ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le match de football</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G23 : Écriture et révision : le texte narratif | C21 : Concordance des temps dans un texte | V23 : Champ lexical du sport | O28 : Révision orthographe P5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G23 texte narratif</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2dy20dMQwA4yBdpKTUkypST0pKHS93HWjT/KyMmbn6rVbeAQFCH/Lt9Xp9Ewzfn56ArKJvFvpmoW8W+mahbxb6ZqFvFvpm8SP+889ff3bm8e/v709P43j2+HHjyPGzlRc1Ek/D+Gahbxb6ZqFvFu/kawdxLpAizl8aE7TKUPHIla+x9iUPjG8W+mahbxb6ZpHL1w5SmUJjdlNZq6osxh1U1uZSQ1VGPjC+Weibhb5Z6JtFKV9bo7LzGP+4kr41ZpFrGN8s9M1C3yz0zeLSfC2VCs2tkTW+6BKMbxb6ZqFvFvpmUcrX1hKWyoG11CQrS2aXHGeLMb5Z6JuFvlnom0UuX1vb8ptbyarkeo3LfE9tnhrfLPTNQt8s9M3i7c56uY03Ciojf8Udzxjjm4W+Weibhb5Z5Oqvra1zxVTuGzRmc411RCrTSH0645uFvlnom4W+WZTW1xrTisbaGPHIlVyvMXutVIWLfxxjfLPQNwt9s9A3i3fytbV9ycYeBXPF2mLmUs5GjG8W+mahbxb6ZvHOfmhlUWytnGzjXupTrOV6xjcLfbPQNwt9syj1D51bQVvLquY6k679v6lZGd8s9M1C3yz0zSJ3fm3u1NUlm4mNpXfnSrlVvpXxzULfLPTNQt8sOtfX1i5Xzt1abex01fii1LMxxjcLfbPQNwt9syidX5t7NjXy3KZt6r2pZ1PTaMxejW8W+mahbxb6ZpG7H7rW4fypvlBzjeUr0zhwfU0+ir5Z6JuFvlmU6nncmVXNnRRrLDqSmlXjf2R8s9A3C32z0DeLUr/3Sja3Vpl2rhlChcrHOUhlc8Y3C32z0DcLfbMo7YemfnxnC/eneOo+rPHNQt8s9M1C3yxK62sHayVwGy8JpN4bT2MO90Plk+ibhb5Z6JtFqX/oHGuF3hq3GuP3xtjfQEbQNwt9s9A3i8H+oSnmKtPO7S025olrVzWMbxb6ZqFvFvpmkdsPXStZkfpx41AHT7WOb8xeD4xvFvpmoW8W+mYxeD/0YO2u5cFcSZKYylCNlXgPjG8W+mahbxb6ZtF532CNylpV5aTYU21MG0+3Gd8s9M1C3yz0zeJL5muVdb2nrh9cgvHNQt8s9M1C3yxK+draelPjjYJKL865Y2XxsweVr2F8s9A3C32z0DeLS++H3tnqqXFk74fKBvpmoW8W+mZxaf01GcL4ZqFvFvpmoW8W+mahbxb6ZqFvFvpm8R/DYipAZ6F1MAAAAABJRU5ErkJggg==" alt="QR Code Les compléments"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les compléments</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L12</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G23 texte narratif</span>
+    <span class="exo-consigne">Identifie les parties du texte narratif.</span>
+  </div>
+  <table class="exo-table"><tr><td>1. Situation initiale : lignes ___</td><td>1. L.1-4 / 2. L.5-6 / 3. L.7-13 / 4. L.14-19</td></tr><tr><td>2. Élément déclencheur : lignes ___</td><td><span class="blank">_______________</span></td></tr><tr><td>3. Péripéties : lignes ___</td><td><span class="blank">_______________</span></td></tr><tr><td>4. Dénouement : lignes ___</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G23</span>
+    <span class="exo-consigne">Quels temps sont utilisés dans le récit ? Pourquoi ?</span>
+  </div>
+  <table class="exo-table"><tr><td>L.1-4 : le temps dominant est ___ car ___</td><td>imparfait / description du décor</td></tr><tr><td>L.5-14 : le temps dominant est ___ car ___</td><td>passé composé / actions du match</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G22+G23</span>
+    <span class="exo-consigne">Analyse 2 phrases du texte (syntaxe complète).</span>
+  </div>
+  <table class="exo-table"><tr><td>À la 25e minute, Mamadou Traoré a marqué le premier but.</td><td>CC temps:à la 25e min / Sujet:Mamadou Traoré / PC avoir:a marqué / COD:le premier but</td></tr><tr><td>Les supporters ont envahi le terrain de joie.</td><td>Sujet:les supporters / PC avoir:ont envahi / COD:le terrain / CC manière:de joie</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C21 concordance</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2d620bMRAGbSNdpKTU4ypcj0tKHcp/Aqa83gcZzMxfSXenGyzwgY/l6+PxeBEMb6cfQEbRNwt9s9A3C32z0DcLfbPQNwt9s/i1//j3n4+Z5/j7+b657/LpnsxvQ5cK3ejUm1ywvlnom4W+WeibxZO8tpDJPgv7/BJKRoVRKHOpUHwbe5ML1jcLfbPQNwt9s4jltYVQUihMKPsrL09VmPX6xsjG3qT1zULfLPTNQt8sUnmtj0wyGpuX7EugfVjfLPTNQt8s9M3i0ryWITNWFRqMK1woN4b1zULfLPTNQt8sUnltLKGEbhSa8eybLc08cx/WNwt9s9A3C32ziOW1sU2OezLbNsc+3XPqTVrfLPTNQt8s9M3i9c5+uX2rzAqbcPwXE6AL1jcLfbPQNwt9s3iS1/r6oBXuiOwbq8r837HHCDmyvlnom4W+WeibRWM/j1ADsr7es6d6xoV+m7lvCOubhb5Z6JuFvlnE5kPHUlXhuF6I0CBgX9vevvMcrG8W+mahbxb6ZlE5vrYkhb7Q0Xc2wti6udCXC4Oh9c1C3yz0zULfLOb6eRSu3S+c4hybxMzEtz2hL1vfLPTNQt8s9M0iNR+651Say1w5M8znee9yHfpmoW8W+maR2h861hujL0btf7twSXzLWLC+Weibhb5Z6JtF5XlUmeVsYyv7Qw+ZWd0WilFjGyqsbxb6ZqFvFvpmUdkvt3AU7NTGzP2N9ow1180MIFrfLPTNQt8s9M3iyfha4SDR2OnolySjwlBpv1z5IfpmoW8W+mbxJK/1parMCFpfu4vQ9Gjm5Zw6KcL6ZqFvFvpmoW8Wt6xfC1EYlAr7r421z3X9mnwXfbPQNwt9s4jtD72ETHfZUyOGGZwPlR+ibxb6ZqFvFsfmQ/f0nbY5dgp93/EOGaxvFvpmoW8W+mYR22/QR+Zw+MyVM/S19+jbamp9s9A3C32z0DeL2Pq1vq2XoRtlwk6m/9pYbOzbaWt9s9A3C32z0DeLyvPe9/S1hO2Lb5mn6mvqm/my9c1C3yz0zULfLCr3hxYy1rws89uxBrl7HF+TL9E3C32z0DeLS/PawtiBoZf02u1bGWd9s9A3C32z0DeLVF4bG0IaO0o9NGSWaRySmfC1/5p8F32z0DcLfbOI5bWx7aJ9JwlkthD0DeQVHny1x/pmoW8W+mahbxaV573L/VjfLPTNQt8s9M1C3yz0zULfLPTNQt8s/gG7zRSexRmm4QAAAABJRU5ErkJggg==" alt="QR Code Le passé composé"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le passé composé</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L21</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C21 concordance</span>
+    <span class="exo-consigne">Imparfait (description) ou PC (action) ?</span>
+  </div>
+  <table class="exo-table"><tr><td>Le stade ___ plein. (être)</td><td>était (desc.)</td></tr><tr><td>Mamadou ___ le premier but. (marquer)</td><td>a marqué (action)</td></tr><tr><td>Les supporters ___ les couleurs. (porter)</td><td>portaient (desc.)</td></tr><tr><td>Sékou ___ trois défenseurs. (dribbler)</td><td>a dribblé (action)</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C21</span>
+    <span class="exo-consigne">Conjugue au bon temps.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le match (commencer) ___ à 15h.</td><td>a commencé</td></tr><tr><td>Le score (être) ___ de 1-1 à mi-temps.</td><td>était</td></tr><tr><td>À la 70e, l'adversaire (égaliser) ___.</td><td>a égalisé</td></tr><tr><td>Tout le stade (exploser) ___ de joie.</td><td>a explosé</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le match de football</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G23 : Écriture et révision : le texte narratif | C21 : Concordance des temps dans un texte | V23 : Champ lexical du sport | O28 : Révision orthographe P5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Champ lexical du sport — V23</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Le football et le sport ont leur propre vocabulaire.</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V23</span>
+    <span class="exo-consigne">Classe ces mots : Joueurs / Terrain / Actions.</span>
+  </div>
+  <table class="exo-table"><tr><td>gardien, but, dribbler, attaquant, filet, marquer, défenseur, penalty, tirer, mi-temps</td><td>Joueurs: gardien,attaquant,défenseur / Terrain: but,filet,mi-temps (non) / Actions: dribbler,marquer,tirer,penalty(non)</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V23</span>
+    <span class="exo-consigne">Explique ces termes de football.</span>
+  </div>
+  <table class="exo-table"><tr><td>un penalty : ___</td><td>coup de pied de réparation / moitié du match / position invalide d'un joueur devant le but</td></tr><tr><td>une mi-temps : ___</td><td><span class="blank">_______________</span></td></tr><tr><td>le hors-jeu : ___</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V23</span>
+    <span class="exo-consigne">Utilise 4 mots du champ lexical dans un mini-récit (3 phrases).</span>
+  </div>
+  <table class="exo-table"><tr><td>Mini-récit avec but, dribbler, marquer, victoire</td><td>réponses libres</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : parties du récit identifiées</div><div style="font-size:8pt">Ex.2 : imparfait/description et PC/action</div><div style="font-size:8pt">Ex.3 : analyses complètes selon modèle</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : était/a marqué/portaient/a dribblé</div><div style="font-size:8pt">Ex.2 : a commencé / était / a égalisé / a explosé</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : Joueurs:gardien,attaquant,défenseur / Actions:dribbler,marquer,tirer / Terrain:but,filet,mi-temps</div><div style="font-size:8pt">Ex.2 : voir définitions</div><div style="font-size:8pt">Ex.3 : réponses libres</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. 25e minute: premier but (Mamadou); 70e: égalisation; fin: Sékou marque le 2ème.  2. Il a dribblé 3 défenseurs puis tiré et marqué.  3. Les supporters ont envahi le terrain.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le match de football</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G23 : Écriture et révision : le texte narratif | C21 : Concordance des temps dans un texte | V23 : Champ lexical du sport | O28 : Révision orthographe P5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Samedi dernier, le Horoya AC a remporté la finale et toute la Guinée a célébré.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Sékou Keita a dribblé trois défenseurs et a marqué le but de la victoire.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">victoire</span> <span class="dict-mot">défenseur</span> <span class="dict-mot">marquer</span> <span class="dict-mot">dribbler</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Le défenseur n'a pas pu arrêter le tir. La victoire est pour Horoya !</div><div class="model-text">Dribbler et marquer, c'est le talent de Sékou. La victoire appartient à tous.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Raconte un match de sport que tu as vu ou joué en 6-8 phrases. Utilise imparfait et passé composé.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>équipe — but — match — stade — marquer — gagner — victoire — supporters</em></div><div class="model-text" style="color:var(--c1)">Samedi dernier, j'ai regardé/joué un match de...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le match de football</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G23 : Écriture et révision : le texte narratif | C21 : Concordance des temps dans un texte | V23 : Champ lexical du sport | O28 : Révision orthographe P5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité 3 positions dans une équipe de football</div><div class="jeu-item">conjugue &quot;marquer&quot; PC à &quot;il&quot;</div><div class="jeu-item">distingue imparfait et PC dans un récit sportif</div><div class="jeu-item">nomme l'équipe nationale de Guinée</div><div class="jeu-item">analyse : &quot;À la 25e minute, Mamadou a marqué le premier but.&quot;</div><div class="jeu-item">donne 3 mots du champ lexical du football</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Imparfait (description) ou passé composé (action) ?</div>
+        <div class="diff-item">Le stade ___ plein. (être/imparfait)<span class="answer-line"></span></div><div class="diff-item">Mamadou ___ le but. (marquer/PC)<span class="answer-line"></span></div><div class="diff-item">Les joueurs ___ avec passion. (jouer/imparfait)<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Raconte un match de sport en 8 phrases : imparfait pour descriptions, PC pour actions.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : 3 imparfaits de description + 4 PC d'action, analyse syntaxique de 2 phrases, champ lex. sport.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 5 / Période 5</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La remise des prix de fin d'année</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G24 : Révision finale CE1 | C22 : Révision finale tous temps | V24 : Révision finale vocabulaire | O29 : Dictée de fin d'année CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G24 : Révision finale CE1 | C22 : Révision finale tous temps | V24 : Révision finale vocabulaire | O29 : Dictée de fin d'année CE1</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>À la remise des prix, les élèves qui ont bien travaillé ont reçu leurs récompenses avec joie et fierté.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">G24 révision finale</span><span class="mhf-tag">G24</span><span class="mhf-tag">G24</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">C22 révision finale</span><span class="mhf-tag">C22</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">V24 bilan</span><span class="mhf-tag">V24</span><span class="mhf-tag">V24+V20</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Dictée de fin d'année CE1</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Bilan de tous les acquis</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Lecture d'un texte inédit</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Lecture à voix haute devant la classe</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">révision finale CE1 : tous les mots difficiles</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La remise des prix de fin d'année</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p5s6_remise_prix.jpg" alt="La remise des prix">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que reçoit l'élève sur l'estrade ?</li>
+    <li>Décris les expressions des parents et des camarades.</li>
+    <li>Comment se sent-on quand on reçoit un prix ? Pourquoi mérite-t-on d'être récompensé ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Le dernier vendredi de l'année scolaire est arrivé.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Toute l'école de Faranah était en effervescence depuis le matin.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Les enseignants avaient préparé la cérémonie depuis des semaines.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Les chaises et les tables avaient été disposées dans la grande cour.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Les familles sont arrivées dès huit heures du matin.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">La directrice a ouvert la cérémonie avec un discours émouvant.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">&quot;Cette année, vos enfants ont beaucoup appris&quot;, a-t-elle dit.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">&quot;Ils ont travaillé dur et ils méritent d'être célébrés.&quot;</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">La première remise de prix a été pour l'excellence en français.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Aminata a reçu le premier prix avec une mention très bien.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Elle est montée sur l'estrade sous les applaudissements.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Koumba a reçu le prix de la meilleure progression.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Sory a reçu le prix du meilleur sportif de l'école.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">Ibrahima a reçu le prix de la meilleure invention scientifique.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">Moussa a reçu le prix du plus gentil et solidaire.</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">Chaque prix était accompagné d'un livre et d'un stylo.</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">À la fin, tous les élèves ont reçu leurs bulletins.</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">Les familles ont applaudi pendant de longues minutes.</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Cette journée a clôturé une belle année scolaire en Guinée.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Qui a reçu le premier prix et pour quelle matière ?<span class="answer-line"></span></div><div class="comp-item">Quels sont les différents prix distribués lors de la cérémonie ?<span class="answer-line"></span></div><div class="comp-item">Que contenait chaque prix remis aux élèves ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La remise des prix de fin d'année</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G24 : Révision finale CE1 | C22 : Révision finale tous temps | V24 : Révision finale vocabulaire | O29 : Dictée de fin d'année CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — G24 révision finale</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO3d240bMQxG4WyQLrak1JMqtp6UtHU4jwEEmDbBy9g453v1Zcb+IYDQSNTH7Xb7IYyfV9+AVpk3i3mzmDeLebOYN4t5s5g3i3mz/Ipf/vz9tXMf33//PH/d+M3HqxXxN6eue9U/eXB8s5g3i3mzmDfLg3rtMFcKxRdKvbmiUlWlyrer7tnxzWLeLObNYt4suXrtkKoUGiuUlNQcWeqrGq39k45vFvNmMW8W82Yp1Wtz4vqlUt001lxXVaAVjm8W82YxbxbzZnnRei2WWkfWuBTueHVu3dwcxzeLebOYN4t5s5TqtbUKpbFAO6x9VWztn3R8s5g3i3mzmDdLrl5b2+TYqFLrrdWJaxzfLObNYt4s5s3yoF57i2d8h8o9V0qwtQ2hFY5vFvNmMW8W82b5iM83qDzja5yNSmm8UOX3Nkp1drP/mv4zbxbzZjFvltLz0MaZrDlX9YxLfbZy3RTHN4t5s5g3i3mzlJ6HNjb4X5t9izXuLW28jZj9cnWXebOYN4t5swyeR/WaC/1TLToq1tqKpDi+WcybxbxZzJulc7/B3GxUZSn/izzEnDthK/VmxzeLebOYN4t5s3TuN5jbnBC/uaLxCHfPe9fLMW8W82Yxb5a98w3mZpTmToOPK7JUrTe3a9X1a7rLvFnMm8W8WR7Mrx3W2ns0vpq6jfjNFZV7PlTqU8c3i3mzmDeLebPk6rXDO5YzKWtlVErlz3F8s5g3i3mzmDdLbn9o/Iwv/uyh8fng3LnrjUeCzrXttV+u7jJvFvNmMW+WwfOoKp0zGhedpVRWqFUuFGts7+H4ZjFvFvNmMW+W0n6DxpYVa9XcXP+1tfa59l/Ts8ybxbxZzJtlsF/uYW4LwVxnt5TUdSs36fyanmXeLObNYt4se89DK9/cON02d1TC3F01cnyzmDeLebOYN8ve/FqsMoO2tjHzUJlQmzuTIeb4ZjFvFvNmMW+W3Pq1taeHc2vBGlvgzj14nTtHwvHNYt4s5s1i3iyd+w1iaz3UUlXVXPvctQ4l9vPQXebNYt4s5s2ydx5VSmOFMrcE76rnsJULOb5ZzJvFvFnMm+VF67VGlUnAtRPs4882XsjxzWLeLObNYt4spXptbQopdd3KorO14q7xQimObxbzZjFvFvNmydVra9tF19qTzS12S3228eCrmOObxbxZzJvFvFlK573r7Ti+WcybxbxZzJvFvFnMm8W8WcybxbxZ/gFRBhj7ERdmAwAAAABJRU5ErkJggg==" alt="QR Code La phrase"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>La phrase</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L01</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">G24 révision finale</span>
+    <span class="exo-consigne">Analyse complète.</span>
+  </div>
+  <table class="exo-table"><tr><td>Cette année, Aminata a reçu le premier prix de français avec mention.</td><td>CC temps:cette année / Sujet:Aminata / PC avoir:a reçu / COD:le premier prix de français / CC manière:avec mention</td></tr><tr><td>Demain, les élèves retourneront à la maison avec leurs bulletins.</td><td>CC temps:demain / Sujet:les élèves / FS:retourneront / CC lieu:à la maison / CC moyen:avec leurs bulletins</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">G24</span>
+    <span class="exo-consigne">Forme 3 questions et 3 négations sur cette phrase : &quot;Les élèves ont reçu leurs prix.&quot;</span>
+  </div>
+  <table class="exo-table"><tr><td>Inversion : ___</td><td>Ont-ils reçu leurs prix ? / Est-ce que les élèves ont reçu leurs prix ? / Qu'ont reçu les élèves ? / n'ont pas reçu / n'ont rien reçu / n'ont jamais reçu</td></tr><tr><td>Est-ce que : ___</td><td><span class="blank">_______________</span></td></tr><tr><td>Mot interrog. : ___</td><td><span class="blank">_______________</span></td></tr><tr><td>ne...pas : ___</td><td><span class="blank">_______________</span></td></tr><tr><td>ne...rien : ___</td><td><span class="blank">_______________</span></td></tr><tr><td>ne...jamais : ___</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">G24</span>
+    <span class="exo-consigne">Identifie toutes les relations dans ces phrases complexes.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les familles applaudissent parce que les élèves ont bien travaillé.</td><td>cause / temps / condition</td></tr><tr><td>Quand la directrice parle, tout le monde écoute.</td><td><span class="blank">_______________</span></td></tr><tr><td>Si tu travailles dur, tu auras un prix l'année prochaine.</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — C22 révision finale</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjElEQVR4nO3dUa4TMQxGYS5iFyyJ9bAK1sOSWEd5RIp03Ro7TqpzvtdOO9X8smQlk+Tj8Xh8EcbX039Ao8ybxbxZzJvFvFnMm8W8WcybxbxZvsUff//xa+Z//Pn98/X7Lhcvlu/GF8fin0rd6NSTXFjfLObNYt4s5s3ypF9bVHqfRaojSzU7jQ1a5bvx3xh7kgvrm8W8WcybxbxZcv3aYqyNahzYqnSC+8bIxp6k9c1i3izmzWLeLKV+bZ9986GNPVfjGNkY65vFvFnMm8W8WS7t11LiFqwy8Rp/2vii3Bjrm8W8WcybxbxZSv3aWIdS6apiYz8VG3uS1jeLebOYN4t5s+T6tbFFjo0qvd5YnzjG+mYxbxbzZjFvlif92p1zfGOvpDUuA7jkSVrfLObNYt4s5s3yEZ9vUJnjaxyN2jfOlbpvbN+QWeN+c9Y3i3mzmDeLebOUxtca99WIL07ZN5LVuGq18b4p1jeLebOYN4t5s3S+v9bYkZ06SaByzMJbjOtZ3yzmzWLeLObN0rk+tNLN7TtYoLJFR0Vj69f4rKxvFvNmMW8W82bpPD+00r6lNG58NjaJ2XhAauVi65vFvFnMm8W8WXLrDVIqc5qxUysZUn8jvngf1xvoH/NmMW8W82Z50q8tGve32LcPWsW+c7BSN4pVnob1zWLeLObNYt4suX4tNrbZbOySrmrR2HJWmkrrm8W8WcybxbxZOsfXTu2w9hbrNPcNAvr+mj5l3izmzWLeLKX318YmMRvnYVMaX2c7tcvIwvpmMW8W82Yxb5bO+dCUU6NRsTvfuWv8ZeubxbxZzJvFvFmO9WuLd5w8bdwQOMXxNb3KvFnMm8W8WY7t5xFfnPob+7Y2S/H8UF3HvFnMm8W8WW4ZX1vs26xtcWrvtsXYd61vFvNmMW8W82bpPN+gYt/c4iUDavsOV02xvlnMm8W8WcybJXd+6J0708afpkbB9r371njElPt56FXmzWLeLObNUjrvfV/D0jiuV2nuUj9VuTj+ru+v6T+ZN4t5s5g3S6lf22dsFWflu6cWNlRuZH2zmDeLebOYN8ul/doibt/G9vM4tYSg8UbWN4t5s5g3i3mzlPq1sSGk+L5x+9aocd/axoWoKdY3i3mzmDeLebPk+rWx5aKnJkD32Xf6gfOh+pR5s5g3i3mzXLr/mjaxvlnMm8W8WcybxbxZzJvFvFnMm8W8Wf4CX2kl2Kbnbu0AAAAASUVORK5CYII=" alt="QR Code Présent verbes en –er"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Présent verbes en –er</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L18</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">C22 révision finale</span>
+    <span class="exo-consigne">Conjugue les 4 temps (+ futur proche).</span>
+  </div>
+  <table class="exo-table"><tr><td>recevoir : il (pr)___ / (imp)___ / (PC)___ / (FS)___ / (FP)___</td><td>reçoit/recevait/a reçu/recevra/va recevoir</td></tr><tr><td>applaudir : tu (pr)___ / (imp)___ / (PC)___ / (FS)___ / (FP)___</td><td>applaudis/applaudissais/as applaudi/applaudiras/vas applaudir</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">C22</span>
+    <span class="exo-consigne">Mets au temps indiqué.</span>
+  </div>
+  <table class="exo-table"><tr><td>Aminata (recevoir) ___ un prix. (PC)</td><td>a reçu</td></tr><tr><td>Les familles (applaudir) ___. (imparfait)</td><td>applaudissaient</td></tr><tr><td>Ils (rentrer) ___ demain. (FS)</td><td>rentreront</td></tr><tr><td>Nous (travailler) ___ bien. (FP)</td><td>allons travailler</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La remise des prix de fin d'année</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G24 : Révision finale CE1 | C22 : Révision finale tous temps | V24 : Révision finale vocabulaire | O29 : Dictée de fin d'année CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Révision finale vocabulaire CE1 — V24</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADlElEQVR4nO3d243UQBBGYRaRBSERD1EQDyERx/DekmtUWxd7dc736lnb618tlfr68Xq9vgnj+90voFXmzWLeLObNYt4s5s1i3izmzWLeLD/iyz9//dl5j39/fwfPja/Gt6pIvUb83Lu+5MH2zWLeLObNYt4sb+q1w1wpFD+oUhml3rlSVaWeu/YlD7ZvFvNmMW8W82bJ1WuHVKVQqVAqf1vpqotv1WjtS9q+WcybxbxZzJulVK/NqVRGa+OSjX1ka2zfLObNYt4s5s3y0Hrt0Di7rfHOlYHXu9i+WcybxbxZzJulVK+tVShzldHcaGnqJde+pO2bxbxZzJvFvFly9draIsdDZflBpQdtrl/vri9p+2YxbxbzZjFvljf12kPG+B6yrUjqb1NX19i+WcybxbxZzJvlIz7foHFvjEopdFjbomPtQZXXSGVk+2YxbxbzZjFvljf12mFucWXjDLW1yW4H98vV45g3i3mzmDdL5/kGjXPB4tdIddU1/guVH6fM9evZvlnMm8W8WcybpXM/j7llACmNW3RUNJZ+jYWh7ZvFvFnMm8W8WXLrDRr3t2jsFKuYG8RcOwI19WPbN4t5s5g3i3mzlMZDK8XO3BmgsbVR2vjHqasx1xvoknmzmDeLebPk1hvEGmd7NU7gWrtVY/kWq9SYtm8W82YxbxbzZsn1r1XG6R5ykkD8t42z2yqz+VJ3TrF9s5g3i3mzmDdLaT+PuUWdsa+4/9rakG7M9s1i3izmzWLeLKX5a41rHhs9ZCu3tfrU8VBdMm8W82Yxb5bS/LW7dr+Y09hj2FiuNt7Z9s1i3izmzWLeLJ37r63tiDt3dW4ZQIX7r+mTzJvFvFnMmyV3fujhrhOY5k5lr/D8UD2OebOYN4t5s+T2y02ZmzhWmTfXuApibsnnXFFp+2YxbxbzZjFvls7zQysad/S/a2FD6sdzWw3HbN8s5s1i3izmzZKbvza3KcXcg+LnpvZfWxuHnStIbd8s5s1i3izmzVJabzBXsDQelZC62jgjb+2IKeev6ZJ5s5g3i3mzdK4PbTQ3B22un6vyoAr713TJvFnMm8W8WR5ar8Xmdux4yCkEczPjbN8s5s1i3izmzVKq19a6kA5zJ12lHtS431zM/df0SebNYt4s5s2Sq9fWlovOjWlWar2HnFFwcDxUl8ybxbxZzJuldB6VvhzbN4t5s5g3i3mzmDeLebOYN4t5s5g3y38b9io7FVTASwAAAABJRU5ErkJggg==" alt="QR Code Les antonymes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les antonymes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L25</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>BILAN FINAL CE1 : tous les outils de vocabulaire maîtrisés pour passer en CE2.</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">V24 bilan</span>
+    <span class="exo-consigne">Synonyme + antonyme + famille de mots.</span>
+  </div>
+  <table class="exo-table"><tr><td>mériter : syn.___ / ant.___ / famille:___</td><td>valoir/être digne / ne pas mériter / mérite,méritant,méritoire</td></tr><tr><td>progresser : syn.___ / ant.___ / famille:___</td><td>avancer / régresser / progrès,progressif,progression</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">V24</span>
+    <span class="exo-consigne">Champs lexicaux en 3 mots chacun.</span>
+  </div>
+  <table class="exo-table"><tr><td>Cérémonie scolaire : ___</td><td>discours,estrade,applaudissements... / prix,mention,médaille... / fierté,joie,émotion...</td></tr><tr><td>Récompenses : ___</td><td><span class="blank">_______________</span></td></tr><tr><td>Sentiments : ___</td><td><span class="blank">_______________</span></td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">V24+V20</span>
+    <span class="exo-consigne">Mots composés + niveaux de langue.</span>
+  </div>
+  <table class="exo-table"><tr><td>Mot composé de &quot;porte&quot; + &quot;monnaie&quot; : ___</td><td>porte-monnaie</td></tr><tr><td>Niveau soutenu de &quot;c'est trop bien&quot; : ___</td><td>c'est excellent / c'est remarquable</td></tr><tr><td>Niveau familier de &quot;il est malade&quot; : ___</td><td>il est patraque / il est nase</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : analyses complètes selon modèle</div><div style="font-size:8pt">Ex.2 : 3 questions et 3 négations correctes</div><div style="font-size:8pt">Ex.3 : cause / temps / condition</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : reçoit/recevait/a reçu/recevra/va recevoir | applaudis/applaudissais/as applaudi/applaudiras/vas applaudir</div><div style="font-size:8pt">Ex.2 : a reçu / applaudissaient / rentreront / allons travailler</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : mérite,méritant / progrès,progressif,progression</div><div style="font-size:8pt">Ex.2 : réponses libres acceptables</div><div style="font-size:8pt">Ex.3 : porte-monnaie / c'est excellent / il est patraque</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Aminata a reçu le premier prix de français.  2. Excellence, meilleure progression, meilleur sportif, meilleure invention, plus gentil.  3. Un livre et un stylo.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La remise des prix de fin d'année</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G24 : Révision finale CE1 | C22 : Révision finale tous temps | V24 : Révision finale vocabulaire | O29 : Dictée de fin d'année CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">À la remise des prix, Aminata a reçu le premier prix de français avec une mention très bien.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Cette belle cérémonie a clôturé une année scolaire riche en apprentissages.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">révision finale CE1 : tous les homophones et accords</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Ces élèves ont tous reçu leurs prix. On leur a donné un livre et ses cahiers.</div><div class="model-text">La remise des prix a eu lieu là où tout le monde s'est réuni avec joie.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris la remise des prix de ton école ou un événement de fin d'année en 6-8 phrases avec tous les temps.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>cérémonie — prix — applaudissements — directrice — élèves — fierté — famille — année</em></div><div class="model-text" style="color:var(--c1)">Le dernier jour de l'année scolaire, à notre école...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La remise des prix de fin d'année</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G24 : Révision finale CE1 | C22 : Révision finale tous temps | V24 : Révision finale vocabulaire | O29 : Dictée de fin d'année CE1</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cité 4 types de prix possibles dans une école</div><div class="jeu-item">conjugue &quot;recevoir&quot; aux 5 temps à &quot;il&quot;</div><div class="jeu-item">analyse complète : &quot;Cette année, Aminata a reçu le premier prix de français.&quot;</div><div class="jeu-item">forme 3 questions sur &quot;Les élèves ont reçu leurs prix.&quot;</div><div class="jeu-item">donne le mot composé de &quot;porte+monnaie&quot;</div><div class="jeu-item">donne un synonyme de &quot;mériter&quot;</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Analyse complète bilan final :</div>
+        <div class="diff-item">Cette année, Aminata a reçu le premier prix de français avec mention très bien.<span class="answer-line"></span></div><div class="diff-item">Demain, tous les élèves partiront en vacances avec leurs bulletins et leurs prix.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Raconte la remise des prix de fin d'année en 8 phrases : bilan final CE1 complet.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">BILAN : tous les temps, toute la grammaire, tout le vocabulaire CE1.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 6 / Période 5</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Les grandes vacances</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">BILAN GÉNÉRAL CE1 | Toutes les notions | Tous les temps | Tout le vocabulaire</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">BILAN GÉNÉRAL CE1 | Toutes les notions | Tous les temps | Tout le vocabulaire</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>Les grandes vacances sont arrivées ! Les élèves de CE1 passeront en CE2 l'année prochaine.</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">BILAN GÉNÉRAL</span><span class="mhf-tag">BILAN</span><span class="mhf-tag">BILAN G11</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">BILAN CONJUGAISON CE1</span><span class="mhf-tag">BILAN</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">BILAN FINAL</span><span class="mhf-tag">BILAN</span><span class="mhf-tag">BILAN</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Évaluation finale CE1</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Lecture à voix haute d'un texte choisi</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Écriture libre : ma plus belle souvenir de CE1</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Remise des bulletins de fin d'année</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">BILAN FINAL CE1 — révision générale de tous les homophones et accords</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Les grandes vacances</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p5s7_grandes_vacances.jpg" alt="Les grandes vacances !">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que font les enfants avec leurs cartables et leurs livres ?</li>
+    <li>Décris le fleuve, le ciel et la joie visible sur les visages.</li>
+    <li>Qu'as-tu envie de faire pendant les grandes vacances ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Les grandes vacances sont enfin arrivées !</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Les élèves de CE1 de Faranah ont fini leur année avec succès.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Ils ont appris énormément de choses cette année.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">En français, ils ont appris à lire, écrire et analyser des textes.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Ils ont découvert la grammaire, la conjugaison et l'orthographe.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">En mathématiques, ils ont progressé dans le calcul.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Ils ont aussi découvert la géographie de la Guinée.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Chaque enfant garde dans son cœur un souvenir précieux.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Aminata se souviendra des poèmes appris et récités.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Sory n'oubliera jamais le jour de la fête de l'école.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Koumba se rappellera les leçons sur l'arc-en-ciel.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Ibrahima parlera longtemps de la forêt de novembre.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">Et Moussa... Moussa rêvera encore du pêcheur du fleuve.</span></div><div class="texte-line"><span class="ln">14</span><span class="txt">&quot;L'année prochaine, nous serons en CE2 !&quot; crient-ils tous.</span></div><div class="texte-line"><span class="ln">15</span><span class="txt">&quot;Nous aurons de nouveaux cahiers et de nouveaux livres !&quot;</span></div><div class="texte-line"><span class="ln">16</span><span class="txt">&quot;Nous irons encore plus loin dans notre apprentissage !&quot;</span></div><div class="texte-line"><span class="ln">17</span><span class="txt">La maîtresse dit avec émotion : &quot;Vous avez tous réussi !&quot;</span></div><div class="texte-line"><span class="ln">18</span><span class="txt">&quot;Je suis fière de vous. Vous êtes l'avenir de la Guinée !&quot;</span></div><div class="texte-line"><span class="ln">19</span><span class="txt">Bonne route, élèves de CE1 ! La Guinée a besoin de vous !</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Qu'ont appris les élèves en français cette année de CE1 ?<span class="answer-line"></span></div><div class="comp-item">Quel souvenir chaque enfant garde-t-il de l'année ?<span class="answer-line"></span></div><div class="comp-item">Que dit la maîtresse à ses élèves à la fin de l'année ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Les grandes vacances</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">BILAN GÉNÉRAL CE1 | Toutes les notions | Tous les temps | Tout le vocabulaire</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — BILAN GÉNÉRAL</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO3d240bMQxG4WyQLrak1JMqtp6UtHU4jwEEmDbBy9g453v1Zcb+IYDQSNTH7Xb7IYyfV9+AVpk3i3mzmDeLebOYN4t5s5g3i3mz/Ipf/vz9tXMf33//PH/d+M3HqxXxN6eue9U/eXB8s5g3i3mzmDfLg3rtMFcKxRdKvbmiUlWlyrer7tnxzWLeLObNYt4suXrtkKoUGiuUlNQcWeqrGq39k45vFvNmMW8W82Yp1Wtz4vqlUt001lxXVaAVjm8W82YxbxbzZnnRei2WWkfWuBTueHVu3dwcxzeLebOYN4t5s5TqtbUKpbFAO6x9VWztn3R8s5g3i3mzmDdLrl5b2+TYqFLrrdWJaxzfLObNYt4s5s3yoF57i2d8h8o9V0qwtQ2hFY5vFvNmMW8W82b5iM83qDzja5yNSmm8UOX3Nkp1drP/mv4zbxbzZjFvltLz0MaZrDlX9YxLfbZy3RTHN4t5s5g3i3mzlJ6HNjb4X5t9izXuLW28jZj9cnWXebOYN4t5swyeR/WaC/1TLToq1tqKpDi+WcybxbxZzJulc7/B3GxUZSn/izzEnDthK/VmxzeLebOYN4t5s3TuN5jbnBC/uaLxCHfPe9fLMW8W82Yxb5a98w3mZpTmToOPK7JUrTe3a9X1a7rLvFnMm8W8WR7Mrx3W2ns0vpq6jfjNFZV7PlTqU8c3i3mzmDeLebPk6rXDO5YzKWtlVErlz3F8s5g3i3mzmDdLbn9o/Iwv/uyh8fng3LnrjUeCzrXttV+u7jJvFvNmMW+WwfOoKp0zGhedpVRWqFUuFGts7+H4ZjFvFvNmMW+W0n6DxpYVa9XcXP+1tfa59l/Ts8ybxbxZzJtlsF/uYW4LwVxnt5TUdSs36fyanmXeLObNYt4se89DK9/cON02d1TC3F01cnyzmDeLebOYN8ve/FqsMoO2tjHzUJlQmzuTIeb4ZjFvFvNmMW+W3Pq1taeHc2vBGlvgzj14nTtHwvHNYt4s5s1i3iyd+w1iaz3UUlXVXPvctQ4l9vPQXebNYt4s5s2ydx5VSmOFMrcE76rnsJULOb5ZzJvFvFnMm+VF67VGlUnAtRPs4882XsjxzWLeLObNYt4spXptbQopdd3KorO14q7xQimObxbzZjFvFvNmydVra9tF19qTzS12S3228eCrmOObxbxZzJvFvFlK573r7Ti+WcybxbxZzJvFvFnMm8W8WcybxbxZ/gFRBhj7ERdmAwAAAABJRU5ErkJggg==" alt="QR Code La phrase"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>La phrase</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L01</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">BILAN GÉNÉRAL</span>
+    <span class="exo-consigne">Analyse complète de ces phrases.</span>
+  </div>
+  <table class="exo-table"><tr><td>Cette année, les élèves ont appris la grammaire et l'orthographe à l'école.</td><td>CC temps:cette année / Sujet:les élèves / PC avoir:ont appris / COD:la grammaire et l'orthographe / CC lieu:à l'école</td></tr><tr><td>L'année prochaine, Aminata ira en CE2 et elle continuera ses efforts.</td><td>CC temps:l'année prochaine / Sujet:Aminata / FS:ira / CC lieu:en CE2 / conj:et / Sujet:elle / FS:continuera / COD:ses efforts</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">BILAN</span>
+    <span class="exo-consigne">Toutes les transformations.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les élèves ont réussi. → PC négatif(ne...jamais) :</td><td>n'ont jamais réussi.</td></tr><tr><td>→ Question par inversion :</td><td>Ont-ils réussi ?</td></tr><tr><td>→ Futur simple :</td><td>Les élèves réussiront.</td></tr><tr><td>→ Imparfait (habitude) :</td><td>Les élèves réussissaient.</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">BILAN G11</span>
+    <span class="exo-consigne">Complète avec la bonne conjonction et identifie la relation.</span>
+  </div>
+  <table class="exo-table"><tr><td>Aminata est fière ___ elle a bien travaillé. (___)</td><td>parce que (cause) / Si (condition) / quand (temps)</td></tr><tr><td>___ tu passes en CE2, tu apprendras plus. (___)</td><td><span class="blank">_______________</span></td></tr><tr><td>Elle se souviendra de l'école ___ elle sera grande. (___)</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — BILAN CONJUGAISON CE1</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO2d620bMRAGbSNdpKTU4ypcj0tKHcp/Aqa83gcZzMxfSXenGyzwgY/l6+PxeBEMb6cfQEbRNwt9s9A3C32z0DcLfbPQNwt9s/i1//j3n4+Z5/j7+b657/LpnsxvQ5cK3ejUm1ywvlnom4W+WeibxZO8tpDJPgv7/BJKRoVRKHOpUHwbe5ML1jcLfbPQNwt9s4jltYVQUihMKPsrL09VmPX6xsjG3qT1zULfLPTNQt8sUnmtj0wyGpuX7EugfVjfLPTNQt8s9M3i0ryWITNWFRqMK1woN4b1zULfLPTNQt8sUnltLKGEbhSa8eybLc08cx/WNwt9s9A3C32ziOW1sU2OezLbNsc+3XPqTVrfLPTNQt8s9M3i9c5+uX2rzAqbcPwXE6AL1jcLfbPQNwt9s3iS1/r6oBXuiOwbq8r837HHCDmyvlnom4W+WeibRWM/j1ADsr7es6d6xoV+m7lvCOubhb5Z6JuFvlnE5kPHUlXhuF6I0CBgX9vevvMcrG8W+mahbxb6ZlE5vrYkhb7Q0Xc2wti6udCXC4Oh9c1C3yz0zULfLOb6eRSu3S+c4hybxMzEtz2hL1vfLPTNQt8s9M0iNR+651Say1w5M8znee9yHfpmoW8W+maR2h861hujL0btf7twSXzLWLC+Weibhb5Z6JtF5XlUmeVsYyv7Qw+ZWd0WilFjGyqsbxb6ZqFvFvpmUdkvt3AU7NTGzP2N9ow1180MIFrfLPTNQt8s9M3iyfha4SDR2OnolySjwlBpv1z5IfpmoW8W+mbxJK/1parMCFpfu4vQ9Gjm5Zw6KcL6ZqFvFvpmoW8Wt6xfC1EYlAr7r421z3X9mnwXfbPQNwt9s4jtD72ETHfZUyOGGZwPlR+ibxb6ZqFvFsfmQ/f0nbY5dgp93/EOGaxvFvpmoW8W+mYR22/QR+Zw+MyVM/S19+jbamp9s9A3C32z0DeL2Pq1vq2XoRtlwk6m/9pYbOzbaWt9s9A3C32z0DeLyvPe9/S1hO2Lb5mn6mvqm/my9c1C3yz0zULfLCr3hxYy1rws89uxBrl7HF+TL9E3C32z0DeLS/PawtiBoZf02u1bGWd9s9A3C32z0DeLVF4bG0IaO0o9NGSWaRySmfC1/5p8F32z0DcLfbOI5bWx7aJ9JwlkthD0DeQVHny1x/pmoW8W+mahbxaV573L/VjfLPTNQt8s9M1C3yz0zULfLPTNQt8s/gG7zRSexRmm4QAAAABJRU5ErkJggg==" alt="QR Code Le passé composé"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le passé composé</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L21</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">BILAN CONJUGAISON CE1</span>
+    <span class="exo-consigne">Conjugue aux 5 temps (prés/imp/PC/FS/FP).</span>
+  </div>
+  <table class="exo-table"><tr><td>apprendre : il ___ / ___ / ___ / ___ / ___</td><td>apprend/apprenait/a appris/apprendra/va apprendre</td></tr><tr><td>réussir : tu ___ / ___ / ___ / ___ / ___</td><td>réussis/réussissais/as réussi/réussiras/vas réussir</td></tr><tr><td>aller : nous ___ / ___ / ___ / ___ / ___</td><td>allons/allions/sommes allés/irons/allons aller</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">BILAN</span>
+    <span class="exo-consigne">Mets au temps demandé.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les élèves (apprendre) ___ beaucoup cette année. (PC)</td><td>ont appris</td></tr><tr><td>L'année prochaine, ils (aller) ___ en CE2. (FS)</td><td>iront</td></tr><tr><td>Avant, ils (ne pas savoir) ___ lire. (imp+négatif)</td><td>ne savaient pas</td></tr><tr><td>Dans un instant, ils (partir) ___. (FP)</td><td>vont partir</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Les grandes vacances</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">BILAN GÉNÉRAL CE1 | Toutes les notions | Tous les temps | Tout le vocabulaire</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — BILAN FINAL VOCABULAIRE CE1 — V complet</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb"><div class="retiens-box"><strong>📌 À retenir : </strong>Félicitations ! Tu as terminé le CE1. Tu es prêt(e) pour le CE2.</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">BILAN FINAL</span>
+    <span class="exo-consigne">Bilan : synonyme + antonyme + famille de mots + champ lexical.</span>
+  </div>
+  <table class="exo-table"><tr><td>réussir : syn.___ / ant.___ / famille:___ / champ lex.:___</td><td>réussir:syn=gagner,aboutir / ant=échouer / famille=réussite,réussi,réussissant / champ=école,travail,effort,note</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">BILAN</span>
+    <span class="exo-consigne">Classe ces mots par catégorie grammaticale.</span>
+  </div>
+  <table class="exo-table"><tr><td>apprendre / beau / toujours / maîtresse / dans / fièrement / les / parce que</td><td>verbe:apprendre / adj:beau / adverbe:toujours,fièrement / nom:maîtresse / préposition:dans / déterminant:les / conjonction:parce que</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">BILAN</span>
+    <span class="exo-consigne">Compose 5 phrases qui résument ton année de CE1 (une par trimestre + bilan final). Utilise tous les temps.</span>
+  </div>
+  <table class="exo-table"><tr><td>P1 (sept-déc) : ___________</td><td>réponses libres — un texte autobiographique cohérent</td></tr><tr><td>P2 (oct-déc) : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>P3 (jan-mars) : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>P4 (avr-juin) : ___________</td><td><span class="blank">_______________</span></td></tr><tr><td>Bilan : ___________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : analyses complètes selon modèles</div><div style="font-size:8pt">Ex.2 : n'ont jamais réussi / Ont-ils réussi ? / Les élèves réussiront / réussissaient</div><div style="font-size:8pt">Ex.3 : parce que(cause) / Si(condition) / quand(temps)</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : apprend/apprenait/a appris/apprendra/va apprendre | réussis/réussissais/as réussi/réussiras/vas réussir | allons/allions/sommes allés/irons/allons aller</div><div style="font-size:8pt">Ex.2 : ont appris / iront / ne savaient pas / vont partir</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : réponses complètes</div><div style="font-size:8pt">Ex.2 : verbe:apprendre / adj:beau / adverbe:toujours,fièrement / nom:maîtresse / prép:dans / dét:les / conj:parce que</div><div style="font-size:8pt">Ex.3 : textes libres cohérents</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Lire, écrire, analyser, grammaire, conjugaison, orthographe.  2. Aminata→poèmes, Sory→fête école, Koumba→arc-en-ciel, Ibrahima→forêt, Moussa→pêcheur.  3. &quot;Vous avez tous réussi ! Vous êtes l'avenir de la Guinée !&quot;</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Les grandes vacances</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">BILAN GÉNÉRAL CE1 | Toutes les notions | Tous les temps | Tout le vocabulaire</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Les grandes vacances sont arrivées ! Les élèves de CE1 passeront en CE2 en septembre.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">La maîtresse est fière de ses élèves : ils sont l'avenir de la Guinée.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">BILAN FINAL CE1</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Ces élèves ont tous réussi leur année de CE1. Ils iront en CE2 en septembre.</div><div class="model-text">Où sont-ils partis ? Ils sont là, fiers de leur travail et de leurs résultats.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Rédige une lettre de fin d'année à ta maîtresse pour lui dire merci et lui raconter ton souvenir préféré de CE1. Utilise tous les temps.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>merci — appris — souvenir — grammaire — texte — poème — fête — CE2 — avenir</em></div><div class="model-text" style="color:var(--c1)">Chère maîtresse,
+Je t'écris pour te dire merci...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Les grandes vacances</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">BILAN GÉNÉRAL CE1 | Toutes les notions | Tous les temps | Tout le vocabulaire</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P5</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"></div>
+      
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">conjugue &quot;apprendre&quot; aux 5 temps à &quot;il&quot;</div><div class="jeu-item">analyse complète : &quot;L'année prochaine, Aminata ira en CE2 avec ses nouveaux cahiers.&quot;</div><div class="jeu-item">cité 5 choses apprises en français CE1</div><div class="jeu-item">complète avec la bonne conjonction : &quot;Elle est fière ___ elle a bien travaillé.&quot;</div><div class="jeu-item">donne synonyme et antonyme de &quot;réussir&quot;</div><div class="jeu-item">classe : &quot;apprendre / beau / toujours / maîtresse&quot; par catégorie grammaticale</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">BILAN FINAL CE1 — Défi :</div>
+        <div class="diff-item">Analyse complète : &quot;Cette année, les élèves de CE1 ont appris la grammaire et l'orthographe à l'école de Faranah.&quot;<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Écris une lettre à ta maîtresse de 8 phrases : bilan FINAL CE1 complet.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : tous les temps, toutes les notions grammaticales, tout le vocabulaire appris en CE1.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 7 / Période 5</span>
+  <span>© 2026</span>
+</div>
+</div>
+</body>
+</html>

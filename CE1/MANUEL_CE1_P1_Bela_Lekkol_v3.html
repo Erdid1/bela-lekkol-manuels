@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mes Lectures CE1 — Période 1 — Bela Lekkol Montessori</title>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --c1: #1F4E79;
+  --c2: #2E75B6;
+  --cl: #D6E4F7;
+  --text: #1a1a1a;
+  --gray: #555;
+  --lgray: #f5f5f5;
+  --line: #ddd;
+  --font: 'Segoe UI', Arial, sans-serif;
+}
+body { font-family: var(--font); font-size: 10pt; color: var(--text); background: #e8e8e8; }
+
+/* ---- PAGE ---- */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: 8mm auto;
+  padding: 12mm 14mm 10mm 14mm;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+}
+@media print {
+  body { background: white; }
+  .page {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 10mm 13mm 8mm 13mm;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+  .no-print { display: none !important; }
+}
+@page { size: A4; margin: 0; }
+
+/* ---- BANDE LATÉRALE ---- */
+.page::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5mm;
+  background: var(--c1);
+}
+
+/* ---- EN-TÊTE DE PAGE ---- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--c1);
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+.page-header .week-title {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--c1);
+}
+.page-header .page-meta {
+  font-size: 8pt;
+  color: var(--gray);
+  text-align: right;
+}
+.page-num-badge {
+  display: inline-block;
+  background: var(--c1);
+  color: white;
+  font-size: 8pt;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+/* ---- BOÎTES SECTION ---- */
+.section-box {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin-bottom: 3mm;
+  overflow: hidden;
+}
+.section-box .sh {
+  background: var(--c1);
+  color: white;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.section-box .sh.light {
+  background: var(--cl);
+  color: var(--c1);
+}
+.section-box .sb {
+  padding: 3mm 4mm;
+}
+
+/* ---- PROGRAMME ---- */
+.prog-line {
+  font-size: 8.5pt;
+  color: var(--gray);
+  border-left: 3px solid var(--c2);
+  padding-left: 4px;
+  margin-bottom: 2px;
+}
+
+/* ---- ATELIERS ---- */
+.ateliers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2mm;
+}
+.atelier-cell {
+  background: var(--cl);
+  border: 1px solid var(--c2);
+  border-radius: 3px;
+  padding: 2mm 3mm;
+  font-size: 8pt;
+}
+.atelier-cell .atelier-label {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--c1);
+  margin-bottom: 1mm;
+  text-transform: uppercase;
+}
+
+/* ---- TEXTE + ILLUSTRATION ---- */
+.text-illus-row {
+  display: flex;
+  gap: 4mm;
+  margin-bottom: 3mm;
+}
+.illus-box {
+  width: 42mm;
+  min-height: 42mm;
+  flex-shrink: 0;
+  border: 1px dashed var(--c2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.illus-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.texte-col { flex: 1; }
+
+/* ---- TEXTE DE LECTURE (prose fluide) ---- */
+.texte-prose {
+  font-size: 9.5pt;
+  line-height: 1.75;
+}
+.texte-line {
+  display: flex;
+  gap: 2.5mm;
+  margin-bottom: 0.8mm;
+}
+.texte-line .ln {
+  min-width: 13px;
+  font-size: 6.5pt;
+  color: #bbb;
+  padding-top: 3px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.texte-line .txt {
+  flex: 1;
+}
+
+/* ---- MHF MINI-FICHIERS ---- */
+.mhf-box {
+  background: var(--cl);
+  border: 1.5px solid var(--c1);
+  border-radius: 4px;
+  padding: 2mm 4mm;
+  margin-bottom: 2mm;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 3mm;
+}
+.mhf-header {
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--c1);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.mhf-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.mhf-label {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.mhf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+}
+.mhf-tag {
+  background: var(--c1);
+  color: white;
+  font-size: 7.5pt;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+/* ---- COMPRÉHENSION ---- */
+.comp-item {
+  font-size: 9pt;
+  margin-bottom: 1.5mm;
+  padding-left: 4mm;
+}
+.comp-item::before { content: '❓ '; }
+.answer-line {
+  display: block;
+  border-bottom: 1px solid var(--line);
+  min-height: 5mm;
+  margin: 1mm 0 2mm 5mm;
+}
+
+/* ---- MOT À RETENIR ---- */
+.mot-retenir {
+  background: var(--cl);
+  border-left: 4px solid var(--c1);
+  padding: 2mm 4mm;
+  font-size: 9pt;
+  margin-bottom: 2mm;
+  font-style: italic;
+  border-radius: 0 3px 3px 0;
+}
+
+/* ---- EXERCICE BLOCK ---- */
+.exo-block {
+  margin-bottom: 3mm;
+}
+.exo-header {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+  margin-bottom: 1.5mm;
+}
+.exo-num {
+  background: var(--c1);
+  color: white;
+  font-size: 8pt;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.exo-ref {
+  font-size: 7.5pt;
+  color: var(--c2);
+  font-weight: 600;
+}
+.exo-consigne {
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+/* tableau 2 colonnes exercice */
+.exo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+.exo-table td {
+  padding: 1.5mm 2mm;
+  border: 1px solid var(--line);
+  vertical-align: top;
+}
+.exo-table td:first-child {
+  width: 58%;
+  background: var(--lgray);
+}
+.exo-table td:last-child {
+  width: 42%;
+}
+.blank { color: #bbb; font-style: italic; }
+
+/* ---- RETIENS ---- */
+.retiens-box {
+  background: var(--cl);
+  border: 1.5px solid var(--c1);
+  border-radius: 4px;
+  padding: 2mm 4mm;
+  margin-bottom: 3mm;
+  font-size: 8.5pt;
+}
+.retiens-box strong { color: var(--c1); }
+
+/* ---- COPIER / DICTÉE / PROD ---- */
+.write-lines {
+  margin-top: 1mm;
+}
+.write-line {
+  border-bottom: 1px solid var(--line);
+  min-height: 7mm;
+  margin-bottom: 1mm;
+}
+.model-text {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  color: #333;
+  background: #fafafa;
+  border: 1px dashed var(--line);
+  padding: 2mm 3mm;
+  border-radius: 3px;
+  margin-bottom: 1.5mm;
+}
+
+/* ---- POÈME ---- */
+.poeme-block {
+  background: var(--cl);
+  border-radius: 4px;
+  padding: 3mm 5mm;
+  font-size: 9.5pt;
+  line-height: 1.8;
+  font-style: italic;
+  border-left: 4px solid var(--c1);
+}
+.poeme-vers { display: block; }
+
+/* ---- JEU ORAL ---- */
+.jeu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5mm;
+}
+.jeu-item {
+  border: 1px solid var(--c2);
+  border-radius: 3px;
+  padding: 1.5mm 2mm;
+  font-size: 8pt;
+  background: var(--lgray);
+}
+.jeu-item::before { content: '🎯 '; }
+
+/* ---- DIFFÉRENCIATION ---- */
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+}
+.diff-n1 {
+  background: #fff8e1;
+  border: 1px solid #f9a825;
+  border-radius: 4px;
+  padding: 2mm 3mm;
+}
+.diff-n2 {
+  background: #e8f5e9;
+  border: 1px solid var(--c2);
+  border-radius: 4px;
+  padding: 2mm 3mm;
+}
+.diff-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.5mm;
+}
+.diff-n1 .diff-label { color: #f57f17; }
+.diff-n2 .diff-label { color: var(--c1); }
+.diff-item { font-size: 8.5pt; margin-bottom: 1mm; }
+
+/* ---- DESSIN ---- */
+.dessin-box {
+  border: 1px dashed var(--c2);
+  border-radius: 4px;
+  min-height: 25mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c2);
+  font-size: 8pt;
+  font-style: italic;
+  background: #fafafa;
+  margin-top: 2mm;
+}
+
+/* ---- COUVERTURE ---- */
+.cover-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 257mm;
+}
+.cover-header {
+  width: 100%;
+  background: var(--c1);
+  color: white;
+  text-align: center;
+  padding: 8mm 10mm;
+  border-radius: 4px;
+  margin-bottom: 6mm;
+}
+.cover-header h1 { font-size: 22pt; margin-bottom: 2mm; }
+.cover-header h2 { font-size: 14pt; font-weight: 400; }
+.cover-sub {
+  font-size: 11pt;
+  color: var(--c1);
+  font-weight: 600;
+  margin-top: 2mm;
+}
+.cover-months {
+  font-size: 10pt;
+  color: var(--gray);
+  margin: 2mm 0 6mm 0;
+}
+.sommaire-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--c1);
+  border-bottom: 2px solid var(--c1);
+  padding-bottom: 2mm;
+  margin-bottom: 4mm;
+  width: 100%;
+}
+.sommaire-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+.sommaire-table th {
+  background: var(--c1);
+  color: white;
+  padding: 2mm 4mm;
+  text-align: left;
+  font-size: 9pt;
+}
+.sommaire-table td {
+  padding: 2.5mm 4mm;
+  border-bottom: 1px solid var(--line);
+}
+.sommaire-table tr:nth-child(even) td { background: var(--cl); }
+.cover-footer {
+  width: 100%;
+  text-align: center;
+  font-size: 8pt;
+  color: var(--gray);
+  border-top: 1px solid var(--line);
+  padding-top: 3mm;
+  margin-top: auto;
+}
+
+/* ---- CORRIGÉS ---- */
+.corrige-block {
+  background: #fff3e0;
+  border: 1px solid #ff9800;
+  border-radius: 4px;
+  padding: 2mm 3mm;
+  font-size: 8pt;
+  margin-bottom: 2mm;
+}
+.corrige-block .cor-label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #e65100;
+  text-transform: uppercase;
+  margin-bottom: 1mm;
+}
+
+/* ---- MOTS DE LA DICTÉE ---- */
+.dict-mots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-bottom: 2mm;
+}
+.dict-mot {
+  background: var(--c1);
+  color: white;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+.pt-copie {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  color: var(--c1);
+  background: var(--cl);
+  padding: 2mm 4mm;
+  border-radius: 3px;
+  margin-bottom: 2mm;
+  border-left: 3px solid var(--c1);
+}
+
+/* ════ ILLUSTRATION BANDEAU ════ */
+.illus-bandeau {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 3mm;
+  border: 0.5px solid #ccc;
+  page-break-inside: avoid;
+  background: #faf9f5;
+}
+.illus-bandeau img {
+  width: 100%;
+  height: auto;          /* ratio 4:3 naturel, aucune déformation */
+  max-height: 72mm;      /* plafond pour les petites pages */
+  display: block;
+  object-fit: cover;
+  object-position: center 18%;  /* montre la partie haute : personnages */
+}
+/* ════ LANGAGE ORAL ════ */
+.oral-section {
+  background: #FFF8E7;
+  border-left: 3.5px solid #F9A825;
+  padding: 2.5mm 4mm;
+  margin-bottom: 3mm;
+  border-radius: 0 4px 4px 0;
+  page-break-inside: avoid;
+}
+.oral-title {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: #E65100;
+  margin-bottom: 1.5mm;
+  letter-spacing: 0.3px;
+}
+.oral-questions {
+  margin: 0;
+  padding-left: 5mm;
+}
+.oral-questions li {
+  font-size: 8.5pt;
+  color: #4E342E;
+  margin-bottom: 1mm;
+  line-height: 1.45;
+}
+
+
+/* ════ QR CODES CANOPÉ ════ */
+.canope-qr {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5mm;
+  background: #EBF3FB;
+  border: 1px solid #2E75B6;
+  border-radius: 5px;
+  padding: 1.5mm 3mm;
+  margin: 1.5mm 0 2mm 0;
+  page-break-inside: avoid;
+  float: right;
+  margin-left: 4mm;
+}
+.canope-qr img {
+  width: 18mm;
+  height: 18mm;
+  display: block;
+  flex-shrink: 0;
+}
+.canope-qr-label {
+  font-size: 6.5pt;
+  color: #1a4a8a;
+  line-height: 1.5;
+  font-weight: 600;
+  max-width: 30mm;
+}
+.canope-qr-label .qr-url {
+  font-size: 5.5pt;
+  color: #555;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+</style>
+</head>
+<body>
+
+<div class="no-print" style="position:fixed;top:10px;right:10px;z-index:999">
+  <button onclick="window.print()" style="background:#1F4E79;color:white;border:none;padding:8px 16px;border-radius:6px;font-size:11pt;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3)">
+    🖨️ Imprimer / Enregistrer en PDF
+  </button>
+</div>
+
+<div class="page">
+  <div class="cover-page">
+    <div class="cover-header">
+      <h1>📚 Mes Lectures CE1</h1>
+      <h2>Période 1 — Septembre — Octobre</h2>
+    </div>
+    <div style="text-align:center;margin-bottom:4mm">
+      <div style="font-size:11pt;color:#1F4E79;font-weight:600">École Bela Lekkol Montessori — Guinée</div>
+      <div style="font-size:9pt;color:#666;margin-top:1mm">Méthode Heuristique du Français (MHF) — Contexte guinéen</div>
+      <div style="width:40mm;height:3px;background:#1F4E79;margin:3mm auto"></div>
+    </div>
+
+    <div style="width:100%">
+      <div class="sommaire-title">📋 Sommaire de la période</div>
+      <table class="sommaire-table">
+        <thead>
+          <tr>
+            <th style="width:30px">N°</th>
+            <th>Titre de la semaine</th>
+            <th>Notions clés</th>
+            <th style="text-align:right">Pages</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">1</td>
+  <td><strong>La rentrée de septembre</strong></td>
+  <td style="font-size:8pt;color:#555">G : La phrase (G1) </td>
+  <td style="font-size:8pt;text-align:right">2–6</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">2</td>
+  <td><strong>Mon cartable, ma classe</strong></td>
+  <td style="font-size:8pt;color:#555">G : Types de phrases (G5) </td>
+  <td style="font-size:8pt;text-align:right">7–11</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">3</td>
+  <td><strong>La cour de récréation</strong></td>
+  <td style="font-size:8pt;color:#555">G : Les déterminants (G2a) </td>
+  <td style="font-size:8pt;text-align:right">12–16</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">4</td>
+  <td><strong>Au marché du matin</strong></td>
+  <td style="font-size:8pt;color:#555">G : Sujet et verbe (G3) </td>
+  <td style="font-size:8pt;text-align:right">17–21</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">5</td>
+  <td><strong>Le repas en famille</strong></td>
+  <td style="font-size:8pt;color:#555">G : Pronoms personnels sujets (G2e) </td>
+  <td style="font-size:8pt;text-align:right">22–26</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">6</td>
+  <td><strong>La bibliothèque de l'école</strong></td>
+  <td style="font-size:8pt;color:#555">G : Accord sujet-verbe (G3+) </td>
+  <td style="font-size:8pt;text-align:right">27–31</td>
+</tr>
+<tr>
+  <td style="font-weight:700;width:30px;text-align:center">7</td>
+  <td><strong>Le village de Faranah</strong></td>
+  <td style="font-size:8pt;color:#555">G : Bilan G1+G5+G2a+G3+G2e </td>
+  <td style="font-size:8pt;text-align:right">32–36</td>
+</tr></tbody>
+      </table>
+    </div>
+
+    <div style="width:100%;background:#D6E4F7;border:1px solid #2E75B6;border-radius:4px;padding:3mm 5mm;margin-top:4mm">
+      <div style="font-size:9pt;font-weight:700;color:#1F4E79;margin-bottom:1.5mm">Structure de chaque semaine (5 pages)</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;font-size:8pt">
+        <div style="background:white;border:1px solid #2E75B6;border-radius:3px;padding:2mm;text-align:center"><strong>P.1</strong><br>Texte &amp; Compréhension</div>
+        <div style="background:white;border:1px solid #2E75B6;border-radius:3px;padding:2mm;text-align:center"><strong>P.2</strong><br>Grammaire &amp; Conjugaison</div>
+        <div style="background:white;border:1px solid #2E75B6;border-radius:3px;padding:2mm;text-align:center"><strong>P.3</strong><br>Vocabulaire &amp; Corrigés</div>
+        <div style="background:white;border:1px solid #2E75B6;border-radius:3px;padding:2mm;text-align:center"><strong>P.4</strong><br>Copier / Dictée / Prod.</div>
+        <div style="background:white;border:1px solid #2E75B6;border-radius:3px;padding:2mm;text-align:center"><strong>P.5</strong><br>Poème / Jeu / Diff.</div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      Bela Lekkol Montessori — Manuel CE1 "Mes Lectures" — Méthode MHF — Contexte guinéen
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de septembre</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : La phrase (G1) | C : L'infinitif (C1) | V : L'hyperonyme (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G : La phrase (G1) | C : L'infinitif (C1) | V : L'hyperonyme (V1)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>chez — assez — déjà — jusqu'à</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Phrasix</span><span class="mhf-tag">Chacun son Rôle</span><span class="mhf-tag">Phrasix</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Au Travail ou au Repos</span><span class="mhf-tag">Au Travail ou au Repos</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Alphabétix</span><span class="mhf-tag">Autour du mot</span><span class="mhf-tag">Autour du mot</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Trier étiquettes phrases.</div><div style="font-size:8pt">Correction collective.</div><div style="font-size:8pt">Fiche phrase + leçon.</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Identifier le verbe.</div><div style="font-size:8pt">Tri verbes (étiquettes).</div><div style="font-size:8pt">Recopier les verbes.</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Carte mentale : cartable.</div><div style="font-size:8pt">Famille de « école ».</div><div style="font-size:8pt">2 phrases au cahier.</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Copier : chez, assez, déjà.</div><div style="font-size:8pt">Mini-fichier Pas Touche !</div><div style="font-size:8pt">Repérer dans le texte.</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">rentrée</span><span class="dict-mot">accueille</span><span class="dict-mot">joyeusement</span><span class="dict-mot">habituelle</span><span class="dict-mot">manguiers</span><span class="dict-mot">brillent</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La rentrée de septembre</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p1s1_rentree.jpg" alt="La rentrée de septembre">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que vois-tu sur cette image ?</li>
+    <li>Décris les personnages et le lieu où ils se trouvent.</li>
+    <li>Que ressent Aminata ce premier matin de CE1 ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Aminata se lève tôt ce matin car c'est la rentrée des classes.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Elle enfile son uniforme bleu et blanc, puis met son cartable sur le dos.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Dans la rue, elle rencontre son ami Kofi et ils marchent ensemble.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">« Bonjour, Aminata ! Es-tu prête pour le CE1 ? » demande-t-il.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">« Oui ! dit-elle. Je suis contente, mais j'ai un peu peur. »</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Ils arrivent à l'école Bela Lekkol : la cour est pleine d'enfants joyeux.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Madame Bah, leur maîtresse, les accueille à la porte avec douceur.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Elle les conduit dans la salle de classe, propre et bien rangée.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Sur chaque bureau, il y a des cahiers neufs et des crayons taillés.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Kofi distribue les livres de lecture à ses camarades avec fierté.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">« Cette année, nous allons apprendre beaucoup ! » dit Madame Bah.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Dehors, les manguiers brillent sous le soleil de septembre.</span></div><div class="texte-line"><span class="ln">13</span><span class="txt">C'est donc une belle journée pour commencer le CE1.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Où va Aminata ce matin ? Quel est le nom de son école ?<span class="answer-line"></span></div><div class="comp-item">Que ressent Aminata avant la rentrée ?<span class="answer-line"></span></div><div class="comp-item">Comment se passe cette première journée ? Cite deux détails.<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de septembre</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : La phrase (G1) | C : L'infinitif (C1) | V : L'hyperonyme (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Phrasix</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO3d240bMQxG4WyQLrak1JMqtp6UtHU4jwEEmDbBy9g453v1Zcb+IYDQSNTH7Xb7IYyfV9+AVpk3i3mzmDeLebOYN4t5s5g3i3mz/Ipf/vz9tXMf33//PH/d+M3HqxXxN6eue9U/eXB8s5g3i3mzmDfLg3rtMFcKxRdKvbmiUlWlyrer7tnxzWLeLObNYt4suXrtkKoUGiuUlNQcWeqrGq39k45vFvNmMW8W82Yp1Wtz4vqlUt001lxXVaAVjm8W82YxbxbzZnnRei2WWkfWuBTueHVu3dwcxzeLebOYN4t5s5TqtbUKpbFAO6x9VWztn3R8s5g3i3mzmDdLrl5b2+TYqFLrrdWJaxzfLObNYt4s5s3yoF57i2d8h8o9V0qwtQ2hFY5vFvNmMW8W82b5iM83qDzja5yNSmm8UOX3Nkp1drP/mv4zbxbzZjFvltLz0MaZrDlX9YxLfbZy3RTHN4t5s5g3i3mzlJ6HNjb4X5t9izXuLW28jZj9cnWXebOYN4t5swyeR/WaC/1TLToq1tqKpDi+WcybxbxZzJulc7/B3GxUZSn/izzEnDthK/VmxzeLebOYN4t5s3TuN5jbnBC/uaLxCHfPe9fLMW8W82Yxb5a98w3mZpTmToOPK7JUrTe3a9X1a7rLvFnMm8W8WR7Mrx3W2ns0vpq6jfjNFZV7PlTqU8c3i3mzmDeLebPk6rXDO5YzKWtlVErlz3F8s5g3i3mzmDdLbn9o/Iwv/uyh8fng3LnrjUeCzrXttV+u7jJvFvNmMW+WwfOoKp0zGhedpVRWqFUuFGts7+H4ZjFvFvNmMW+W0n6DxpYVa9XcXP+1tfa59l/Ts8ybxbxZzJtlsF/uYW4LwVxnt5TUdSs36fyanmXeLObNYt4se89DK9/cON02d1TC3F01cnyzmDeLebOYN8ve/FqsMoO2tjHzUJlQmzuTIeb4ZjFvFvNmMW+W3Pq1taeHc2vBGlvgzj14nTtHwvHNYt4s5s1i3iyd+w1iaz3UUlXVXPvctQ4l9vPQXebNYt4s5s2ydx5VSmOFMrcE76rnsJULOb5ZzJvFvFnMm+VF67VGlUnAtRPs4882XsjxzWLeLObNYt4spXptbQopdd3KorO14q7xQimObxbzZjFvFvNmydVra9tF19qTzS12S3228eCrmOObxbxZzJvFvFlK573r7Ti+WcybxbxZzJvFvFnMm8W8WcybxbxZ/gFRBhj7ERdmAwAAAABJRU5ErkJggg==" alt="QR Code La phrase"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>La phrase</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L01</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Coche si c'est une phrase correcte.</span>
+  </div>
+  <table class="exo-table"><tr><td>Kofi entre dans la cour de l'école.</td><td>oui / non : ___</td></tr><tr><td>la maîtresse belle</td><td>oui / non : ___</td></tr><tr><td>Aminata pose ses cahiers sur le bureau.</td><td>oui / non : ___</td></tr><tr><td>met sac sur dos</td><td>oui / non : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Chacun son Rôle</span>
+    <span class="exo-consigne">Remets les mots dans l'ordre pour former une phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>cour / dans / la / jouent / enfants / Les</td><td>→ ________________________</td></tr><tr><td>belle / est / classe / La / grande / et</td><td>→ ________________________</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Écris 2 phrases correctes sur la rentrée scolaire.</span>
+  </div>
+  <table class="exo-table"><tr><td>1. ________________________________</td><td><span class="blank">_______________</span></td></tr><tr><td>2. ________________________________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Au Travail ou au Repos</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADfElEQVR4nO2d220jMQwAk+C6SEmpJ1Wknispdfj+BYSOwMdqb2Z+4+zKHhAgKJF6fTweL4Lh7eoFyCj6ZqFvFvpmoW8W+mahbxb6ZqFvFn/iP79/fM2s4/vv5++XsXy4cJHxMhbiVcUf7iNehvHNQt8s9M1C3yye5GsLW+lMTJy/FCZomTQqXkbm1xj7JReMbxb6ZqFvFvpmsZevLRTmTVsv6ntUYcksU6qLyXx945uFvlnom4W+WaTytavoS5S2/rdvW7YP45uFvlnom4W+WRyarx1ynG3rvbfA+Gahbxb6ZqFvFql87Y4Jy0JhrnfIcbYY45uFvlnom4W+Wezla2NbfoWVrMJehUxzQvzhMYxvFvpmoW8W+mbxeua83MI613+wiVmI8c1C3yz0zULfLPbmr/VNoYifXNhCMNarkHlRX7uo8c1C3yz0zULfLJ7ka7cYdzF2cKwwx9z6RoWbp8Y3C32z0DcLfbN4sh96yIyKW2xi9iWVhRjfLPTNQt8s9M1ir76WIbN7mKnr9d2NUMhYrmd8s9A3C32z0DeLvfpaJlHKfDjmzANrY20PW082vlnom4W+WeibReU8j60MpbBGNlYFG7v0s28WiPHNQt8s9M1C3yxS/QZb/7twVTEufvJCX5441qqxYHyz0DcLfbPQN4vG+w0y9bX4RX0n1PrSt74zd+6Hyo/om4W+WeibReX9oYUls7HS1SHTdMeaIoxvFvpmoW8W+maR6jc4ZILFVYPe+i6g6kvfjG8W+mahbxb6ZjHXb7BFX+tC/KKtv2aIv2BfJmh8s9A3C32z0DeLyvpa4VmwLQoraJknb3FVadL4ZqFvFvpmoW8WlfPXYq7qxOyj7/IH90OlBn2z0DcLfbN4kq9dxViPZ+a9MYdckLpgfLPQNwt9s9A3i1PuD71q5zGzjMKK4dgurfHNQt8s9M1C3yz2+g3GBtVmHrXVQrC1jLFDdn0dFMY3C32z0DcLfbNIzV8bqwqNbReOndfLLMP6mvwWfbPQNwt9s6iclztGYW9p5r19xOM9FpyXKz+ibxb6ZqFvFrfM1xb6BtVmHnUmxjcLfbPQNwt9s2i8P7SQwjQqM1Eu041wyDULxjcLfbPQNwt9szi0PzSTVcUcMjTN/lCZQN8s9M1C3ywOnb8mTRjfLPTNQt8s9M1C3yz0zULfLPTNQt8s/gHvBv9GOiyD6AAAAABJRU5ErkJggg==" alt="QR Code L'infinitif"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>L'infinitif</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L10b</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Souligne les verbes à l'infinitif.</span>
+  </div>
+  <table class="exo-table"><tr><td>Aminata aime chanter le matin.</td><td>infinitif : ___</td></tr><tr><td>Kofi veut apprendre à lire.</td><td>infinitif : ___</td></tr><tr><td>La maîtresse dit d'écouter.</td><td>infinitif : ___</td></tr><tr><td>Il faut ranger les cahiers.</td><td>infinitif : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Range ces infinitifs : -er / -ir / -re / -oir.</span>
+  </div>
+  <table class="exo-table"><tr><td>manger</td><td>-er : ___</td></tr><tr><td>finir</td><td>-ir : ___</td></tr><tr><td>prendre</td><td>-re : ___</td></tr><tr><td>savoir</td><td>-oir : ___</td></tr><tr><td>jouer</td><td>-er : ___</td></tr><tr><td>partir</td><td>-ir : ___</td></tr><tr><td>faire</td><td>-re : ___</td></tr><tr><td>aller</td><td>-er : ___</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de septembre</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : La phrase (G1) | C : L'infinitif (C1) | V : L'hyperonyme (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — L'hyperonyme — V1</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Alphabétix</span>
+    <span class="exo-consigne">Range ces mots dans l'ordre alphabétique.</span>
+  </div>
+  <table class="exo-table"><tr><td>maîtresse — cartable — élève — classe — école — ami</td><td>Ordre : _______________________________</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Trouve l'hyperonyme de chaque liste.</span>
+  </div>
+  <table class="exo-table"><tr><td>cahier, livre, règle, stylo →</td><td>hyperonyme : ___</td></tr><tr><td>lion, singe, éléphant →</td><td>hyperonyme : ___</td></tr><tr><td>manguier, baobab, palmier →</td><td>hyperonyme : ___</td></tr><tr><td>Conakry, Kindia, Labé →</td><td>hyperonyme : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Donne 3 mots de la famille d'« école ».</span>
+  </div>
+  <table class="exo-table"><tr><td>école →</td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : 1.oui 2.non 3.oui 4.non</div><div style="font-size:8pt">Ex.2 : Les enfants jouent dans la cour. / La classe est belle et grande.</div><div style="font-size:8pt">Ex.3 : réponses libres — majuscule + point</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : chanter / apprendre / écouter / ranger</div><div style="font-size:8pt">Ex.2 : -er:manger,jouer,aller / -ir:finir,partir / -re:prendre,faire / -oir:savoir</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : ami, cartable, classe, école, élève, maîtresse</div><div style="font-size:8pt">Ex.2 : matériel scol. / animal / arbre / ville de Guinée</div><div style="font-size:8pt">Ex.3 : écolier, scolaire, école (variantes acceptées)</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. École Bela Lekkol. 2. Contente mais un peu peur. 3. Belle journée : cahiers neufs, maîtresse douce, soleil.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de septembre</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : La phrase (G1) | C : L'infinitif (C1) | V : L'hyperonyme (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Aminata est contente car c'est la rentrée.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Kofi et ses amis entrent joyeusement dans la classe.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">mais</span> <span class="dict-mot">donc</span> <span class="dict-mot">or</span> <span class="dict-mot">ni</span> <span class="dict-mot">car</span> <span class="dict-mot">et</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Aminata est contente car c'est la rentrée, mais elle a un peu peur.</div><div class="model-text">Kofi et ses amis arrivent à l'école : ils sont donc prêts pour le CE1.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Écris 4 phrases pour raconter ta rentrée scolaire.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>école — ami — cartable — maîtresse — classe — joie</em></div><div class="model-text" style="color:var(--c1)">Ce matin, je mets mon cartable...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 1 — La rentrée de septembre</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : La phrase (G1) | C : L'infinitif (C1) | V : L'hyperonyme (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"><span class="poeme-vers">La cloche a sonné, c'est la rentrée,</span><span class="poeme-vers">Les enfants courent dans la matinée.</span><span class="poeme-vers">Aminata sourit à Kofi son ami,</span><span class="poeme-vers">La maîtresse les attend, tout est fleuri.</span><span class="poeme-vers">Tableau noir, craies blanches et beaux cahiers :</span><span class="poeme-vers">C'est une belle journée pour commencer.</span></div>
+      <div class="dessin-box">Dessine ta classe ou ta cour de récré.</div>
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">dit le nom de sa maîtresse de CE1</div><div class="jeu-item">nomme 3 matières enseignées au CE1</div><div class="jeu-item">cite une règle de la classe</div><div class="jeu-item">décrit l'uniforme de son école</div><div class="jeu-item">donne le nom du directeur ou de la directrice</div><div class="jeu-item">chante une chanson de rentrée</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète avec les mots de l'aide :</div>
+        <div class="diff-item">Ma maîtresse s'appelle _____.<span class="answer-line"></span></div><div class="diff-item">Dans ma classe, il y a _____ élèves.<span class="answer-line"></span></div><div class="diff-item">J'aime l'école parce que _____.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Écris 6 phrases sur ta rentrée avec des détails.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise au moins 3 mots invariables (mais, donc, car, et, ni).</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 1 / Période 1</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — Mon cartable, ma classe</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Types de phrases (G5) | C : Passé / Présent / Futur (C2) | V : Hyperonyme + Alphabétix (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G : Types de phrases (G5) | C : Passé / Présent / Futur (C2) | V : Hyperonyme + Alphabétix (V1)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>et — est — son — sa — ses</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Chacun son Rôle</span><span class="mhf-tag">Détermino</span><span class="mhf-tag">Chacun son Rôle</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Au Travail ou au Repos</span><span class="mhf-tag">Au Travail ou au Repos</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Alphabétix</span><span class="mhf-tag">Autour du mot</span><span class="mhf-tag">Autour du mot</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Identifier types de phrases.</div><div style="font-size:8pt">Transformer phrases.</div><div style="font-size:8pt">Fiche leçon types phrases.</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Classer passé/présent/futur.</div><div style="font-size:8pt">Exercice Au Travail ou au Repos.</div><div style="font-size:8pt">Écrire 3 phrases aux 3 temps.</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Carte mentale : école.</div><div style="font-size:8pt">Ordre alpha : mots du texte.</div><div style="font-size:8pt">Famille de « tableau ».</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Copier : et/est, son/sa/ses.</div><div style="font-size:8pt">Mini-fichier Pas Touche !</div><div style="font-size:8pt">Repérer dans le texte.</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">lumineuse</span><span class="dict-mot">ordonnée</span><span class="dict-mot">tableau</span><span class="dict-mot">distribue</span><span class="dict-mot">trousse</span><span class="dict-mot">compas</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Mon cartable, ma classe</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p1s2_cartable.jpg" alt="Mon cartable">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que vois-tu dans le cartable et sur le bureau ?</li>
+    <li>Décris la salle de classe en arrière-plan.</li>
+    <li>Pourquoi Kofi est-il si fier de son cartable ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Kofi est fier de son nouveau cartable bleu.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">À l'intérieur, il range sa trousse, ses cahiers et ses livres.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">La salle de classe est grande et lumineuse.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Les murs sont décorés de cartes et d'images colorées.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Madame Bah distribue à chaque élève ses nouveaux manuels.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Kofi ouvre son livre de lecture et sourit en voyant les illustrations.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Sa page préférée montre des animaux de la forêt guinéenne.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Il pose son cartable sous son bureau et s'assoit bien droit.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">« Mon cartable est prêt et ma tête aussi ! » dit-il à Aminata.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Elle rit car son cartable à elle est tout aussi beau.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">Les élèves copient leur emploi du temps dans leurs cahiers neufs.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">C'est une classe bien organisée : chaque chose est à sa place.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Que contient le cartable de Kofi ?<span class="answer-line"></span></div><div class="comp-item">Comment est la salle de classe ? Cite deux détails.<span class="answer-line"></span></div><div class="comp-item">Quelle est la page préférée de Kofi dans son livre ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — Mon cartable, ma classe</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Types de phrases (G5) | C : Passé / Présent / Futur (C2) | V : Hyperonyme + Alphabétix (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Chacun son Rôle</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADiklEQVR4nO3dUa4TMQxGYS5iFyyJ9bAK1sOSWEd5vFKkujW2k6Bzvte202l/RbKSSfzxeDy+COPr6RvQVubNYt4s5s1i3izmzWLeLObNYt4s3+KXv//4tec+/vz++c+fjW9yufLy5vh7U2+OXfJPOr5ZzJvFvFnMm+VFvbaoFCyLuH5JlWBzNVdc68VvTl25IlUJOr5ZzJvFvFnMmyVXry1SlcJcobSYm0Gr3FVs7p9cOL5ZzJvFvFnMm6VUr53SWL7NlWB3cnyzmDeLebOYN8ul9VrjymOlBKs8+3YnxzeLebOYN4t5s5TqtbmCpbEia5xBmyvftpV+jm8W82YxbxbzZsnVa9uWC+NSKPVqLPXZyl3Fl9rG8c1i3izmzWLeLB//xXm5cwuRc6XfnRzfLObNYt4s5s3yol5rnOdqXEw8Vb7Fb17M/aLKz3d8s5g3i3mzmDdLbn6tcRWvsZy5c/E0danFXPnm+GYxbxbzZjFvllK9NrcrIGVuv8Gpmbv4szHrNX0ybxbzZjFvltx66OKSBdC5LZ8Vc2uarofqXebNYt4s5s2yb34tdalTC6Cnjs+d+wkLxzeLebOYN4t5s3T2e6/0dopfrRyzcafGw9rsH6qnzJvFvFnMm6XU7/3U/tCUuX7vcyuescqsn+ObxbxZzJvFvFkG+xtUXm2s9Rq/KJaaBFxs643g+GYxbxbzZjFvlsH+BpWnrhrrpsrC61yPglM7Tx3fLObNYt4s5s3yol7bNgtWuXJjE6nKXcVvrmj8CY5vFvNmMW8W82bJ7TeYW1vctiA4V6ClVP4Nn1/Tu8ybxbxZzJuls7/Btj0D8fde0rJg2/Siz6/pKfNmMW8W82bp7B8aO3XI7Vx/g7nT2eYqX8c3i3mzmDeLebPk5te2aVwu3LYse0kDB/cb6JN5s5g3i3mzdJ6XW9G4P3TbQW/b9io0Tk06vlnMm8W8WcybpXRebsVc3/W5yqhSVDb+de4P1bvMm8W8WcybpXRe7iU1V+WL5hpfzZ3O5n4Dvcu8WcybxbxZSvXanEopdGo9tLFne+qLUhzfLObNYt4s5s1yab3W2KOgYu65/9hco1LHN4t5s5g3i3mzlM7zqDjV732xbavp3DkirofqKfNmMW8W82YZ7B9aMXdgbMW2R9KcX1MP82YxbxbzZrn0/DUNcXyzmDeLebOYN4t5s5g3i3mzmDeLebP8BQI1TYzuiSR8AAAAAElFTkSuQmCC" alt="QR Code Types de phrases – décl."><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Types de phrases – décl.</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L02a</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Chacun son Rôle</span>
+    <span class="exo-consigne">Indique le type de chaque phrase (déclarative / interrogative / exclamative / impérative).</span>
+  </div>
+  <table class="exo-table"><tr><td>Kofi ouvre son cartable.</td><td>type : ___</td></tr><tr><td>Est-ce que ta trousse est là ?</td><td>type : ___</td></tr><tr><td>Comme cette classe est belle !</td><td>type : ___</td></tr><tr><td>Pose ton sac sous le bureau.</td><td>type : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Détermino</span>
+    <span class="exo-consigne">Transforme ces phrases déclaratives en phrases interrogatives.</span>
+  </div>
+  <table class="exo-table"><tr><td>Aminata a un beau cartable.</td><td>→ ________________________</td></tr><tr><td>La maîtresse distribue les cahiers.</td><td>→ ________________________</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Chacun son Rôle</span>
+    <span class="exo-consigne">Écris une phrase de chaque type sur le cartable ou la classe.</span>
+  </div>
+  <table class="exo-table"><tr><td>Déclarative : ___</td><td><span class="blank">_______________</span></td></tr><tr><td>Interrogative : ___</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Au Travail ou au Repos</div>
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Classe chaque phrase : passé / présent / futur.</span>
+  </div>
+  <table class="exo-table"><tr><td>Kofi range son cartable.</td><td>temps : ___</td></tr><tr><td>Hier, il a oublié sa trousse.</td><td>temps : ___</td></tr><tr><td>Demain, il apportera son compas.</td><td>temps : ___</td></tr><tr><td>Aminata copie la leçon.</td><td>temps : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Réécris chaque phrase au temps indiqué.</span>
+  </div>
+  <table class="exo-table"><tr><td>Kofi ouvre son livre. (passé)</td><td>→ ___</td></tr><tr><td>La maîtresse distribue les cahiers. (futur)</td><td>→ ___</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — Mon cartable, ma classe</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Types de phrases (G5) | C : Passé / Présent / Futur (C2) | V : Hyperonyme + Alphabétix (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Hyperonyme + ordre alphabétique — V1</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Alphabétix</span>
+    <span class="exo-consigne">Range ces mots du cartable dans l'ordre alphabétique.</span>
+  </div>
+  <table class="exo-table"><tr><td>trousse — compas — cahier — livre — stylo — règle</td><td>Ordre : _______________________________</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Trouve l'hyperonyme commun à chaque liste.</span>
+  </div>
+  <table class="exo-table"><tr><td>crayon, stylo, feutre, bic →</td><td>hyperonyme : ___</td></tr><tr><td>chaise, bureau, tableau, armoire →</td><td>hyperonyme : ___</td></tr><tr><td>calculette, compas, règle, rapporteur →</td><td>hyperonyme : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Donne 2 mots de la famille de « tableau ».</span>
+  </div>
+  <table class="exo-table"><tr><td>tableau →</td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : déclarative / interrogative / exclamative / impérative</div><div style="font-size:8pt">Ex.2 : Est-ce qu'Aminata a un beau cartable ? / Est-ce que la maîtresse distribue les cahiers ?</div><div style="font-size:8pt">Ex.3 : réponses libres selon les types</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : présent / passé / futur / présent</div><div style="font-size:8pt">Ex.2 : Kofi a rangé son cartable. / La maîtresse distribuera les cahiers.</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : cahier, compas, livre, règle, stylo, trousse</div><div style="font-size:8pt">Ex.2 : matériel scolaire / mobilier de classe / instruments de géométrie</div><div style="font-size:8pt">Ex.3 : tableau, tableautin, tableaux (variantes)</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Trousse, cahiers, livres. 2. Grande et lumineuse, murs décorés. 3. Animaux de la forêt guinéenne.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — Mon cartable, ma classe</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Types de phrases (G5) | C : Passé / Présent / Futur (C2) | V : Hyperonyme + Alphabétix (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Kofi ouvre son cartable et sort sa trousse rouge.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">La maîtresse distribue ses cahiers aux élèves sages.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">et</span> <span class="dict-mot">est</span> <span class="dict-mot">son</span> <span class="dict-mot">sa</span> <span class="dict-mot">ses</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Kofi est fier de son cartable : il range sa trousse et ses cahiers.</div><div class="model-text">La classe est belle et lumineuse ; chaque élève a ses affaires.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris ton cartable et ce qu'il y a dedans en 4 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>cartable — trousse — cahier — stylo — compas — règle — couleur</em></div><div class="model-text" style="color:var(--c1)">Dans mon cartable, il y a...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 2 — Mon cartable, ma classe</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Types de phrases (G5) | C : Passé / Présent / Futur (C2) | V : Hyperonyme + Alphabétix (V1)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"><span class="poeme-vers">Mon cartable est bleu comme le ciel,</span><span class="poeme-vers">Il est rempli de trésors, quelle merveille !</span><span class="poeme-vers">Cahiers, crayons et livres colorés,</span><span class="poeme-vers">Tout est bien rangé, tout est ordonné.</span><span class="poeme-vers">Je suis prêt pour la journée d'école,</span><span class="poeme-vers">Mon sac sur le dos, vite je m'envole !</span></div>
+      <div class="dessin-box">Dessine ton cartable idéal avec tout son contenu.</div>
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cite 5 objets qui sont dans un cartable de CE1</div><div class="jeu-item">décrit sa trousse et son contenu</div><div class="jeu-item">nomme 3 matières où l'on utilise une règle</div><div class="jeu-item">donne 2 mots de la famille de « livres »</div><div class="jeu-item">dit quel est son livre scolaire préféré et pourquoi</div><div class="jeu-item">invente une phrase sur son cartable</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète les phrases :</div>
+        <div class="diff-item">Dans mon cartable, il y a _____.<span class="answer-line"></span></div><div class="diff-item">Mon cahier de _____ est de couleur _____.<span class="answer-line"></span></div><div class="diff-item">La maîtresse distribue _____ aux élèves.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris la salle de classe en 6 phrases avec des détails (couleurs, taille, décoration).</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : et/est, son/sa/ses dans tes phrases.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 2 / Période 1</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — La cour de récréation</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Les déterminants (G2a) | C : Passé/Présent/Futur approfondissement (C2) | V : Familles de mots (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G : Les déterminants (G2a) | C : Passé/Présent/Futur approfondissement (C2) | V : Familles de mots (V2d)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>on — ont — a — à — ou — où</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Détermino</span><span class="mhf-tag">Détermino</span><span class="mhf-tag">Phrasix</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Au Travail ou au Repos</span><span class="mhf-tag">Au Travail ou au Repos</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Autour du mot</span><span class="mhf-tag">Naturomot</span><span class="mhf-tag">Autour du mot</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Repérer les déterminants.</div><div style="font-size:8pt">Classer articles/possessifs.</div><div style="font-size:8pt">Fiche Détermino + leçon.</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Classer passé/présent/futur.</div><div style="font-size:8pt">Exercice Au Travail ou au Repos.</div><div style="font-size:8pt">Écrire une phrase à chaque temps.</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Famille de « jouer ».</div><div style="font-size:8pt">Carte mentale : cour.</div><div style="font-size:8pt">Synonymes de « courir ».</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Copier : on/ont, a/à, ou/où.</div><div style="font-size:8pt">Mini-fichier Pas Touche !</div><div style="font-size:8pt">Chercher dans le texte.</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">récréation</span><span class="dict-mot">sifflet</span><span class="dict-mot">camarades</span><span class="dict-mot">ombrage</span><span class="dict-mot">se disputent</span><span class="dict-mot">précipitation</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La cour de récréation</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p1s3_recreation.jpg" alt="La récréation">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Quels jeux pratiquent les enfants dans la cour ?</li>
+    <li>Décris ce que font les filles et ce que font les garçons.</li>
+    <li>Comment se sentent ces enfants ? Comment le sais-tu ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">La cloche a sonné et les élèves se précipitent dans la cour.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">On entend des rires et des cris de joie partout.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Où est Aminata ? Elle joue à la corde avec ses amies Mariama et Fatoumata.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Les garçons ont choisi de jouer au football près du grand manguier.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Kofi a marqué un but et ses camarades l'applaudissent.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">On voit aussi des enfants qui bavardent à l'ombre des arbres.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Sory court vite ou passe le ballon selon la situation du jeu.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Madame Bah surveille la cour avec attention depuis le couloir.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">À la fontaine, des élèves ont bu de l'eau fraîche sous le soleil.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Où sont passées ces dix minutes de récréation ? Déjà la cloche !</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">On rentre en classe, essoufflés mais le sourire aux lèvres.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">La cour reprend son silence jusqu'à la prochaine récréation.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">À quoi jouent les filles pendant la récréation ?<span class="answer-line"></span></div><div class="comp-item">Qui a marqué un but ? Comment réagissent ses camarades ?<span class="answer-line"></span></div><div class="comp-item">Que se passe-t-il quand la cloche sonne à la fin de la récré ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — La cour de récréation</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Les déterminants (G2a) | C : Passé/Présent/Futur approfondissement (C2) | V : Familles de mots (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Détermino</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADh0lEQVR4nO2d0YlcMQwAcyFdpKTUkyqunpSUOjafAcN5V0iyvMzM773z875BICxb/ng8Ht8Ew/fpCchR9M1C3yz0zULfLPTNQt8s9M1C3yx+7P/889fnmXn8/fP79WnsHw4R+oGZSV7yJY1vFvpmoW8W+mbxJF9bmEqUMiPv5xxKwfaEPs7UlzS+Weibhb5Z6JtFLF9b6Etn9iNnlttCq2CZbK7w92ZGXjC+Weibhb5Z6JtFKl+bIpNkFS5sFQ51DOObhb5Z6JuFvlm8Zb62cKymWbg2N4XxzULfLPTNQt8sUvnanSlJZmdc5n8zX+PYlzS+Weibhb5Z6JtFLF87dshxobAAmlkjK9xVN/UljW8W+mahbxb6ZvFxZ7/czFb+0P++RRGzEOObhb5Z6JuFvlnE+q/19RRbRi48XNk356kFNc+Hyqvom4W+WeibRWx9LbN3v68QGZrGQuFi3FRGFkobjW8W+mahbxb6ZvEkXytcuiosRN55TrOwHVsfxjcLfbPQNwt9s6i83yDT4L8wybqkJ8exkm7oRcY3C32z0DcLfbNI1UP7Wvgv3HnPQOGLMiuVIYxvFvpmoW8W+mYRq4cW7uc6lkaFyKRC7l+T69A3C32z0DeLJ/XQvl1XUytZoYeP9X3bT2M/svVQ+RJ9s9A3C32zaOyX27dIlCnL9qVgC4V5YubhBeObhb5Z6JuFvlmk6qGhh4/tX5va7Fa4Fun+NalB3yz0zULfLBrve59qbbYfaj/yJXvu+u7BMr5Z6JuFvlnom0UqX8tkZJliYmF/i6mrraYOJxjfLPTNQt8s9M2isR66Z6o92bH+a32HZ92/Jq+ibxb6ZqFvFpX9PBb69pFdcpNAX5eRTDnYeqj8R98s9M1C3yxi/XKPceymzoVjZyQWjpVHjW8W+mahbxb6ZpG6P7SQqcrjnjvvivd8qLyKvlnom4W+WVTeHxqi8MxjiKlDAoWnIBY8Hypfom8W+mahbxaN50MX+lbQQu/NtAYJjVy4NFmYvRrfLPTNQt8s9M2isf9aIcfuLZ26OWE/jdB79xjfLPTNQt8s9M3iPfK1hb4Oa3310EuW24xvFvpmoW8W+maRytf6Omf0rYJN3eh+yc1exjcLfbPQNwt9s7j0fGhfdtPXGiRTlvV8qLSgbxb6ZqFvFpf2X5MmjG8W+mahbxb6ZqFvFvpmoW8W+mahbxb/ADUENg1qMKloAAAAAElFTkSuQmCC" alt="QR Code Le genre (masculin/féminin)"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le genre (masculin/féminin)</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L06a</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Détermino</span>
+    <span class="exo-consigne">Souligne le déterminant et indique sa nature (article / possessif).</span>
+  </div>
+  <table class="exo-table"><tr><td>Les enfants jouent dans la cour.</td><td>dét. : ___ nature : ___</td></tr><tr><td>Kofi a pris son ballon.</td><td>dét. : ___ nature : ___</td></tr><tr><td>Une maîtresse surveille les élèves.</td><td>dét. : ___ nature : ___</td></tr><tr><td>Mes camarades courent vite.</td><td>dét. : ___ nature : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Détermino</span>
+    <span class="exo-consigne">Complète avec le bon déterminant (le/la/les/un/une/des).</span>
+  </div>
+  <table class="exo-table"><tr><td>___ récréation est finie.</td><td>___</td></tr><tr><td>Kofi joue avec ___ camarades.</td><td>___</td></tr><tr><td>Sory a un ___ ballon rouge.</td><td>___</td></tr><tr><td>___ cloche sonne à dix heures.</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Écris 2 phrases sur la récréation avec des déterminants variés.</span>
+  </div>
+  <table class="exo-table"><tr><td>1. ________________________________</td><td><span class="blank">_______________</span></td></tr><tr><td>2. ________________________________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Au Travail ou au Repos</div>
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Indique le temps de chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>On entend la cloche.</td><td>temps : ___</td></tr><tr><td>Les élèves ont couru dans la cour.</td><td>temps : ___</td></tr><tr><td>Demain, ils joueront au football.</td><td>temps : ___</td></tr><tr><td>Sory passe le ballon.</td><td>temps : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Réécris au passé composé.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les enfants jouent dans la cour.</td><td>→ ___</td></tr><tr><td>Kofi marque un but.</td><td>→ ___</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — La cour de récréation</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Les déterminants (G2a) | C : Passé/Présent/Futur approfondissement (C2) | V : Familles de mots (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Familles de mots — V2d</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADg0lEQVR4nO3d3U0DMRBFYYLogpKohyqoh5KoIzwiWYqTYWZsR+d8r/nZ1V6NNLK99uV6vb4I43X3DWgp82YxbxbzZjFvFvNmMW8W82Yxb5a3+cfvH19r7uPn+/Px2wh9OXOh0G/nDnmS1jeLebOYN4t5s9zp1waZhmUw718yDVqmIxsMf1XYzS17kgPrm8W8WcybxbxZYv3aINP7hL58ZkdWOGTW9yQH1jeLebOYN4t5s6T6tV0Ku6p5J7hsEnMZ65vFvFnMm8W8WQ7t10JtVOGng8xvz2R9s5g3i3mzmDdLql/ra1gy41x9Tdayf+5jfbOYN4t5s5g3S6xfWzY/mJmm3DU217fIrpD1zWLeLObNYt4sl2fcL7dw/VrhgrWnmB61vlnMm8W8Wcyb5U6/duZoVN/AVqjn6vurwv1LBtY3i3mzmDeLebPcmQ89c7XXMpl7DnVzoWeVebDWN4t5s5g3i3mzpMbXQl8uPHagb+iqT1/rN7Bf0x/zZjFvFvNmia1f6+vI5hfK6Osx+64753yoHmXeLObNYt4sjecbFHZzfe9aHnJkwfy3ha2f9c1i3izmzWLeLOv2Xys8jyrz20NOMOhbGDhnfbOYN4t5s5g3S+P5BrvmNAsbtL53WjMyD9b6ZjFvFvNmMW+WWL9WuLXZslYoc5Ohzii0i+/8NkJcv6abzJvFvFnMm6VyfK1vd7a5zO4Xy17bHPQNt7l+TX/Mm8W8WcybpbJfKzwmau6QichlJ04VPjrrm8W8WcybxbxZ7vRroQ7lzG3Rzty7rXA3uhDrm8W8WcybxbxZYucb9O1R0Td0tWspXOjTzF25fk03mTeLebOYN0vj+QYhhxxPtWvGc9D3NKxvFvNmMW8W82aJnW+wTOFE5K4zGQp/63lU+ifzZjFvFvNmia1f6zN/qXMu835oRuFLrKEvu35NjzJvFvNmMW+W1P5rGbuOaxpkdvvoG6rrY32zmDeLebOYN0vj+aGDXUNmfTviHrKaz/cNdJN5s5g3i3mzNJ5HldH3nmbouoU7yvVtCBxifbOYN4t5s5g3y6H92iGvAWT0vSOR+bL1zWLeLObNYt4sqX6tr/fpmzzNyCx2O+QAB+ubxbxZzJvFvFli+6/16ZtMDF13sGwNWmYJXui61jeLebOYN4t5sxy6/5qaWN8s5s1i3izmzWLeLObNYt4s5s1i3iy/yeU5vDQomMAAAAAASUVORK5CYII=" alt="QR Code Familles de mots"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Familles de mots</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L23</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Donne un mot de la même famille.</span>
+  </div>
+  <table class="exo-table"><tr><td>jouer →</td><td>___</td></tr><tr><td>courir →</td><td>___</td></tr><tr><td>rire →</td><td>___</td></tr><tr><td>crier →</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Naturomot</span>
+    <span class="exo-consigne">Classe ces mots selon leur famille.</span>
+  </div>
+  <table class="exo-table"><tr><td>jeu, jouet, jouer, joueur — course, courir, coureur, courant</td><td>famille JOUER : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Trouve 2 synonymes de « courir ».</span>
+  </div>
+  <table class="exo-table"><tr><td>courir →</td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : Les(art.), son(poss.), Une(art.), Mes(poss.)</div><div style="font-size:8pt">Ex.2 : La / ses / un / La</div><div style="font-size:8pt">Ex.3 : réponses libres avec déterminants variés</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : présent / passé composé / futur / présent</div><div style="font-size:8pt">Ex.2 : Les enfants ont joué dans la cour. / Kofi a marqué un but.</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : joueur/jeu/jouet, coureur/course, rire/rieur, cri/crieur</div><div style="font-size:8pt">Ex.2 : JOUER : jeu, jouet, jouer, joueur — COURIR : course, courir, coureur, courant</div><div style="font-size:8pt">Ex.3 : sprinter, galoper, filer, trotter (variantes)</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Les filles jouent à la corde. 2. Kofi marque un but, ses camarades l'applaudissent. 3. On rentre en classe.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — La cour de récréation</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Les déterminants (G2a) | C : Passé/Présent/Futur approfondissement (C2) | V : Familles de mots (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">On entend des rires et des cris de joie dans la cour.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Les élèves ont couru et bu de l'eau à la fontaine.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">on</span> <span class="dict-mot">ont</span> <span class="dict-mot">a</span> <span class="dict-mot">à</span> <span class="dict-mot">ou</span> <span class="dict-mot">où</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">On joue à la corde ou au football dans la cour.</div><div class="model-text">Les enfants ont couru et ont bu de l'eau à la fontaine.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Écris 4 phrases pour décrire ta récréation préférée.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>cour — jouer — courir — camarades — rire — ballon — corde</em></div><div class="model-text" style="color:var(--c1)">À la récréation, je joue...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 3 — La cour de récréation</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Les déterminants (G2a) | C : Passé/Présent/Futur approfondissement (C2) | V : Familles de mots (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"><span class="poeme-vers">La cloche a sonné, hop ! C'est la récré,</span><span class="poeme-vers">Les enfants se précipitent dans la cour colorée.</span><span class="poeme-vers">Aminata saute à la corde avec Mariama,</span><span class="poeme-vers">Kofi tire au but et Sory, il plongea.</span><span class="poeme-vers">Le soleil de Guinée chauffe nos visages,</span><span class="poeme-vers">Et nos rires montent jusqu'aux nuages.</span></div>
+      <div class="dessin-box">Dessine ce que tu fais à la récréation.</div>
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">mime un jeu de la récréation</div><div class="jeu-item">dit combien de temps dure la récréation dans son école</div><div class="jeu-item">nomme 3 jeux pratiqués dans la cour</div><div class="jeu-item">décrit comment on joue à la corde</div><div class="jeu-item">donne 2 mots de la famille de « jouer »</div><div class="jeu-item">invente une règle de jeu pour la cour</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète les phrases avec on/ont, a/à, ou/où :</div>
+        <div class="diff-item">___ joue ___ la corde ___ au ballon ?<span class="answer-line"></span></div><div class="diff-item">Les enfants ___ couru. ___ est Sory ?<span class="answer-line"></span></div><div class="diff-item">Kofi ___ un ballon. Il va ___ l'école.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Décris une récréation en 6 phrases : qui fait quoi, où, comment.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise on/ont, a/à, ou/où correctement dans tes phrases.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 3 / Période 1</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Au marché du matin</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Sujet et verbe (G3) | C : L'infinitif (révision C1) | V : Pluriel des noms (O5)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G : Sujet et verbe (G3) | C : L'infinitif (révision C1) | V : Pluriel des noms (O5)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>ces — ses — c'est — s'est</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Phrasix</span><span class="mhf-tag">Chacun son Rôle</span><span class="mhf-tag">Phrasix</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Au Travail ou au Repos</span><span class="mhf-tag">Au Travail ou au Repos</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Naturomot</span><span class="mhf-tag">Autour du mot</span><span class="mhf-tag">Autour du mot</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Repérer sujet et verbe.</div><div style="font-size:8pt">Exercice Chacun son Rôle.</div><div style="font-size:8pt">Fiche sujet-verbe + leçon.</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Révision infinitifs.</div><div style="font-size:8pt">Exercice Au Travail ou au Repos.</div><div style="font-size:8pt">3 phrases avec infinitifs.</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Pluriel des noms du texte.</div><div style="font-size:8pt">Carte mentale : marché.</div><div style="font-size:8pt">Famille de « vendre ».</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Copier : ces/ses, c'est/s'est.</div><div style="font-size:8pt">Mini-fichier Pas Touche !</div><div style="font-size:8pt">Trouver dans le texte.</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">marché</span><span class="dict-mot">étals</span><span class="dict-mot">négocie</span><span class="dict-mot">odeurs</span><span class="dict-mot">calebasse</span><span class="dict-mot">fraîcheur</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Au marché du matin</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p1s4_marche_matin.jpg" alt="Au marché de Kindia">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Quels fruits et légumes vois-tu sur les étals ?</li>
+    <li>Décris la marchande et ses paniers.</li>
+    <li>Pourquoi Sékou a-t-il les yeux brillants ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Ce mardi matin, Kadiatou emmène son fils Sékou au grand marché de Kindia.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Il y a des dizaines d'étals colorés remplis de fruits et de légumes frais.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">« Regarde ces belles mangues ! » dit Sékou à sa mère avec des yeux brillants.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Kadiatou s'est levée très tôt : elle a pris ses paniers et s'est mise en route.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Elle négocie le prix des tomates et des oignons avec une marchande.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">C'est une habitude : chaque mardi, elle vient ici faire ses provisions.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Sékou s'est approché des étals de poissons fumés avec curiosité.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Ces poissons brillent au soleil et leurs odeurs envahissent l'air du matin.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Plus loin, des femmes vendent des calebasses et des nattes colorées.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Kadiatou achète ses légumes et range tout dans ses grands paniers.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">« C'est l'heure de rentrer, mon fils ! » dit-elle en souriant.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Sékou s'est régalé de la promenade et porte fièrement un petit panier.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Où va Kadiatou avec son fils Sékou ?<span class="answer-line"></span></div><div class="comp-item">Qu'est-ce qui attire Sékou dans le marché ? Cite deux choses.<span class="answer-line"></span></div><div class="comp-item">Comment se termine leur matinée au marché ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Au marché du matin</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Sujet et verbe (G3) | C : L'infinitif (révision C1) | V : Pluriel des noms (O5)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Phrasix</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmUlEQVR4nO3d3W0bMRBF4ThIFykp9aSK1JOSUofzGICARhjPj+ic871a2pX3gsBguCTf3t/fvwjj66t/gFaZN4t5s5g3i3mzmDeLebOYN4t5s3yL//z9x6+d3/Hn988P3zf+7vHXlPhSqRu96kkeHN8s5s1i3izmzfKkXjtUap9DXL+kyre5Aq3y3fhnrD3Jg+ObxbxZzJvFvFly9dqh0gWriKu5xkrwMNcjW3uSjm8W82YxbxbzZinVa3NSE5GHtXnJxgp0jeObxbxZzJvFvFkurddilf5a6lKpG32K8s3xzWLeLObNYt4spXptrUKZa6hVGnmpS8XWnqTjm8W8WcybxbxZcvXa2iLHQ+Pyg7W/xl71JB3fLObNYt4s5s3ydud+uZVyJtVuq/TmPsUE6MHxzWLeLObNYt4sT+q1yhxfYzcqtnbl2FzLrLECdXyzmDeLebOYN8tgf62xOXVJn+uSdakx6zX9Y94s5s1i3iy58w0qldHam2KNc6lzW7mlfkbM/XL1kHmzmDeLebM8qdfmNj5bK8EOjXuBVG6U+nBjYej4ZjFvFvNmMW+W0nlUc/ODa/XL3CTm3Ja/lQ87vlnMm8W8WcybpbTeoLHmSplb41m5su+v6TrmzWLeLObNkqvXDpesGbjkR66Vb5Ua0/HNYt4s5s1i3ix7570f5vprld10G99uS5VRaxuHOL5ZzJvFvFnMm6W03uBTHL5ZWckwV0Y1/r++v6aHzJvFvFnMm2Vwv9yUV202G2t8ne1Vu4wcHN8s5s1i3izmzZLrr8Uuef++Uiilpkcbd6OLNVaCjm8W82YxbxbzZim9v3aY27LiMNerWuuCverKjm8W82YxbxbzZsmdbxBLvVJ/ybnrjTO8ldUIsVTXL+b4ZjFvFvNmMW+WzvnQ1Hfv3DRtrj6Nrb0n6PhmMW8W82Yxb5bO/lrFXG/ukjUSl/QTHd8s5s1i3izmzVI6j6pibiONSn9t7hysxiOmKs04xzeLebOYN4t5s+ztl/uqwxAq2+emLlX5cPzdxvLN8c1i3izmzWLeLJ3rQxvNNZjm+lyVG1XYX9ND5s1i3izmzXJpvXaYO3Y+9eG1JQRzb8Y5vlnMm8W8WcybpVSvXdJCalwQWpk8nZtadf81fZB5s5g3i3mz5Oq1teWic6sp506NijXWegfnQ/WQebOYN4t5szw5P1T/Gcc3i3mzmDeLebOYN4t5s5g3i3mzmDfLX6B4KFmrqli4AAAAAElFTkSuQmCC" alt="QR Code Le sujet du verbe"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le sujet du verbe</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L11</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Souligne le sujet (en bleu) et le verbe (en rouge).</span>
+  </div>
+  <table class="exo-table"><tr><td>Kadiatou achète des mangues.</td><td>sujet : ___  verbe : ___</td></tr><tr><td>Ces poissons brillent au soleil.</td><td>sujet : ___  verbe : ___</td></tr><tr><td>Sékou porte un petit panier.</td><td>sujet : ___  verbe : ___</td></tr><tr><td>Les marchandes vendent des légumes.</td><td>sujet : ___  verbe : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Chacun son Rôle</span>
+    <span class="exo-consigne">Complète avec le sujet qui convient.</span>
+  </div>
+  <table class="exo-table"><tr><td>___ vend des tomates au marché.</td><td>___</td></tr><tr><td>___ brillent sous le soleil.</td><td>___</td></tr><tr><td>___ s'est levée très tôt ce matin.</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Écris 2 phrases sur le marché avec sujet + verbe clairement identifiables.</span>
+  </div>
+  <table class="exo-table"><tr><td>1. ________________________________</td><td><span class="blank">_______________</span></td></tr><tr><td>2. ________________________________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Au Travail ou au Repos</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADiklEQVR4nO3d220bMRBG4ThIFykp9aQK15OSUofyaICAaU3mQgrnfK+SViv9IDAYXvbt8Xh8E8b30zegUebNYt4s5s1i3izmzWLeLObNYt4sP/Yv//z1PnMff//8fv7Ny12FPru/1N7+i/Z3dck/6fhmMW8W82Yxb5Yv6rVFpjJahOqX/Zv3r+7vOVSC7YX+nFP/pOObxbxZzJvFvFli9dqir5zp60aFumCZaq7v92ZqPcc3i3mzmDeLebOk6rUxhXOLhY2twkuNcXyzmDeLebOYN8tr1Gt7+2ru1Aq1O6s5xzeLebOYN4t5s6TqtbGSJLR+LdOMO9W5G/snHd8s5s1i3izmzRKr18Y2OS5CnayxVxeFa9/6OL5ZzJvFvFnMm+XtzvNyncRs4vhmMW8W82Yxb5Yv6rWxM8UKd1Oe2tQ51lBzf6ieZd4s5s1i3iyx/lph+ZZpiu3fnPmi/Wdfonr1vFx9MG8W82Yxb5bY8w1CFUpo2+ap09nGDrntm2kNXdnxzWLeLObNYt4slfsNCs+eDT2UILMDtG85W98Mb+YmHd8s5s1i3izmzZLab5CZAC38bGE5M3aeR2HjMsTxzWLeLObNYt4sjfsNLjlmI2Ts0fGFt+H6NX3KvFnMm8W8WVL12v7NhS753r6Sc2F/TTXMm8W8WcybpXE+dGx+MOTOydO+tX4LxzeLebOYN4t5s8T2hy4yx/+HXFJk7RVuTrC/phrmzWLeLObNknp+6KlF85n2U+bh8Jd03/Zf5Po1fTBvFvNmMW+WWL12Zwsp024bO003dOUQ50P1KfNmMW8W82ap7K+FFBZKp3YF7O+q7yg316/pWebNYt4s5s2SqtcWhcvZCmc8Q1fum/HM1LbOh+o/mTeLebOYN0tqf2ifsZN4xy61NzY96vhmMW8W82Yxb5bU/tBCmSnOQn1r0E496Wrh+GYxbxbzZjFvlrn9BovCwz8uOcZ2r+/B8s6H6lPmzWLeLObNMrffoK+jNPZw+NCVC1uThb05xzeLebOYN4t5s1TuNxjTd+7bJftD+wphxzeLebOYN4t5s7xkvbYo3HrZNx96SbvN8c1i3izmzWLeLKl6rW/df9/zQ8fOjOt7QmjmJzi+WcybxbxZzJslVq+NbRctLFhCldGps0AKT1jbc3yzmDeLebOYN8ul56+pieObxbxZzJvFvFnMm8W8WcybxbxZzJvlH2QmJpg5doJ2AAAAAElFTkSuQmCC" alt="QR Code Le verbe"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le verbe</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L10a</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Souligne les infinitifs dans ces phrases.</span>
+  </div>
+  <table class="exo-table"><tr><td>Kadiatou aime venir au marché.</td><td>infinitif : ___</td></tr><tr><td>Sékou veut goûter les mangues.</td><td>infinitif : ___</td></tr><tr><td>Il faut rentrer avant midi.</td><td>infinitif : ___</td></tr><tr><td>Elles ont décidé de vendre leurs légumes.</td><td>infinitif : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Complète avec l'infinitif qui convient.</span>
+  </div>
+  <table class="exo-table"><tr><td>Kadiatou décide de ___ les légumes. (acheter/vendre)</td><td>→ ___</td></tr><tr><td>Sékou veut ___ les poissons. (regarder/écrire)</td><td>→ ___</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Au marché du matin</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Sujet et verbe (G3) | C : L'infinitif (révision C1) | V : Pluriel des noms (O5)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Pluriel des noms — O5</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjUlEQVR4nO2d201kMRAFAW0WhEQ8REE8GxJxzP77w0OrHzZbVb/M3Gum1NKRH+3Xx+PxIhjeTg9ARtE3C32z0DcLfbPQNwt9s9A3C32z+LP/8/vH18w4vv9+/nwYoQ8XDmP/or5RhdgPw/pmoW8W+mahbxZP8tpCKM7s2eeXfRTa/zWTuULDyPwaY7/kgvXNQt8s9M1C3yxieW0hlBQyCSWTqkIfLpwyK4yNmScvWN8s9M1C3yz0zSKV1y6hMAmGHrXPendifbPQNwt9s9A3i0vzWmhiKzRlliET7i7B+mahbxb6ZqFvFqm8diqw7BNZZm1x7KxC4XdDWN8s9M1C3yz0zSKW18aW/DK7zAqn20LfvfO46IL1zULfLPTNQt8sXu/sl9sXZ37jImYh1jcLfbPQNwt9s4j1X+vrQtG30T/z4T2ZibzC2bfQmK1vFvpmoW8W+mbxJK+NNaXoyz6hYewJZczCXiCFs43WNwt9s9A3C32zeLIemokVp2bBTp3i7AuVhVjfLPTNQt8s9M0itn+tcKLnVKPavqXGvlEVZj3rm4W+Weibhb5ZNJ43GFvivOTC0MKbE0KEnmx9s9A3C32z0DeLVD+P0AauUJwZuzUqxNiln33/kfXNQt8s9M1C3yxS50MzM2ih0NEX0Ao36IU4tTxqfbPQNwt9s9A3i9R5gwyXNLktnLnru8a0cLbR+mahbxb6ZqFvFnP3h566HT2z8DpGYT7dY32z0DcLfbPQN4vGvHaqw9r+RacWIgunCDODtL5Z6JuFvlnom0VlXjt1OUBfEuybbiuc9QslQeubhb5Z6JuFvlnE9q9l9nP1tbvouyugL6+daq5rfbPQNwt9s9A3i9T8WuYE6H/fk6OQwoxpfbPQNwt9s9A3i8Z+uRkKj4su3BkMvd9AWtA3C32z0DeLY/08Fgo7Z4xlrrFNdqFR7bG+Weibhb5Z6JtFbD30ksXE0AnQvi5pIULv7TvEan2z0DcLfbPQN4vG/WsLhbcB9N2csH9viLFAGsL6ZqFvFvpmoW8Wc/1yx+hrzDvWTbew4dqC9c1C3yz0zULfLH5lXitsK7J/8tj2vTGsbxb6ZqFvFvpmkcprp+abxi5a77sSNPTdBe8PlZ+ibxb6ZqFvFrG8dmfHsYXCg5mFG/ROdShZsL5Z6JuFvlnom8Wl/dekCeubhb5Z6JuFvlnom4W+Weibhb5Z6JvFPy5OC2vHayPOAAAAAElFTkSuQmCC" alt="QR Code Pluriel des noms"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Pluriel des noms</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L30a</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Naturomot</span>
+    <span class="exo-consigne">Écris le pluriel de ces noms.</span>
+  </div>
+  <table class="exo-table"><tr><td>un étal →</td><td>___</td></tr><tr><td>une mangue →</td><td>___</td></tr><tr><td>un panier →</td><td>___</td></tr><tr><td>une marchande →</td><td>___</td></tr><tr><td>un poisson →</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Remplace le singulier par le pluriel dans chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le légume est frais.</td><td>→ ___</td></tr><tr><td>La calebasse est belle.</td><td>→ ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Trouve 3 mots de la famille de « vendre ».</span>
+  </div>
+  <table class="exo-table"><tr><td>vendre →</td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : Kadiatou/achète, poissons/brillent, Sékou/porte, marchandes/vendent</div><div style="font-size:8pt">Ex.2 : La marchande / Ces mangues (ou autres sujets valides) / Kadiatou</div><div style="font-size:8pt">Ex.3 : réponses libres avec sujet et verbe identifiables</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : venir / goûter / rentrer / vendre</div><div style="font-size:8pt">Ex.2 : vendre / regarder</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : des étals, des mangues, des paniers, des marchandes, des poissons</div><div style="font-size:8pt">Ex.2 : Les légumes sont frais. / Les calebasses sont belles.</div><div style="font-size:8pt">Ex.3 : vendeur, vente, revendeur, vendeuse (variantes acceptées)</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Au grand marché de Kindia. 2. Les belles mangues et les poissons fumés. 3. Ils font les provisions et rentrent.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Au marché du matin</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Sujet et verbe (G3) | C : L'infinitif (révision C1) | V : Pluriel des noms (O5)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Ces mangues sont belles ! Kadiatou a pris ses paniers.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">C'est le mardi que Sékou s'est levé tôt pour aller au marché.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">ces</span> <span class="dict-mot">ses</span> <span class="dict-mot">c'est</span> <span class="dict-mot">s'est</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Ces légumes sont frais. Kadiatou a rangé ses paniers.</div><div class="model-text">C'est le mardi que Sékou s'est levé tôt pour aller au marché.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris un marché que tu connais en 4 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>marché — étal — vendeur — légume — fruit — acheter — odeur — foule</em></div><div class="model-text" style="color:var(--c1)">Au marché de mon quartier, il y a...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 4 — Au marché du matin</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Sujet et verbe (G3) | C : L'infinitif (révision C1) | V : Pluriel des noms (O5)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"><span class="poeme-vers">Au marché de Kindia ce matin,</span><span class="poeme-vers">Les étals brillent sous le soleil divin.</span><span class="poeme-vers">Des mangues, des tomates et du gingembre,</span><span class="poeme-vers">Les odeurs de Guinée que l'on se remémore.</span><span class="poeme-vers">Kadiatou négocie avec un grand sourire,</span><span class="poeme-vers">Et Sékou regarde, les yeux en délire.</span></div>
+      <div class="dessin-box">Dessine un étal du marché avec ses produits.</div>
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">nomme 5 produits vendus au marché de Guinée</div><div class="jeu-item">dit le nom du marché le plus connu de sa ville</div><div class="jeu-item">mime un marchand qui vend des mangues</div><div class="jeu-item">donne le pluriel de : étal, panier, marchande</div><div class="jeu-item">cite 3 fruits tropicaux de Guinée</div><div class="jeu-item">invente un slogan de marchand</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète avec ces/ses, c'est/s'est :</div>
+        <div class="diff-item">___ mangues sont belles. Kadiatou a pris ___ paniers.<span class="answer-line"></span></div><div class="diff-item">___ le mardi que Sékou ___ levé tôt.<span class="answer-line"></span></div><div class="diff-item">Regarde ___ poissons ! La marchande ___ approchée.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Raconte une visite au marché en 6 phrases : qui, quoi, où, comment.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise ces/ses et c'est/s'est dans tes phrases.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 4 / Période 1</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le repas en famille</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Pronoms personnels sujets (G2e) | C : Passé/Présent/Futur (révision C2) | V : Familles de mots (révision V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G : Pronoms personnels sujets (G2e) | C : Passé/Présent/Futur (révision C2) | V : Familles de mots (révision V2d)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>leur — leurs — tout — tous</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Détermino</span><span class="mhf-tag">Chacun son Rôle</span><span class="mhf-tag">Chacun son Rôle</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Au Travail ou au Repos</span><span class="mhf-tag">Au Travail ou au Repos</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Autour du mot</span><span class="mhf-tag">Familix</span><span class="mhf-tag">Autour du mot</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Repérer pronoms sujets.</div><div style="font-size:8pt">Exercice Chacun son Rôle.</div><div style="font-size:8pt">Fiche pronoms + leçon.</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Révision passé/présent/futur.</div><div style="font-size:8pt">Exercice Au Travail ou au Repos.</div><div style="font-size:8pt">Écrire aux 3 temps.</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Famille de « manger ».</div><div style="font-size:8pt">Carte mentale : famille.</div><div style="font-size:8pt">Synonymes de « repas ».</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Copier : leur/leurs, tout/tous.</div><div style="font-size:8pt">Mini-fichier Pas Touche !</div><div style="font-size:8pt">Repérer dans le texte.</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">réunis</span><span class="dict-mot">prière</span><span class="dict-mot">sert</span><span class="dict-mot">renversé</span><span class="dict-mot">reconnaissants</span><span class="dict-mot">partage</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Le repas en famille</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p1s5_famille_table.jpg" alt="Le repas en famille">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Qui vois-tu autour du grand plat ?</li>
+    <li>Décris l'ambiance et les couleurs de la scène.</li>
+    <li>Que pourrait raconter grand-père Mamadou ce soir ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Le soleil se couche sur le quartier de Dixinn, à Conakry.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Toute la famille de Mariama se retrouve dans la grande cour.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Grand-père Mamadou s'assoit en tête, entouré de tous ses enfants.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Leur mère apporte le grand plat de riz et de sauce arachide.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Tous les regards se tournent vers ce repas fumant et parfumé.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Avant de manger, grand-père dit une courte prière de remerciement.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Mariama sert le riz à ses petits frères avec leur grande cuillère en bois.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Tout le monde mange d'abord en silence, puis les conversations s'animent.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Grand-père leur raconte une histoire de leur village natal de Kindia.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Les enfants écoutent, les yeux grands ouverts, tout en dégustant leur repas.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">« Nous sommes tous une seule famille », dit-il en souriant tendrement.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Mariama range leur vaisselle avec ses frères après le repas.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Où se passe le repas de la famille de Mariama ?<span class="answer-line"></span></div><div class="comp-item">Qui raconte une histoire pendant le repas ? Sur quel sujet ?<span class="answer-line"></span></div><div class="comp-item">Que dit grand-père avant de commencer à manger ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le repas en famille</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Pronoms personnels sujets (G2e) | C : Passé/Présent/Futur (révision C2) | V : Familles de mots (révision V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Détermino</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADjUlEQVR4nO3d220bMRRF0ThwFykp9aQK15OSXIfyKYCAqVzcB2nsvX4tacZzQOCAM0O+PR6PH8L4efoENMq8WcybxbxZzJvFvFnMm8W8Wcyb5X3/51+/P2bO4/Pvn/8/jf2HM9/d/7+h44Z+udD+JB3fLObNYt4s5s3yoq8tMoVlse8vfSUr1JtC3w1dnLEruXB8s5g3i3mzmDdLrK8tMt0n9OHM5FRhmys8q0XflVw4vlnMm8W8WcybJdXXxmTulmYm8sZuYo5xfLOYN4t5s5g3y6V9rXBCbV/B9k0w8907Ob5ZzJvFvFnMmyXV1/oKS6YoLR8uLFl99W2s+jm+WcybxbxZzJsl1tfG7g+emiPr++vi1J1WxzeLebOYN4t5s7x9i/Vy+9pN4QNr3+L2qOObxbxZzJvFvFle9LVLZqP2+t4ALTxu6Kf6VqNzfLOYN4t5s5g3yy3za5n3NDM9se+n9gobWejDjm8W82YxbxbzZonNr2X0lZ2xibyMwi0a9uxrejJvFvNmMW+W1Pxa3/P3fVNmmeOGXLLD1sLxzWLeLObNYt4slX1t0VfQQmfVN5NVaKyfOr5ZzJvFvFnMmyXW1/p6xP5Ae6dm0DJ8fk0TzJvFvFnMm2Vuf4O+ZrQvLH37vffd8dzLXEnHN4t5s5g3i3mzNO73fqqhFDaywuP2XSufX9OXzJvFvFnMm+VFXxtb0b9vIY1QIxt72K2vzHo/VE/mzWLeLObN8qKvnapRd67YcWrHqcLL7vhmMW8W82Yxb5bK+bVF38TW3qltB0IKX60NcXyzmDeLebOYN8vc/Frm6fxQURrbCCp03L6z8vk1fcm8WcybxbxZUvuH7o0tRdu3FenYHc9F3y1dxzeLebOYN4t5s9yyf+ii73bh2Jpxp7qt7xvoybxZzJvFvFliz6/1CS2alrl52vcaQOjDp9b4dXyzmDeLebOYN0ts/bVLFn0t/KnCYji2Gl2G45vFvFnMm8W8WRrXy12c2sezb0Xcvom8vvcrHN8s5s1i3izmzTK3H1VI3+psmeMuxs6q8IUKxzeLebOYN4t5s1za1/oWtAh9t++5/z33e1cN82YxbxbzZkn1tb5nsgobSuGT/ZmH3Qq7Xma6zfHNYt4s5s1i3iyxvjb2umjmQKc2JdgLVTDn11TDvFnMm8W8WS5df01NHN8s5s1i3izmzWLeLObNYt4s5s1i3iz/AGxrSRpi/VbGAAAAAElFTkSuQmCC" alt="QR Code Les pronoms personnels"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les pronoms personnels</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L09</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Détermino</span>
+    <span class="exo-consigne">Remplace le groupe sujet en gras par un pronom personnel.</span>
+  </div>
+  <table class="exo-table"><tr><td>Mariama sert le riz.</td><td>→ ___</td></tr><tr><td>Grand-père raconte une histoire.</td><td>→ ___</td></tr><tr><td>Les enfants écoutent attentivement.</td><td>→ ___</td></tr><tr><td>Mon frère et moi mangeons ensemble.</td><td>→ ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Chacun son Rôle</span>
+    <span class="exo-consigne">Complète avec le bon pronom (je/tu/il/elle/nous/vous/ils/elles).</span>
+  </div>
+  <table class="exo-table"><tr><td>___ mange du riz avec sa famille.</td><td>___</td></tr><tr><td>___ racontes des histoires le soir ?</td><td>___</td></tr><tr><td>___ se réunissent tous les soirs.</td><td>___</td></tr><tr><td>___ servons le repas à grand-père.</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Chacun son Rôle</span>
+    <span class="exo-consigne">Récris ces phrases en changeant le sujet comme indiqué.</span>
+  </div>
+  <table class="exo-table"><tr><td>Je mange du riz. (Il)</td><td>→ ___</td></tr><tr><td>Nous racontons des histoires. (Elles)</td><td>→ ___</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Au Travail ou au Repos</div>
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Indique le temps et réécris au temps demandé.</span>
+  </div>
+  <table class="exo-table"><tr><td>Grand-père raconte une histoire. (passé)</td><td>→ ___</td></tr><tr><td>Les enfants mangent le riz. (futur)</td><td>→ ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Classe ces phrases dans le bon temps.</span>
+  </div>
+  <table class="exo-table"><tr><td>Hier soir, ils ont dîné ensemble.</td><td>temps : ___</td></tr><tr><td>Ce soir, toute la famille se retrouve.</td><td>temps : ___</td></tr><tr><td>Demain, grand-père racontera une légende.</td><td>temps : ___</td></tr><tr><td>Il y a un an, ils vivaient à Kindia.</td><td>temps : ___</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le repas en famille</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Pronoms personnels sujets (G2e) | C : Passé/Présent/Futur (révision C2) | V : Familles de mots (révision V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Familles de mots — révision V2d</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADg0lEQVR4nO3d3U0DMRBFYYLogpKohyqoh5KoIzwiWYqTYWZsR+d8r/nZ1V6NNLK99uV6vb4I43X3DWgp82YxbxbzZjFvFvNmMW8W82Yxb5a3+cfvH19r7uPn+/Px2wh9OXOh0G/nDnmS1jeLebOYN4t5s9zp1waZhmUw718yDVqmIxsMf1XYzS17kgPrm8W8WcybxbxZYv3aINP7hL58ZkdWOGTW9yQH1jeLebOYN4t5s6T6tV0Ku6p5J7hsEnMZ65vFvFnMm8W8WQ7t10JtVOGng8xvz2R9s5g3i3mzmDdLql/ra1gy41x9Tdayf+5jfbOYN4t5s5g3S6xfWzY/mJmm3DU217fIrpD1zWLeLObNYt4sl2fcL7dw/VrhgrWnmB61vlnMm8W8Wcyb5U6/duZoVN/AVqjn6vurwv1LBtY3i3mzmDeLebPcmQ89c7XXMpl7DnVzoWeVebDWN4t5s5g3i3mzpMbXQl8uPHagb+iqT1/rN7Bf0x/zZjFvFvNmia1f6+vI5hfK6Osx+64753yoHmXeLObNYt4sjecbFHZzfe9aHnJkwfy3ha2f9c1i3izmzWLeLOv2Xys8jyrz20NOMOhbGDhnfbOYN4t5s5g3S+P5BrvmNAsbtL53WjMyD9b6ZjFvFvNmMW+WWL9WuLXZslYoc5Ohzii0i+/8NkJcv6abzJvFvFnMm6VyfK1vd7a5zO4Xy17bHPQNt7l+TX/Mm8W8WcybpbJfKzwmau6QichlJ04VPjrrm8W8WcybxbxZ7vRroQ7lzG3Rzty7rXA3uhDrm8W8WcybxbxZYucb9O1R0Td0tWspXOjTzF25fk03mTeLebOYN0vj+QYhhxxPtWvGc9D3NKxvFvNmMW8W82aJnW+wTOFE5K4zGQp/63lU+ifzZjFvFvNmia1f6zN/qXMu835oRuFLrKEvu35NjzJvFvNmMW+W1P5rGbuOaxpkdvvoG6rrY32zmDeLebOYN0vj+aGDXUNmfTviHrKaz/cNdJN5s5g3i3mzNJ5HldH3nmbouoU7yvVtCBxifbOYN4t5s5g3y6H92iGvAWT0vSOR+bL1zWLeLObNYt4sqX6tr/fpmzzNyCx2O+QAB+ubxbxZzJvFvFli+6/16ZtMDF13sGwNWmYJXui61jeLebOYN4t5sxy6/5qaWN8s5s1i3izmzWLeLObNYt4s5s1i3iy/yeU5vDQomMAAAAAASUVORK5CYII=" alt="QR Code Familles de mots"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Familles de mots</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L23</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Donne un mot de la même famille.</span>
+  </div>
+  <table class="exo-table"><tr><td>manger →</td><td>___</td></tr><tr><td>famille →</td><td>___</td></tr><tr><td>partager →</td><td>___</td></tr><tr><td>cuisiner →</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Familix</span>
+    <span class="exo-consigne">Trouve 3 mots de la famille de « repas ».</span>
+  </div>
+  <table class="exo-table"><tr><td>repas →</td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Trouve 2 synonymes de « repas ».</span>
+  </div>
+  <table class="exo-table"><tr><td>repas →</td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : Elle / Il / Ils / Nous</div><div style="font-size:8pt">Ex.2 : Elle / Tu / Ils / Nous</div><div style="font-size:8pt">Ex.3 : Il mange du riz. / Elles racontent des histoires.</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : Grand-père a raconté une histoire. / Les enfants mangeront le riz.</div><div style="font-size:8pt">Ex.2 : passé composé / présent / futur simple / imparfait</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : mangeur/manger, familier/familiale, partage/partageur, cuisinier/cuisine</div><div style="font-size:8pt">Ex.2 : repas, déjeuner, dîner, collation, festin (variantes)</div><div style="font-size:8pt">Ex.3 : dîner, festin, déjeuner (variantes)</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Dans la grande cour de leur maison à Dixinn. 2. Grand-père, histoire du village de Kindia. 3. Il dit une courte prière.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le repas en famille</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Pronoms personnels sujets (G2e) | C : Passé/Présent/Futur (révision C2) | V : Familles de mots (révision V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Tous les soirs, toute la famille mange dans leur grand plat.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Grand-père leur raconte leurs histoires préférées après le repas.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">leur</span> <span class="dict-mot">leurs</span> <span class="dict-mot">tout</span> <span class="dict-mot">tous</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Tous les soirs, toute la famille mange dans leur grand plat.</div><div class="model-text">Grand-père leur raconte leurs histoires : tout le monde écoute.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris un repas en famille chez toi en 4 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>famille — repas — ensemble — riz — sauce — partager — raconter — soir</em></div><div class="model-text" style="color:var(--c1)">Le soir, ma famille se retrouve...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 5 — Le repas en famille</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Pronoms personnels sujets (G2e) | C : Passé/Présent/Futur (révision C2) | V : Familles de mots (révision V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"><span class="poeme-vers">Le soir tombe sur Dixinn, à Conakry,</span><span class="poeme-vers">Et toute la famille est réunie ici.</span><span class="poeme-vers">Grand-père Mamadou prend sa place en tête,</span><span class="poeme-vers">Leur mère apporte le riz, la nuit est douce et nette.</span><span class="poeme-vers">Tous mangent ensemble dans le même grand plat,</span><span class="poeme-vers">Et leurs rires s'élèvent jusqu'au ciel d'éclat.</span></div>
+      <div class="dessin-box">Dessine un repas de famille guinéenne autour d'un grand plat.</div>
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cite 3 plats typiques guinéens</div><div class="jeu-item">dit ce qu'il/elle préfère manger le soir</div><div class="jeu-item">nomme 3 membres de sa famille présents au repas</div><div class="jeu-item">donne le contraire de « réunis »</div><div class="jeu-item">donne un mot de la famille de « manger »</div><div class="jeu-item">invente une histoire courte qui se passe pendant un repas</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète avec leur/leurs, tout/tous :</div>
+        <div class="diff-item">___ la famille mange dans ___ grand plat.<span class="answer-line"></span></div><div class="diff-item">___ les enfants écoutent grand-père.<span class="answer-line"></span></div><div class="diff-item">Grand-père ___ raconte ___ histoires.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Raconte un repas de famille en 6 phrases avec des détails.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise : leur/leurs, tout/tous, des pronoms personnels.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 5 / Période 1</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La bibliothèque de l'école</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Accord sujet-verbe (G3+) | C : Révision C1+C2 | V : Préfixes courants (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G : Accord sujet-verbe (G3+) | C : Révision C1+C2 | V : Préfixes courants (V2d)</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>parce que — quand — puisque</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Phrasix</span><span class="mhf-tag">Chacun son Rôle</span><span class="mhf-tag">Phrasix</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Au Travail ou au Repos</span><span class="mhf-tag">Au Travail ou au Repos</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Autour du mot</span><span class="mhf-tag">Naturomot</span><span class="mhf-tag">Autour du mot</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Accord sujet-verbe.</div><div style="font-size:8pt">Exercice Phrasix.</div><div style="font-size:8pt">Fiche accord + leçon.</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Révision infinitifs et temps.</div><div style="font-size:8pt">Exercice Au Travail ou au Repos.</div><div style="font-size:8pt">Écrire 2 phrases révision.</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Préfixes : dé-, re-, in-.</div><div style="font-size:8pt">Famille de « lire ».</div><div style="font-size:8pt">Carte mentale : bibliothèque.</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Copier : parce que, quand.</div><div style="font-size:8pt">Mini-fichier Pas Touche !</div><div style="font-size:8pt">Repérer dans le texte.</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">bibliothèque</span><span class="dict-mot">étagères</span><span class="dict-mot">silencieuse</span><span class="dict-mot">empruntent</span><span class="dict-mot">concentrées</span><span class="dict-mot">enrichissent</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — La bibliothèque de l'école</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p1s6_bibliotheque.jpg" alt="La bibliothèque">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que font les enfants dans cette salle ?</li>
+    <li>Décris les rayons et l'atmosphère de la bibliothèque.</li>
+    <li>Quel livre choisirais-tu et pourquoi ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Madame Bah emmène sa classe à la bibliothèque de l'école.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">C'est une grande salle calme, remplie de rayons pleins de livres.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Adama s'arrête devant un album illustré parce qu'il aime les animaux.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">Puisque tout le monde peut choisir un livre, les élèves cherchent avec soin.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Aminata prend un recueil de contes guinéens parce que les illustrations sont belles.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Quand elle ouvre la première page, elle découvre un lion du Fouta.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Kofi s'assoit sur un coussin et feuillette son album en silence.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">La bibliothécaire explique les règles : quand on emprunte un livre, on le rend propre.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Puisque la bibliothèque est ouverte tous les jours, ils pourront venir souvent.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">Adama décide d'emprunter trois albums parce qu'il ne peut pas en choisir un seul.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">« Quand vous avez lu votre livre, racontez-le à la classe ! » dit Madame Bah.</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">Les élèves ressortent les bras chargés de livres, heureux de lire.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Qu'est-ce que la bibliothèque ? Décris-la en deux mots.<span class="answer-line"></span></div><div class="comp-item">Pourquoi Adama choisit-il un album illustré ?<span class="answer-line"></span></div><div class="comp-item">Quelle règle la bibliothécaire explique-t-elle ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La bibliothèque de l'école</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Accord sujet-verbe (G3+) | C : Révision C1+C2 | V : Préfixes courants (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Phrasix</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmUlEQVR4nO3d3W0bMRBF4ThIFykp9aSK1JOSUofzGICARhjPj+ic871a2pX3gsBguCTf3t/fvwjj66t/gFaZN4t5s5g3i3mzmDeLebOYN4t5s3yL//z9x6+d3/Hn988P3zf+7vHXlPhSqRu96kkeHN8s5s1i3izmzfKkXjtUap9DXL+kyre5Aq3y3fhnrD3Jg+ObxbxZzJvFvFly9dqh0gWriKu5xkrwMNcjW3uSjm8W82YxbxbzZinVa3NSE5GHtXnJxgp0jeObxbxZzJvFvFkurddilf5a6lKpG32K8s3xzWLeLObNYt4spXptrUKZa6hVGnmpS8XWnqTjm8W8WcybxbxZcvXa2iLHQ+Pyg7W/xl71JB3fLObNYt4s5s3ydud+uZVyJtVuq/TmPsUE6MHxzWLeLObNYt4sT+q1yhxfYzcqtnbl2FzLrLECdXyzmDeLebOYN8tgf62xOXVJn+uSdakx6zX9Y94s5s1i3iy58w0qldHam2KNc6lzW7mlfkbM/XL1kHmzmDeLebM8qdfmNj5bK8EOjXuBVG6U+nBjYej4ZjFvFvNmMW+W0nlUc/ODa/XL3CTm3Ja/lQ87vlnMm8W8WcybpbTeoLHmSplb41m5su+v6TrmzWLeLObNkqvXDpesGbjkR66Vb5Ua0/HNYt4s5s1i3ix7570f5vprld10G99uS5VRaxuHOL5ZzJvFvFnMm6W03uBTHL5ZWckwV0Y1/r++v6aHzJvFvFnMm2Vwv9yUV202G2t8ne1Vu4wcHN8s5s1i3izmzZLrr8Uuef++Uiilpkcbd6OLNVaCjm8W82YxbxbzZim9v3aY27LiMNerWuuCverKjm8W82YxbxbzZsmdbxBLvVJ/ybnrjTO8ldUIsVTXL+b4ZjFvFvNmMW+WzvnQ1Hfv3DRtrj6Nrb0n6PhmMW8W82Yxb5bO/lrFXG/ukjUSl/QTHd8s5s1i3izmzVI6j6pibiONSn9t7hysxiOmKs04xzeLebOYN4t5s+ztl/uqwxAq2+emLlX5cPzdxvLN8c1i3izmzWLeLJ3rQxvNNZjm+lyVG1XYX9ND5s1i3izmzXJpvXaYO3Y+9eG1JQRzb8Y5vlnMm8W8WcybpVSvXdJCalwQWpk8nZtadf81fZB5s5g3i3mz5Oq1teWic6sp506NijXWegfnQ/WQebOYN4t5szw5P1T/Gcc3i3mzmDeLebOYN4t5s5g3i3mzmDfLX6B4KFmrqli4AAAAAElFTkSuQmCC" alt="QR Code Le sujet du verbe"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Le sujet du verbe</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L11</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Accorde correctement le verbe avec son sujet.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les élèves (choisir) ___ leurs livres.</td><td>___</td></tr><tr><td>Adama (aimer) ___ les histoires d'animaux.</td><td>___</td></tr><tr><td>Les bibliothécaires (accueillir) ___ les enfants.</td><td>___</td></tr><tr><td>Aminata (prendre) ___ un conte guinéen.</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Chacun son Rôle</span>
+    <span class="exo-consigne">Corrige l'erreur d'accord dans chaque phrase.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les élèves lit des livres en silence.</td><td>→ ___</td></tr><tr><td>Kofi feuillettent un bel album.</td><td>→ ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Écris 2 phrases sur la bibliothèque avec accord sujet-verbe correct.</span>
+  </div>
+  <table class="exo-table"><tr><td>1. ________________________________</td><td><span class="blank">_______________</span></td></tr><tr><td>2. ________________________________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Au Travail ou au Repos</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADfElEQVR4nO2d220jMQwAk+C6SEmpJ1Wknispdfj+BYSOwMdqb2Z+4+zKHhAgKJF6fTweL4Lh7eoFyCj6ZqFvFvpmoW8W+mahbxb6ZqFvFn/iP79/fM2s4/vv5++XsXy4cJHxMhbiVcUf7iNehvHNQt8s9M1C3yye5GsLW+lMTJy/FCZomTQqXkbm1xj7JReMbxb6ZqFvFvpmsZevLRTmTVsv6ntUYcksU6qLyXx945uFvlnom4W+WaTytavoS5S2/rdvW7YP45uFvlnom4W+WRyarx1ynG3rvbfA+Gahbxb6ZqFvFql87Y4Jy0JhrnfIcbYY45uFvlnom4W+Wezla2NbfoWVrMJehUxzQvzhMYxvFvpmoW8W+mbxeua83MI613+wiVmI8c1C3yz0zULfLPbmr/VNoYifXNhCMNarkHlRX7uo8c1C3yz0zULfLJ7ka7cYdzF2cKwwx9z6RoWbp8Y3C32z0DcLfbN4sh96yIyKW2xi9iWVhRjfLPTNQt8s9M1ir76WIbN7mKnr9d2NUMhYrmd8s9A3C32z0DeLvfpaJlHKfDjmzANrY20PW082vlnom4W+WeibReU8j60MpbBGNlYFG7v0s28WiPHNQt8s9M1C3yxS/QZb/7twVTEufvJCX5441qqxYHyz0DcLfbPQN4vG+w0y9bX4RX0n1PrSt74zd+6Hyo/om4W+WeibReX9oYUls7HS1SHTdMeaIoxvFvpmoW8W+maR6jc4ZILFVYPe+i6g6kvfjG8W+mahbxb6ZjHXb7BFX+tC/KKtv2aIv2BfJmh8s9A3C32z0DeLyvpa4VmwLQoraJknb3FVadL4ZqFvFvpmoW8WlfPXYq7qxOyj7/IH90OlBn2z0DcLfbN4kq9dxViPZ+a9MYdckLpgfLPQNwt9s9A3i1PuD71q5zGzjMKK4dgurfHNQt8s9M1C3yz2+g3GBtVmHrXVQrC1jLFDdn0dFMY3C32z0DcLfbNIzV8bqwqNbReOndfLLMP6mvwWfbPQNwt9s6iclztGYW9p5r19xOM9FpyXKz+ibxb6ZqFvFrfM1xb6BtVmHnUmxjcLfbPQNwt9s2i8P7SQwjQqM1Eu041wyDULxjcLfbPQNwt9szi0PzSTVcUcMjTN/lCZQN8s9M1C3ywOnb8mTRjfLPTNQt8s9M1C3yz0zULfLPTNQt8s/gHvBv9GOiyD6AAAAABJRU5ErkJggg==" alt="QR Code L'infinitif"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>L'infinitif</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L10b</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Indique le temps et donne l'infinitif du verbe souligné.</span>
+  </div>
+  <table class="exo-table"><tr><td>Les élèves empruntent des livres.</td><td>temps : ___ inf. : ___</td></tr><tr><td>Adama a choisi trois albums.</td><td>temps : ___ inf. : ___</td></tr><tr><td>Demain, Kofi lira son conte.</td><td>temps : ___ inf. : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Conjugue ces verbes au temps indiqué.</span>
+  </div>
+  <table class="exo-table"><tr><td>lire (présent, nous)</td><td>→ ___</td></tr><tr><td>emprunter (passé composé, ils)</td><td>→ ___</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La bibliothèque de l'école</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Accord sujet-verbe (G3+) | C : Révision C1+C2 | V : Préfixes courants (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Préfixes courants — V2d</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADg0lEQVR4nO3d3U0DMRBFYYLogpKohyqoh5KoIzwiWYqTYWZsR+d8r/nZ1V6NNLK99uV6vb4I43X3DWgp82YxbxbzZjFvFvNmMW8W82Yxb5a3+cfvH19r7uPn+/Px2wh9OXOh0G/nDnmS1jeLebOYN4t5s9zp1waZhmUw718yDVqmIxsMf1XYzS17kgPrm8W8WcybxbxZYv3aINP7hL58ZkdWOGTW9yQH1jeLebOYN4t5s6T6tV0Ku6p5J7hsEnMZ65vFvFnMm8W8WQ7t10JtVOGng8xvz2R9s5g3i3mzmDdLql/ra1gy41x9Tdayf+5jfbOYN4t5s5g3S6xfWzY/mJmm3DU217fIrpD1zWLeLObNYt4sl2fcL7dw/VrhgrWnmB61vlnMm8W8Wcyb5U6/duZoVN/AVqjn6vurwv1LBtY3i3mzmDeLebPcmQ89c7XXMpl7DnVzoWeVebDWN4t5s5g3i3mzpMbXQl8uPHagb+iqT1/rN7Bf0x/zZjFvFvNmia1f6+vI5hfK6Osx+64753yoHmXeLObNYt4sjecbFHZzfe9aHnJkwfy3ha2f9c1i3izmzWLeLOv2Xys8jyrz20NOMOhbGDhnfbOYN4t5s5g3S+P5BrvmNAsbtL53WjMyD9b6ZjFvFvNmMW+WWL9WuLXZslYoc5Ohzii0i+/8NkJcv6abzJvFvFnMm6VyfK1vd7a5zO4Xy17bHPQNt7l+TX/Mm8W8WcybpbJfKzwmau6QichlJ04VPjrrm8W8WcybxbxZ7vRroQ7lzG3Rzty7rXA3uhDrm8W8WcybxbxZYucb9O1R0Td0tWspXOjTzF25fk03mTeLebOYN0vj+QYhhxxPtWvGc9D3NKxvFvNmMW8W82aJnW+wTOFE5K4zGQp/63lU+ifzZjFvFvNmia1f6zN/qXMu835oRuFLrKEvu35NjzJvFvNmMW+W1P5rGbuOaxpkdvvoG6rrY32zmDeLebOYN0vj+aGDXUNmfTviHrKaz/cNdJN5s5g3i3mzNJ5HldH3nmbouoU7yvVtCBxifbOYN4t5s5g3y6H92iGvAWT0vSOR+bL1zWLeLObNYt4sqX6tr/fpmzzNyCx2O+QAB+ubxbxZzJvFvFli+6/16ZtMDF13sGwNWmYJXui61jeLebOYN4t5sxy6/5qaWN8s5s1i3izmzWLeLObNYt4s5s1i3iy/yeU5vDQomMAAAAAASUVORK5CYII=" alt="QR Code Familles de mots"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Familles de mots</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L23</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Trouve le mot formé avec le préfixe indiqué.</span>
+  </div>
+  <table class="exo-table"><tr><td>re- + lire →</td><td>___</td></tr><tr><td>in- + utile →</td><td>___</td></tr><tr><td>dé- + faire →</td><td>___</td></tr><tr><td>re- + prendre →</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Naturomot</span>
+    <span class="exo-consigne">Quel préfixe a été ajouté ? Que signifie-t-il ?</span>
+  </div>
+  <table class="exo-table"><tr><td>relire</td><td>préfixe : ___ sens : ___</td></tr><tr><td>invisible</td><td>préfixe : ___ sens : ___</td></tr><tr><td>défaire</td><td>préfixe : ___ sens : ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Donne 3 mots de la famille de « lire ».</span>
+  </div>
+  <table class="exo-table"><tr><td>lire →</td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr><tr><td></td><td>_____________</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : choisissent / aime / accueillent / prend</div><div style="font-size:8pt">Ex.2 : Les élèves lisent des livres en silence. / Kofi feuillette un bel album.</div><div style="font-size:8pt">Ex.3 : réponses libres avec accord correct</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : présent/lire, passé composé/choisir, futur/lire</div><div style="font-size:8pt">Ex.2 : nous lisons / ils ont emprunté</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : relire, inutile, défaire, reprendre</div><div style="font-size:8pt">Ex.2 : re-(répétition), in-(contraire), dé-(contraire/séparation)</div><div style="font-size:8pt">Ex.3 : lecture, lecteur, lisible, relire, lisant (variantes)</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Grande salle calme avec des rayons de livres. 2. Parce qu'il aime les animaux. 3. Rendre le livre propre après l'emprunt.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La bibliothèque de l'école</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Accord sujet-verbe (G3+) | C : Révision C1+C2 | V : Préfixes courants (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Adama va à la bibliothèque parce qu'il aime lire.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">Quand on emprunte un livre, on le rend propre puisque c'est la règle.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">parce que</span> <span class="dict-mot">quand</span> <span class="dict-mot">puisque</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Adama va à la bibliothèque parce qu'il aime lire.</div><div class="model-text">Quand on emprunte un livre, on le rend propre puisque c'est la règle.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Décris ta bibliothèque préférée ou invente une bibliothèque idéale en 4 phrases.</div>
+    <div style="font-size:8pt;color:#666;margin-bottom:1.5mm">💡 Aide : <em>bibliothèque — livre — emprunter — lire — rayon — silence — conte</em></div><div class="model-text" style="color:var(--c1)">Dans ma bibliothèque idéale, il y a...</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 6 — La bibliothèque de l'école</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Accord sujet-verbe (G3+) | C : Révision C1+C2 | V : Préfixes courants (V2d)</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 5</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm">
+  <div class="section-box">
+    <div class="sh">🎵 Poème</div>
+    <div class="sb">
+      <div class="poeme-block"><span class="poeme-vers">Dans la bibliothèque, tout est silencieux,</span><span class="poeme-vers">Les livres nous regardent de leurs yeux.</span><span class="poeme-vers">Adama choisit un album avec des lions,</span><span class="poeme-vers">Aminata ouvre un conte de traditions.</span><span class="poeme-vers">Puisque les livres sont nos meilleurs amis,</span><span class="poeme-vers">Quand on lit, on voyage à l'infini.</span></div>
+      <div class="dessin-box">Dessine ta bibliothèque idéale avec tes livres préférés.</div>
+    </div>
+  </div>
+  <div class="section-box">
+    <div class="sh">🎲 Jeu oral — La ronde des mots</div>
+    <div class="sb"><div class="jeu-grid"><div class="jeu-item">cite 3 types de livres qu'on trouve en bibliothèque</div><div class="jeu-item">dit son livre ou son conte préféré</div><div class="jeu-item">forme un mot avec le préfixe re- et un verbe</div><div class="jeu-item">donne un mot de la famille de « lire »</div><div class="jeu-item">explique pourquoi c'est important de lire</div><div class="jeu-item">invente le titre d'un livre sur la Guinée</div></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">🌟 Différenciation pédagogique</div>
+  <div class="sb">
+    <div class="diff-grid">
+      <div class="diff-n1">
+        <div class="diff-label">⭐ Niveau 1 — Renforcement</div>
+        <div style="font-size:8.5pt;margin-bottom:2mm">Complète avec parce que, quand ou puisque :</div>
+        <div class="diff-item">Adama va à la bibliothèque ___ il aime les livres.<span class="answer-line"></span></div><div class="diff-item">___ la bibliothèque est ouverte, tu peux y aller.<span class="answer-line"></span></div><div class="diff-item">___ tu lis un livre, tu te concentres bien.<span class="answer-line"></span></div>
+      </div>
+      <div class="diff-n2">
+        <div class="diff-label">⭐⭐ Niveau 2 — Approfondissement</div>
+        <div class="diff-item" style="font-weight:600">Raconte une visite à la bibliothèque en 6 phrases avec des détails.</div>
+<div class="diff-item" style="font-size:8pt;color:#555">Utilise parce que, quand et puisque dans tes phrases.</div>
+<div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div><div class="write-line" style="margin:1.5mm 0"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:3mm;border-top:1px solid var(--line);padding-top:2mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#888">
+  <span>Bela Lekkol Montessori — Guinée</span>
+  <span>CE1 — Méthode MHF — Semaine 6 / Période 1</span>
+  <span>© 2026</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le village de Faranah</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Bilan G1+G5+G2a+G3+G2e | C : Bilan C1+C2 | V : Bilan V1+V2d+O5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 1</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">Programme de la semaine</div>
+  <div class="sb" style="padding:2mm 4mm">
+    <div class="prog-line">G : Bilan G1+G5+G2a+G3+G2e | C : Bilan C1+C2 | V : Bilan V1+V2d+O5</div>
+    <div class="pt-copie" style="margin-top:2mm">✏️ Point de copie : <em>et/est — a/à — on/ont — ces/ses</em></div>
+  </div>
+</div>
+
+
+<div class="mhf-box">
+  <div class="mhf-header">📋 Mini-fichiers MHF :</div>
+  <div class="mhf-item"><span class="mhf-label">Grammaire</span><div class="mhf-tags"><span class="mhf-tag">Phrasix + Chacun son Rôle</span><span class="mhf-tag">Détermino</span><span class="mhf-tag">Phrasix</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Conjugaison</span><div class="mhf-tags"><span class="mhf-tag">Au Travail ou au Repos</span><span class="mhf-tag">Au Travail ou au Repos</span></div></div>
+  <div class="mhf-item"><span class="mhf-label">Vocabulaire</span><div class="mhf-tags"><span class="mhf-tag">Alphabétix</span><span class="mhf-tag">Familix</span><span class="mhf-tag">Autour du mot</span></div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh light">Ateliers de la semaine</div>
+  <div class="sb" style="padding:2mm"><div class="ateliers-grid"><div class="atelier-cell" style="background:#EFF6FF">
+  <div class="atelier-label">La phrase (G)</div>
+  <div style="font-size:8pt">Bilan types de phrases.</div><div style="font-size:8pt">Exercice Phrasix + Détermino.</div><div style="font-size:8pt">Fiche bilan grammaire.</div>
+</div><div class="atelier-cell" style="background:#FFF5F5">
+  <div class="atelier-label">Le verbe (C)</div>
+  <div style="font-size:8pt">Bilan infinitif + temps.</div><div style="font-size:8pt">Exercice Au Travail ou au Repos.</div><div style="font-size:8pt">3 phrases bilan conjugaison.</div>
+</div><div class="atelier-cell" style="background:#F0FFF4">
+  <div class="atelier-label">Les mots (V)</div>
+  <div style="font-size:8pt">Bilan familles + hyperonymes.</div><div style="font-size:8pt">Alphabétix + Familix.</div><div style="font-size:8pt">Fiche bilan vocabulaire.</div>
+</div><div class="atelier-cell" style="background:#F8F0FF">
+  <div class="atelier-label">Mots invariables</div>
+  <div style="font-size:8pt">Révision tous mots invariables.</div><div style="font-size:8pt">Mini-fichier Pas Touche !</div><div style="font-size:8pt">Dictée bilan de période.</div>
+</div></div></div>
+</div>
+
+<div style="margin-bottom:2mm"><span style="font-size:8pt;font-weight:700;color:#555">Mots à retenir : </span><span class="dict-mot">Faranah</span><span class="dict-mot">fleuve</span><span class="dict-mot">griot</span><span class="dict-mot">ancêtres</span><span class="dict-mot">case</span><span class="dict-mot">instituteur</span></div>
+
+<div class="section-box" style="margin-bottom:2mm">
+  <div class="sh">📖 Texte de lecture — Le village de Faranah</div>
+  <div class="sb">
+    <div class="illus-bandeau">
+  <img src="imgs/p1s7_village.jpg" alt="Village de Faranah">
+</div>
+<div class="oral-section">
+  <div class="oral-title">🗣 Langage oral — J'observe et je parle</div>
+  <ol class="oral-questions">
+    <li>Que vois-tu dans ce village au bord du fleuve ?</li>
+    <li>Décris le griot et les enfants autour de lui.</li>
+    <li>Qu'est-ce qu'un griot ? Que raconte-t-il selon toi ?</li>
+  </ol>
+</div>
+    <div class="texte-prose"><div class="texte-line"><span class="ln">1</span><span class="txt">Faranah est une belle ville de Guinée, nichée au bord du fleuve Niger.</span></div><div class="texte-line"><span class="ln">2</span><span class="txt">Sory et sa sœur Kadiatou ont visité Faranah pendant les vacances.</span></div><div class="texte-line"><span class="ln">3</span><span class="txt">Ces deux enfants sont montés dans un vieux car avec leurs parents.</span></div><div class="texte-line"><span class="ln">4</span><span class="txt">On voit, en arrivant, les maisons aux toits de tôle et les jardins verts.</span></div><div class="texte-line"><span class="ln">5</span><span class="txt">Leur oncle les a accueillis dans sa grande case en banco.</span></div><div class="texte-line"><span class="ln">6</span><span class="txt">Ses enfants ont couru vers eux et on a entendu des cris de joie.</span></div><div class="texte-line"><span class="ln">7</span><span class="txt">Le soir, on s'est assis autour du feu et un vieux griot a chanté.</span></div><div class="texte-line"><span class="ln">8</span><span class="txt">Ces chants anciens racontent l'histoire de leurs ancêtres.</span></div><div class="texte-line"><span class="ln">9</span><span class="txt">Sory et sa sœur ont écouté, les yeux brillants d'émotion.</span></div><div class="texte-line"><span class="ln">10</span><span class="txt">L'instituteur de Faranah leur a appris que c'est la ville de la culture.</span></div><div class="texte-line"><span class="ln">11</span><span class="txt">« Faranah est notre terre, et ses histoires sont les nôtres. »</span></div><div class="texte-line"><span class="ln">12</span><span class="txt">On est reparti le cœur plein de ces belles images de Guinée.</span></div></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh light">Compréhension du texte</div>
+  <div class="sb"><div class="comp-item">Où se trouve Faranah ? Qui sont Sory et Kadiatou ?<span class="answer-line"></span></div><div class="comp-item">Que fait le vieux griot le soir autour du feu ?<span class="answer-line"></span></div><div class="comp-item">Qu'est-ce que l'instituteur leur a appris sur Faranah ?<span class="answer-line"></span></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le village de Faranah</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Bilan G1+G5+G2a+G3+G2e | C : Bilan C1+C2 | V : Bilan V1+V2d+O5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 2</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📝 Grammaire — Phrasix + Chacun son Rôle</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADmklEQVR4nO3d240bMQxG4WyQLrak1JMqtp6UtHU4jwEEmDbBy9g453v1Zcb+IYDQSNTH7Xb7IYyfV9+AVpk3i3mzmDeLebOYN4t5s5g3i3mz/Ipf/vz9tXMf33//PH/d+M3HqxXxN6eue9U/eXB8s5g3i3mzmDfLg3rtMFcKxRdKvbmiUlWlyrer7tnxzWLeLObNYt4suXrtkKoUGiuUlNQcWeqrGq39k45vFvNmMW8W82Yp1Wtz4vqlUt001lxXVaAVjm8W82YxbxbzZnnRei2WWkfWuBTueHVu3dwcxzeLebOYN4t5s5TqtbUKpbFAO6x9VWztn3R8s5g3i3mzmDdLrl5b2+TYqFLrrdWJaxzfLObNYt4s5s3yoF57i2d8h8o9V0qwtQ2hFY5vFvNmMW8W82b5iM83qDzja5yNSmm8UOX3Nkp1drP/mv4zbxbzZjFvltLz0MaZrDlX9YxLfbZy3RTHN4t5s5g3i3mzlJ6HNjb4X5t9izXuLW28jZj9cnWXebOYN4t5swyeR/WaC/1TLToq1tqKpDi+WcybxbxZzJulc7/B3GxUZSn/izzEnDthK/VmxzeLebOYN4t5s3TuN5jbnBC/uaLxCHfPe9fLMW8W82Yxb5a98w3mZpTmToOPK7JUrTe3a9X1a7rLvFnMm8W8WR7Mrx3W2ns0vpq6jfjNFZV7PlTqU8c3i3mzmDeLebPk6rXDO5YzKWtlVErlz3F8s5g3i3mzmDdLbn9o/Iwv/uyh8fng3LnrjUeCzrXttV+u7jJvFvNmMW+WwfOoKp0zGhedpVRWqFUuFGts7+H4ZjFvFvNmMW+W0n6DxpYVa9XcXP+1tfa59l/Ts8ybxbxZzJtlsF/uYW4LwVxnt5TUdSs36fyanmXeLObNYt4se89DK9/cON02d1TC3F01cnyzmDeLebOYN8ve/FqsMoO2tjHzUJlQmzuTIeb4ZjFvFvNmMW+W3Pq1taeHc2vBGlvgzj14nTtHwvHNYt4s5s1i3iyd+w1iaz3UUlXVXPvctQ4l9vPQXebNYt4s5s2ydx5VSmOFMrcE76rnsJULOb5ZzJvFvFnMm+VF67VGlUnAtRPs4882XsjxzWLeLObNYt4spXptbQopdd3KorO14q7xQimObxbzZjFvFvNmydVra9tF19qTzS12S3228eCrmOObxbxZzJvFvFlK573r7Ti+WcybxbxZzJvFvFnMm8W8WcybxbxZ/gFRBhj7ERdmAwAAAABJRU5ErkJggg==" alt="QR Code La phrase"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>La phrase</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L01</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Phrasix + Chacun son Rôle</span>
+    <span class="exo-consigne">Pour chaque phrase, indique : type, sujet, verbe, déterminant(s).</span>
+  </div>
+  <table class="exo-table"><tr><td>Ces enfants visitent Faranah.</td><td>type:__ suj:__ vb:__ dét:__</td></tr><tr><td>Est-ce que le griot chante ce soir ?</td><td>type:__ suj:__ vb:__ dét:__</td></tr><tr><td>Leurs parents arrivent à Faranah.</td><td>type:__ suj:__ vb:__ dét:__</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Détermino</span>
+    <span class="exo-consigne">Remplace le GN sujet par le pronom qui convient.</span>
+  </div>
+  <table class="exo-table"><tr><td>Le vieux griot chante autour du feu.</td><td>→ ___</td></tr><tr><td>Sory et Kadiatou écoutent attentivement.</td><td>→ ___</td></tr><tr><td>Ces belles chansons racontent l'histoire.</td><td>→ ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Phrasix</span>
+    <span class="exo-consigne">Écris 2 phrases sur Faranah en utilisant des structures variées.</span>
+  </div>
+  <table class="exo-table"><tr><td>1. ________________________________</td><td><span class="blank">_______________</span></td></tr><tr><td>2. ________________________________</td><td><span class="blank">_______________</span></td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🔄 Conjugaison — Au Travail ou au Repos</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADfElEQVR4nO2d220jMQwAk+C6SEmpJ1Wknispdfj+BYSOwMdqb2Z+4+zKHhAgKJF6fTweL4Lh7eoFyCj6ZqFvFvpmoW8W+mahbxb6ZqFvFn/iP79/fM2s4/vv5++XsXy4cJHxMhbiVcUf7iNehvHNQt8s9M1C3yye5GsLW+lMTJy/FCZomTQqXkbm1xj7JReMbxb6ZqFvFvpmsZevLRTmTVsv6ntUYcksU6qLyXx945uFvlnom4W+WaTytavoS5S2/rdvW7YP45uFvlnom4W+WRyarx1ynG3rvbfA+Gahbxb6ZqFvFql87Y4Jy0JhrnfIcbYY45uFvlnom4W+Wezla2NbfoWVrMJehUxzQvzhMYxvFvpmoW8W+mbxeua83MI613+wiVmI8c1C3yz0zULfLPbmr/VNoYifXNhCMNarkHlRX7uo8c1C3yz0zULfLJ7ka7cYdzF2cKwwx9z6RoWbp8Y3C32z0DcLfbN4sh96yIyKW2xi9iWVhRjfLPTNQt8s9M1ir76WIbN7mKnr9d2NUMhYrmd8s9A3C32z0DeLvfpaJlHKfDjmzANrY20PW082vlnom4W+WeibReU8j60MpbBGNlYFG7v0s28WiPHNQt8s9M1C3yxS/QZb/7twVTEufvJCX5441qqxYHyz0DcLfbPQN4vG+w0y9bX4RX0n1PrSt74zd+6Hyo/om4W+WeibReX9oYUls7HS1SHTdMeaIoxvFvpmoW8W+maR6jc4ZILFVYPe+i6g6kvfjG8W+mahbxb6ZjHXb7BFX+tC/KKtv2aIv2BfJmh8s9A3C32z0DeLyvpa4VmwLQoraJknb3FVadL4ZqFvFvpmoW8WlfPXYq7qxOyj7/IH90OlBn2z0DcLfbN4kq9dxViPZ+a9MYdckLpgfLPQNwt9s9A3i1PuD71q5zGzjMKK4dgurfHNQt8s9M1C3yz2+g3GBtVmHrXVQrC1jLFDdn0dFMY3C32z0DcLfbNIzV8bqwqNbReOndfLLMP6mvwWfbPQNwt9s6iclztGYW9p5r19xOM9FpyXKz+ibxb6ZqFvFrfM1xb6BtVmHnUmxjcLfbPQNwt9s2i8P7SQwjQqM1Eu041wyDULxjcLfbPQNwt9szi0PzSTVcUcMjTN/lCZQN8s9M1C3ywOnb8mTRjfLPTNQt8s9M1C3yz0zULfLPTNQt8s/gHvBv9GOiyD6AAAAABJRU5ErkJggg==" alt="QR Code L'infinitif"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>L'infinitif</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L10b</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Indique l'infinitif et le temps de chaque verbe.</span>
+  </div>
+  <table class="exo-table"><tr><td>Sory a visité Faranah.</td><td>inf: ___ temps: ___</td></tr><tr><td>Le griot chante ce soir.</td><td>inf: ___ temps: ___</td></tr><tr><td>Demain, ils retourneront en ville.</td><td>inf: ___ temps: ___</td></tr><tr><td>Ces chants racontent l'histoire.</td><td>inf: ___ temps: ___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Au Travail ou au Repos</span>
+    <span class="exo-consigne">Conjugue au temps demandé.</span>
+  </div>
+  <table class="exo-table"><tr><td>chanter (présent, il)</td><td>→ ___</td></tr><tr><td>visiter (passé composé, ils)</td><td>→ ___</td></tr></table>
+</div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le village de Faranah</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Bilan G1+G5+G2a+G3+G2e | C : Bilan C1+C2 | V : Bilan V1+V2d+O5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 3</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">📚 Vocabulaire — Bilan vocabulaire P1</div>
+<div class="canope-qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAClCAIAAACySaqNAAADoElEQVR4nO3d220UQRBGYYzIgpCIhygcDyE5juXRUkuudbkuM3DO97q7nvb8aqnU15fH4/FNGN+vboBWmTeLebOYN4t5s5g3i3mzmDeLebP8iD/++et1px1vf35//rnHl+cczYgbGbfqqjd5sH+zmDeLebOYN8uTeu3QWCilKrLjy41lVKpVqd/Gz117kwf7N4t5s5g3i3mz5Oq1Q6pSaKxQUoNxqeIuNjdGtvYm7d8s5s1i3izmzVKq1+ZUKqO1ecm1adlG9m8W82YxbxbzZrlpvXaYWziW+supadl7sn+zmDeLebOYN0upXruqQplb/NU4W5pq5NqbtH+zmDeLebOYN0uuXlvb5Bir7DdY+zR21Zu0f7OYN4t5s5g3y5N67Z5zfI0bQlN/OfXb1Kdr7N8s5s1i3izmzZI7f61yNkalFKq0KrV79LB2Fkgs9Q96/premTeLebOYN8vLTe6jahzJmtsGUCnuPC9XFzBvFvNmMW+Wzv2hVx3CUfk0bkZlb2nF3Lie/ZvFvFnMm8W8WfbOyz1Utk9W5kNTR3RUNJZ+jYWh/ZvFvFnMm8W8WZ7Mh67d7TQ3VhU/KNY4vjZ3aVbqt/ZvFvNmMW8W82bJrV9buzapMsC0VkZ537vuzrxZzJvFvFnuMr4Wa7zBINa4o2CufKvUmPZvFvNmMW8W82YpnZc7d9JZ6tPG698bV7el3tVaIWz/ZjFvFvNmMW+Wwf2ha/ODc7tH19brVbh+TR8ybxbzZjFvls56rTIoNmduGV3quWuHnTgfqnfmzWLeLObNUrqPau2OgsrkaWXYa+3iq1jj8R72bxbzZjFvFvNm2Rtfq6xQix+UMnf+2trxua5f02eZN4t5s5g3S+7+0EPjYRipZqxNNaZU/qNYZX/Fwf7NYt4s5s1i3iyl+dC5L6/dAVqpfea2fM4t7rN/s5g3i3mzmDdLaXyt0T+xE7PSjMbBx8p/ZP9mMW8W82Yxb5bc+rW12cO1IquywWCubJwbfLR/s5g3i3mzmDdL6X6DxhtC567XTFm7xjSlcsPWwf7NYt4s5s1i3iyd+0MbzY2vzY1zVR5U4fiaPmTeLObNYt4sN63XDmvbDw5XnbU7tzLO/s1i3izmzWLeLKV67SZDSJWl/JUvrx1n4vlr+iLzZjFvFvNmKd33Pmfu9oPUcyutSv228eKrmP2bxbxZzJvFvFme7DfQf8b+zWLeLObNYt4s5s1i3izmzWLeLObN8hcNrRrXELI8rQAAAABJRU5ErkJggg==" alt="QR Code Les mots étiquettes"><div class="canope-qr-label">🎬 Leçon animée Canopé<br><strong>Les mots étiquettes</strong><br><span class="qr-url">rebrand.ly/MHF_CE1_L26</span></div></div>
+
+  <div class="sb">
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 1</span>
+    <span class="exo-ref">Alphabétix</span>
+    <span class="exo-consigne">Range ces mots de la ville dans l'ordre alphabétique.</span>
+  </div>
+  <table class="exo-table"><tr><td>griot — fleuve — case — ancêtres — instituteur — Faranah</td><td>Ordre : _______________________________</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 2</span>
+    <span class="exo-ref">Familix</span>
+    <span class="exo-consigne">Donne un mot de la même famille.</span>
+  </div>
+  <table class="exo-table"><tr><td>chanter →</td><td>___</td></tr><tr><td>enseigner →</td><td>___</td></tr><tr><td>visiter →</td><td>___</td></tr><tr><td>raconter →</td><td>___</td></tr></table>
+</div>
+<div class="exo-block">
+  <div class="exo-header">
+    <span class="exo-num">Exercice 3</span>
+    <span class="exo-ref">Autour du mot</span>
+    <span class="exo-consigne">Quel est l'hyperonyme de chaque liste ?</span>
+  </div>
+  <table class="exo-table"><tr><td>griot, instituteur, docteur, commerçant →</td><td>hyperonyme : ___</td></tr><tr><td>case, maison, villa, appartement →</td><td>hyperonyme : ___</td></tr></table>
+</div></div>
+</div>
+
+<div class="section-box">
+  <div class="sh light" style="background:#fff3e0;color:#e65100">✅ Corrigés (découper)</div>
+  <div class="sb"><div class="corrige-block">
+  <div class="cor-label">Grammaire</div>
+  <div style="font-size:8pt">Ex.1 : Ces/décl./enfants/visitent — Est-ce que/interr./griot/chante — Leurs/décl./parents/arrivent</div><div style="font-size:8pt">Ex.2 : Il / Ils / Elles</div><div style="font-size:8pt">Ex.3 : réponses libres avec structures variées</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Conjugaison</div>
+  <div style="font-size:8pt">Ex.1 : visiter/passé composé, chanter/présent, retourner/futur, raconter/présent</div><div style="font-size:8pt">Ex.2 : il chante / ils ont visité</div>
+</div><div class="corrige-block">
+  <div class="cor-label">Vocabulaire</div>
+  <div style="font-size:8pt">Ex.1 : ancêtres, case, Faranah, fleuve, griot, instituteur</div><div style="font-size:8pt">Ex.2 : chanteur/chanson, enseignant/enseignement, visiteur/visite, récit/narrateur</div><div style="font-size:8pt">Ex.3 : profession/métier, habitation/logement</div>
+</div><div class="corrige-block"><div class="cor-label">Compréhension</div><div style="font-size:8pt">1. Ville de Guinée au bord du Niger ; enfants en visite. 2. Il chante des chants anciens. 3. C'est la ville de la culture.</div></div></div>
+</div>
+</div>
+
+<div class="page">
+
+<div class="page-header">
+  <div>
+    <div class="week-title">Semaine 7 — Le village de Faranah</div>
+    <div style="font-size:8pt;color:#666;margin-top:1mm;">G : Bilan G1+G5+G2a+G3+G2e | C : Bilan C1+C2 | V : Bilan V1+V2d+O5</div>
+  </div>
+  <div class="page-meta">
+    <span class="page-num-badge">Page 4</span><br>
+    <span>CE1 — P1</span>
+  </div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">✏️ Copier avec soin</div>
+  <div class="sb">
+<div style="margin-bottom:3mm">
+  <div class="model-text">Ces enfants de Faranah ont appris leurs leçons et sont fiers de leur terre.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div>
+<div style="margin-bottom:3mm">
+  <div class="model-text">On entend le griot chanter, et ses chants racontent l'histoire de leurs ancêtres.</div>
+  <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+</div></div>
+</div>
+
+<div class="section-box" style="margin-bottom:3mm">
+  <div class="sh">🔊 Dictée préparée</div>
+  <div class="sb">
+    <div style="margin-bottom:2mm"><span style="font-size:8.5pt;font-weight:700">Mots à apprendre : </span><span class="dict-mot">et</span> <span class="dict-mot">est</span> <span class="dict-mot">on</span> <span class="dict-mot">ont</span> <span class="dict-mot">ces</span> <span class="dict-mot">ses</span></div>
+    <div style="font-size:8.5pt;font-weight:600;margin-bottom:1mm">Phrases modèles :</div>
+    <div class="model-text">Sory et sa sœur ont visité ces villages. Le fleuve est magnifique.</div><div class="model-text">On entend le griot : ses chants racontent l'histoire, et tout le monde est ému.</div>
+    <div style="font-size:8.5pt;font-weight:600;margin:2mm 0 1mm 0">Ma dictée :</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="section-box">
+  <div class="sh">🖊️ Production d'écrit</div>
+  <div class="sb">
+    <div style="font-size:9pt;font-weight:600;margin-bottom:1.5mm">Écris 4 phrases pour présenter une ville ou un village de Guinée que tu connais.</div>
+    <div style="font-size:8pt;color:#666;margin-b
