@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 210mm; height: 297mm; background: white; }
+
+/* ══════════════════════════════════════════════
+   COUVERTURE — fonctionne AVEC ou SANS image
+══════════════════════════════════════════════ */
+
+.couverture {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+  background: #0d2e52;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bandeau couleur haut */
+.bande-haut {
+  background: linear-gradient(135deg, #1F4E79 0%, #2E75B6 50%, #1a7a42 100%);
+  height: 10mm;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Zone illustration (centre) */
+.zone-illus {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #1a3a5c 0%, #1F4E79 40%, #16603a 100%);
+}
+
+/* Image aquarelle — si présente */
+.zone-illus img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+/* Motif décoratif SVG (visible si image absente) */
+.motif-svg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.12;
+}
+
+/* Message "image à générer" */
+.placeholder-msg {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255,255,255,0.35);
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
+  text-align: center;
+  line-height: 1.8;
+  pointer-events: none;
+}
+
+/* Dégradé bas pour lisibilité */
+.degrade-bas {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 65mm;
+  background: linear-gradient(to top, rgba(10,30,50,0.96) 0%, rgba(10,30,50,0.0) 100%);
+}
+
+/* Zone titre (sur le dégradé) */
+.zone-titre {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0 11mm 10mm 11mm;
+}
+
+.collection-label {
+  font-family: Arial, sans-serif;
+  font-size: 7pt;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 2.5mm;
+}
+.titre-grand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38pt;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.05;
+  margin-bottom: 1.5mm;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+  letter-spacing: -0.5px;
+}
+.titre-sous {
+  font-family: Georgia, serif;
+  font-size: 13pt;
+  color: rgba(255,255,255,0.82);
+  font-style: italic;
+  margin-bottom: 5mm;
+}
+.filet-or {
+  width: 20mm;
+  height: 2.5px;
+  background: #F9A825;
+  margin-bottom: 5mm;
+  border-radius: 2px;
+}
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-bottom: 5mm;
+}
+.badge {
+  font-family: Arial, sans-serif;
+  font-size: 7pt;
+  padding: 1.2mm 3mm;
+  border-radius: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-or    { background: rgba(249,168,37,0.22); border: 0.8px solid rgba(249,168,37,0.7); color: #FFE082; }
+.badge-blanc { background: rgba(255,255,255,0.12); border: 0.8px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
+
+/* Pied de couverture */
+.zone-pied {
+  background: #071926;
+  padding: 5mm 11mm;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ecole-info {
+  font-family: Arial, sans-serif;
+  font-size: 7.5pt;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+.ecole-info strong {
+  color: rgba(255,255,255,0.85);
+  font-size: 8pt;
+}
+.annee-badge {
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
+  color: rgba(255,255,255,0.55);
+  text-align: right;
+  line-height: 1.6;
+}
+.annee-badge strong {
+  display: block;
+  color: rgba(255,255,255,0.8);
+  font-size: 9pt;
+}
+
+/* Bandeau couleur bas */
+.bande-bas {
+  background: linear-gradient(135deg, #1a7a42 0%, #2E75B6 50%, #1F4E79 100%);
+  height: 3mm;
+  width: 100%;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+<div class="couverture">
+
+  <!-- Bande couleur haut -->
+  <div class="bande-haut"></div>
+
+  <!-- Zone illustration centrale -->
+  <div class="zone-illus">
+
+    <!-- Motif décoratif de fond (toujours visible) -->
+    <svg class="motif-svg" viewBox="0 0 793 900" xmlns="http://www.w3.org/2000/svg">
+      <!-- Soleil tropical -->
+      <circle cx="600" cy="120" r="90" fill="white" opacity="0.6"/>
+      <circle cx="600" cy="120" r="65" fill="white" opacity="0.4"/>
+      <!-- Rayons -->
+      <g stroke="white" stroke-width="3" opacity="0.3">
+        <line x1="600" y1="10" x2="600" y2="40"/>
+        <line x1="600" y1="200" x2="600" y2="230"/>
+        <line x1="490" y1="120" x2="460" y2="120"/>
+        <line x1="710" y1="120" x2="740" y2="120"/>
+        <line x1="522" y1="42" x2="500" y2="20"/>
+        <line x1="678" y1="198" x2="700" y2="220"/>
+        <line x1="678" y1="42" x2="700" y2="20"/>
+        <line x1="522" y1="198" x2="500" y2="220"/>
+      </g>
+      <!-- Manguier stylisé -->
+      <ellipse cx="150" cy="200" rx="130" ry="100" fill="white" opacity="0.3"/>
+      <ellipse cx="150" cy="160" rx="90" ry="75" fill="white" opacity="0.2"/>
+      <rect x="140" y="280" width="20" height="80" fill="white" opacity="0.25"/>
+      <!-- Collines -->
+      <ellipse cx="200" cy="850" rx="250" ry="120" fill="white" opacity="0.08"/>
+      <ellipse cx="600" cy="870" rx="280" ry="100" fill="white" opacity="0.06"/>
+      <!-- Lignes ondulées (fleuve) -->
+      <path d="M0 700 Q100 680 200 710 Q300 740 400 700 Q500 660 600 690 Q700 720 800 700" stroke="white" stroke-width="2.5" fill="none" opacity="0.2"/>
+      <path d="M0 720 Q120 700 240 730 Q360 760 480 720 Q600 680 720 710 Q750 720 800 710" stroke="white" stroke-width="1.5" fill="none" opacity="0.12"/>
+      <!-- Silhouettes enfants -->
+      <g fill="white" opacity="0.18">
+        <!-- Enfant 1 -->
+        <circle cx="320" cy="510" r="18"/>
+        <rect x="310" y="530" width="20" height="50" rx="4"/>
+        <!-- Enfant 2 -->
+        <circle cx="390" cy="500" r="20"/>
+        <rect x="379" y="522" width="22" height="55" rx="4"/>
+        <!-- Enfant 3 -->
+        <circle cx="460" cy="515" r="17"/>
+        <rect x="451" y="534" width="18" height="48" rx="4"/>
+        <!-- Livre stylisé -->
+        <rect x="290" y="545" width="25" height="18" rx="2"/>
+        <rect x="388" y="540" width="28" height="20" rx="2"/>
+      </g>
+      <!-- Étoiles décoratives -->
+      <g fill="white" opacity="0.25">
+        <circle cx="50" cy="80" r="2"/>
+        <circle cx="110" cy="40" r="1.5"/>
+        <circle cx="720" cy="300" r="2"/>
+        <circle cx="760" cy="350" r="1.5"/>
+        <circle cx="30" cy="400" r="1.5"/>
+      </g>
+    </svg>
+
+    <!-- Aquarelle IA (affichée si présente) -->
+    <img src="imgs/couverture.jpg"
+         alt="Enfants guinéens joyeux avec des livres"
+         onerror="this.style.display='none'; document.querySelector('.placeholder-msg').style.display='block'">
+
+    <!-- Message placeholder -->
+    <div class="placeholder-msg" style="display:none">
+      🎨 Illustration à générer<br>
+      Double-cliquer sur<br>
+      <strong>GENERER_COUVERTURE.bat</strong>
+    </div>
+
+    <!-- Dégradé bas pour titre -->
+    <div class="degrade-bas"></div>
+
+    <!-- Zone titre superposée -->
+    <div class="zone-titre">
+      <div class="collection-label">Collection Bela Lekkol · Français · Cycle 2</div>
+      <div class="titre-grand">Mes Lectures</div>
+      <div class="titre-sous">Manuel de Français CE1</div>
+      <div class="filet-or"></div>
+      <div class="badges">
+        <span class="badge badge-or">🎯 Méthode MHF</span>
+        <span class="badge badge-blanc">🌍 Contexte guinéen</span>
+        <span class="badge badge-blanc">🎨 Illustrations IA</span>
+        <span class="badge badge-blanc">🎬 33 leçons Canopé</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pied de couverture -->
+  <div class="zone-pied">
+    <div class="ecole-info">
+      <strong>Bela Lekkol Montessori</strong><br>
+      École française privée — Conakry, Guinée
+    </div>
+    <div class="annee-badge">
+      <strong>CE1</strong>
+      Année 2025 – 2026
+    </div>
+  </div>
+
+  <!-- Bande couleur bas -->
+  <div class="bande-bas"></div>
+
+</div>
+</body>
+</html>

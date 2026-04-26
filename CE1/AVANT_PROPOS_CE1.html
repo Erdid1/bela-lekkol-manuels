@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+@page { size: A4; margin: 25mm 20mm 20mm 20mm; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Georgia", serif; color: #222; background: white; }
+
+.page {
+  width: 170mm;
+  min-height: 247mm;
+  padding: 0;
+}
+
+/* Bandeau haut */
+.header-band {
+  background: linear-gradient(135deg, #1F4E79 0%, #2E75B6 60%, #1a8a4a 100%);
+  padding: 10mm 8mm 8mm 8mm;
+  margin-bottom: 8mm;
+  border-radius: 4px;
+}
+.header-band .logo-line {
+  font-size: 8.5pt;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 3mm;
+}
+.header-band h1 {
+  font-size: 20pt;
+  color: white;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5mm;
+}
+.header-band .subtitle {
+  font-size: 11pt;
+  color: rgba(255,255,255,0.9);
+  font-style: italic;
+}
+
+/* Corps texte */
+.body-text {
+  font-size: 10.5pt;
+  line-height: 1.75;
+  text-align: justify;
+  color: #1a1a1a;
+}
+.body-text p {
+  margin-bottom: 4.5mm;
+  text-indent: 6mm;
+}
+.body-text p:first-child { text-indent: 0; }
+
+/* Encadrés piliers */
+.pilliers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin: 6mm 0;
+}
+.pillier {
+  border: 1.5px solid;
+  border-radius: 5px;
+  padding: 3.5mm 4mm;
+}
+.pillier.bleu  { border-color: #1F4E79; background: #EBF3FB; }
+.pillier.vert  { border-color: #1a8a4a; background: #EAFAF1; }
+.pillier.or    { border-color: #B7860B; background: #FEFAE0; }
+.pillier.rouge { border-color: #8B0000; background: #FEF0EF; }
+
+.pillier .p-titre {
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5mm;
+}
+.pillier.bleu  .p-titre { color: #1F4E79; }
+.pillier.vert  .p-titre { color: #1a8a4a; }
+.pillier.or    .p-titre { color: #B7860B; }
+.pillier.rouge .p-titre { color: #8B0000; }
+
+.pillier .p-texte {
+  font-size: 8.5pt;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Signature */
+.signature-block {
+  margin-top: 8mm;
+  padding-top: 5mm;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.sig-gauche {
+  font-size: 8.5pt;
+  color: #555;
+  line-height: 1.6;
+}
+.sig-droite {
+  text-align: right;
+  font-size: 8.5pt;
+  color: #555;
+}
+.sig-droite strong {
+  display: block;
+  font-size: 9.5pt;
+  color: #1F4E79;
+}
+
+.mention-min {
+  margin-top: 5mm;
+  padding: 3mm 4mm;
+  background: #f5f5f5;
+  border-left: 3px solid #1F4E79;
+  font-size: 8pt;
+  color: #444;
+  font-style: italic;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header-band">
+    <div class="logo-line">École Bela Lekkol Montessori &nbsp;·&nbsp; Guinée &nbsp;·&nbsp; Cycle 2</div>
+    <h1>Avant-Propos</h1>
+    <div class="subtitle">Manuel de Français CE1 « Mes Lectures »</div>
+  </div>
+
+  <div class="body-text">
+
+    <p>Ce manuel de français pour le Cours Élémentaire 1ère année est une œuvre pédagogique inédite, conçue au cœur de l'école Bela Lekkol Montessori à Conakry. Il s'inscrit dans une vision résolument moderne et ancrée dans les réalités guinéennes, en articulant quatre piliers complémentaires qui en font, à notre connaissance, un outil unique sur le continent africain francophone.</p>
+
+    <div class="pilliers">
+      <div class="pillier bleu">
+        <div class="p-titre">📚 Programme officiel français</div>
+        <div class="p-texte">Toutes les compétences du cycle 2 du programme de l'Éducation Nationale française sont couvertes — de la phrase simple aux compléments circonstanciels — réparties en 5 périodes et 35 semaines progressives.</div>
+      </div>
+      <div class="pillier vert">
+        <div class="p-titre">🎯 Méthode MHF active</div>
+        <div class="p-texte">La Méthode Heuristique du Français (Nathan) structure chaque semaine avec ses mini-fichiers reconnus — Phrasix, Alphabétix, Synonymo, Conjuguix — pour un apprentissage ludique, actif et différencié.</div>
+      </div>
+      <div class="pillier or">
+        <div class="p-titre">🌍 Contexte socio-culturel guinéen</div>
+        <div class="p-texte">Chaque texte de lecture met en scène des enfants guinéens — Aminata, Kofi, Sékou — dans des décors réels : marchés de Kindia, fleuves du Fouta Djalon, villages de Faranah. La langue française s'apprend dans la vie quotidienne de l'élève.</div>
+      </div>
+      <div class="pillier rouge">
+        <div class="p-titre">🎬 Ressources numériques Canopé</div>
+        <div class="p-texte">33 QR codes imprimés redirigent vers les leçons animées du Réseau Canopé. En scannant simplement le code, l'élève et l'enseignant accèdent à des vidéos pédagogiques de qualité professionnelle.</div>
+      </div>
+    </div>
+
+    <p>Ce manuel intègre également une innovation majeure : 35 illustrations aquarelles originales générées par intelligence artificielle et adaptées au contexte guinéen. Chaque semaine s'ouvre sur une image évocatrice — une fillette sous un manguier, un vieux pêcheur sur le fleuve Niger, une cérémonie scolaire animée — autour de laquelle s'articulent les activités de langage oral, de lecture et d'écriture.</p>
+
+    <p>La séquence pédagogique de chaque semaine s'organise en cinq pages A4 imprimables : le programme, la lecture illustrée avec le langage oral, la grammaire, la conjugaison et les activités d'écriture, enfin le vocabulaire, le poème et le jeu. Cette architecture régulière rassure l'élève et libère l'enseignant qui peut se concentrer sur l'essentiel : enseigner.</p>
+
+    <p>Nous espérons que cet outil contribuera à renforcer la qualité de l'enseignement du français en Guinée et qu'il inspirera d'autres initiatives alliant rigueur académique, technologies contemporaines et respect des identités culturelles locales. La collection se poursuivra avec les manuels CP, CE2, CM1 et CM2, pour offrir à chaque élève de l'école primaire guinéenne un parcours cohérent et stimulant du premier au dernier jour de sa scolarité.</p>
+
+  </div>
+
+  <div class="signature-block">
+    <div class="sig-gauche">
+      <strong>Bela Lekkol Montessori</strong><br>
+      École française privée — Conakry, Guinée<br>
+      Collection « Manuels Bela Lekkol » · Année 2025–2026
+    </div>
+    <div class="sig-droite">
+      <strong>La Direction pédagogique</strong>
+      Conakry, avril 2026
+    </div>
+  </div>
+
+  <div class="mention-min">
+    Ce manuel a été élaboré en référence aux programmes officiels de l'Éducation Nationale française (B.O. spécial n°11 du 26 novembre 2015, cycles 2 et 3) et aux ressources pédagogiques du Réseau Canopé (MHF CE1). Il est destiné à un usage scolaire dans le cadre de l'enseignement du français langue première en Guinée.
+  </div>
+
+</div>
+</body>
+</html>
