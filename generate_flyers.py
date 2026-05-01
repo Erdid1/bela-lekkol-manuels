@@ -1,877 +1,702 @@
 #!/usr/bin/env python3
 """
-Générateur de flyers A5 impression professionnelle
-Bela Lekkol Montessori — Format A5 148×210mm + bleed 3mm — 300 DPI
+Générateur de flyers A5 impression professionnelle — Bela Lekkol Montessori
+Design fidèle au handoff : recto sombre #141414, verso crème #FFFBF4
+Format A5 148×210mm + bleed 3mm → page totale 154×216mm
 """
 
-import os
-import base64
+import os, base64
 from weasyprint import HTML, CSS
 
-OUTPUT_DIR = "/mnt/user-data/outputs"
-LOGO_PATH = f"{OUTPUT_DIR}/logo.png"
+OUT = "/mnt/user-data/outputs"
+os.makedirs(OUT, exist_ok=True)
 
-# Logo en base64 pour intégration HTML inline
-with open(LOGO_PATH, "rb") as f:
-    LOGO_B64 = base64.b64encode(f.read()).decode()
+# ── Assets ────────────────────────────────────────────────────────────────────
+def b64(path):
+    if os.path.exists(path):
+        with open(path, "rb") as f:
+            return base64.b64encode(f.read()).decode()
+    return ""
 
-# ─── DIMENSIONS ──────────────────────────────────────────────────────────────
-# A5 = 148 × 210 mm
-# Bleed 3mm → page totale = 154 × 216 mm
-# Zone de sécurité (safe zone) = 6mm depuis le bord (bleed+3mm)
-# ─────────────────────────────────────────────────────────────────────────────
+LOGO_B64  = b64(f"{OUT}/logo.png")
+PHOTO_B64 = b64(f"{OUT}/school_photo.jpg")
+LOGO_SRC  = f"data:image/png;base64,{LOGO_B64}"   if LOGO_B64  else ""
+PHOTO_SRC = f"data:image/jpeg;base64,{PHOTO_B64}" if PHOTO_B64 else ""
 
-CSS_BASE = """
-@page {
-    size: 154mm 216mm;
-    margin: 0;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-    width: 154mm;
-    height: 216mm;
-    overflow: hidden;
-    font-family: 'Arial', 'Helvetica Neue', sans-serif;
-}
-/* Repères de coupe visuels (bleed area = 3mm de chaque côté) */
-.bleed-wrapper {
-    width: 154mm;
-    height: 216mm;
-    position: relative;
-}
-/* Zone imprimable = A5 avec 3mm de bleed */
-.page-content {
-    position: absolute;
-    top: 0; left: 0;
-    width: 154mm;
-    height: 216mm;
-    padding: 9mm 9mm 7mm 9mm;  /* safe zone = bleed(3)+margin(6) */
-}
+# ── Polices Google Fonts ─────────────────────────────────────────────────────
+FONTS = """
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@400;700;900&family=Dancing+Script:wght@600&display=swap');
 """
 
-# ─── RECTO ───────────────────────────────────────────────────────────────────
+# ── CSS base partagé ──────────────────────────────────────────────────────────
+CSS_PAGE = """
+@page { size: 154mm 216mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 154mm; height: 216mm; overflow: hidden; }
+"""
+
+# ══════════════════════════════════════════════════════════════════════════════
+# RECTO
+# ══════════════════════════════════════════════════════════════════════════════
 HTML_RECTO = f"""<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
+<html lang="fr"><head><meta charset="UTF-8">
 <style>
-{CSS_BASE}
+{FONTS}
+{CSS_PAGE}
 
 body {{
-    background: #1a5276;
+  font-family: 'Lato', Arial, sans-serif;
+  background: #141414;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 28px, rgba(201,168,76,0.07) 28px, rgba(201,168,76,0.07) 29px),
+    repeating-linear-gradient(-45deg, transparent, transparent 28px, rgba(201,168,76,0.05) 28px, rgba(201,168,76,0.05) 29px);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
 }}
 
-.bleed-wrapper {{
-    background: linear-gradient(160deg, #1a5276 0%, #154360 50%, #0e2f44 100%);
+/* ── Bande tricolore ── */
+.tricolor {{
+  display: flex;
+  height: 6px;
+  width: 100%;
+  flex-shrink: 0;
 }}
+.tricolor span {{ flex: 1; }}
+.t1 {{ background: #C0392B; }}
+.t2 {{ background: #C8873A; }}
+.t3 {{ background: #3A7D44; }}
+.t4 {{ background: #1A1A1A; }}
 
-/* ── EN-TÊTE ── */
+/* ── Header ── */
 .header {{
-    display: flex;
-    align-items: center;
-    gap: 4mm;
-    padding-bottom: 4mm;
-    border-bottom: 0.8mm solid #f0b429;
-    margin-bottom: 4mm;
+  padding: 4.5mm 8mm 3.5mm;
+  text-align: center;
+  flex-shrink: 0;
+  background: #141414;
 }}
-.logo-wrap img {{
-    width: 22mm;
-    height: 22mm;
-    object-fit: contain;
-    border-radius: 50%;
-    background: white;
-    padding: 1mm;
+.school-name {{
+  font-family: 'Playfair Display', serif;
+  font-size: 6pt;
+  font-weight: 900;
+  color: #C9A84C;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1mm;
 }}
-.header-text h1 {{
-    font-size: 9pt;
-    font-weight: 900;
-    color: #f0b429;
-    letter-spacing: 0.5pt;
-    text-transform: uppercase;
-    line-height: 1.2;
-}}
-.header-text p {{
-    font-size: 7pt;
-    color: #aed6f1;
-    margin-top: 1mm;
-    font-style: italic;
+.school-tagline {{
+  font-family: 'Playfair Display', serif;
+  font-size: 7pt;
+  font-weight: 900;
+  color: #FFFFFF;
+  display: block;
 }}
 
-/* ── BANDEAU ACCROCHE ── */
-.tagline {{
-    background: #f0b429;
-    color: #1a5276;
-    text-align: center;
-    padding: 2.5mm 3mm;
-    border-radius: 1.5mm;
-    font-size: 9.5pt;
-    font-weight: 900;
-    letter-spacing: 0.3pt;
-    text-transform: uppercase;
-    margin-bottom: 4mm;
+/* ── Photo hero ── */
+.hero {{
+  position: relative;
+  height: 64mm;
+  flex-shrink: 0;
+  overflow: hidden;
+}}
+.hero img {{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  display: block;
+}}
+.hero-overlay {{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(20,20,20,0.25), rgba(20,20,20,0.96));
+}}
+.hero-placeholder {{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a2a1a 0%, #0d1f0d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}}
+.hero-placeholder span {{
+  font-size: 20pt;
+  opacity: 0.4;
 }}
 
-/* ── LABELS ── */
-.badges {{
-    display: flex;
-    gap: 2mm;
-    margin-bottom: 4mm;
+/* ── Bande rentrée ── */
+.rentree {{
+  background: #C9A84C;
+  padding: 2.5mm 8mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}}
+.rentree-left {{
+  font-family: 'Lato', sans-serif;
+  font-size: 5.5pt;
+  font-weight: 900;
+  color: #0D2B1F;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+}}
+.rentree-right {{
+  font-family: 'Playfair Display', serif;
+  font-size: 6pt;
+  font-weight: 900;
+  color: #0D2B1F;
+}}
+
+/* ── Corps ── */
+.body {{
+  padding: 4mm 8mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5mm;
+  flex: 1;
+}}
+
+/* Niveaux pills */
+.niveaux {{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+}}
+.pill {{
+  padding: 1mm 3mm;
+  border-radius: 10mm;
+  font-size: 5pt;
+  font-weight: 700;
+  border: 0.3mm solid;
+  white-space: nowrap;
+}}
+.pill-mat  {{ background: rgba(192,57,43,0.15);  color: #E74C3C; border-color: rgba(192,57,43,0.4); }}
+.pill-prim {{ background: rgba(58,125,68,0.15);  color: #5CBA6A; border-color: rgba(58,125,68,0.4); }}
+.pill-col  {{ background: rgba(201,168,76,0.12); color: #C9A84C; border-color: rgba(201,168,76,0.4); }}
+.pill-fr   {{ background: rgba(255,255,255,0.1); color: #FFFFFF; border-color: rgba(255,255,255,0.3); }}
+
+/* Feature cards 2x2 */
+.features {{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2mm;
+}}
+.card {{
+  background: rgba(255,255,255,0.95);
+  border: 0.3mm solid rgba(201,168,76,0.25);
+  border-radius: 2mm;
+  padding: 2.5mm;
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+}}
+.card-icon {{ font-size: 8pt; }}
+.card-title {{
+  font-family: 'Lato', sans-serif;
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: #141414;
+}}
+.card-text {{
+  font-size: 5pt;
+  color: #555;
+  line-height: 1.3;
+}}
+
+/* Citation */
+.quote {{
+  border-left: 0.8mm solid #C9A84C;
+  padding-left: 3.5mm;
+}}
+.quote-text {{
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 5.5pt;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.4;
+}}
+.quote-sub {{
+  font-size: 5pt;
+  color: #C9A84C;
+  margin-top: 1mm;
+  font-weight: 700;
+}}
+
+/* Contact */
+.contact-band {{
+  background: rgba(201,168,76,0.08);
+  border: 0.3mm solid rgba(201,168,76,0.2);
+  border-radius: 2mm;
+  padding: 2.5mm 3mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}}
+.contact-phone {{
+  font-family: 'Playfair Display', serif;
+  font-size: 6.5pt;
+  color: #C9A84C;
+  font-weight: 900;
+}}
+.contact-details {{
+  font-size: 5pt;
+  color: rgba(255,255,255,0.6);
+  text-align: right;
+  line-height: 1.6;
+}}
+</style>
+</head>
+<body>
+
+<!-- Bande tricolore haut -->
+<div class="tricolor">
+  <span class="t1"></span><span class="t2"></span><span class="t3"></span>
+  <span class="t4"></span><span class="t2"></span><span class="t1"></span>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <span class="school-name">Bela Lekkol Montessori</span>
+  <span class="school-tagline">L'école française de Guinée</span>
+</div>
+
+<!-- Photo hero -->
+<div class="hero">
+  {'<img src="' + PHOTO_SRC + '" alt=""><div class="hero-overlay"></div>' if PHOTO_SRC else '<div class="hero-placeholder"><span>🏫</span></div>'}
+</div>
+
+<!-- Bande rentrée -->
+<div class="rentree">
+  <span class="rentree-left">Inscriptions ouvertes</span>
+  <span class="rentree-right">Rentrée 2026–2027</span>
+</div>
+
+<!-- Corps -->
+<div class="body">
+
+  <div class="niveaux">
+    <span class="pill pill-mat">Maternelle</span>
+    <span class="pill pill-prim">Primaire</span>
+    <span class="pill pill-col">Collège</span>
+    <span class="pill pill-col">Lycée</span>
+    <span class="pill pill-fr">Franco-guinéen</span>
+  </div>
+
+  <div class="features">
+    <div class="card">
+      <span class="card-icon">🎓</span>
+      <div class="card-title">Pédagogie Montessori</div>
+      <div class="card-text">Méthodes MHF &amp; MHM agréées</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🧠</span>
+      <div class="card-title">N°1 IA en Guinée</div>
+      <div class="card-text">Leader en intégration de l'IA</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏫</span>
+      <div class="card-title">Centre de formation</div>
+      <div class="card-text">Profs formés par Éric Didier</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏅</span>
+      <div class="card-title">Diplômes reconnus</div>
+      <div class="card-text">DELF · Institut Français · ISSEG</div>
+    </div>
+  </div>
+
+  <div class="quote">
+    <div class="quote-text">« Plus belle, plus compétente et moins chère »</div>
+    <div class="quote-sub">Système français · Méthodes Montessori · IA intégrée</div>
+  </div>
+
+  <div class="contact-band">
+    <div class="contact-phone">626 31 31 80</div>
+    <div class="contact-details">
+      KIPE, Conakry, Guinée<br>
+      belalekkol.montessori@gmail.com<br>
+      Bela Lekkol Montessori
+    </div>
+  </div>
+
+</div>
+
+<!-- Bande tricolore bas -->
+<div class="tricolor">
+  <span class="t1"></span><span class="t2"></span><span class="t3"></span>
+  <span class="t4"></span><span class="t2"></span><span class="t1"></span>
+</div>
+
+</body></html>"""
+
+# ══════════════════════════════════════════════════════════════════════════════
+# VERSO
+# ══════════════════════════════════════════════════════════════════════════════
+HTML_VERSO = f"""<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<style>
+{FONTS}
+{CSS_PAGE}
+
+body {{
+  font-family: 'Lato', Arial, sans-serif;
+  background: #FFFBF4;
+  color: #141414;
+  display: flex;
+  flex-direction: column;
+}}
+
+.tricolor {{ display: flex; height: 5px; width: 100%; flex-shrink: 0; }}
+.tricolor span {{ flex: 1; }}
+.t1 {{ background: #C0392B; }}
+.t2 {{ background: #C8873A; }}
+.t3 {{ background: #3A7D44; }}
+.t4 {{ background: #1A1A1A; }}
+
+.header {{
+  background: #0D2B1F;
+  padding: 4mm 7mm;
+  display: flex;
+  align-items: center;
+  gap: 3.5mm;
+  flex-shrink: 0;
+}}
+.logo-circle {{
+  width: 13mm;
+  height: 13mm;
+  background: white;
+  border-radius: 2mm;
+  padding: 1mm;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}}
+.logo-circle img {{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}}
+.header-text {{ flex: 1; }}
+.header-title {{
+  font-family: 'Playfair Display', serif;
+  font-size: 6.5pt;
+  font-weight: 700;
+  color: #C9A84C;
+  display: block;
+}}
+.header-sub {{
+  font-size: 5pt;
+  color: rgba(255,255,255,0.7);
+  display: block;
+  margin: 0.5mm 0;
+  line-height: 1.3;
+}}
+.header-phone {{
+  font-size: 5.5pt;
+  color: #C9A84C;
+  font-weight: 700;
+  display: block;
+}}
+
+.body {{
+  padding: 5mm 7mm;
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+  flex: 1;
+}}
+
+.prog-cards {{
+  display: flex;
+  gap: 2mm;
+}}
+.prog-card {{
+  flex: 1;
+  border-radius: 2.5mm;
+  padding: 3mm 2.5mm;
+  color: white;
+}}
+.prog-card.mat  {{ background: #C0392B; }}
+.prog-card.prim {{ background: #3A7D44; }}
+.prog-card.col  {{ background: #1A1A1A; }}
+.prog-label {{
+  font-size: 5pt;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  display: block;
+  margin-bottom: 1mm;
+}}
+.prog-level {{
+  font-family: 'Playfair Display', serif;
+  font-size: 5.5pt;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 1.5mm;
+  opacity: 0.9;
+}}
+.prog-detail {{
+  font-size: 4.5pt;
+  opacity: 0.85;
+  line-height: 1.4;
+}}
+
+.info-row {{
+  display: flex;
+  gap: 3mm;
+}}
+.info-box {{
+  flex: 1;
+  background: white;
+  border: 0.3mm solid rgba(201,168,76,0.3);
+  border-radius: 2mm;
+  padding: 2.5mm 3mm;
+}}
+.info-box h4 {{
+  font-size: 5.5pt;
+  font-weight: 900;
+  color: #0D2B1F;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  margin-bottom: 1.5mm;
+  padding-bottom: 1mm;
+  border-bottom: 0.3mm solid #C9A84C;
+}}
+.info-box p {{
+  font-size: 5pt;
+  color: #444;
+  line-height: 1.6;
+}}
+
+.partners {{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+  align-items: center;
+}}
+.partner-label {{
+  font-size: 5pt;
+  font-weight: 900;
+  color: #0D2B1F;
+  text-transform: uppercase;
+  letter-spacing: 0.3pt;
+  margin-right: 1mm;
+  white-space: nowrap;
 }}
 .badge {{
-    flex: 1;
-    background: rgba(240, 180, 41, 0.15);
-    border: 0.4mm solid #f0b429;
-    border-radius: 1.5mm;
-    padding: 2mm 1.5mm;
-    text-align: center;
-}}
-.badge .badge-icon {{
-    font-size: 11pt;
-    display: block;
-    margin-bottom: 1mm;
-}}
-.badge .badge-title {{
-    font-size: 6pt;
-    font-weight: 900;
-    color: #f0b429;
-    text-transform: uppercase;
-    letter-spacing: 0.3pt;
-    display: block;
-}}
-.badge .badge-sub {{
-    font-size: 5.5pt;
-    color: #aed6f1;
-    display: block;
-    margin-top: 0.5mm;
+  background: white;
+  border: 0.3mm solid rgba(201,168,76,0.4);
+  border-radius: 1mm;
+  padding: 0.8mm 2mm;
+  font-size: 4.5pt;
+  color: #0D2B1F;
+  font-weight: 700;
+  white-space: nowrap;
 }}
 
-/* ── DIRECTION ── */
 .direction {{
-    background: rgba(255,255,255,0.07);
-    border-left: 1mm solid #f0b429;
-    border-radius: 0 1.5mm 1.5mm 0;
-    padding: 2.5mm 3mm;
-    margin-bottom: 4mm;
+  display: flex;
+  gap: 3mm;
+  align-items: flex-start;
 }}
-.direction h3 {{
-    font-size: 6.5pt;
-    font-weight: 900;
-    color: #f0b429;
-    text-transform: uppercase;
-    margin-bottom: 1.5mm;
+.director-wrap {{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1mm;
+  flex-shrink: 0;
 }}
-.direction ul {{
-    list-style: none;
-    padding: 0;
+.director-photo {{
+  width: 15mm;
+  height: 15mm;
+  border-radius: 50%;
+  border: 0.5mm solid #C9A84C;
+  background: linear-gradient(135deg, #0D2B1F, #1a4a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 12pt;
+  opacity: 0.8;
 }}
-.direction ul li {{
-    font-size: 6pt;
-    color: #d6eaf8;
-    padding: 0.7mm 0;
-    padding-left: 3mm;
-    position: relative;
-    line-height: 1.3;
+.director-name {{
+  font-size: 5.5pt;
+  font-weight: 700;
+  color: #C9A84C;
 }}
-.direction ul li::before {{
-    content: "▸";
-    color: #f0b429;
-    position: absolute;
-    left: 0;
-    font-size: 5pt;
-    top: 1mm;
+.director-title {{
+  font-size: 4pt;
+  color: #555;
+  text-align: center;
+  line-height: 1.3;
 }}
-
-/* ── PROGRAMMES ── */
-.programmes {{
-    background: rgba(255,255,255,0.07);
-    border-radius: 1.5mm;
-    padding: 2.5mm 3mm;
-    margin-bottom: 4mm;
+.contacts-grid {{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5mm;
+  flex: 1;
 }}
-.programmes h3 {{
-    font-size: 6.5pt;
-    font-weight: 900;
-    color: #f0b429;
-    text-transform: uppercase;
-    margin-bottom: 1.5mm;
+.contact-item {{
+  font-size: 5pt;
+  color: #333;
+  line-height: 1.4;
 }}
-.prog-grid {{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5mm;
-}}
-.prog-item {{
-    font-size: 5.5pt;
-    color: #d6eaf8;
-    padding-left: 2.5mm;
-    position: relative;
-    line-height: 1.3;
-}}
-.prog-item::before {{
-    content: "✓";
-    color: #27ae60;
-    position: absolute;
-    left: 0;
-    font-size: 5pt;
+.contact-item strong {{
+  font-size: 5pt;
+  color: #0D2B1F;
+  display: block;
 }}
 
-/* ── NIVEAUX ── */
-.niveaux {{
-    display: flex;
-    gap: 1.5mm;
-    margin-bottom: 4mm;
+.cta {{
+  background: linear-gradient(135deg, #C0392B, #F0A500);
+  border-radius: 2.5mm;
+  padding: 4mm 6mm;
+  text-align: center;
 }}
-.niveau-box {{
-    flex: 1;
-    border: 0.4mm solid rgba(240,180,41,0.4);
-    border-radius: 1.5mm;
-    padding: 1.5mm 1mm;
-    text-align: center;
+.cta-main {{
+  font-family: 'Playfair Display', serif;
+  font-size: 7.5pt;
+  font-weight: 900;
+  color: white;
+  display: block;
 }}
-.niveau-box .niv-label {{
-    font-size: 5pt;
-    font-weight: 900;
-    color: #f0b429;
-    text-transform: uppercase;
-    display: block;
-}}
-.niveau-box .niv-name {{
-    font-size: 5pt;
-    color: #aed6f1;
-    display: block;
-    margin-top: 0.5mm;
-}}
-
-/* ── PIED DE PAGE ── */
-.footer {{
-    position: absolute;
-    bottom: 6mm;
-    left: 9mm;
-    right: 9mm;
-    border-top: 0.5mm solid rgba(240,180,41,0.5);
-    padding-top: 2mm;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}}
-.contact-block {{
-    font-size: 5.5pt;
-    color: #aed6f1;
-    line-height: 1.6;
-}}
-.contact-block strong {{
-    color: #f0b429;
-    font-size: 6pt;
-}}
-.address-block {{
-    font-size: 5pt;
-    color: #7fb3d3;
-    text-align: right;
-    line-height: 1.5;
+.cta-sub {{
+  font-size: 5pt;
+  color: rgba(255,255,255,0.9);
+  display: block;
+  margin-top: 1mm;
 }}
 </style>
 </head>
 <body>
-<div class="bleed-wrapper">
-  <div class="page-content">
 
-    <!-- EN-TÊTE -->
-    <div class="header">
-      <div class="logo-wrap">
-        <img src="data:image/png;base64,{LOGO_B64}" alt="Logo Bela Lekkol Montessori">
-      </div>
-      <div class="header-text">
-        <h1>Groupe Scolaire<br>Bela Lekkol Montessori</h1>
-        <p>L'école française au service de la Guinée</p>
-      </div>
-    </div>
-
-    <!-- ACCROCHE -->
-    <div class="tagline">La meilleure maternelle au meilleur prix du secteur privé</div>
-
-    <!-- BADGES -->
-    <div class="badges">
-      <div class="badge">
-        <span class="badge-icon">🎓</span>
-        <span class="badge-title">Formation Continue</span>
-        <span class="badge-sub">Enseignants certifiés</span>
-      </div>
-      <div class="badge">
-        <span class="badge-icon">🏅</span>
-        <span class="badge-title">Éducation Reconnue</span>
-        <span class="badge-sub">Label officiel</span>
-      </div>
-      <div class="badge">
-        <span class="badge-icon">🇫🇷</span>
-        <span class="badge-title">Programmes Français</span>
-        <span class="badge-sub">Conformes EN</span>
-      </div>
-      <div class="badge">
-        <span class="badge-icon">🌍</span>
-        <span class="badge-title">Contexte Guinéen</span>
-        <span class="badge-sub">Ancrage local</span>
-      </div>
-    </div>
-
-    <!-- DIRECTION -->
-    <div class="direction">
-      <h3>Direction &amp; Partenariats</h3>
-      <ul>
-        <li>Directeur français issu du Ministère de l'Éducation Nationale</li>
-        <li>Ex-Directeur de l'Alliance Française de Guinée</li>
-        <li>Directeur du Centre de Formation Pédagogique Maria Montessori</li>
-        <li>Partenaire du MEPU-A et de l'Institut Français (1er degré privé)</li>
-        <li>Coopération avec des établissements européens et africains</li>
-      </ul>
-    </div>
-
-    <!-- PROGRAMMES -->
-    <div class="programmes">
-      <h3>Nos Engagements Pédagogiques</h3>
-      <div class="prog-grid">
-        <div class="prog-item">Volumes horaires en conformité</div>
-        <div class="prog-item">Pédagogie différenciée Montessori</div>
-        <div class="prog-item">Livret de réussite élève (Mat. &amp; Prim.)</div>
-        <div class="prog-item">Évaluations &amp; relevés de notes trimestriels</div>
-        <div class="prog-item">Anglais, Espagnol — DELF/DALF</div>
-        <div class="prog-item">Événements culturels &amp; sportifs</div>
-        <div class="prog-item">Logiciel ADMISCO (gestion scolaire)</div>
-        <div class="prog-item">Aide aux devoirs GRATUITE</div>
-      </div>
-    </div>
-
-    <!-- NIVEAUX -->
-    <div class="niveaux">
-      <div class="niveau-box">
-        <span class="niv-label">Maternelle</span>
-        <span class="niv-name">Montessori</span>
-      </div>
-      <div class="niveau-box">
-        <span class="niv-label">Primaire</span>
-        <span class="niv-name">Prog. français</span>
-      </div>
-      <div class="niveau-box">
-        <span class="niv-label">Collège</span>
-        <span class="niv-name">Prog. guinéen</span>
-      </div>
-      <div class="niveau-box">
-        <span class="niv-label">Lycée</span>
-        <span class="niv-name">Enrichi / Bac</span>
-      </div>
-    </div>
-
-    <!-- PIED DE PAGE -->
-    <div class="footer">
-      <div class="contact-block">
-        <strong>✉ belalekkol.montessori@gmail.com</strong><br>
-        📞 626 31 31 80 &nbsp;|&nbsp; 623-23-18-07
-      </div>
-      <div class="address-block">
-        KIPE / Centre Émetteur<br>Carrefour Alpha Condé<br>Conakry, Guinée
-      </div>
-    </div>
-
+<div class="header">
+  <div class="logo-circle">
+    {'<img src="' + LOGO_SRC + '" alt="Logo">' if LOGO_SRC else '<span style="font-size:12pt">🏫</span>'}
+  </div>
+  <div class="header-text">
+    <span class="header-title">Bela Lekkol Montessori</span>
+    <span class="header-sub">Programme &amp; Informations pratiques<br>Rentrée 2026–2027</span>
+    <span class="header-phone">📞 626 31 31 80</span>
   </div>
 </div>
-</body>
-</html>"""
 
-# ─── VERSO ───────────────────────────────────────────────────────────────────
-HTML_VERSO = f"""<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<style>
-{CSS_BASE}
-
-body {{
-    background: #ffffff;
-}}
-
-.bleed-wrapper {{
-    background: #ffffff;
-}}
-
-/* ── EN-TÊTE VERSO ── */
-.header-verso {{
-    background: linear-gradient(135deg, #1a5276, #154360);
-    margin: -9mm -9mm 5mm -9mm;
-    padding: 5mm 9mm 4mm 9mm;
-    display: flex;
-    align-items: center;
-    gap: 3mm;
-}}
-.header-verso img {{
-    width: 15mm;
-    height: 15mm;
-    object-fit: contain;
-    border-radius: 50%;
-    background: white;
-    padding: 0.8mm;
-}}
-.header-verso-text h2 {{
-    font-size: 8pt;
-    font-weight: 900;
-    color: #f0b429;
-    text-transform: uppercase;
-    letter-spacing: 0.3pt;
-}}
-.header-verso-text p {{
-    font-size: 6pt;
-    color: #aed6f1;
-    font-style: italic;
-}}
-
-/* ── TITRE TARIFS ── */
-.tarifs-title {{
-    background: #1a5276;
-    color: white;
-    text-align: center;
-    padding: 2mm 3mm;
-    border-radius: 1.5mm;
-    font-size: 9pt;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.5pt;
-    margin-bottom: 3mm;
-}}
-.tarifs-subtitle {{
-    text-align: center;
-    font-size: 6.5pt;
-    color: #7f8c8d;
-    margin-bottom: 4mm;
-    font-style: italic;
-}}
-
-/* ── TABLEAU TARIFS ── */
-.tarifs-table {{
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 3.5mm;
-    font-size: 6.5pt;
-}}
-.tarifs-table thead tr {{
-    background: #1a5276;
-    color: white;
-}}
-.tarifs-table thead th {{
-    padding: 1.5mm 2mm;
-    text-align: left;
-    font-size: 6pt;
-    text-transform: uppercase;
-    letter-spacing: 0.2pt;
-}}
-.tarifs-table thead th:last-child {{
-    text-align: right;
-}}
-.tarifs-table tbody tr:nth-child(even) {{
-    background: #eaf4fc;
-}}
-.tarifs-table tbody tr:nth-child(odd) {{
-    background: #fdfefe;
-}}
-.tarifs-table tbody td {{
-    padding: 1.5mm 2mm;
-    vertical-align: middle;
-    border-bottom: 0.2mm solid #d5d8dc;
-}}
-.tarifs-table tbody td:last-child {{
-    text-align: right;
-    font-weight: 900;
-    color: #1a5276;
-    white-space: nowrap;
-}}
-.level-name {{
-    font-weight: 700;
-    color: #1a5276;
-}}
-.level-sub {{
-    font-size: 5.5pt;
-    color: #7f8c8d;
-    display: block;
-}}
-.gratuit {{
-    color: #27ae60;
-    font-weight: 900;
-}}
-.prix-gnf {{
-    font-size: 7pt;
-}}
-
-/* ── VERSEMENTS ── */
-.versements {{
-    background: #fef9e7;
-    border: 0.4mm solid #f0b429;
-    border-radius: 1.5mm;
-    padding: 2.5mm 3mm;
-    margin-bottom: 3mm;
-}}
-.versements h4 {{
-    font-size: 6.5pt;
-    font-weight: 900;
-    color: #1a5276;
-    text-transform: uppercase;
-    margin-bottom: 2mm;
-    padding-bottom: 1mm;
-    border-bottom: 0.3mm solid #f0b429;
-}}
-.versements-grid {{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5mm;
-}}
-.vers-item {{
-    text-align: center;
-    background: white;
-    border-radius: 1mm;
-    padding: 1.5mm 1mm;
-    border: 0.3mm solid #fadbd8;
-}}
-.vers-num {{
-    font-size: 5pt;
-    font-weight: 900;
-    color: #e74c3c;
-    text-transform: uppercase;
-    display: block;
-}}
-.vers-amount {{
-    font-size: 6.5pt;
-    font-weight: 900;
-    color: #1a5276;
-    display: block;
-    margin: 0.5mm 0;
-}}
-.vers-date {{
-    font-size: 5pt;
-    color: #7f8c8d;
-    display: block;
-}}
-
-/* ── REMISES ── */
-.remises {{
-    background: #eafaf1;
-    border-left: 1mm solid #27ae60;
-    border-radius: 0 1.5mm 1.5mm 0;
-    padding: 2mm 3mm;
-    margin-bottom: 3mm;
-    font-size: 6pt;
-    color: #1e8449;
-}}
-.remises strong {{
-    font-size: 6.5pt;
-    text-transform: uppercase;
-}}
-
-/* ── SERVICES ── */
-.services {{
-    display: flex;
-    gap: 2mm;
-    margin-bottom: 3mm;
-}}
-.service-item {{
-    flex: 1;
-    background: #f8f9fa;
-    border-radius: 1.5mm;
-    padding: 2mm 1.5mm;
-    text-align: center;
-    border: 0.3mm solid #dee2e6;
-}}
-.service-item .svc-name {{
-    font-size: 5.5pt;
-    font-weight: 700;
-    color: #1a5276;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5mm;
-}}
-.service-item .svc-price {{
-    font-size: 6pt;
-    font-weight: 900;
-    color: #e74c3c;
-    display: block;
-}}
-
-/* ── NOTE ── */
-.note {{
-    background: #eaf4fc;
-    border-radius: 1.5mm;
-    padding: 2mm 3mm;
-    font-size: 5.5pt;
-    color: #2c3e50;
-    line-height: 1.4;
-    font-style: italic;
-    margin-bottom: 3mm;
-}}
-
-/* ── FOOTER ── */
-.footer-verso {{
-    position: absolute;
-    bottom: 5mm;
-    left: 9mm;
-    right: 9mm;
-    background: linear-gradient(135deg, #1a5276, #154360);
-    border-radius: 1.5mm;
-    padding: 2.5mm 4mm;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}}
-.footer-verso .contact {{
-    font-size: 5.5pt;
-    color: #aed6f1;
-    line-height: 1.6;
-}}
-.footer-verso .contact strong {{
-    color: #f0b429;
-    font-size: 6pt;
-    display: block;
-}}
-.footer-verso .tests {{
-    font-size: 5.5pt;
-    color: #f0b429;
-    font-weight: 900;
-    text-align: right;
-    line-height: 1.4;
-}}
-</style>
-</head>
-<body>
-<div class="bleed-wrapper">
-  <div class="page-content">
-
-    <!-- EN-TÊTE -->
-    <div class="header-verso">
-      <img src="data:image/png;base64,{LOGO_B64}" alt="Logo">
-      <div class="header-verso-text">
-        <h2>Bela Lekkol Montessori</h2>
-        <p>L'école française au service de la Guinée</p>
-      </div>
-    </div>
-
-    <!-- TITRE -->
-    <div class="tarifs-title">Frais de Scolarité Annuels en GNF</div>
-    <div class="tarifs-subtitle">Année scolaire 2025-2026</div>
-
-    <!-- TABLEAU -->
-    <table class="tarifs-table">
-      <thead>
-        <tr>
-          <th>Niveau</th>
-          <th>Inscription</th>
-          <th>Dossier</th>
-          <th>Tests</th>
-          <th style="text-align:right">Scolarité totale</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <span class="level-name">Maternelle Montessori</span>
-          </td>
-          <td class="gratuit">GRATUIT*</td>
-          <td class="gratuit">GRATUIT</td>
-          <td class="gratuit">GRATUIT</td>
-          <td class="prix-gnf">12 000 000 GNF</td>
-        </tr>
-        <tr>
-          <td>
-            <span class="level-name">Primaire</span>
-            <span class="level-sub">Programme français</span>
-          </td>
-          <td class="gratuit">GRATUIT*</td>
-          <td class="gratuit">GRATUIT</td>
-          <td class="gratuit">GRATUIT</td>
-          <td class="prix-gnf">12 000 000 GNF</td>
-        </tr>
-        <tr>
-          <td>
-            <span class="level-name">Collège</span>
-            <span class="level-sub">Programme guinéen</span>
-          </td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td class="prix-gnf">3 350 000 GNF</td>
-        </tr>
-        <tr>
-          <td>
-            <span class="level-name">Collège</span>
-            <span class="level-sub">10ème année — Brevet</span>
-          </td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td class="prix-gnf">3 650 000 GNF</td>
-        </tr>
-        <tr>
-          <td>
-            <span class="level-name">Lycée</span>
-            <span class="level-sub">Programme guinéen enrichi</span>
-          </td>
-          <td>incluse</td>
-          <td>—</td>
-          <td>—</td>
-          <td class="prix-gnf">3 650 000 GNF</td>
-        </tr>
-        <tr>
-          <td>
-            <span class="level-name">Terminale</span>
-            <span class="level-sub">Préparation Bac</span>
-          </td>
-          <td>incluse</td>
-          <td>—</td>
-          <td>—</td>
-          <td class="prix-gnf">3 750 000 GNF</td>
-        </tr>
-        <tr style="background:#fef5e4">
-          <td>
-            <span class="level-name">Activités périscolaires</span>
-          </td>
-          <td colspan="3" style="color:#7f8c8d;font-style:italic">Garderie incluse</td>
-          <td class="prix-gnf" style="color:#e74c3c">200 000 GNF/mois</td>
-        </tr>
-        <tr style="background:#fef5e4">
-          <td>
-            <span class="level-name">Aide aux devoirs</span>
-            <span class="level-sub">Activités pédagogiques complémentaires</span>
-          </td>
-          <td colspan="3"></td>
-          <td class="gratuit">GRATUIT</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- VERSEMENTS MAT/PRIMAIRE -->
-    <div class="versements">
-      <h4>Échéancier Maternelle &amp; Primaire (12 000 000 GNF)</h4>
-      <div class="versements-grid">
-        <div class="vers-item">
-          <span class="vers-num">Versement 1</span>
-          <span class="vers-amount">3 800 000</span>
-          <span class="vers-date">À l'inscription</span>
-        </div>
-        <div class="vers-item">
-          <span class="vers-num">Versement 2</span>
-          <span class="vers-amount">3 000 000</span>
-          <span class="vers-date">05/12/2024</span>
-        </div>
-        <div class="vers-item">
-          <span class="vers-num">Versement 3</span>
-          <span class="vers-amount">2 700 000</span>
-          <span class="vers-date">05/02/2025</span>
-        </div>
-        <div class="vers-item">
-          <span class="vers-num">Versement 4</span>
-          <span class="vers-amount">2 500 000</span>
-          <span class="vers-date">05/04/2025</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- REMISES + SERVICES côte à côte -->
-    <div style="display:flex; gap:2mm; margin-bottom:3mm;">
-      <div class="remises" style="flex:1.5; margin-bottom:0;">
-        <strong>🎁 Remises Famille</strong><br>
-        À partir du 3ème enfant inscrit :<br>
-        Collège : <strong>700 000 GNF</strong> de remise<br>
-        Lycée : <strong>400 000 GNF</strong> de remise<br>
-        <em style="font-size:5pt;color:#1e8449">* Inscription gratuite si parrainage</em>
-      </div>
-      <div class="services" style="flex:1; flex-direction:column; margin-bottom:0;">
-        <div class="service-item" style="margin-bottom:1mm;">
-          <span class="svc-name">🚌 Garderie</span>
-          <span class="svc-price">200 000 GNF/mois</span>
-        </div>
-        <div class="service-item">
-          <span class="svc-name">📚 Aide aux devoirs</span>
-          <span class="svc-price" style="color:#27ae60">GRATUIT</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- NOTE RÉNOVATION -->
-    <div class="note">
-      ℹ️ Le groupe scolaire a changé de direction. Une rénovation importante est en cours afin d'offrir aux enseignants et aux élèves les meilleures conditions d'enseignement et d'apprentissage.
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer-verso">
-      <div class="contact">
-        <strong>📧 belalekkol.montessori@gmail.com</strong>
-        📞 626 31 31 80 &nbsp;|&nbsp; 623-23-18-07<br>
-        KIPE / Centre Émetteur / Carrefour Alpha Condé
-      </div>
-      <div class="tests">
-        TESTS D'ADMISSION<br>
-        <span style="color:white;font-weight:normal;font-size:5pt">Sur rendez-vous</span>
-      </div>
-    </div>
-
-  </div>
+<div class="tricolor">
+  <span class="t1"></span><span class="t2"></span><span class="t3"></span>
+  <span class="t4"></span><span class="t2"></span><span class="t1"></span>
 </div>
-</body>
-</html>"""
 
+<div class="body">
 
-# ─── CSS POUR IMPRESSION 300 DPI ─────────────────────────────────────────────
-CSS_PRINT = CSS(string="""
-@page {
-    size: 154mm 216mm;
-    margin: 0;
-}
-""")
+  <div class="prog-cards">
+    <div class="prog-card mat">
+      <span class="prog-label">Maternelle</span>
+      <span class="prog-level">PS · MS · GS</span>
+      <span class="prog-detail">Méthode Montessori<br>Éveil &amp; motricité</span>
+    </div>
+    <div class="prog-card prim">
+      <span class="prog-label">Primaire</span>
+      <span class="prog-level">CP → CM2</span>
+      <span class="prog-detail">Système français<br>MHF / MHM</span>
+    </div>
+    <div class="prog-card col">
+      <span class="prog-label">Collège / Lycée</span>
+      <span class="prog-level">6ème → Terminale</span>
+      <span class="prog-detail">Franco-guinéen<br>Examens DELF</span>
+    </div>
+  </div>
 
-def generate_pdf(html_content, output_path, label):
+  <div class="info-row">
+    <div class="info-box">
+      <h4>🕐 Horaires</h4>
+      <p>Lun–Ven : 7h30–17h00<br>Samedi : 7h30–12h00<br>Garderie disponible<br>Cantine sur place</p>
+    </div>
+    <div class="info-box">
+      <h4>💰 Tarifs</h4>
+      <p>Tarifs compétitifs<br>Moins cher du secteur<br>Facilités de paiement<br>Inscription gratuite*</p>
+    </div>
+  </div>
+
+  <div class="partners">
+    <span class="partner-label">Partenaires :</span>
+    <span class="badge">Institut Français</span>
+    <span class="badge">ISSEG</span>
+    <span class="badge">Examens DELF</span>
+    <span class="badge">Diplômes FR</span>
+    <span class="badge">Diplômes GN</span>
+    <span class="badge">IA Éducation</span>
+  </div>
+
+  <div class="direction">
+    <div class="director-wrap">
+      <div class="director-photo">👤</div>
+      <span class="director-name">Éric Didier</span>
+      <span class="director-title">Directeur &amp;<br>Conseiller Péd.</span>
+    </div>
+    <div class="contacts-grid">
+      <div class="contact-item">
+        <strong>📞 Téléphone</strong>626 31 31 80
+      </div>
+      <div class="contact-item">
+        <strong>📍 Adresse</strong>KIPE, Conakry, Guinée
+      </div>
+      <div class="contact-item">
+        <strong>✉ Email</strong>belalekkol.montessori@gmail.com
+      </div>
+      <div class="contact-item">
+        <strong>📘 Facebook</strong>Bela Lekkol Montessori
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <span class="cta-main">Inscrivez votre enfant !</span>
+    <span class="cta-sub">Découvrez notre équipe &amp; notre programme</span>
+  </div>
+
+</div>
+
+<div class="tricolor">
+  <span class="t1"></span><span class="t2"></span><span class="t3"></span>
+  <span class="t4"></span><span class="t2"></span><span class="t1"></span>
+</div>
+
+</body></html>"""
+
+# ── Génération PDFs ───────────────────────────────────────────────────────────
+CSS_PRINT = CSS(string="@page { size: 154mm 216mm; margin: 0; }")
+
+def gen(html, path, label):
     print(f"  Génération {label}...")
-    html = HTML(string=html_content, base_url=OUTPUT_DIR)
-    html.write_pdf(output_path, stylesheets=[CSS_PRINT],
-                   presentational_hints=True,
-                   uncompressed_pdf=False)
-    size_kb = os.path.getsize(output_path) // 1024
-    print(f"  ✓ {label} → {output_path} ({size_kb} Ko)")
+    HTML(string=html, base_url=OUT).write_pdf(
+        path, stylesheets=[CSS_PRINT], presentational_hints=True
+    )
+    kb = os.path.getsize(path) // 1024
+    print(f"  ✓ {label} → {path} ({kb} Ko)")
 
+HTML_COMPLET = f"""<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<style>{FONTS}{CSS_PAGE}</style></head><body>
+{HTML_RECTO.split('<body>',1)[1].rsplit('</body>',1)[0]}
+<div style="page-break-before:always">
+{HTML_VERSO.split('<body>',1)[1].rsplit('</body>',1)[0]}
+</div></body></html>"""
 
-# ─── FLYER COMPLET (recto + verso sur 2 pages) ───────────────────────────────
-HTML_COMPLET = f"""<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<style>
-@page {{
-    size: 154mm 216mm;
-    margin: 0;
-}}
-</style>
-</head>
-<body>
-<!-- PAGE 1 : RECTO -->
-{HTML_RECTO.split('<body>')[1].split('</body>')[0]}
-<!-- PAGE 2 : VERSO -->
-<div style="page-break-before: always;">
-{HTML_VERSO.split('<body>')[1].split('</body>')[0]}
-</div>
-</body>
-</html>"""
-
-
-# ─── MAIN ─────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    print("═" * 55)
-    print("  Bela Lekkol Montessori — Génération PDF impression")
-    print("  Format A5 (154×216mm avec bleed 3mm) — 300 DPI")
-    print("═" * 55)
-
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-    generate_pdf(HTML_RECTO,  f"{OUTPUT_DIR}/flyer_recto_A5.pdf",   "RECTO")
-    generate_pdf(HTML_VERSO,  f"{OUTPUT_DIR}/flyer_verso_A5.pdf",   "VERSO")
-    generate_pdf(HTML_COMPLET, f"{OUTPUT_DIR}/flyer_complet_avec_bleed.pdf", "COMPLET (recto+verso)")
-
+    print("=" * 56)
+    print("  Bela Lekkol Montessori — Flyer A5 impression pro")
+    print("  154x216mm (A5+bleed 3mm) · Design handoff fidele")
+    print("=" * 56)
+    gen(HTML_RECTO,   f"{OUT}/flyer_recto_A5.pdf",           "RECTO")
+    gen(HTML_VERSO,   f"{OUT}/flyer_verso_A5.pdf",           "VERSO")
+    gen(HTML_COMPLET, f"{OUT}/flyer_complet_avec_bleed.pdf", "COMPLET recto+verso")
     print()
-    print("═" * 55)
-    print("  Fichiers générés dans", OUTPUT_DIR)
-    print("═" * 55)
+    print("=" * 56)
     for f in ["flyer_recto_A5.pdf", "flyer_verso_A5.pdf", "flyer_complet_avec_bleed.pdf"]:
-        path = f"{OUTPUT_DIR}/{f}"
-        if os.path.exists(path):
-            print(f"  ✓ {f} — {os.path.getsize(path)//1024} Ko")
+        p = f"{OUT}/{f}"
+        if os.path.exists(p):
+            print(f"  OK {f} — {os.path.getsize(p)//1024} Ko")
+    print("=" * 56)
