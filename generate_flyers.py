@@ -19,9 +19,12 @@ def b64(path):
     return ""
 
 LOGO_B64  = b64(f"{OUT}/logo.png")
-PHOTO_B64 = b64(f"{OUT}/school_photo.jpg")
-LOGO_SRC  = f"data:image/png;base64,{LOGO_B64}"   if LOGO_B64  else ""
-PHOTO_SRC = f"data:image/jpeg;base64,{PHOTO_B64}" if PHOTO_B64 else ""
+# Use PNG screenshot if available, fallback to jpg
+_photo_path = f"{OUT}/school_photo.png" if os.path.exists(f"{OUT}/school_photo.png") else f"{OUT}/school_photo.jpg"
+_photo_ext  = "png" if _photo_path.endswith(".png") else "jpeg"
+PHOTO_B64 = b64(_photo_path)
+LOGO_SRC  = f"data:image/png;base64,{LOGO_B64}"            if LOGO_B64  else ""
+PHOTO_SRC = f"data:image/{_photo_ext};base64,{PHOTO_B64}"  if PHOTO_B64 else ""
 
 # ── Polices Google Fonts ─────────────────────────────────────────────────────
 FONTS = """
