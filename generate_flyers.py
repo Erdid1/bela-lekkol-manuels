@@ -18,13 +18,12 @@ def b64(path):
             return base64.b64encode(f.read()).decode()
     return ""
 
-LOGO_B64  = b64(f"{OUT}/logo.png")
-# Use PNG screenshot if available, fallback to jpg
-_photo_path = f"{OUT}/school_photo.png" if os.path.exists(f"{OUT}/school_photo.png") else f"{OUT}/school_photo.jpg"
-_photo_ext  = "png" if _photo_path.endswith(".png") else "jpeg"
-PHOTO_B64 = b64(_photo_path)
-LOGO_SRC  = f"data:image/png;base64,{LOGO_B64}"            if LOGO_B64  else ""
-PHOTO_SRC = f"data:image/{_photo_ext};base64,{PHOTO_B64}"  if PHOTO_B64 else ""
+LOGO_B64     = b64(f"{OUT}/logo.png")
+PHOTO_B64    = b64(f"{OUT}/school_building.jpg") or b64(f"{OUT}/school_photo.jpg")
+ERIC_B64     = b64(f"{OUT}/eric_photo.jpg")
+LOGO_SRC     = f"data:image/png;base64,{LOGO_B64}"   if LOGO_B64  else ""
+PHOTO_SRC    = f"data:image/jpeg;base64,{PHOTO_B64}" if PHOTO_B64 else ""
+ERIC_SRC     = f"data:image/jpeg;base64,{ERIC_B64}"  if ERIC_B64  else ""
 
 # ── Polices Google Fonts ─────────────────────────────────────────────────────
 FONTS = """
@@ -636,7 +635,7 @@ body {{
 
   <div class="direction">
     <div class="director-wrap">
-      <div class="director-photo">👤</div>
+      <div class="director-photo">{'<img src="' + ERIC_SRC + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">' if ERIC_SRC else '👤'}</div>
       <span class="director-name">Éric Didier</span>
       <span class="director-title">Directeur &amp;<br>Conseiller Péd.</span>
     </div>
